@@ -1,7 +1,12 @@
-import { defineConfig } from "drizzle-kit";
+import { type Config } from "drizzle-kit";
 
-export default defineConfig({
-  out: "./drizzle",
-  schema: "./db/schema.ts",
-  dialect: "sqlite",
-});
+import { env } from "~/env";
+
+export default {
+  schema: "./src/server/db/schema.ts",
+  dialect: "postgresql",
+  dbCredentials: {
+    url: env.DATABASE_URL,
+  },
+  tablesFilter: ["pueblo_libre_*"],
+} satisfies Config;
