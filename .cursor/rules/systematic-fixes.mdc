@@ -1,0 +1,36 @@
+---
+description: Architect root-cause fixes at boundaries — never patch symptoms
+alwaysApply: true
+---
+
+# Systematic solutions only
+
+Ship product value. Symptom patches create toil. Fix once at the boundary.
+
+## Fix is done when you can answer
+
+1. **Mechanism** — what broke, not what the user saw?
+2. **Invariant** — what must always be true?
+3. **Boundary** — single door to fix? (API, env, loader, media contract)
+4. **Proof** — can we verify at the same layer as the bug?
+5. **Blast radius** — who else uses this boundary?
+
+Can't answer all five → not ready to code.
+
+## Principles
+
+- Fix at boundaries: env validation, tRPC door, hero media contract, DB client.
+- One sanitizer / one contract per door — no scattered consumer guards.
+- Right solution first — no "quick fix now, proper later" in the same PR.
+- If a fix makes the next change harder, it's wrong.
+
+## Anti-patterns
+
+❌ Longer timeouts, retries, or "return success anyway"
+❌ `?.` / `!` to silence required types
+❌ Pan/translate hacks for layout (tune focal tokens instead)
+❌ Loosening tests so CI goes green while the user contract stays broken
+
+## Hotfix exception
+
+Prod down → minimal hotfix OK only with a stated follow-up to fix the boundary properly.

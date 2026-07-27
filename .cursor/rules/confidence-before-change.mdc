@@ -1,0 +1,20 @@
+---
+description: Reach high confidence before changing code or config
+alwaysApply: true
+---
+
+# Confidence before change
+
+Do not change code, architecture, or config until you are ~95% sure you understand **what** and **why**.
+
+If unclear:
+
+- Ask follow-ups until intent, scope, and expected outcome are clear.
+- Do not assume — validate with the requester.
+- For Miki requests: confirm in plain language what will change on the live site.
+
+Only proceed when you can:
+
+1. State the purpose in one sentence.
+2. Name likely side effects (deploy, content, comments, SEO).
+3. Point to the files that should change.

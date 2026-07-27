@@ -1,0 +1,12 @@
+---
+description: pnpm lockfile and minimumReleaseAge — keep Vercel installs green
+globs: package.json,pnpm-lock.yaml,pnpm-workspace.yaml
+alwaysApply: false
+---
+
+# pnpm / Vercel installs
+
+- This repo declares `minimumReleaseAge: 1440` in `pnpm-workspace.yaml` (strict).
+- After dependency bumps, run `pnpm install` locally and commit the lockfile.
+- If Vercel fails with `ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION`, resolve an older version that passes the age gate — don't disable the policy casually.
+- pnpm only — never commit `package-lock.json` or `yarn.lock`.

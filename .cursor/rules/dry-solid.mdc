@@ -1,0 +1,22 @@
+---
+description: DRY and SOLID — reuse existing code, one responsibility per module
+alwaysApply: true
+---
+
+# DRY + SOLID (practical)
+
+## DRY
+
+- Copy-paste twice → extract (helper in `src/lib/`, shared component, Zod schema, or site config).
+- Reuse `src/data/site.ts`, `src/data/propuestas.json`, tRPC routers, and existing components before adding new ones.
+- Validation once at the door (Zod / env) — don't re-validate the same rule in three places with different logic.
+
+## SOLID (light)
+
+- **S** — one file / component / router = one job.
+- **O** — extend via config/data (proposals JSON, site tokens) instead of hardcoding new cases into UI.
+- **D** — UI talks to tRPC; tRPC talks to DB. Don't import `postgres` from components.
+
+## When not to DRY
+
+Don't force a shared abstraction across two things that only look similar. Duplication is cheaper than a wrong abstraction.

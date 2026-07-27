@@ -1,0 +1,15 @@
+---
+description: tRPC, Drizzle, env, and auth conventions for this T3 app
+globs: src/server/**/*.{ts,tsx},src/trpc/**/*.{ts,tsx},src/env.js,drizzle.config.ts
+alwaysApply: false
+---
+
+# T3 / server conventions
+
+- Env schema lives in `src/env.js`. Optional vars stay optional until the feature needs them (`DATABASE_URL`, `AUTH_SECRET`).
+- `db` may be `null` — always guard before queries. Public site must build without Postgres.
+- New API surface = tRPC router procedure, not ad-hoc REST, unless NextAuth/webhook requires a route.
+- Validate inputs with Zod at the procedure door.
+- Auth adapter only when `db` exists; skip `auth()` when `AUTH_SECRET` is missing.
+- Drizzle schema: `src/server/db/schema.ts`. Migrations via drizzle-kit only when `DATABASE_URL` is set.
+- Client calls go through `api` from `src/trpc/react` — don't fetch `/api/trpc` by hand from components.

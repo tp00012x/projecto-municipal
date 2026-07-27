@@ -38,17 +38,20 @@ App runs at [http://localhost:3000](http://localhost:3000).
 1. Push this repo to GitHub.
 2. Import the project in [Vercel](https://vercel.com/new).
 3. Set install command to `pnpm install` (Vercel detects `packageManager`).
-4. Create a Postgres DB (Neon is the easiest path) and set:
-   - `DATABASE_URL`
-   - `AUTH_SECRET` (`pnpm dlx auth secret`)
-   - `NEXT_PUBLIC_SITE_URL` (your production URL)
-5. After the first deploy, run migrations against production:
+4. Optional (comments / auth later): Postgres (`DATABASE_URL`), `AUTH_SECRET`, `NEXT_PUBLIC_SITE_URL`.
+5. The public site builds without a database. When you add Neon, run:
 
 ```bash
 DATABASE_URL="your-neon-url" pnpm db:push
 ```
 
-Discord auth vars are optional until you need signed-in admin features.
+## For Miki (no coding)
+
+See **[docs/PARA-MIKI.md](./docs/PARA-MIKI.md)** — safe GitHub workflow in plain Spanish.
+
+## For AI agents
+
+See **[AGENTS.md](./AGENTS.md)** and `.cursor/rules/`.
 
 ## Useful commands
 

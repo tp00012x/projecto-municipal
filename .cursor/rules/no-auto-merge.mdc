@@ -1,0 +1,14 @@
+---
+description: Never merge PRs without explicit user confirmation after CI
+alwaysApply: true
+---
+
+# No auto-merge
+
+Never merge a pull request yourself — even if asked to "open PR and merge" in one message.
+
+1. Branch, commit, push, open PR — OK.
+2. Stop. Give the PR URL and CI status.
+3. Merge only after the user explicitly confirms **after** seeing CI (or explicitly accepts risk).
+
+Forbidden without that confirmation: `gh pr merge`, GitHub MCP merge, squash/rebase into `main`.

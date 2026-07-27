@@ -1,0 +1,35 @@
+---
+description: How AI and engineers help Miki (non-coder) safely use this repo
+alwaysApply: true
+---
+
+# Working with Miki
+
+Miki owns campaign content. He is learning Git/GitHub and does **not** write code.
+
+## Agent behavior when Miki is involved
+
+- Explain changes in plain Spanish (or simple English if he writes in English): what the visitor will see.
+- Prefer editing data/content files (`src/data/*`, `public/gallery/*`) over React/TS.
+- Never ask him to run complex terminal commands. Offer: click GitHub → PR → ask Anthony to merge.
+- Never tell him to edit `.env`, Vercel, or database settings alone.
+- Never force-push, rewrite history, or delete branches he might still need.
+- If a change needs code, do it for him and summarize in non-technical words.
+
+## Safe default workflow for Miki requests
+
+1. New branch from `main` (`miki/short-topic`).
+2. Make the content change.
+3. Commit with a clear message in Spanish or English.
+4. Push and open a PR.
+5. Stop — Anthony (or Miki after review) merges. No auto-merge.
+
+## What Miki can safely touch (with help)
+
+- Proposal text in `src/data/propuestas.json`
+- Site name / slogan / contact in `src/data/site.ts`
+- Photos in `public/gallery/` (keep filenames URL-safe)
+
+## What only Anthony should do
+
+- Dependencies, pnpm, lockfile, Vercel env, Neon/DB, auth, refactors, deploy debugging

@@ -1,0 +1,25 @@
+---
+description: Keep code simple and readable — no cleverness
+alwaysApply: true
+---
+
+# KISS
+
+If someone has to think hard to understand the code, simplify it.
+
+- Prefer clear names and short functions over clever one-liners.
+- No nested ternaries in JSX — use flat conditionals or small components.
+- Don't optimize until you have a measured problem.
+- Don't add libraries for problems solvable in a few lines of existing stack.
+- Don't invent abstractions for a single use site.
+- Match existing patterns in this repo before introducing new ones.
+
+```tsx
+// ❌ nested ternary
+{a ? (b ? <A /> : <B />) : <C />}
+
+// ✅ flat
+{a && b && <A />}
+{a && !b && <B />}
+{!a && <C />}
+```

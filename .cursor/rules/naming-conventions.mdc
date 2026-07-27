@@ -1,0 +1,27 @@
+---
+description: File, component, variable, and branch naming
+alwaysApply: true
+---
+
+# Naming
+
+- **Files / folders:** kebab-case when creating new ones (`hero-playback.ts`). Existing PascalCase component files may stay.
+- **React components:** PascalCase (`Hero`, `ProposalExplorer`).
+- **Variables / functions / hooks:** camelCase; hooks start with `use`.
+- **Booleans:** `is` / `has` / `should`. Handlers: `handle…`.
+- **Constants:** UPPER_SNAKE_CASE.
+- **Types:** PascalCase; prefer `type` over `interface` unless extending.
+
+## Branches
+
+```
+[who]/[short-topic]
+```
+
+Examples:
+
+- `anthony/fix-hero-video`
+- `miki/update-propuestas-text`
+- `miki/new-gallery-photos`
+
+Lowercase, hyphens, short. Never commit directly to `main` for content experiments if a PR is safer for Miki.

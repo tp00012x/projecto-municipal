@@ -1,0 +1,24 @@
+---
+description: Prefer precise union/enum types over loose string keys
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# Strict types
+
+Never use bare `string` / `number` as Record/Map keys when a known set exists.
+
+```ts
+// ❌
+const labels: Record<string, string> = { pending: "Pendiente" }
+
+// ✅
+type CommentStatus = "pending" | "approved" | "rejected"
+const labels: Record<CommentStatus, string> = {
+  pending: "Pendiente",
+  approved: "Aprobado",
+  rejected: "Rechazado",
+}
+```
+
+Look for unions in `src/types/`, Drizzle schema enums/literals, and Zod enums. Avoid `any` and avoid `!`.

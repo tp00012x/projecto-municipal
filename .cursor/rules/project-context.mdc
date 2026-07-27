@@ -1,0 +1,43 @@
+---
+description: Pueblo Libre campaign site — stack, owners, and non-negotiables
+alwaysApply: true
+---
+
+# Project context
+
+Public campaign site for **Micky Ruiz** (Pueblo Libre 2027–2030). Repo: `projecto-municipal`.
+
+## People
+
+| Who | Role |
+|-----|------|
+| **Anthony** | Engineer / Cursor driver. Can change architecture, deploy, DB. |
+| **Miki** | Candidate / content owner. Learning GitHub. Does **not** write code. |
+
+When helping Miki: plain language (Spanish OK), no jargon, never ask him to edit TypeScript.
+
+## Stack
+
+- Next.js App Router + TypeScript + Tailwind
+- tRPC + Drizzle + Postgres (optional — site ships without DB)
+- NextAuth optional (Discord)
+- pnpm only (`packageManager` in `package.json`)
+- Deploy: Vercel → `tp00012x/projecto-municipal`
+
+## Where content lives (prefer these for copy/image edits)
+
+| Change | File / folder |
+|--------|----------------|
+| Name, slogan, email, hero framing | `src/data/site.ts` |
+| Proposals text | `src/data/propuestas.json` |
+| Team / gallery photos | `public/gallery/` |
+| Hero video (web-optimized) | `public/videos/` |
+| Page composition | `src/app/CampaignSite.tsx` + `src/components/` |
+
+## Non-negotiables
+
+- Do **not** commit `.env` or secrets.
+- Do **not** commit the huge source hero mp4 (`polideportivo-mama-ocllo.mp4`); only the web clip.
+- Do **not** require `DATABASE_URL` / `AUTH_SECRET` for a public deploy.
+- Prefer systematic boundary fixes over hacks (see `systematic-fixes.mdc`).
+- Never merge PRs without explicit confirmation after CI (see `no-auto-merge.mdc`).

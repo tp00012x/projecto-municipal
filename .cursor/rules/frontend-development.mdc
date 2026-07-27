@@ -1,0 +1,18 @@
+---
+description: React / Next UI patterns for the campaign site
+globs: src/**/*.{tsx,jsx,css}
+alwaysApply: false
+---
+
+# Frontend
+
+- Default to Server Components; `"use client"` only for interactivity (forms, motion, video controls).
+- Keep sections focused: one purpose, one headline, short supporting copy (campaign UX).
+- Props: `Readonly<{ ... }>`. Prefer typed props over loose objects.
+- Match existing export style in the file you touch (many components use `export default` today). New shared utilities: named exports.
+- Tailwind for layout/spacing; reuse classes/tokens from `src/styles/globals.css` before inventing new ones.
+- Icons: existing `src/components/Icons.tsx` or `lucide-react`.
+- Images: prefer Next `<Image>` for static photos; hero video follows `heroMedia` contract in `src/data/site.ts`.
+- No nested ternaries in JSX. No `any`. No non-null `!` — narrow instead.
+- Don't add `useMemo` / `useCallback` unless the file already relies on them for a measured reason.
+- Motion: intentional, few; don't sprinkle animation everywhere.
