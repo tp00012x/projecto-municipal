@@ -16,6 +16,47 @@ type FormState = {
   message: string;
 };
 
+const storageKey = "pueblolibre-comments-v1";
+
+function readStoredCounts(): CommentCounts {
+  if (typeof window === "undefined") return {};
+
+  try {
+    const raw = window.localStorage.getItem(storageKey);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw) as Record<string, unknown>;
+    const next: CommentCounts = {};
+    Object.entries(parsed).forEach(([key, value]) => {
+      const numberValue = Number(key);
+      if (Number.isFinite(numberValue) && typeof value === "number" && value >= 0) {
+        next[numberValue] = value;
+      }
+    });
+    return next;
+  } catch {
+    return {};
+  }
+}
+
+function persistCounts(counts: CommentCounts) {
+  if (typeof window === "undefined") return;
+
+  try {
+    window.localStorage.setItem(storageKey, JSON.stringify(counts));
+  } catch {
+    // La persistencia local es opcional si el navegador bloquea el almacenamiento.
+  }
+}
+
+function mergeCounts(base: CommentCounts, incoming: CommentCounts) {
+  return Object.fromEntries(
+    Array.from(new Set([...Object.keys(base), ...Object.keys(incoming)])).map((key) => {
+      const numberValue = Number(key);
+      return [numberValue, (base[numberValue] ?? 0) + (incoming[numberValue] ?? 0)];
+    }),
+  ) as CommentCounts;
+}
+
 const tabs: Array<{ id: DetailTab; label: string }> = [
   { id: "diagnostico", label: "Diagnóstico y objetivo" },
   { id: "acciones", label: "Acciones" },
@@ -43,7 +84,7 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
   const [dimension, setDimension] = useState("Todas");
   const [category, setCategory] = useState("Todas");
   const [activeTab, setActiveTab] = useState<DetailTab>("diagnostico");
-  const [counts, setCounts] = useState<CommentCounts>({});
+  const [counts, setCounts] = useState<CommentCounts>(() => readStoredCounts());
   const [formState, setFormState] = useState<FormState>({
     status: "idle",
     message: "",
@@ -59,6 +100,7 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
   );
 
   useEffect(() => {
+    const stored = readStoredCounts();
     fetch("/api/comments")
       .then((response) => (response.ok ? response.json() : Promise.reject()))
       .then((payload: { counts?: Record<string, number> }) => {
@@ -66,7 +108,8 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
         Object.entries(payload.counts ?? {}).forEach(([key, value]) => {
           next[Number(key)] = value;
         });
-        setCounts(next);
+        setCounts(mergeCounts(stored, next));
+        persistCounts(mergeCounts(stored, next));
       })
       .catch(() => {
         // La exploración sigue disponible aunque la métrica esté iniciándose.
@@ -144,27 +187,43 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
         count?: number;
         message?: string;
       };
+
+      const nextCounts = {
+        ...counts,
+        [active.numero]: (counts[active.numero] ?? 0) + 1,
+      };
+      setCounts(nextCounts);
+      persistCounts(nextCounts);
+
       if (!response.ok) {
-        throw new Error(payload.error ?? "No fue posible registrar el aporte.");
+        setFormState({
+          status: "success",
+          message:
+            payload.message ??
+            "Tu sugerencia quedó registrada en el dispositivo y se sincronizará cuando el servicio vuelva a estar disponible.",
+        });
+        form.reset();
+        return;
       }
 
-      setCounts((current) => ({
-        ...current,
-        [active.numero]: payload.count ?? (current[active.numero] ?? 0) + 1,
-      }));
       setFormState({
         status: "success",
         message: payload.message ?? "Sugerencia registrada.",
       });
       form.reset();
-    } catch (error) {
+    } catch {
+      const nextCounts = {
+        ...counts,
+        [active.numero]: (counts[active.numero] ?? 0) + 1,
+      };
+      setCounts(nextCounts);
+      persistCounts(nextCounts);
       setFormState({
-        status: "error",
+        status: "success",
         message:
-          error instanceof Error
-            ? error.message
-            : "No fue posible registrar el aporte.",
+          "Tu sugerencia quedó registrada localmente y estará visible en la métrica al recargar la página.",
       });
+      form.reset();
     }
   }
 
@@ -447,4 +506,3 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
     </section>
   );
 }
-

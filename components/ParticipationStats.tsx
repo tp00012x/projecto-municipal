@@ -4,14 +4,46 @@ import { useEffect, useMemo, useState } from "react";
 import type { CommentCounts, Proposal } from "../types/proposal";
 import MotionReveal from "./MotionReveal";
 
+const storageKey = "pueblolibre-comments-v1";
+
+function readStoredCounts(): CommentCounts {
+  if (typeof window === "undefined") return {};
+
+  try {
+    const raw = window.localStorage.getItem(storageKey);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw) as Record<string, unknown>;
+    const next: CommentCounts = {};
+    Object.entries(parsed).forEach(([key, value]) => {
+      const numberValue = Number(key);
+      if (Number.isFinite(numberValue) && typeof value === "number" && value >= 0) {
+        next[numberValue] = value;
+      }
+    });
+    return next;
+  } catch {
+    return {};
+  }
+}
+
+function mergeCounts(base: CommentCounts, incoming: CommentCounts) {
+  return Object.fromEntries(
+    Array.from(new Set([...Object.keys(base), ...Object.keys(incoming)])).map((key) => {
+      const numberValue = Number(key);
+      return [numberValue, (base[numberValue] ?? 0) + (incoming[numberValue] ?? 0)];
+    }),
+  ) as CommentCounts;
+}
+
 export default function ParticipationStats({
   proposals,
 }: {
   proposals: Proposal[];
 }) {
-  const [counts, setCounts] = useState<CommentCounts>({});
+  const [counts, setCounts] = useState<CommentCounts>(() => readStoredCounts());
 
   useEffect(() => {
+    const stored = readStoredCounts();
     fetch("/api/comments")
       .then((response) => (response.ok ? response.json() : Promise.reject()))
       .then((payload: { counts?: Record<string, number> }) => {
@@ -19,10 +51,11 @@ export default function ParticipationStats({
         Object.entries(payload.counts ?? {}).forEach(([key, value]) => {
           next[Number(key)] = value;
         });
-        setCounts(next);
+        const merged = mergeCounts(stored, next);
+        setCounts(merged);
       })
       .catch(() => {
-        // El módulo conserva el estado cero si la base aún está iniciándose.
+        // El módulo conserva el estado local si la base aún está iniciándose.
       });
   }, []);
 
@@ -86,4 +119,3 @@ export default function ParticipationStats({
     </section>
   );
 }
-

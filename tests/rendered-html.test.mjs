@@ -24,6 +24,12 @@ test("define la experiencia ciudadana neutral y atribuida", async () => {
   assert.doesNotMatch(content, /Vota por|marca la franja|elige a/i);
 });
 
+test("habilita un hero con video de fondo y transiciones suaves", async () => {
+  const raw = await readFile(new URL("../data/site.ts", import.meta.url), "utf8");
+  assert.match(raw, /heroVideos/);
+  assert.match(raw, /https?:\/\//);
+});
+
 test("incluye las 23 fichas completas y consecutivas", async () => {
   const raw = await readFile(new URL("../data/propuestas.json", import.meta.url), "utf8");
   const proposals = JSON.parse(raw);

@@ -9,9 +9,17 @@ export const siteConfig = {
   email: "contacto@pueblolibre2030.pe",
 };
 
-// Agrega rutas MP4/WebM dentro de /public/media para activar la secuencia.
-// Ejemplo: { src: "/media/hero-01.mp4", type: "video/mp4" }
-export const heroVideos: Array<{ src: string; type: string }> = [];
+// Se cargan dos clips de fondo para dar un hero cinematográfico y una transición suave.
+export const heroVideos: Array<{ src: string; type: string }> = [
+  {
+    src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    type: "video/mp4",
+  },
+  {
+    src: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    type: "video/mp4",
+  },
+];
 
 export const galleryImages = [
   {
