@@ -47,7 +47,9 @@ DATABASE_URL="your-neon-url" pnpm db:push
 
 ## For Miki (no coding)
 
-See **[docs/PARA-MIKI.md](./docs/PARA-MIKI.md)** — safe GitHub workflow in plain Spanish.
+- Guide: **[docs/PARA-MIKI.md](./docs/PARA-MIKI.md)**
+- Request changes via Issues: https://github.com/tp00012x/projecto-municipal/issues/new/choose
+- Anthony setup (branch protection / permissions): **[.github/branch-protection.md](./.github/branch-protection.md)**
 
 ## For AI agents
 

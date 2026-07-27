@@ -1,0 +1,32 @@
+name: Otro pedido de cambio
+description: Cualquier otro cambio en la web que no sea solo texto o foto
+title: "[Cambio] "
+labels: ["contenido", "para-miki"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe el resultado que quieres ver en la web. Sin tecnicismos está perfecto.
+  - type: textarea
+    id: quiero
+    attributes:
+      label: ¿Qué quieres que pase?
+      placeholder: Ejemplo — "Que el botón diga Contáctanos y abra el correo"
+    validations:
+      required: true
+  - type: textarea
+    id: por_que
+    attributes:
+      label: ¿Por qué? (opcional)
+      description: Contexto de campaña ayuda a priorizar.
+  - type: dropdown
+    id: urgencia
+    attributes:
+      label: Urgencia
+      options:
+        - Puede esperar
+        - Esta semana
+        - Urgente (evento / prensa)
+      default: 0
+    validations:
+      required: true

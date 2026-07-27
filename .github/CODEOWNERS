@@ -1,0 +1,19 @@
+# Anthony reviews technical changes. Content can still be proposed by anyone via PR.
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+*       @tp00012x
+
+# Content / campaign copy — still owned by Anthony for merge safety while Miki learns Git.
+/src/data/                @tp00012x
+/public/gallery/          @tp00012x
+/public/videos/           @tp00012x
+/docs/                    @tp00012x
+
+# Infrastructure — Anthony only
+/.github/                 @tp00012x
+/package.json             @tp00012x
+/pnpm-lock.yaml           @tp00012x
+/pnpm-workspace.yaml      @tp00012x
+/src/server/              @tp00012x
+/src/env.js               @tp00012x
+/drizzle.config.ts        @tp00012x

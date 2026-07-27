@@ -38,3 +38,5 @@ Project Cursor rules live in `.cursor/rules/`. Follow them — especially:
 - Miki collaboration (non-coder)
 
 Human-friendly Git guide for Miki: `docs/PARA-MIKI.md`.
+
+Content requests should start as GitHub Issues (`.github/ISSUE_TEMPLATE/`). Use the Spanish PR template. Never merge without confirmation. Point non-coders at the Vercel Preview URL on the PR.

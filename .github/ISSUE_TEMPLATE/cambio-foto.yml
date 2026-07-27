@@ -1,0 +1,47 @@
+name: Cambiar foto o video
+description: Pedir subir, reemplazar o quitar una imagen / video de la campaña
+title: "[Foto] "
+labels: ["contenido", "media", "para-miki"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Adjunta la imagen en este issue (arrastra el archivo al comentario) o pega un link.
+        Preferimos JPG/PNG livianos. El video del hero debe ser versión web (no el archivo enorme original).
+  - type: dropdown
+    id: accion
+    attributes:
+      label: ¿Qué quieres hacer?
+      options:
+        - Reemplazar una foto existente
+        - Agregar una foto nueva
+        - Quitar una foto
+        - Cambiar el video del inicio
+    validations:
+      required: true
+  - type: dropdown
+    id: seccion
+    attributes:
+      label: ¿En qué sección?
+      options:
+        - Hero / portada
+        - Galería del equipo
+        - Otra / no estoy seguro
+    validations:
+      required: true
+  - type: textarea
+    id: cual
+    attributes:
+      label: ¿Cuál foto es? (si reemplazas o quitas)
+      description: Describe lo que se ve, o el nombre del archivo si lo sabes.
+  - type: textarea
+    id: archivo
+    attributes:
+      label: Archivo nuevo
+      description: Adjunta aquí o pega un link de Drive/WhatsApp export.
+    validations:
+      required: true
+  - type: textarea
+    id: notas
+    attributes:
+      label: Notas (créditos, orden, recorte)

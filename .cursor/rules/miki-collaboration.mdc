@@ -18,11 +18,12 @@ Miki owns campaign content. He is learning Git/GitHub and does **not** write cod
 
 ## Safe default workflow for Miki requests
 
-1. New branch from `main` (`miki/short-topic`).
-2. Make the content change.
-3. Commit with a clear message in Spanish or English.
-4. Push and open a PR.
-5. Stop — Anthony (or Miki after review) merges. No auto-merge.
+1. Prefer starting from a GitHub **Issue** (templates under `.github/ISSUE_TEMPLATE/`).
+2. New branch from `main` (`miki/short-topic` or `anthony/…`).
+3. Make the content change.
+4. Commit with a clear message in Spanish or English.
+5. Push and open a PR (Spanish PR template). Point Miki to the **Vercel Preview** URL.
+6. Stop — Anthony merges after Preview OK. No auto-merge.
 
 ## What Miki can safely touch (with help)
 

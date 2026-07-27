@@ -1,0 +1,47 @@
+name: Cambiar texto
+description: Pedir un cambio de texto en la web (eslogan, propuestas, contacto, etc.)
+title: "[Texto] "
+labels: ["contenido", "para-miki"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Cuéntanos qué debe decir la web. No hace falta código.
+        Anthony o Cursor lo implementan y te mandan un Preview.
+  - type: dropdown
+    id: donde
+    attributes:
+      label: ¿Dónde está el texto?
+      options:
+        - Inicio / hero (título o eslogan)
+        - Una propuesta del plan de gobierno
+        - Sección de visión / identidad
+        - Equipo / pie de página / contacto
+        - No estoy seguro
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Texto actual (si lo sabes)
+      description: Copia y pega lo que dice hoy, o describe la sección.
+      placeholder: Ejemplo — "Pueblo Libre para todos"
+  - type: textarea
+    id: nuevo
+    attributes:
+      label: Texto nuevo (exacto)
+      description: Escribe cómo quieres que quede.
+      placeholder: El texto final, listo para publicar
+    validations:
+      required: true
+  - type: input
+    id: propuesta
+    attributes:
+      label: Número de propuesta (si aplica)
+      description: Solo si es una de las 23 propuestas.
+      placeholder: "3"
+  - type: textarea
+    id: notas
+    attributes:
+      label: Notas extra
+      description: Urgencia, tono, capturas, links.

@@ -2,66 +2,93 @@
 
 Esta página es para ti. No necesitas escribir código. Anthony (o Cursor con Anthony) se encargan de la parte técnica.
 
-## Qué es este proyecto
+## Canal único para pedir cambios
 
-La web de campaña **Pueblo Libre para todos**. Los cambios se suben a GitHub y Vercel los publica.
+**Todo pedido de cambio de campaña = un Issue en GitHub.**
 
-Repo: https://github.com/tp00012x/projecto-municipal
+No mandes solo WhatsApp suelto sin link. Si hablas por chat, pega el link del Issue.
+
+👉 Crear pedido: https://github.com/tp00012x/projecto-municipal/issues/new/choose
+
+Elige una plantilla:
+
+| Plantilla | Úsala cuando… |
+|-----------|----------------|
+| **Cambiar texto** | Eslogan, propuesta, contacto, párrafos |
+| **Cambiar foto o video** | Galería, portada, video del inicio |
+| **Otro pedido de cambio** | Botones, orden, algo que no encaje arriba |
+
+Anthony (o Cursor) toma el Issue → hace el cambio → te manda un **Pull Request** con un link de **Preview** (Vercel) para que lo veas en el celular sin instalar nada.
 
 ## Reglas de oro
 
-1. **Nunca subas contraseñas** ni archivos que digan `.env`.
-2. **No borres** carpetas raras (`src`, `node_modules`, etc.) aunque no las entiendas.
-3. **No uses “Force push”** ni botones que digan “force” o “rebase” si no estás seguro.
-4. Si algo se ve mal, **no paniques**: escribe a Anthony con una captura.
+1. **Nunca subas contraseñas** ni archivos `.env`.
+2. **No borres** carpetas raras (`src`, `node_modules`, etc.).
+3. **No uses “Force push”** ni botones que digan force / rebase.
+4. **No hagas Merge a `main`** si no estás 100% seguro — mejor avisa a Anthony.
+5. Si algo se ve mal, **captura + link del Preview** a Anthony.
 
-## Flujo simple (recomendado)
+## Flujo simple (el que vamos a usar)
 
-### Opción A — Tú pides, Anthony/Cursor lo hace
+```text
+1. Tú abres un Issue (plantilla)
+2. Anthony/Cursor hace el cambio en una rama
+3. Sale un Pull Request + Preview de Vercel
+4. Tú revisas el Preview en el celular
+5. Anthony hace Merge → queda en la web oficial
+```
 
-1. Dile qué quieres cambiar (texto, foto, propuesta).
-2. Él abre un **Pull Request** (una propuesta de cambio).
-3. Tú revisas en GitHub: pestaña **Files changed** / archivos cambiados.
-4. Si se ve bien, Anthony hace **Merge** (unir a la web).
+### Cómo revisar un Preview
 
-### Opción B — Tú editas texto en GitHub (avanzado, con cuidado)
+1. Entra al Pull Request en GitHub.
+2. Busca el comentario de **Vercel** con un link tipo `…vercel.app`.
+3. Ábrelo en el celular y en la computadora.
+4. Comenta en el PR: “Se ve bien” o “Cambia X”.
 
-Solo para textos, y mejor con ayuda la primera vez:
+## Si quieres editar texto tú mismo (avanzado)
 
-1. Entra al repo en GitHub.
-2. Abre `src/data/propuestas.json` (propuestas) o pregunta antes de tocar otra cosa.
-3. Usa el lápiz **Edit**.
-4. Cambia solo el texto entre comillas.
-5. Abajo elige **Create a new branch** y pon un nombre como `miki/cambio-propuesta-3`.
-6. Abre el Pull Request.
-7. Espera a que Anthony revise y haga merge.
+Solo con ayuda la primera vez:
 
-Si el archivo se ve lleno de símbolos raros y no estás seguro, **para y avisa**.
+1. Repo: https://github.com/tp00012x/projecto-municipal  
+2. Archivo típico: `src/data/propuestas.json`  
+3. Lápiz **Edit** → cambia solo texto entre comillas.  
+4. Elige **Create a new branch** (`miki/cambio-…`) → abre Pull Request.  
+5. Espera review / merge de Anthony.
+
+Si el archivo se ve lleno de símbolos raros → **para y abre un Issue**.
 
 ## Dónde vive cada cosa (para pedir cambios)
 
-| Quiero cambiar… | Dile a Anthony / Cursor |
-|-----------------|-------------------------|
-| Nombre, eslogan, correo | `site.ts` |
-| Texto de propuestas | `propuestas.json` |
-| Fotos del equipo | carpeta `public/gallery` |
-| Video del inicio | solo versión web en `public/videos` |
+| Quiero cambiar… | Dile / usa plantilla |
+|-----------------|----------------------|
+| Nombre, eslogan, correo | Issue → Cambiar texto |
+| Texto de propuestas | Issue → Cambiar texto (+ número) |
+| Fotos del equipo | Issue → Cambiar foto |
+| Video del inicio | Issue → Cambiar foto o video |
+
+## Permisos (importante)
+
+- En GitHub puedes tener permiso de **escribir** (proponer cambios).
+- **No** necesitas (ni debes tener) acceso a Vercel Environment Variables ni a la base de datos.
+- La rama `main` está protegida: los cambios entran por Pull Request.
 
 ## Palabras útiles
 
 | Palabra | Significado simple |
 |---------|-------------------|
+| **Issue** | Pedido / ticket de cambio |
 | **Commit** | Guardar un cambio con un mensaje |
-| **Branch** | Una copia de trabajo para no romper la web en vivo |
-| **Pull Request (PR)** | Pedido de “miren este cambio antes de publicarlo” |
-| **Merge** | Aceptar el PR y pasarlo a la web principal |
-| **main** | La versión oficial que se publica |
+| **Branch** | Copia de trabajo para no romper la web en vivo |
+| **Pull Request (PR)** | “Miren este cambio antes de publicarlo” |
+| **Preview** | Copia temporal de la web con tu cambio |
+| **Merge** | Aceptar el PR y pasarlo a la web oficial |
+| **main** | Versión oficial publicada |
 
 ## Si Vercel dice “Build Failed”
 
-No intentes arreglarlo solo. Manda el enlace del error a Anthony.
+No lo arregles solo. Manda el link del error a Anthony.
 
 ## Contacto
 
-Dudas de GitHub o de la web → Anthony.  
-Contenido de campaña (qué decir) → tú decides; la implementación la hacemos contigo.
+- Cambios de web → **Issue en GitHub** (este repo)  
+- Contenido de campaña (qué decir) → tú decides; la implementación la hacemos contigo

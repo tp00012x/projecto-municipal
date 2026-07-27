@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: ¿Duda urgente de campaña?
+    url: https://github.com/tp00012x/projecto-municipal/blob/main/docs/PARA-MIKI.md
+    about: Lee la guía para Miki antes de pedir un cambio técnico.
