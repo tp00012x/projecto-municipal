@@ -1,3 +1,4 @@
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
 import {
@@ -6,6 +7,16 @@ import {
   publicProcedure,
 } from "~/server/api/trpc";
 import { posts } from "~/server/db/schema";
+
+function requireDb<T>(db: T | null): T {
+  if (!db) {
+    throw new TRPCError({
+      code: "PRECONDITION_FAILED",
+      message: "Database is not configured.",
+    });
+  }
+  return db;
+}
 
 export const postRouter = createTRPCRouter({
   hello: publicProcedure
@@ -19,14 +30,16 @@ export const postRouter = createTRPCRouter({
   create: protectedProcedure
     .input(z.object({ name: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
-      await ctx.db.insert(posts).values({
+      const db = requireDb(ctx.db);
+      await db.insert(posts).values({
         name: input.name,
         createdById: ctx.session.user.id,
       });
     }),
 
   getLatest: protectedProcedure.query(async ({ ctx }) => {
-    const post = await ctx.db.query.posts.findFirst({
+    const db = requireDb(ctx.db);
+    const post = await db.query.posts.findFirst({
       orderBy: (posts, { desc }) => [desc(posts.createdAt)],
     });
 
@@ -37,3 +50,4 @@ export const postRouter = createTRPCRouter({
     return "you can now see this secret message!";
   }),
 });
+

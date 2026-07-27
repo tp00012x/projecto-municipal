@@ -1,12 +1,17 @@
 import { type Config } from "drizzle-kit";
 
-import { env } from "~/env";
+const databaseUrl = process.env.DATABASE_URL;
+if (!databaseUrl) {
+  throw new Error(
+    "DATABASE_URL is required to run drizzle-kit (generate/migrate/push).",
+  );
+}
 
 export default {
   schema: "./src/server/db/schema.ts",
   dialect: "postgresql",
   dbCredentials: {
-    url: env.DATABASE_URL,
+    url: databaseUrl,
   },
   tablesFilter: ["pueblo_libre_*"],
 } satisfies Config;

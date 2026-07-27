@@ -20,6 +20,10 @@ function normalize(value: string) {
 
 export const commentsRouter = createTRPCRouter({
   getCounts: publicProcedure.query(async ({ ctx }) => {
+    if (!ctx.db) {
+      return {};
+    }
+
     try {
       const rows = await ctx.db
         .select({
@@ -91,6 +95,14 @@ export const commentsRouter = createTRPCRouter({
         });
       }
 
+      if (!ctx.db) {
+        throw new TRPCError({
+          code: "SERVICE_UNAVAILABLE",
+          message:
+            "El módulo de participación aún no está disponible. Vuelve a intentarlo pronto.",
+        });
+      }
+
       try {
         await ctx.db.insert(comments).values({
           proposalNumber: input.proposalNumber,
@@ -125,3 +137,4 @@ export const commentsRouter = createTRPCRouter({
       }
     }),
 });
+
