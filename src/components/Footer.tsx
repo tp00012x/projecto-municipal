@@ -21,7 +21,7 @@ export default function Footer() {
           <strong>Explorar</strong>
           <a href="#vision">Visión de desarrollo</a>
           <a href="#propuestas">23 propuestas</a>
-          <a href="#equipo">Registro fotográfico</a>
+          <a href="#equipo">Nuestro equipo</a>
         </div>
         <div>
           <strong>Información</strong>

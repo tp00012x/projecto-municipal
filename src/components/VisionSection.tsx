@@ -1,33 +1,22 @@
+import { ArrowRightIcon } from "~/components/Icons";
 import MotionReveal from "./MotionReveal";
+import type { Proposal } from "~/types/proposal";
 
-const themes = [
-  {
-    number: "01",
-    title: "Innovación útil",
-    text: "Tecnología aplicada a servicios municipales, empleo y seguridad.",
-    tone: "purple",
-  },
-  {
-    number: "02",
-    title: "Ciudad que cuida",
-    text: "Salud, inclusión, bienestar animal y atención a cada etapa de vida.",
-    tone: "yellow",
-  },
-  {
-    number: "03",
-    title: "Desarrollo urbano",
-    text: "Calles, parques, movilidad y espacios públicos pensados para convivir.",
-    tone: "white",
-  },
-  {
-    number: "04",
-    title: "Gestión verificable",
-    text: "Metas, costos declarados y mecanismos de transparencia ciudadana.",
-    tone: "ink",
-  },
-];
+/** Featured proposal numbers shown as the seven vision themes / Propuestas destacadas como los siete ejes */
+const featuredNumbers = [6, 10, 11, 14, 16, 21, 22];
 
-export default function VisionSection() {
+/** Vision card color tones / Tonos de color de las tarjetas de visión */
+const tones = ["purple", "yellow", "white", "ink"] as const;
+
+export default function VisionSection({
+  proposals,
+}: {
+  proposals: Proposal[];
+}) {
+  const featured = featuredNumbers
+    .map((number) => proposals.find((proposal) => proposal.numero === number))
+    .filter((proposal): proposal is Proposal => Boolean(proposal));
+
   return (
     <section className="section vision-section" id="vision">
       <div className="shell">
@@ -35,25 +24,30 @@ export default function VisionSection() {
           <p className="eyebrow">Visión de desarrollo distrital</p>
           <h2>
             Siete temas.
-            <span> Una sola ciudad.</span>
+            <span> Un solo distrito.</span>
           </h2>
           <p>
-            Una lectura transversal del plan para comprender cómo se conectan
-            bienestar, economía, ambiente e instituciones.
+            Siete propuestas vinculadas a innovación municipal y desarrollo
+            económico en Pueblo Libre. Una lectura transversal para comprender
+            cómo se conectan bienestar, economía, ambiente e instituciones.
           </p>
         </MotionReveal>
 
-        <div className="vision-grid">
-          {themes.map((theme, index) => (
+        <div className="vision-grid vision-grid-seven">
+          {featured.map((proposal, index) => (
             <MotionReveal
-              className={`vision-card tone-${theme.tone}`}
-              delay={index * 70}
-              key={theme.number}
+              className={`vision-card tone-${tones[index % tones.length]}`}
+              delay={index * 55}
+              key={proposal.id}
             >
-              <span>{theme.number}</span>
+              <span>{String(proposal.numero).padStart(2, "0")}</span>
               <div>
-                <h3>{theme.title}</h3>
-                <p>{theme.text}</p>
+                <p className="vision-card-category">{proposal.categoria}</p>
+                <h3>{proposal.titulo}</h3>
+                <p>{proposal.objetivo}</p>
+                <a className="vision-card-link" href="#propuestas">
+                  Abrir en el explorador <ArrowRightIcon />
+                </a>
               </div>
             </MotionReveal>
           ))}
@@ -62,4 +56,3 @@ export default function VisionSection() {
     </section>
   );
 }
-

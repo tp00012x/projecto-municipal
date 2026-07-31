@@ -1,10 +1,9 @@
+import CandidateIntro from "~/components/CandidateIntro";
 import ClosingSection from "~/components/ClosingSection";
-import FeaturedProposals from "~/components/FeaturedProposals";
 import Footer from "~/components/Footer";
 import Header from "~/components/Header";
 import Hero from "~/components/Hero";
 import IdentitySection from "~/components/IdentitySection";
-import ParticipationStats from "~/components/ParticipationStats";
 import ProposalExplorer from "~/components/ProposalExplorer";
 import TeamGallery from "~/components/TeamGallery";
 import VisionSection from "~/components/VisionSection";
@@ -19,12 +18,13 @@ export default function CampaignSite({ proposals }: { proposals: Proposal[] }) {
       <Header />
       <main id="contenido">
         <Hero />
-        <IdentitySection />
-        <VisionSection />
-        <ProposalExplorer proposals={proposals} />
-        <FeaturedProposals proposals={proposals} />
+        <CandidateIntro />
+        {/* Orden mejorado: visión → equipo → propuestas → participa / Improved order */}
+        <VisionSection proposals={proposals} />
         <TeamGallery />
-        <ParticipationStats proposals={proposals} />
+        <ProposalExplorer proposals={proposals} />
+        {/* Contexto institucional encima de la declaración / Institutional context above declaration */}
+        <IdentitySection />
         <ClosingSection />
       </main>
       <Footer />

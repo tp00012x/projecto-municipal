@@ -10,9 +10,16 @@
 
 export type HeroPlaybackState = "poster" | "playing" | "unavailable";
 
-export function configureHeroVideo(video: HTMLVideoElement) {
-  video.muted = true;
-  video.defaultMuted = true;
+export function configureHeroVideo(
+  video: HTMLVideoElement,
+  { forceMuted = false }: { forceMuted?: boolean } = {},
+) {
+  // Only force mute for the initial autoplay attempt / Solo forzar mute en autoplay inicial
+  if (forceMuted) {
+    video.muted = true;
+    video.defaultMuted = true;
+  }
+
   video.playsInline = true;
   video.loop = true;
   video.preload = "auto";
@@ -21,7 +28,7 @@ export function configureHeroVideo(video: HTMLVideoElement) {
 export async function startHeroPlayback(
   video: HTMLVideoElement,
 ): Promise<HeroPlaybackState> {
-  configureHeroVideo(video);
+  configureHeroVideo(video, { forceMuted: true });
 
   try {
     await video.play();

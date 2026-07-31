@@ -472,11 +472,12 @@ video {
   right: 0;
   bottom: 24px;
   left: 0;
-  z-index: 3;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  pointer-events: none;
 }
 
 .sound-button,
@@ -488,12 +489,16 @@ video {
   color: rgba(255, 255, 255, 0.74);
   font-size: 11px;
   font-weight: 750;
+  pointer-events: auto;
 }
 
 .sound-button {
+  position: relative;
+  z-index: 6;
   padding: 0;
   border: 0;
   background: transparent;
+  cursor: pointer;
 }
 
 .sound-button svg,
@@ -504,6 +509,194 @@ video {
 
 .scroll-cue {
   display: none;
+}
+
+/**
+ * Candidate Introduction Section / Sección de Presentación del Candidato
+ * -----------------------------------------------------------------------
+ * Two-column layout introducing Micky Ruiz to voters
+ * Diseño de dos columnas presentando a Micky Ruiz a los votantes
+ */
+
+.candidate-intro-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+/**
+ * Grid layout / Diseño de cuadrícula
+ * Single column on mobile, two columns on desktop
+ * Una columna en móvil, dos columnas en escritorio
+ */
+.candidate-intro-grid {
+  display: grid;
+  gap: 42px;
+  align-items: center;
+}
+
+/**
+ * Image wrapper with rounded corners / Contenedor de imagen con esquinas redondeadas
+ */
+.candidate-intro-image-wrapper {
+  position: relative;
+}
+
+.candidate-intro-image {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: var(--surface-purple);
+  box-shadow: var(--shadow);
+}
+
+/**
+ * Content column / Columna de contenido
+ * Contains candidate name, roles, and introduction text
+ * Contiene nombre del candidato, roles y texto de presentación
+ */
+.candidate-intro-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/**
+ * Candidate name styling / Estilo del nombre del candidato
+ * Large, bold, attention-grabbing / Grande, negrita, llamativo
+ */
+.candidate-intro-name {
+  margin: 0;
+  color: var(--purple-950);
+  font-size: clamp(42px, 8vw, 64px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+/**
+ * Roles subtitle / Subtítulo de roles
+ * Shows candidate credentials / Muestra credenciales del candidato
+ */
+.candidate-intro-roles {
+  margin: 0;
+  color: var(--purple-700);
+  font-size: clamp(14px, 3vw, 17px);
+  font-weight: 750;
+  line-height: 1.6;
+}
+
+.candidate-intro-roles .separator {
+  margin: 0 6px;
+  color: var(--yellow);
+}
+
+/**
+ * Introduction text / Texto de presentación
+ * Main content paragraphs / Párrafos de contenido principal
+ */
+.candidate-intro-text {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.candidate-intro-text p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.candidate-intro-text strong {
+  color: var(--purple-700);
+  font-weight: 800;
+}
+
+/**
+ * Lead paragraph / Párrafo de apertura
+ * Slightly larger for the personal introduction / Ligeramente más grande para la presentación
+ */
+.candidate-intro-lead {
+  font-size: clamp(16px, 2.5vw, 18px);
+  line-height: 1.8;
+}
+
+.candidate-intro-heart {
+  display: inline-block;
+  margin-left: 2px;
+  font-size: 1.1em;
+  vertical-align: middle;
+}
+
+/**
+ * Commitment pull-quote / Cita destacada de compromiso
+ * Visual emphasis on the core campaign promise / Énfasis visual en la promesa central
+ */
+.candidate-intro-commitment {
+  margin: 4px 0;
+  padding: 22px 24px;
+  border-left: 4px solid var(--purple-700);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: var(--surface-purple);
+  color: var(--purple-950);
+  font-size: clamp(17px, 2.8vw, 20px);
+  font-weight: 800;
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+}
+
+.candidate-intro-commitment-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--purple-700);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/**
+ * Closing line with slogan / Cierre con eslogan
+ * "PUEBLO LIBRE para todos!" as the visual anchor / Eslogan como ancla visual
+ */
+.candidate-intro-closing {
+  margin-top: 4px;
+  margin-bottom: 0;
+  font-size: clamp(16px, 2.5vw, 18px);
+  line-height: 1.7;
+}
+
+.candidate-intro-slogan {
+  margin: 0;
+  color: var(--purple-950);
+  font-size: clamp(26px, 5vw, 38px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.candidate-intro-slogan::after {
+  display: block;
+  width: min(280px, 70%);
+  height: 4px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--purple-700), var(--yellow));
+  content: "";
+}
+
+/**
+ * Call to action button / Botón de llamado a la acción
+ * Encourages users to explore proposals / Anima a los usuarios a explorar propuestas
+ */
+.candidate-intro-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
 }
 
 .identity-section {
@@ -619,6 +812,19 @@ video {
   margin-top: 44px;
 }
 
+/**
+ * Seven-card vision grid / Cuadrícula de visión con siete tarjetas
+ * Unified with former featured proposals / Unificada con lecturas destacadas
+ */
+.vision-grid-seven .vision-card h3 {
+  font-size: clamp(20px, 2.5vw, 24px);
+  line-height: 1.15;
+}
+
+.vision-grid-seven .vision-card {
+  min-height: 260px;
+}
+
 .vision-card {
   display: flex;
   min-height: 230px;
@@ -657,6 +863,43 @@ video {
   font-size: 14px;
   line-height: 1.55;
   opacity: 0.72;
+}
+
+.vision-card-category {
+  margin: 0 0 8px;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  opacity: 0.72;
+  text-transform: uppercase;
+}
+
+.vision-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: 11px;
+  font-weight: 850;
+  opacity: 0.88;
+}
+
+.vision-card-link svg {
+  width: 17px;
+  height: 17px;
+}
+
+.vision-card.tone-purple .vision-card-link {
+  color: var(--yellow);
+}
+
+.vision-card.tone-yellow .vision-card-link {
+  color: var(--purple-950);
+}
+
+.vision-card.tone-white .vision-card-link,
+.vision-card.tone-ink .vision-card-link {
+  color: inherit;
 }
 
 .vision-card.tone-purple {
@@ -1547,6 +1790,233 @@ video {
   line-height: 1.5;
 }
 
+/**
+ * Team Carousel Styles / Estilos del Carrusel de Equipo
+ * -----------------------------------------------------
+ * Modern carousel implementation with CSS scroll-snap and JS controls
+ * Implementación moderna de carrusel con CSS scroll-snap y controles JS
+ */
+
+.team-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 42px;
+  overflow: hidden;
+}
+
+/**
+ * Carousel container with scroll snap / Contenedor de carrusel con scroll snap
+ * width: 100% ensures horizontal overflow instead of expanding the layout
+ * width: 100% garantiza overflow horizontal sin expandir el layout
+ */
+.team-carousel-container {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  padding: 12px 56px 24px;
+  margin: 0;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* Ocultar scrollbar para Chrome, Safari y Opera */
+.team-carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+/**
+ * Individual carousel slide / Slide individual del carrusel
+ * Snap alignment centers the slide / La alineación snap centra el slide
+ */
+.team-carousel-slide {
+  flex: 0 0 min(340px, 85vw);
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+/**
+ * Team member card / Tarjeta de miembro del equipo
+ * Contains image and info / Contiene imagen e información
+ */
+.team-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 440px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+/**
+ * Team card image container / Contenedor de imagen de tarjeta de equipo
+ * Maintains 3:4 aspect ratio / Mantiene ratio de aspecto 3:4
+ */
+.team-card-image {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  flex: 0 0 320px;
+  overflow: hidden;
+  background: var(--surface-purple);
+}
+
+/**
+ * Uniform portrait crop for all council members / Recorte uniforme para todos los regidores
+ */
+.team-card-photo {
+  object-fit: cover;
+  object-position: center 12%;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.team-card:hover .team-card-photo {
+  transform: scale(1.04);
+}
+
+/**
+ * Team card info section / Sección de información de tarjeta de equipo
+ * Contains member name and position / Contiene nombre y cargo del miembro
+ */
+.team-card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  min-height: 120px;
+  padding: 20px;
+  background: linear-gradient(to bottom, var(--surface), var(--paper));
+}
+
+.team-card-role {
+  margin: 0;
+  color: var(--purple-700);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/**
+ * Team member title / Título de miembro del equipo
+ */
+.team-card-title {
+  margin: 0;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+  width: 100%;
+}
+
+/**
+ * Navigation arrows / Flechas de navegación
+ * Positioned on left and right sides / Posicionadas a los lados izquierdo y derecho
+ */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--purple-700);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-50%);
+  transition: 
+    background 220ms ease,
+    color 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.carousel-button:hover {
+  background: var(--purple-700);
+  color: var(--paper);
+  box-shadow: var(--shadow);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-button:active {
+  transform: translateY(-50%) scale(0.96);
+}
+
+.carousel-button-prev {
+  left: 8px;
+}
+
+.carousel-button-next {
+  right: 8px;
+}
+
+/**
+ * Pagination dots / Puntos de paginación
+ * Indicator showing current slide / Indicador mostrando slide actual
+ */
+.carousel-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/**
+ * Individual pagination dot / Punto de paginación individual
+ * Active state indicates current slide / Estado activo indica slide actual
+ */
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--line);
+  transition: 
+    background 220ms ease,
+    transform 220ms ease,
+    width 220ms ease;
+}
+
+.carousel-dot:hover {
+  background: var(--purple-line);
+  transform: scale(1.2);
+}
+
+.carousel-dot.active {
+  width: 28px;
+  border-radius: 999px;
+  background: var(--purple-700);
+}
+
+.carousel-dot.active:hover {
+  transform: scale(1);
+}
+
 .closing-section {
   position: relative;
   overflow: hidden;
@@ -1738,6 +2208,10 @@ video {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .vision-grid-seven {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .filter-bar {
     grid-template-columns: 1fr 1fr;
   }
@@ -1867,6 +2341,19 @@ video {
     padding: 124px 0;
   }
 
+  /**
+   * Candidate intro responsive layout / Diseño responsivo de presentación del candidato
+   * Two-column grid on desktop / Cuadrícula de dos columnas en escritorio
+   */
+  .candidate-intro-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(50px, 8vw, 90px);
+  }
+
+  .candidate-intro-image {
+    height: 550px;
+  }
+
   .identity-grid {
     grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
     align-items: end;
@@ -1877,13 +2364,29 @@ video {
     grid-template-columns: repeat(4, 1fr);
   }
 
+  .vision-grid-seven {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .vision-grid-seven .vision-card {
+    grid-column: span 4;
+    min-height: 280px;
+  }
+
+  .vision-grid-seven .vision-card:nth-child(1),
+  .vision-grid-seven .vision-card:nth-child(2) {
+    grid-column: span 6;
+  }
+
   .vision-card:nth-child(2),
-  .vision-card:nth-child(4) {
+  .vision-card:nth-child(4),
+  .vision-grid-seven .vision-card:nth-child(5) {
     transform: translateY(34px);
   }
 
   .vision-card:nth-child(2):hover,
-  .vision-card:nth-child(4):hover {
+  .vision-card:nth-child(4):hover,
+  .vision-grid-seven .vision-card:nth-child(5):hover {
     transform: translateY(29px);
   }
 
@@ -1974,6 +2477,22 @@ video {
     grid-column: 2 / 4;
   }
 
+  /**
+   * Team carousel responsive adjustments / Ajustes responsivos del carrusel de equipo
+   * Adjust carousel buttons position / Ajustar posición de botones del carrusel
+   */
+  .team-carousel-slide {
+    flex: 0 0 min(380px, 45vw);
+  }
+
+  .carousel-button-prev {
+    left: 10px;
+  }
+
+  .carousel-button-next {
+    right: 10px;
+  }
+
   .stats-grid {
     grid-template-columns: minmax(0, 1.15fr) minmax(390px, 0.85fr);
     align-items: center;
@@ -2004,6 +2523,14 @@ video {
 
   .proposal-detail {
     padding: 40px 48px;
+  }
+
+  /**
+   * Team carousel for large screens / Carrusel de equipo para pantallas grandes
+   * Show 3 slides per view on very large screens / Mostrar 3 slides por vista en pantallas muy grandes
+   */
+  .team-carousel-slide {
+    flex: 0 0 min(400px, 32vw);
   }
 }
 

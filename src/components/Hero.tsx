@@ -4,11 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 import { heroMedia } from "~/data/site";
-import {
-  setHeroMuted,
-  startHeroPlayback,
-  type HeroPlaybackState,
-} from "~/lib/hero-playback";
+import { startHeroPlayback, type HeroPlaybackState } from "~/lib/hero-playback";
 import {
   ArrowRightIcon,
   ChevronDownIcon,
@@ -46,14 +42,32 @@ export default function Hero() {
     };
   }, []);
 
-  async function toggleMute() {
+  /**
+   * Toggle hero video audio during the user click gesture.
+   * Alternar audio del video hero durante el clic del usuario.
+   *
+   * Browsers only allow unmute when tied to a direct user action, so we update
+   * the DOM synchronously before any async React state update.
+   * Los navegadores solo permiten activar audio con una acción directa del usuario.
+   */
+  function toggleMute() {
     const node = videoRef.current;
-    const next = !muted;
-    setMuted(next);
-    if (node) {
-      await setHeroMuted(node, next);
-      if (!node.paused) setPlayback("playing");
+    if (!node) return;
+
+    const nextMuted = !node.muted;
+
+    // Apply audio state immediately on the media element / Aplicar estado de audio al instante
+    node.muted = nextMuted;
+    node.defaultMuted = nextMuted;
+    node.volume = 1;
+
+    if (!nextMuted) {
+      void node.play().then(() => {
+        if (!node.paused) setPlayback("playing");
+      });
     }
+
+    setMuted(nextMuted);
   }
 
   return (
@@ -127,7 +141,14 @@ export default function Hero() {
       <div className="hero-utility shell">
         {playback !== "unavailable" ? (
           <button className="sound-button" onClick={toggleMute} type="button">
-            {muted ? <VolumeIcon /> : <VolumeOffIcon />}
+            {/* 
+              Audio toggle button / Botón de toggle de audio
+              When muted: show muted icon (VolumeOffIcon) and "Activate sound" text
+              When unmuted: show unmuted icon (VolumeIcon) and "Deactivate sound" text
+              Cuando está muted: mostrar ícono sin sonido (VolumeOffIcon) y texto "Activar sonido"
+              Cuando no está muted: mostrar ícono con sonido (VolumeIcon) y texto "Desactivar sonido"
+            */}
+            {muted ? <VolumeOffIcon /> : <VolumeIcon />}
             {muted ? "Activar sonido" : "Desactivar sonido"}
           </button>
         ) : (

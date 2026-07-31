@@ -44,6 +44,82 @@ export const heroMedia = {
   },
 };
 
+/**
+ * City Council Members / Regidores Municipales
+ * List of team members running for city council positions
+ * Lista de miembros del equipo postulando a regidurías
+ */
+export const councilMembers = [
+  {
+    id: 1,
+    name: "Angela Nessy Valdivia Murgueytio",
+    position: "Regidora",
+    number: 1,
+    src: "/team/regidora-1-angela-valdivia.png",
+    alt: "Angela Nessy Valdivia Murgueytio - Regidora #1",
+  },
+  {
+    id: 2,
+    name: "Hermai Alfaro Roncal",
+    position: "Regidor",
+    number: 2,
+    src: "/team/regidor-2-hermai-alfaro.png",
+    alt: "Hermai Alfaro Roncal - Regidor #2",
+  },
+  {
+    id: 3,
+    name: "Sonia Elena Montes Ccaccro",
+    position: "Regidora",
+    number: 3,
+    src: "/team/regidora-3-sonia-montes.png",
+    alt: "Sonia Elena Montes Ccaccro - Regidora #3",
+  },
+  {
+    id: 5,
+    name: "Nicole Milene Cordero Téllez",
+    position: "Regidora",
+    number: 5,
+    src: "/team/regidora-5-nicole-cordero.png",
+    alt: "Nicole Milene Cordero Téllez - Regidora #5",
+  },
+  {
+    id: 7,
+    name: "Sara Rita Rodriguez Cordova",
+    position: "Regidora",
+    number: 7,
+    src: "/team/regidora-7-sara-rodriguez.png",
+    alt: "Sara Rita Rodriguez Cordova - Regidora #7",
+  },
+  {
+    id: 8,
+    name: "Leonardo Alcedo",
+    position: "Regidor",
+    number: 8,
+    src: "/team/regidor-8-leonardo-alcedo.png",
+    alt: "Leonardo Alcedo - Regidor #8",
+  },
+  {
+    id: 9,
+    name: "Sandra Alexandra Legua Blotte",
+    position: "Regidora",
+    number: 9,
+    src: "/team/regidora-9-sandra-legua.png",
+    alt: "Sandra Alexandra Legua Blotte - Regidora #9",
+  },
+  {
+    id: 11,
+    name: "Paola Milene Tellez Rosas",
+    position: "Regidora",
+    number: 11,
+    src: "/team/regidora-11-paola-tellez.png",
+    alt: "Paola Milene Tellez Rosas - Regidora #11",
+  },
+];
+
+/**
+ * Legacy gallery images (kept for backwards compatibility)
+ * Imágenes de galería heredadas (mantenidas para compatibilidad)
+ */
 export const galleryImages = [
   {
     src: "/gallery/equipo-gestion.jpg",

@@ -5,8 +5,8 @@ import { CloseIcon, MenuIcon } from "./Icons";
 
 const links = [
   { href: "#vision", label: "Visión" },
-  { href: "#propuestas", label: "23 propuestas" },
-  { href: "#equipo", label: "Equipo" },
+  { href: "#equipo", label: "Nuestro equipo" },
+  { href: "#propuestas", label: "Propuestas" },
   { href: "#participa", label: "Participa" },
 ];
 
