@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import MotionReveal from "~/components/MotionReveal";
 import { councilMembers } from "~/data/site";
 
@@ -128,17 +128,19 @@ export default function TeamGallery() {
   return (
     <section className="section gallery-section" id="equipo">
       <div className="shell">
-        <MotionReveal className="gallery-heading">
-          <div>
+        <MotionReveal className="gallery-heading gallery-heading-team">
+          <div className="gallery-heading-copy">
             <p className="eyebrow">Nuestro Equipo</p>
-            <h2>
-              Un alcalde no gobierna solo;{" "}
-              <span>
+            <h2 className="gallery-heading-title">
+              <span className="gallery-heading-line">
+                Un alcalde no gobierna solo;
+              </span>
+              <span className="gallery-heading-accent">
                 gobierna con el mejor equipo al servicio de nuestra gente.
               </span>
             </h2>
           </div>
-          <p>
+          <p className="gallery-heading-support">
             Conoce a los regidores que conforman nuestra lista municipal y que
             trabajarán junto a la comunidad para transformar Pueblo Libre.
           </p>
@@ -166,14 +168,25 @@ export default function TeamGallery() {
               >
                 <div className="team-card">
                   <div className="team-card-image">
-                    <Image
-                      alt={member.alt}
-                      fill
-                      loading={index < 2 ? "eager" : "lazy"}
-                      sizes="(max-width: 767px) 90vw, (max-width: 1023px) 45vw, 30vw"
-                      src={member.src}
-                      className="team-card-photo"
-                    />
+                    <div
+                      className="team-card-photo-frame"
+                      style={
+                        {
+                          "--photo-position": member.objectPosition,
+                          "--photo-scale": member.imageScale,
+                        } as CSSProperties
+                      }
+                    >
+                      <Image
+                        key={member.src}
+                        alt={member.alt}
+                        fill
+                        loading={index < 2 ? "eager" : "lazy"}
+                        sizes="(max-width: 767px) 90vw, (max-width: 1023px) 45vw, 30vw"
+                        src={member.src}
+                        className="team-card-photo"
+                      />
+                    </div>
                   </div>
                   <div className="team-card-info">
                     <p className="team-card-role">

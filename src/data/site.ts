@@ -17,12 +17,6 @@ export const siteConfig = {
  *   2. video (optional; reveals only when playback starts)
  *   3. scrim (left copy readability)
  *   4. copy column (left safe zone)
- *
- * Rules:
- * - Never translate/pan media to dodge text.
- * - Tune framing with focal/object-position tokens only.
- * - Copy width is capped so it does not invade the subject zone.
- * - Prefer a web-optimized video asset (faststart, reasonable bitrate).
  */
 export const heroMedia = {
   image: {
@@ -30,14 +24,12 @@ export const heroMedia = {
     alt: "Micky Ruiz junto al equipo de campaña en Pueblo Libre",
     width: 2400,
     height: 1350,
-    /** % of source image — subject anchor for object-position */
     focalX: 50,
     focalY: 22,
   },
   video: {
     src: "/videos/polideportivo-mama-ocllo-web.mp4",
     type: "video/mp4" as const,
-    /** Portrait source shown with cover on landscape viewports */
     orientation: "portrait" as const,
     objectPositionX: 50,
     objectPositionY: 24,
@@ -46,8 +38,7 @@ export const heroMedia = {
 
 /**
  * City Council Members / Regidores Municipales
- * List of team members running for city council positions
- * Lista de miembros del equipo postulando a regidurías
+ * Per-photo framing tuned for the carousel frame / Encuadre ajustado por regidor
  */
 export const councilMembers = [
   {
@@ -57,6 +48,8 @@ export const councilMembers = [
     number: 1,
     src: "/team/regidora-1-angela-valdivia.png",
     alt: "Angela Nessy Valdivia Murgueytio - Regidora #1",
+    objectPosition: "50% 18%",
+    imageScale: 1,
   },
   {
     id: 2,
@@ -65,22 +58,28 @@ export const councilMembers = [
     number: 2,
     src: "/team/regidor-2-hermai-alfaro.png",
     alt: "Hermai Alfaro Roncal - Regidor #2",
+    objectPosition: "50% 22%",
+    imageScale: 1,
   },
   {
     id: 3,
     name: "Sonia Elena Montes Ccaccro",
     position: "Regidora",
     number: 3,
-    src: "/team/regidora-3-sonia-montes.png",
+    src: "/team/regidora-3-sonia-montes-v2.png",
     alt: "Sonia Elena Montes Ccaccro - Regidora #3",
+    objectPosition: "50% 22%",
+    imageScale: 1,
   },
   {
     id: 5,
     name: "Nicole Milene Cordero Téllez",
     position: "Regidora",
     number: 5,
-    src: "/team/regidora-5-nicole-cordero.png",
+    src: "/team/regidora-5-nicole-cordero-v2.png",
     alt: "Nicole Milene Cordero Téllez - Regidora #5",
+    objectPosition: "50% 24%",
+    imageScale: 1,
   },
   {
     id: 7,
@@ -89,6 +88,8 @@ export const councilMembers = [
     number: 7,
     src: "/team/regidora-7-sara-rodriguez.png",
     alt: "Sara Rita Rodriguez Cordova - Regidora #7",
+    objectPosition: "50% 40%",
+    imageScale: 0.94,
   },
   {
     id: 8,
@@ -97,6 +98,8 @@ export const councilMembers = [
     number: 8,
     src: "/team/regidor-8-leonardo-alcedo.png",
     alt: "Leonardo Alcedo - Regidor #8",
+    objectPosition: "50% 38%",
+    imageScale: 0.95,
   },
   {
     id: 9,
@@ -105,6 +108,8 @@ export const councilMembers = [
     number: 9,
     src: "/team/regidora-9-sandra-legua.png",
     alt: "Sandra Alexandra Legua Blotte - Regidora #9",
+    objectPosition: "50% 44%",
+    imageScale: 0.93,
   },
   {
     id: 11,
@@ -113,13 +118,11 @@ export const councilMembers = [
     number: 11,
     src: "/team/regidora-11-paola-tellez.png",
     alt: "Paola Milene Tellez Rosas - Regidora #11",
+    objectPosition: "50% 20%",
+    imageScale: 1,
   },
 ];
 
-/**
- * Legacy gallery images (kept for backwards compatibility)
- * Imágenes de galería heredadas (mantenidas para compatibilidad)
- */
 export const galleryImages = [
   {
     src: "/gallery/equipo-gestion.jpg",
