@@ -28,11 +28,11 @@ export const heroMedia = {
     focalY: 22,
   },
   video: {
-    src: "/videos/polideportivo-mama-ocllo-web.mp4",
+    src: "/videos/reel-micky-ruiz-web.mp4",
     type: "video/mp4" as const,
     orientation: "portrait" as const,
     objectPositionX: 50,
-    objectPositionY: 24,
+    objectPositionY: 26,
   },
 };
 
