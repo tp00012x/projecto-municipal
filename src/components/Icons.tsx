@@ -2,12 +2,31 @@ import type { SVGProps } from "react";
 import {
   ArrowLeft,
   ArrowRight,
+  Bookmark,
+  Briefcase,
+  Building,
+  Building2,
+  Bus,
   Check,
   ChevronDown,
+  Dumbbell,
+  Eye,
+  GraduationCap,
+  Heart,
+  Landmark,
+  Leaf,
+  Lightbulb,
   MessageCircle,
   Menu,
+  PawPrint,
   Search,
+  Shield,
+  Smartphone,
   Sparkles,
+  Stethoscope,
+  Trees,
+  TrendingUp,
+  Users,
   Volume2,
   VolumeX,
   X,
@@ -57,5 +76,81 @@ export function CheckIcon(props: IconProps) {
 
 export function MessageIcon(props: IconProps) {
   return <MessageCircle aria-hidden="true" {...props} />;
+}
+
+export function BookmarkIcon(props: IconProps) {
+  return <Bookmark aria-hidden="true" {...props} />;
+}
+
+export function CategoryCuidadoIcon(props: IconProps) {
+  return <Heart aria-hidden="true" {...props} />;
+}
+
+export function CategoryInclusionIcon(props: IconProps) {
+  return <Users aria-hidden="true" {...props} />;
+}
+
+export function CategoryAnimalIcon(props: IconProps) {
+  return <PawPrint aria-hidden="true" {...props} />;
+}
+
+export function CategorySaludIcon(props: IconProps) {
+  return <Stethoscope aria-hidden="true" {...props} />;
+}
+
+export function CategorySeguridadIcon(props: IconProps) {
+  return <Shield aria-hidden="true" {...props} />;
+}
+
+export function CategoryJuventudIcon(props: IconProps) {
+  return <GraduationCap aria-hidden="true" {...props} />;
+}
+
+export function CategoryDeporteIcon(props: IconProps) {
+  return <Dumbbell aria-hidden="true" {...props} />;
+}
+
+export function CategoryInnovacionIcon(props: IconProps) {
+  return <Lightbulb aria-hidden="true" {...props} />;
+}
+
+export function CategoryEmpleoIcon(props: IconProps) {
+  return <Briefcase aria-hidden="true" {...props} />;
+}
+
+export function CategoryCulturaIcon(props: IconProps) {
+  return <Landmark aria-hidden="true" {...props} />;
+}
+
+export function CategoryEconomiaIcon(props: IconProps) {
+  return <TrendingUp aria-hidden="true" {...props} />;
+}
+
+export function CategoryMovilidadIcon(props: IconProps) {
+  return <Bus aria-hidden="true" {...props} />;
+}
+
+export function CategoryUrbanoIcon(props: IconProps) {
+  return <Building2 aria-hidden="true" {...props} />;
+}
+
+export function CategorySostenibilidadIcon(props: IconProps) {
+  return <Leaf aria-hidden="true" {...props} />;
+}
+
+export function CategoryEspacioIcon(props: IconProps) {
+  return <Trees aria-hidden="true" {...props} />;
+}
+
+export function CategoryTransparenciaIcon(props: IconProps) {
+  return <Eye aria-hidden="true" {...props} />;
+}
+
+export function CategoryDigitalIcon(props: IconProps) {
+  return <Smartphone aria-hidden="true" {...props} />;
+}
+
+export function CategoryServiciosIcon(props: IconProps) {
+  return <Building aria-hidden="true" {...props} />;
 }
 

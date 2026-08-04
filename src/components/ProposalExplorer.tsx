@@ -2,21 +2,25 @@
 
 import { type FormEvent, useEffect, useMemo, useState } from "react";
 
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  CheckIcon,
-  MessageIcon,
-  SearchIcon,
-} from "~/components/Icons";
+import EmptyState from "~/components/proposals/EmptyState";
+import ErrorState from "~/components/proposals/ErrorState";
+import LoadingState from "~/components/proposals/LoadingState";
+import ProposalDetail from "~/components/proposals/ProposalDetail";
+import ProposalFilters from "~/components/proposals/ProposalFilters";
+import ProposalGallery from "~/components/proposals/ProposalGallery";
+import ProposalQuickView from "~/components/proposals/ProposalQuickView";
+import ProposalSearch from "~/components/proposals/ProposalSearch";
+import ProposalSort from "~/components/proposals/ProposalSort";
 import type { CommentCounts, Proposal } from "~/types/proposal";
+import {
+  filterProposals,
+  getCategoryCounts,
+  persistSavedProposals,
+  readSavedProposals,
+  sortProposals,
+  type SortOption,
+} from "~/lib/proposal-utils";
 import { api } from "~/trpc/react";
-
-type DetailTab = "diagnostico" | "acciones" | "metas" | "viabilidad";
-type FormState = {
-  status: "idle" | "sending" | "success" | "error";
-  message: string;
-};
 
 const storageKey = "pueblolibre-comments-v1";
 
@@ -64,52 +68,36 @@ function readFormString(formData: FormData, key: string) {
   return typeof value === "string" ? value : "";
 }
 
-const tabs: Array<{ id: DetailTab; label: string }> = [
-  { id: "diagnostico", label: "Diagnóstico y objetivo" },
-  { id: "acciones", label: "Acciones" },
-  { id: "metas", label: "Metas" },
-  { id: "viabilidad", label: "Viabilidad" },
-];
-
-const dimensionCopy = {
-  Social: "Bienestar e inclusión",
-  Económica: "Desarrollo y oportunidades",
-  Ambiental: "Ciudad y sostenibilidad",
-  Institucional: "Gestión y transparencia",
-};
-
-function normalizeSearch(value: string) {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLocaleLowerCase("es");
-}
+type ViewMode = "gallery" | "detail";
 
 export default function ProposalExplorer({ proposals }: { proposals: Proposal[] }) {
-  const [activeId, setActiveId] = useState(proposals[0]?.id ?? "");
+  const [mounted, setMounted] = useState(false);
+  const [viewMode, setViewMode] = useState<ViewMode>("gallery");
+  const [quickViewId, setQuickViewId] = useState<string | null>(null);
+  const [detailId, setDetailId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
-  const [dimension, setDimension] = useState("Todas");
   const [category, setCategory] = useState("Todas");
-  const [activeTab, setActiveTab] = useState<DetailTab>("diagnostico");
+  const [sortBy, setSortBy] = useState<SortOption>("numero");
+  const [savedIds, setSavedIds] = useState<Set<string>>(() => new Set());
   const [counts, setCounts] = useState<CommentCounts>(() => readStoredCounts());
-  const [formState, setFormState] = useState<FormState>({
-    status: "idle",
-    message: "",
-  });
 
-  const dimensions = useMemo(
-    () => ["Todas", ...Array.from(new Set(proposals.map((item) => item.dimension)))],
-    [proposals],
-  );
   const categories = useMemo(
-    () => ["Todas", ...Array.from(new Set(proposals.map((item) => item.categoria)))],
+    () => Array.from(new Set(proposals.map((item) => item.categoria))).sort((a, b) =>
+      a.localeCompare(b, "es"),
+    ),
     [proposals],
   );
+  const categoryCounts = useMemo(() => getCategoryCounts(proposals), [proposals]);
 
   const countsQuery = api.comments.getCounts.useQuery(undefined, {
     retry: false,
   });
   const createComment = api.comments.create.useMutation();
+
+  useEffect(() => {
+    setMounted(true);
+    setSavedIds(readSavedProposals());
+  }, []);
 
   useEffect(() => {
     if (!countsQuery.data) return;
@@ -123,372 +111,210 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
     persistCounts(merged);
   }, [countsQuery.data]);
 
-  const filtered = useMemo(() => {
-    const needle = normalizeSearch(query.trim());
-    return proposals.filter((proposal) => {
-      const matchDimension =
-        dimension === "Todas" || proposal.dimension === dimension;
-      const matchCategory =
-        category === "Todas" || proposal.categoria === category;
-      const haystack = normalizeSearch(
-        `${proposal.numero} ${proposal.titulo} ${proposal.categoria} ${proposal.diagnostico} ${proposal.objetivo}`,
-      );
-      return matchDimension && matchCategory && (!needle || haystack.includes(needle));
-    });
-  }, [category, dimension, proposals, query]);
-
-  const active =
-    filtered.find((proposal) => proposal.id === activeId) ??
-    filtered[0] ??
-    proposals[0];
-  const activeIndex = Math.max(
-    0,
-    filtered.findIndex((proposal) => proposal.id === active?.id),
+  const filtered = useMemo(
+    () => filterProposals(proposals, query, category),
+    [category, proposals, query],
   );
-  const totalComments = Object.values(counts).reduce((sum, count) => sum + count, 0);
 
-  function selectProposal(id: string) {
-    setActiveId(id);
-    setActiveTab("diagnostico");
-    setFormState({ status: "idle", message: "" });
+  const sorted = useMemo(
+    () => sortProposals(filtered, sortBy, counts),
+    [counts, filtered, sortBy],
+  );
+
+  const quickViewProposal = sorted.find((item) => item.id === quickViewId) ?? null;
+  const detailProposal =
+    sorted.find((item) => item.id === detailId) ??
+    proposals.find((item) => item.id === detailId) ??
+    null;
+  const detailIndex = detailProposal
+    ? sorted.findIndex((item) => item.id === detailProposal.id)
+    : -1;
+
+  const hasCommentData =
+    Object.values(counts).some((value) => value > 0) || Boolean(countsQuery.data);
+
+  function openQuickView(id: string) {
+    setQuickViewId(id);
+    setViewMode("gallery");
   }
 
-  function move(direction: -1 | 1) {
-    if (!filtered.length) return;
-    const nextIndex =
-      (activeIndex + direction + filtered.length) % filtered.length;
-    const nextProposal = filtered[nextIndex];
+  function closeQuickView() {
+    setQuickViewId(null);
+  }
+
+  function openDetail(id: string) {
+    setDetailId(id);
+    setQuickViewId(null);
+    setViewMode("detail");
+    document.getElementById("propuestas")?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function backToGallery() {
+    setViewMode("gallery");
+    setDetailId(null);
+    setQuickViewId(null);
+  }
+
+  function openCommentFromQuickView(id: string) {
+    openDetail(id);
+    window.setTimeout(() => {
+      document.getElementById("participa")?.scrollIntoView({ behavior: "smooth" });
+    }, 120);
+  }
+
+  function navigateDetail(direction: -1 | 1) {
+    if (!sorted.length || !detailProposal) return;
+    const currentIndex = sorted.findIndex((item) => item.id === detailProposal.id);
+    const nextIndex = (currentIndex + direction + sorted.length) % sorted.length;
+    const nextProposal = sorted[nextIndex];
     if (!nextProposal) return;
-    selectProposal(nextProposal.id);
+    setDetailId(nextProposal.id);
+    document.getElementById("propuestas")?.scrollIntoView({ behavior: "smooth" });
   }
 
-  function updateFilter(nextDimension: string, nextCategory: string) {
-    setDimension(nextDimension);
-    setCategory(nextCategory);
-    const first = proposals.find(
-      (proposal) =>
-        (nextDimension === "Todas" || proposal.dimension === nextDimension) &&
-        (nextCategory === "Todas" || proposal.categoria === nextCategory),
-    );
-    if (first) selectProposal(first.id);
+  function resetFilters() {
+    setQuery("");
+    setCategory("Todas");
+    setSortBy("numero");
+  }
+
+  function toggleSaved(id: string) {
+    setSavedIds((current) => {
+      const next = new Set(current);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      persistSavedProposals(next);
+      return next;
+    });
   }
 
   async function submitComment(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!active) return;
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-    setFormState({ status: "sending", message: "Enviando sugerencia…" });
-
-    try {
-      const payload = await createComment.mutateAsync({
-        proposalNumber: active.numero,
-        name: readFormString(formData, "name"),
-        email: readFormString(formData, "email"),
-        comment: readFormString(formData, "comment"),
-        acceptedTerms: formData.get("acceptedTerms") === "on",
-      });
-
-      const nextCounts = {
-        ...counts,
-        [active.numero]: payload.count,
-      };
-      setCounts(nextCounts);
-      persistCounts(nextCounts);
-      void countsQuery.refetch();
-
-      setFormState({
-        status: "success",
-        message: payload.message,
-      });
-      form.reset();
-    } catch (error) {
-      const message =
-        error instanceof Error
-          ? error.message
-          : "No se pudo enviar la sugerencia. Inténtalo de nuevo.";
-      setFormState({
-        status: "error",
-        message,
-      });
+    const proposal = detailProposal ?? quickViewProposal;
+    if (!proposal) {
+      throw new Error("No hay una propuesta seleccionada.");
     }
+
+    const formData = new FormData(event.currentTarget);
+    const payload = await createComment.mutateAsync({
+      proposalNumber: proposal.numero,
+      name: readFormString(formData, "name"),
+      email: readFormString(formData, "email"),
+      comment: readFormString(formData, "comment"),
+      acceptedTerms: formData.get("acceptedTerms") === "on",
+    });
+
+    const nextCounts = {
+      ...counts,
+      [proposal.numero]: payload.count,
+    };
+    setCounts(nextCounts);
+    persistCounts(nextCounts);
+    void countsQuery.refetch();
+
+    return { message: payload.message };
   }
 
-  if (!active) return null;
+  if (!proposals.length) {
+    return (
+      <section className="section proposal-section" id="propuestas">
+        <div className="shell">
+          <EmptyState
+            description="No hay propuestas disponibles en este momento."
+            title="Sin propuestas para mostrar"
+          />
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="section proposal-section" id="propuestas">
       <div className="shell">
-        <div className="proposal-heading">
-          <div>
-            <p className="eyebrow">Explorador interactivo</p>
-            <h2>
-              23 propuestas.
-              <span> Una lectura simple.</span>
-            </h2>
-          </div>
-          <p>
-            Filtra, busca y revisa cada ficha. Los textos sintetizan los campos
-            del documento fuente sin reemplazar su lectura integral.
-          </p>
-        </div>
-
-        <div className="filter-bar" aria-label="Filtros de propuestas">
-          <label className="search-field">
-            <span className="sr-only">Buscar propuestas</span>
-            <SearchIcon />
-            <input
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Buscar por tema, meta o palabra clave"
-              type="search"
-              value={query}
-            />
-          </label>
-          <label>
-            <span>Dimensión</span>
-            <select
-              onChange={(event) => updateFilter(event.target.value, category)}
-              value={dimension}
-            >
-              {dimensions.map((item) => (
-                <option key={item}>{item}</option>
-              ))}
-            </select>
-          </label>
-          <label>
-            <span>Categoría</span>
-            <select
-              onChange={(event) => updateFilter(dimension, event.target.value)}
-              value={category}
-            >
-              {categories.map((item) => (
-                <option key={item}>{item}</option>
-              ))}
-            </select>
-          </label>
-        </div>
-
-        <div className="explorer-shell">
-          <aside className="proposal-list-panel" aria-label="Lista de propuestas">
-            <div className="list-panel-head">
-              <span>{filtered.length} resultados</span>
-              <span>{totalComments} aportes</span>
-            </div>
-            <div className="proposal-list">
-              {filtered.map((proposal) => (
-                <button
-                  aria-current={proposal.id === active.id ? "true" : undefined}
-                  className={proposal.id === active.id ? "is-active" : ""}
-                  key={proposal.id}
-                  onClick={() => selectProposal(proposal.id)}
-                  type="button"
-                >
-                  <span>{String(proposal.numero).padStart(2, "0")}</span>
-                  <span>
-                    <strong>{proposal.titulo}</strong>
-                    <small>{proposal.categoria}</small>
-                  </span>
-                </button>
-              ))}
-              {!filtered.length ? (
-                <div className="empty-state">
-                  <SearchIcon />
-                  <strong>No encontramos coincidencias</strong>
-                  <p>Prueba otra palabra o restablece los filtros.</p>
-                  <button
-                    onClick={() => {
-                      setQuery("");
-                      updateFilter("Todas", "Todas");
-                    }}
-                    type="button"
-                  >
-                    Restablecer
-                  </button>
-                </div>
-              ) : null}
-            </div>
-          </aside>
-
-          <article className="proposal-detail" key={active.id}>
-            <div className="proposal-progress">
-              <span>
-                Propuesta {String(active.numero).padStart(2, "0")} de 23
-              </span>
-              <span>{counts[active.numero] ?? 0} aportes</span>
-              <div aria-hidden="true">
-                <i style={{ width: `${(active.numero / 23) * 100}%` }} />
-              </div>
-            </div>
-
-            <div className="proposal-title">
-              <div className="proposal-number">{String(active.numero).padStart(2, "0")}</div>
+        {viewMode === "gallery" ? (
+          <>
+            <div className="proposal-heading gallery-heading-block">
               <div>
-                <div className="proposal-tags">
-                  <span>{active.dimension}</span>
-                  <span>{active.categoria}</span>
-                </div>
-                <h3>{active.titulo}</h3>
-                <p>{dimensionCopy[active.dimension]}</p>
+                <p className="eyebrow">Galería de propuestas</p>
+                <h2>
+                  23 propuestas.
+                  <span> Una lectura simple.</span>
+                </h2>
               </div>
+              <p>
+                Explora, conoce y revisa las propuestas para construir un Pueblo
+                Libre para todos.
+              </p>
             </div>
 
-            <div className="detail-tabs" role="tablist" aria-label="Contenido de la propuesta">
-              {tabs.map((tab) => (
-                <button
-                  aria-controls={`panel-${tab.id}`}
-                  aria-selected={activeTab === tab.id}
-                  id={`tab-${tab.id}`}
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  role="tab"
-                  type="button"
-                >
-                  {tab.label}
-                </button>
-              ))}
+            {countsQuery.isError ? (
+              <ErrorState onRetry={() => void countsQuery.refetch()} />
+            ) : null}
+
+            <div className="gallery-controls">
+              <ProposalSearch
+                onChange={setQuery}
+                onClear={() => setQuery("")}
+                value={query}
+              />
+              <ProposalFilters
+                activeCategory={category}
+                categories={categories}
+                counts={categoryCounts}
+                onChange={setCategory}
+                totalCount={proposals.length}
+              />
             </div>
 
-            <div
-              aria-labelledby={`tab-${activeTab}`}
-              className="detail-panel"
-              id={`panel-${activeTab}`}
-              role="tabpanel"
-            >
-              {activeTab === "diagnostico" ? (
-                <div className="diagnosis-grid">
-                  <div>
-                    <span>Diagnóstico</span>
-                    <p>{active.diagnostico}</p>
-                  </div>
-                  <div>
-                    <span>Objetivo</span>
-                    <p>{active.objetivo}</p>
-                  </div>
-                </div>
-              ) : null}
-
-              {activeTab === "acciones" ? (
-                <ol className="numbered-list">
-                  {active.acciones.map((item, index) => (
-                    <li key={`${active.id}-action-${index}`}>
-                      <span>{String(index + 1).padStart(2, "0")}</span>
-                      <p>{item}</p>
-                    </li>
-                  ))}
-                </ol>
-              ) : null}
-
-              {activeTab === "metas" ? (
-                <ul className="check-list">
-                  {active.metas.map((item, index) => (
-                    <li key={`${active.id}-goal-${index}`}>
-                      <CheckIcon />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-
-              {activeTab === "viabilidad" ? (
-                <div className="viability-card">
-                  <span>Viabilidad y presupuesto declarados</span>
-                  <p>{active.viabilidad}</p>
-                  <small>
-                    Información atribuida al Plan de Gobierno Municipal
-                    2027–2030. No constituye una evaluación independiente.
-                  </small>
-                </div>
-              ) : null}
+            <div className="gallery-toolbar">
+              <p aria-live="polite" className="gallery-count">
+                Mostrando {sorted.length}{" "}
+                {sorted.length === 1 ? "propuesta" : "propuestas"}
+              </p>
+              <ProposalSort
+                onChange={setSortBy}
+                showCommentSort={hasCommentData}
+                value={sortBy}
+              />
             </div>
 
-            <div className="proposal-navigation">
-              <button onClick={() => move(-1)} type="button">
-                <ArrowLeftIcon />
-                Anterior
-              </button>
-              <span>
-                {activeIndex + 1} / {filtered.length || 1}
-              </span>
-              <button onClick={() => move(1)} type="button">
-                Siguiente
-                <ArrowRightIcon />
-              </button>
-            </div>
+            {!mounted || countsQuery.isLoading ? (
+              <LoadingState />
+            ) : sorted.length ? (
+              <ProposalGallery
+                commentCounts={counts}
+                onOpen={openQuickView}
+                onToggleSave={toggleSaved}
+                proposals={sorted}
+                savedIds={savedIds}
+                selectedId={quickViewId}
+              />
+            ) : (
+              <EmptyState onReset={resetFilters} />
+            )}
+          </>
+        ) : detailProposal ? (
+          <ProposalDetail
+            commentCount={counts[detailProposal.numero] ?? 0}
+            index={Math.max(0, detailIndex)}
+            onBack={backToGallery}
+            onNavigate={navigateDetail}
+            onSubmitComment={submitComment}
+            proposal={detailProposal}
+            total={sorted.length || 1}
+          />
+        ) : null}
 
-            <div className="participation-card" id="participa">
-              <div className="participation-intro">
-                <span className="comment-icon">
-                  <MessageIcon />
-                </span>
-                <div>
-                  <p className="eyebrow">Participación ciudadana</p>
-                  <h4>Comenta esta propuesta</h4>
-                  <p>
-                    Los aportes se registran para revisión. No se publican
-                    automáticamente ni se utilizan con fines de campaña.
-                  </p>
-                </div>
-              </div>
-
-              <form onSubmit={submitComment}>
-                <div className="form-row">
-                  <label>
-                    Nombre o alias
-                    <input
-                      autoComplete="nickname"
-                      maxLength={50}
-                      minLength={2}
-                      name="name"
-                      required
-                    />
-                  </label>
-                  <label>
-                    Correo <span>(opcional)</span>
-                    <input autoComplete="email" name="email" type="email" />
-                  </label>
-                </div>
-                <label>
-                  Comentario o sugerencia
-                  <textarea
-                    maxLength={800}
-                    minLength={20}
-                    name="comment"
-                    placeholder="Comparte una observación concreta sobre la propuesta…"
-                    required
-                    rows={5}
-                  />
-                </label>
-                <label className="terms-field">
-                  <input name="acceptedTerms" required type="checkbox" />
-                  <span>
-                    Acepto el aviso de participación y privacidad. Mi aporte
-                    puede ser moderado para retirar insultos, datos sensibles o
-                    publicidad.
-                  </span>
-                </label>
-                <div className="form-footer">
-                  <button
-                    className="button button-purple"
-                    disabled={formState.status === "sending"}
-                    type="submit"
-                  >
-                    {formState.status === "sending"
-                      ? "Enviando…"
-                      : "Enviar sugerencia"}
-                    <ArrowRightIcon />
-                  </button>
-                  <p
-                    aria-live="polite"
-                    className={`form-message ${formState.status}`}
-                    role="status"
-                  >
-                    {formState.message}
-                  </p>
-                </div>
-              </form>
-            </div>
-          </article>
-        </div>
+        {quickViewProposal ? (
+          <ProposalQuickView
+            onClose={closeQuickView}
+            onComment={openCommentFromQuickView}
+            onOpenFull={openDetail}
+            proposal={quickViewProposal}
+          />
+        ) : null}
       </div>
     </section>
   );
