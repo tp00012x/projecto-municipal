@@ -1,3 +1,4 @@
+import BrandTransition from "~/components/BrandTransition";
 import CandidateIntro from "~/components/CandidateIntro";
 import ClosingSection from "~/components/ClosingSection";
 import Footer from "~/components/Footer";
@@ -22,6 +23,7 @@ export default function CampaignSite({ proposals }: { proposals: Proposal[] }) {
         {/* Orden mejorado: visión → equipo → propuestas → participa / Improved order */}
         <VisionSection proposals={proposals} />
         <TeamGallery />
+        <BrandTransition />
         <ProposalExplorer proposals={proposals} />
         {/* Contexto institucional encima de la declaración / Institutional context above declaration */}
         <IdentitySection />

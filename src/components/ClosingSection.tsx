@@ -1,3 +1,4 @@
+import CampaignBanner from "~/components/CampaignBanner";
 import MotionReveal from "./MotionReveal";
 import { ArrowRightIcon } from "./Icons";
 
@@ -7,6 +8,7 @@ export default function ClosingSection() {
       <div className="closing-orb closing-orb-one" />
       <div className="closing-orb closing-orb-two" />
       <MotionReveal className="shell closing-content">
+        <CampaignBanner className="closing-brand-banner" />
         <p className="eyebrow light">Declaración atribuida a la candidatura</p>
         <blockquote>
           “No llegamos a aprender cómo trabajar por Pueblo Libre. Llevamos años

@@ -1,13 +1,31 @@
 export const siteConfig = {
-  name: "Pueblo Libre 2027–2030",
+  name: "Micky Ruiz",
   candidate: "Micky Ruiz",
   role: "Candidato a la Alcaldía de Pueblo Libre",
   affiliation: "Partido Morado",
-  slogan: "Pueblo Libre para todos",
+  slogan: "Pueblo Libre para todos!",
   description:
     "Plataforma informativa para explorar las propuestas del Plan de Gobierno Municipal 2027–2030 y registrar aportes ciudadanos.",
   email: "contacto@pueblolibre2030.pe",
 };
+
+/** Campaign brand assets sourced from original artwork / Recursos de marca originales */
+export const brandAssets = {
+  banner: {
+    src: "/brand/campaign-banner.jpg",
+    width: 850,
+    height: 139,
+    alt: "Logo de campaña de Micky Ruiz con el eslogan Pueblo Libre para todos sobre fondo morado.",
+  },
+  partidoMorado: {
+    src: "/brand/partido-morado.png",
+    width: 540,
+    height: 540,
+    alt: "Logo oficial del Partido Morado",
+  },
+  /** Left crop ratio of the banner for the compact M icon / Recorte izquierdo para el ícono M */
+  iconCropWidth: 118,
+} as const;
 
 /**
  * Hero composition contract
@@ -63,11 +81,11 @@ export const councilMembers = [
   },
   {
     id: 3,
-    name: "Sonia Elena Montes Ccaccro",
+    name: "Sonia Eloisa Montes Ccaccro",
     position: "Regidora",
     number: 3,
     src: "/team/regidora-3-sonia-montes-v2.png",
-    alt: "Sonia Elena Montes Ccaccro - Regidora #3",
+    alt: "Sonia Eloisa Montes Ccaccro - Regidora #3",
     objectPosition: "50% 22%",
     imageScale: 1,
   },
@@ -122,6 +140,121 @@ export const councilMembers = [
     imageScale: 1,
   },
 ];
+
+/** Vision section copy / Textos de la sección de visión distrital */
+export const visionSectionCopy = {
+  eyebrow: "Visión de desarrollo distrital",
+  title: "Nuestro camino hacia un mejor Pueblo Libre",
+  description:
+    "Un camino conectado para transformar Pueblo Libre con innovación, inclusión y gestión eficiente. Siete prioridades que construyen bienestar para hoy y oportunidades para siempre.",
+} as const;
+
+export const visionPriorityOrder = [6, 10, 11, 14, 16, 21, 22] as const;
+
+export type VisionCardTheme = "purple" | "yellow" | "light" | "dark";
+export type VisionLinkTone = "yellow" | "purple";
+export type VisionIconTone = "purple" | "yellow" | "light" | "dark";
+
+/** Vision cards: imagery, theme and summaries / Tarjetas de visión */
+export const visionPriorityCards: Record<
+  number,
+  {
+    theme: VisionCardTheme;
+    linkTone: VisionLinkTone;
+    iconTone: VisionIconTone;
+    summary: string;
+    src: string;
+    alt: string;
+    objectPosition: string;
+    width: number;
+    height: number;
+  }
+> = {
+  6: {
+    theme: "purple",
+    linkTone: "yellow",
+    iconTone: "purple",
+    summary:
+      "Más prevención, tecnología y respuesta para un distrito más seguro.",
+    src: "/gallery/vision/seguridad-06.png",
+    alt: "Patrullaje y prevención comunitaria para un Pueblo Libre más seguro",
+    objectPosition: "50% 35%",
+    width: 681,
+    height: 1024,
+  },
+  10: {
+    theme: "yellow",
+    linkTone: "purple",
+    iconTone: "yellow",
+    summary:
+      "Impulsamos el talento, el emprendimiento y la transformación digital.",
+    src: "/gallery/vision/innovacion-10.png",
+    alt: "Emprendimiento e innovación tecnológica para transformar Pueblo Libre",
+    objectPosition: "50% 30%",
+    width: 682,
+    height: 1024,
+  },
+  11: {
+    theme: "light",
+    linkTone: "purple",
+    iconTone: "light",
+    summary:
+      "Más oportunidades para jóvenes y familias, con capacitación y bolsas de trabajo.",
+    src: "/gallery/vision/empleo-11.png",
+    alt: "Jóvenes y familias accediendo a oportunidades de empleo en Pueblo Libre",
+    objectPosition: "50% 30%",
+    width: 682,
+    height: 1024,
+  },
+  14: {
+    theme: "dark",
+    linkTone: "yellow",
+    iconTone: "dark",
+    summary:
+      "Conectamos mejor el distrito con transporte sostenible e inteligente.",
+    src: "/gallery/vision/movilidad-14.png",
+    alt: "Transporte sostenible y conectividad urbana en las calles de Pueblo Libre",
+    objectPosition: "50% 35%",
+    width: 681,
+    height: 1024,
+  },
+  16: {
+    theme: "purple",
+    linkTone: "yellow",
+    iconTone: "purple",
+    summary:
+      "Más áreas verdes y acciones que cuidan nuestro ambiente y calidad de vida.",
+    src: "/gallery/vision/sostenibilidad-16.png",
+    alt: "Áreas verdes y acciones ambientales para una Pueblo Libre sostenible",
+    objectPosition: "50% 35%",
+    width: 681,
+    height: 1024,
+  },
+  21: {
+    theme: "yellow",
+    linkTone: "purple",
+    iconTone: "yellow",
+    summary:
+      "Gestión abierta y control ciudadano para recuperar la confianza de todos.",
+    src: "/gallery/vision/transparencia-21.png",
+    alt: "Participación ciudadana y gestión transparente con vecinos de Pueblo Libre",
+    objectPosition: "50% 30%",
+    width: 681,
+    height: 1024,
+  },
+  22: {
+    theme: "light",
+    linkTone: "purple",
+    iconTone: "light",
+    summary:
+      "Trámites simples, rápidos y 100% en línea, al alcance de todos.",
+    src: "/gallery/vision/gobierno-digital-22.png",
+    alt: "Servicios municipales digitales y trámites en línea para Pueblo Libre",
+    objectPosition: "50% 30%",
+    width: 681,
+    height: 1024,
+  },
+};
 
 export const galleryImages = [
   {

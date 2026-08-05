@@ -1,16 +1,12 @@
+import BrandMark from "~/components/BrandMark";
+
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="shell footer-grid">
         <div>
           <a className="brand footer-brand" href="#inicio">
-            <span className="brand-mark" aria-hidden="true">
-              PL
-            </span>
-            <span>
-              <strong>Pueblo Libre 2027–2030</strong>
-              <small>Plataforma informativa</small>
-            </span>
+            <BrandMark variant="footer" />
           </a>
           <p>
             Las propuestas presentadas provienen del Plan de Gobierno Municipal
@@ -38,7 +34,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="shell footer-bottom">
-        <span>© 2027 Plataforma informativa Pueblo Libre</span>
+        <span>© 2027 Micky Ruiz — Plataforma informativa</span>
         <span>Diseñada para lectura accesible y participación ciudadana.</span>
       </div>
       <div className="legal-notes shell">

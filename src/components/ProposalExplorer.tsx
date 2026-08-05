@@ -100,6 +100,30 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
   }, []);
 
   useEffect(() => {
+    if (!mounted) return;
+
+    function openFromHash() {
+      const hash = window.location.hash.replace(/^#/, "");
+      if (!hash.startsWith("propuesta-")) return;
+
+      const proposal = proposals.find((item) => item.id === hash);
+      if (!proposal) return;
+
+      setQuickViewId(proposal.id);
+      setViewMode("gallery");
+      setDetailId(null);
+
+      window.requestAnimationFrame(() => {
+        document.getElementById("propuestas")?.scrollIntoView({ behavior: "smooth" });
+      });
+    }
+
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+    return () => window.removeEventListener("hashchange", openFromHash);
+  }, [mounted, proposals]);
+
+  useEffect(() => {
     if (!countsQuery.data) return;
     const stored = readStoredCounts();
     const next: CommentCounts = {};

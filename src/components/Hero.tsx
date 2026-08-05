@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
+import CampaignBanner from "~/components/CampaignBanner";
 import { heroMedia } from "~/data/site";
 import { startHeroPlayback, type HeroPlaybackState } from "~/lib/hero-playback";
 import {
@@ -115,6 +116,7 @@ export default function Hero() {
 
       <div className="hero-content shell">
         <div className="hero-copy">
+          <CampaignBanner className="hero-brand-banner" priority />
           <p className="eyebrow light">
             Plataforma informativa <span>•</span> Plan 2027–2030
           </p>

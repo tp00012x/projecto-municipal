@@ -130,19 +130,22 @@ export default function TeamGallery() {
       <div className="shell">
         <MotionReveal className="gallery-heading gallery-heading-team">
           <div className="gallery-heading-copy">
-            <p className="eyebrow">Nuestro Equipo</p>
-            <h2 className="gallery-heading-title">
+            <p className="eyebrow vision-eyebrow">
+              <span aria-hidden="true" />
+              Nuestro Equipo
+            </p>
+            <h2 className="vision-title">
               <span className="gallery-heading-line">
-                Un alcalde no gobierna solo;
+                Un alcalde no gobierna solo;{" "}
               </span>
               <span className="gallery-heading-accent">
                 gobierna con el mejor equipo al servicio de nuestra gente.
               </span>
             </h2>
           </div>
-          <p className="gallery-heading-support">
-            Conoce a los regidores que conforman nuestra lista municipal y que
-            trabajarán junto a la comunidad para transformar Pueblo Libre.
+          <p className="vision-description gallery-heading-support">
+            “Conoce a los regidores que conforman nuestra lista municipal y que
+            trabajarán junto a la comunidad para transformar Pueblo Libre.”
           </p>
         </MotionReveal>
 

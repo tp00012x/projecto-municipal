@@ -1,9 +1,17 @@
 import "~/styles/globals.css";
 
+import { Caveat } from "next/font/google";
 import { type Metadata, type Viewport } from "next";
 import { headers } from "next/headers";
 
 import { TRPCReactProvider } from "~/trpc/react";
+
+const sloganScript = Caveat({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-slogan-script",
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -99,7 +107,7 @@ export default function RootLayout({
 
   return (
     <html lang="es">
-      <body>
+      <body className={sloganScript.variable}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
         <script
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

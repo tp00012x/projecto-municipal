@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import BrandMark from "./BrandMark";
 import { CloseIcon, MenuIcon } from "./Icons";
 
 const links = [
-  { href: "#vision", label: "Visión" },
+  { href: "#presentacion", label: "Sobre Micky" },
   { href: "#equipo", label: "Nuestro equipo" },
   { href: "#propuestas", label: "Propuestas" },
-  { href: "#participa", label: "Participa" },
 ];
 
 export default function Header() {
@@ -21,14 +21,8 @@ export default function Header() {
 
   return (
     <header className="site-header">
-      <a className="brand" href="#inicio" aria-label="Ir al inicio">
-        <span className="brand-mark" aria-hidden="true">
-          PL
-        </span>
-        <span>
-          <strong>Pueblo Libre</strong>
-          <small>Plan municipal 2027–2030</small>
-        </span>
+      <a className="brand" href="#inicio" aria-label="Ir al inicio — Micky Ruiz">
+        <BrandMark />
       </a>
 
       <nav className="desktop-nav" aria-label="Navegación principal">

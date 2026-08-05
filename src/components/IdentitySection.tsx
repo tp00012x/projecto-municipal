@@ -16,17 +16,6 @@ export default function IdentitySection() {
             Micky Ruiz, afiliada al Partido Morado.
           </p>
         </MotionReveal>
-
-        <MotionReveal className="identity-card" delay={120}>
-          <span className="identity-label">Eslogan de campaña</span>
-          <p>
-            Pueblo Libre
-            <strong> para todos</strong>
-          </p>
-          <small>
-            Presentado aquí como elemento identificador de la candidatura.
-          </small>
-        </MotionReveal>
       </div>
     </section>
   );
