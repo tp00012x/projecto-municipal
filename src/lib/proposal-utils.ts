@@ -117,28 +117,3 @@ export function getCategoryCounts(proposals: Proposal[]) {
   }, {});
 }
 
-export const savedProposalsKey = "pueblolibre-saved-v1";
-
-export function readSavedProposals(): Set<string> {
-  if (typeof window === "undefined") return new Set();
-
-  try {
-    const raw = window.localStorage.getItem(savedProposalsKey);
-    if (!raw) return new Set();
-    const parsed = JSON.parse(raw) as unknown;
-    if (!Array.isArray(parsed)) return new Set();
-    return new Set(parsed.filter((item): item is string => typeof item === "string"));
-  } catch {
-    return new Set();
-  }
-}
-
-export function persistSavedProposals(ids: Set<string>) {
-  if (typeof window === "undefined") return;
-
-  try {
-    window.localStorage.setItem(savedProposalsKey, JSON.stringify([...ids]));
-  } catch {
-    // La persistencia local es opcional si el navegador bloquea el almacenamiento.
-  }
-}

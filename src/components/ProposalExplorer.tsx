@@ -15,8 +15,6 @@ import type { CommentCounts, Proposal } from "~/types/proposal";
 import {
   filterProposals,
   getCategoryCounts,
-  persistSavedProposals,
-  readSavedProposals,
   sortProposals,
   type SortOption,
 } from "~/lib/proposal-utils";
@@ -78,7 +76,6 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("Todas");
   const [sortBy, setSortBy] = useState<SortOption>("numero");
-  const [savedIds, setSavedIds] = useState<Set<string>>(() => new Set());
   const [counts, setCounts] = useState<CommentCounts>(() => readStoredCounts());
 
   const categories = useMemo(
@@ -96,7 +93,6 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
 
   useEffect(() => {
     setMounted(true);
-    setSavedIds(readSavedProposals());
   }, []);
 
   useEffect(() => {
@@ -202,19 +198,6 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
     setSortBy("numero");
   }
 
-  function toggleSaved(id: string) {
-    setSavedIds((current) => {
-      const next = new Set(current);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      persistSavedProposals(next);
-      return next;
-    });
-  }
-
   async function submitComment(event: FormEvent<HTMLFormElement>) {
     const proposal = detailProposal ?? quickViewProposal;
     if (!proposal) {
@@ -310,9 +293,7 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
               <ProposalGallery
                 commentCounts={counts}
                 onOpen={openQuickView}
-                onToggleSave={toggleSaved}
                 proposals={sorted}
-                savedIds={savedIds}
                 selectedId={quickViewId}
               />
             ) : (

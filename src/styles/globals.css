@@ -3572,38 +3572,13 @@ video {
 }
 
 .proposal-card-footer {
-  display: flex;
   flex-shrink: 0;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
   padding: 14px 18px 18px;
 }
 
 .proposal-card-action {
+  width: 100%;
   min-height: 44px;
-  flex: 1;
-}
-
-.proposal-card-save {
-  display: grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--paper);
-  color: var(--purple-700);
-}
-
-.proposal-card-save.is-saved {
-  border-color: var(--purple-700);
-  background: var(--surface-purple);
-}
-
-.proposal-card-save svg {
-  width: 18px;
-  height: 18px;
 }
 
 .proposal-card-comments {

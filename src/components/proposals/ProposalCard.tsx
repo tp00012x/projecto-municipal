@@ -1,4 +1,3 @@
-import { BookmarkIcon } from "~/components/Icons";
 import { getProposalSummary } from "~/lib/proposal-utils";
 import type { Proposal } from "~/types/proposal";
 import CategoryVisual from "./CategoryVisual";
@@ -6,19 +5,15 @@ import CategoryVisual from "./CategoryVisual";
 type ProposalCardProps = {
   proposal: Proposal;
   isSelected: boolean;
-  isSaved: boolean;
   commentCount: number;
   onOpen: (id: string) => void;
-  onToggleSave: (id: string) => void;
 };
 
 export default function ProposalCard({
   proposal,
   isSelected,
-  isSaved,
   commentCount,
   onOpen,
-  onToggleSave,
 }: ProposalCardProps) {
   const summary = getProposalSummary(proposal, 120);
 
@@ -52,22 +47,6 @@ export default function ProposalCard({
           type="button"
         >
           Ver propuesta
-        </button>
-        <button
-          aria-label={
-            isSaved
-              ? `Quitar propuesta ${proposal.numero} de guardados`
-              : `Guardar propuesta ${proposal.numero}`
-          }
-          aria-pressed={isSaved}
-          className={`proposal-card-save ${isSaved ? "is-saved" : ""}`.trim()}
-          onClick={() => onToggleSave(proposal.id)}
-          type="button"
-        >
-          <BookmarkIcon />
-          <span className="sr-only">
-            {isSaved ? "Guardada" : "Guardar propuesta"}
-          </span>
         </button>
       </div>
 

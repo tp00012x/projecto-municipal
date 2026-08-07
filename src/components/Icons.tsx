@@ -2,7 +2,6 @@ import type { SVGProps } from "react";
 import {
   ArrowLeft,
   ArrowRight,
-  Bookmark,
   Briefcase,
   Building,
   Building2,
@@ -76,10 +75,6 @@ export function CheckIcon(props: IconProps) {
 
 export function MessageIcon(props: IconProps) {
   return <MessageCircle aria-hidden="true" {...props} />;
-}
-
-export function BookmarkIcon(props: IconProps) {
-  return <Bookmark aria-hidden="true" {...props} />;
 }
 
 export function CategoryCuidadoIcon(props: IconProps) {
