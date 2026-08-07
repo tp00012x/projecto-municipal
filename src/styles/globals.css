@@ -366,9 +366,78 @@ video {
   text-transform: uppercase;
 }
 
-.desktop-nav,
-.header-cta {
+.desktop-nav {
   display: none;
+}
+
+.header-social {
+  display: flex;
+  min-width: 0;
+  flex: 0 1 auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-social-copy {
+  display: none;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1.15;
+}
+
+.header-social-copy strong {
+  color: var(--paper);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.header-social-copy em {
+  color: var(--yellow);
+  font-size: 9.5px;
+  font-style: normal;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  opacity: 0.92;
+}
+
+.header-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.header-social-link {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  place-items: center;
+  border-radius: 10px;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.header-social-link img {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.header-social-link:hover {
+  filter: brightness(1.12);
+  transform: scale(1.08);
+}
+
+.header-social-link:focus-visible {
+  box-shadow: 0 0 0 2px var(--yellow);
+  filter: brightness(1.12);
+  outline: none;
+  transform: scale(1.06);
 }
 
 .menu-button {
@@ -2845,6 +2914,24 @@ video {
   }
 }
 
+@media (min-width: 640px) and (max-width: 899px) {
+  .header-social {
+    gap: 10px;
+  }
+
+  .header-social-copy {
+    display: flex;
+  }
+
+  .header-social-copy strong {
+    font-size: 10.5px;
+  }
+
+  .header-social-copy em {
+    font-size: 9px;
+  }
+}
+
 @media (min-width: 900px) {
   .site-header {
     min-height: 82px;
@@ -2886,16 +2973,35 @@ video {
     transform: scaleX(1);
   }
 
-  .header-cta {
-    display: inline-flex;
-    min-height: 44px;
-    align-items: center;
-    padding: 0 17px;
-    border-radius: 999px;
-    background: var(--yellow);
-    color: var(--purple-950);
+  .header-social {
+    gap: 14px;
+  }
+
+  .header-social-copy {
+    display: flex;
+  }
+
+  .header-social-copy strong {
+    font-size: 12px;
+  }
+
+  .header-social-copy em {
     font-size: 10px;
-    font-weight: 900;
+  }
+
+  .header-social-icons {
+    gap: 8px;
+  }
+
+  .header-social-link {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .header-social-link img {
+    width: 32px;
+    height: 32px;
   }
 
   .menu-button,

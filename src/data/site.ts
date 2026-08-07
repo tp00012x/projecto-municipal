@@ -23,8 +23,6 @@ export const brandAssets = {
     height: 540,
     alt: "Logo oficial del Partido Morado",
   },
-  /** Left crop ratio of the banner for the compact M icon / Recorte izquierdo para el ícono M */
-  iconCropWidth: 118,
 } as const;
 
 /**

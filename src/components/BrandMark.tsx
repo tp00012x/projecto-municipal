@@ -10,31 +10,31 @@ type BrandMarkProps = {
 };
 
 /**
- * Compact campaign identity: Partido Morado logo (header) or banner crop + candidate name + slogan.
- * En el encabezado se usa el logotipo oficial del Partido Morado con object-fit: contain.
+ * Compact campaign identity: official Partido Morado logo + candidate name + slogan.
+ * Misma marca en encabezado y pie de página, con object-fit: contain.
  */
 export default function BrandMark({
   variant = "header",
   showSlogan = true,
 }: BrandMarkProps) {
-  const { banner, partidoMorado } = brandAssets;
-  const isHeader = variant === "header";
+  const { partidoMorado } = brandAssets;
+  const isFooter = variant === "footer";
 
   return (
     <>
       <span
-        className={`brand-mark-image${variant === "footer" ? " brand-mark-image-footer" : ""}${isHeader ? " brand-mark-image-partido" : ""}`}
+        className={`brand-mark-image brand-mark-image-partido${isFooter ? " brand-mark-image-footer" : ""}`}
       >
         <Image
-          alt={isHeader ? partidoMorado.alt : ""}
-          aria-hidden={isHeader ? undefined : true}
+          alt={isFooter ? "" : partidoMorado.alt}
+          aria-hidden={isFooter ? true : undefined}
           className="brand-mark-photo"
           fill
-          sizes={isHeader ? "52px" : "43px"}
-          src={isHeader ? partidoMorado.src : banner.src}
+          sizes="52px"
+          src={partidoMorado.src}
           style={{
-            objectFit: isHeader ? "contain" : "cover",
-            objectPosition: isHeader ? "center" : "0% center",
+            objectFit: "contain",
+            objectPosition: "center",
           }}
         />
       </span>

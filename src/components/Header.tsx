@@ -10,6 +10,24 @@ const links = [
   { href: "#propuestas", label: "Propuestas" },
 ];
 
+const socialLinks = [
+  {
+    href: "https://www.tiktok.com/@miguelstefanoruiz",
+    label: "TikTok de Micky Ruiz",
+    icon: "/social/tiktok.png",
+  },
+  {
+    href: "https://www.facebook.com/profile.php?id=61592779255660",
+    label: "Facebook de Micky Ruiz",
+    icon: "/social/facebook.png",
+  },
+  {
+    href: "https://www.instagram.com/mickyruiz_oficial",
+    label: "Instagram de Micky Ruiz",
+    icon: "/social/instagram.png",
+  },
+];
+
 export default function Header() {
   const [open, setOpen] = useState(false);
 
@@ -33,9 +51,27 @@ export default function Header() {
         ))}
       </nav>
 
-      <a className="header-cta" href="#propuestas">
-        Explorar plan
-      </a>
+      <div className="header-social">
+        <div className="header-social-copy">
+          <strong>Conecta con Micky</strong>
+          <em>Síguelo en sus redes</em>
+        </div>
+        <div className="header-social-icons" role="list">
+          {socialLinks.map((social) => (
+            <a
+              aria-label={social.label}
+              className="header-social-link"
+              href={social.href}
+              key={social.href}
+              rel="noopener noreferrer"
+              role="listitem"
+              target="_blank"
+            >
+              <img alt="" aria-hidden="true" height={32} src={social.icon} width={32} />
+            </a>
+          ))}
+        </div>
+      </div>
 
       <button
         aria-controls="mobile-navigation"
