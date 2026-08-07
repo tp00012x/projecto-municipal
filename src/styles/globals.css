@@ -2410,6 +2410,119 @@ video {
 }
 
 /**
+ * Team member profile popover / Perfil emergente del regidor
+ * Appears on hover, focus, or when centered on mobile
+ * Aparece al pasar el cursor, recibir foco o centrarse en móvil
+ */
+.team-profile-popup {
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  width: min(520px, calc(100vw - 24px));
+  max-height: min(420px, calc(100vh - 24px));
+  overflow: hidden;
+  border: 0;
+  border-radius: 14px;
+  background: var(--paper);
+  box-shadow:
+    0 16px 40px rgba(21, 21, 21, 0.12),
+    0 4px 12px rgba(21, 21, 21, 0.06);
+  pointer-events: auto;
+  animation: team-profile-enter 180ms ease-out;
+}
+
+.team-profile-popup-mobile {
+  width: auto;
+  max-height: min(52vh, 420px);
+}
+
+@keyframes team-profile-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.team-profile-popup-above {
+  animation-name: team-profile-enter-above;
+}
+
+@keyframes team-profile-enter-above {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.team-profile-accent {
+  flex: 0 0 auto;
+  height: 3px;
+  background: var(--purple-700);
+}
+
+.team-profile-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  padding: 22px 26px 24px;
+  text-align: left;
+}
+
+.team-profile-role {
+  margin: 0;
+  color: var(--purple-700);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.team-profile-name {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.team-profile-bio {
+  margin: 4px 0 0;
+  flex: 1;
+  overflow-y: auto;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.7;
+  scrollbar-color: rgba(91, 45, 144, 0.35) transparent;
+  scrollbar-width: thin;
+}
+
+.team-profile-bio::-webkit-scrollbar {
+  width: 6px;
+}
+
+.team-profile-bio::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(91, 45, 144, 0.35);
+}
+
+.team-card:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+}
+
+/**
  * Navigation arrows / Flechas de navegación
  * Positioned on left and right sides / Posicionadas a los lados izquierdo y derecho
  */

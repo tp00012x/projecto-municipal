@@ -68,6 +68,7 @@ export const councilMembers = [
     alt: "Angela Nessy Valdivia Murgueytio - Regidora #1",
     objectPosition: "50% 18%",
     imageScale: 1,
+    bio: "Angela, creció en el distrito, estudió en el colegio Canonesas de la Cruz y luego en la Universidad de Lima, cursó la carrera de Comunicaciones con especialidad en marketing, publicidad y comunicación corporativa, además es docente universitaria. Su experiencia académica y profesional le permite aportar una mirada estratégica y creativa a la gestión municipal y sabe que para gobernar primero hay que escuchar las necesidades reales de la comunidad. Su visión es clara: un Pueblo Libre con obras duraderas, bien hechas y con seguimiento permanente, que no se deterioren a los pocos meses ni queden en el abandono. Por eso, su compromiso como Regidora N.º 1 es garantizar que cada decisión municipal se tome con responsabilidad, transparencia y pensando en el bienestar de todos.",
   },
   {
     id: 2,
@@ -78,6 +79,7 @@ export const councilMembers = [
     alt: "Hermai Alfaro Roncal - Regidor #2",
     objectPosition: "50% 22%",
     imageScale: 1,
+    bio: "Hermai, un vecino como nosotros, con raíces que abrazan la diversidad y la fuerza de nuestro Perú. Del temple de Cajamarca y la firmeza del Cusco por sus abuelos, creció con la fuerza de Puno, para luego llegar a nuestro querido Pueblo Libre. A orillas del Titicaca, se formó como Ecólogo en la Universidad Nacional del Altiplano. Aprendió que la naturaleza y la vida humana deben convivir en equilibrio. Y esa visión es la que trae al distrito. Como presidente de uno de los comités vecinales del Sector 7, escucha a los vecinos y ha visto una realidad que no podemos seguir ignorando: nuestro distrito crece hacia arriba, pero se queda sin aire. Coincide en que Pueblo Libre no necesita más cemento a ciegas; necesita equilibrio, pulmones verdes y gestión con sentido común. Hermai es ecólogo, dirigente vecinal y, sobre todo, un vecino dispuesto a defender nuestro derecho a vivir bien.",
   },
   {
     id: 3,
@@ -88,6 +90,7 @@ export const councilMembers = [
     alt: "Sonia Eloisa Montes Ccaccro - Regidora #3",
     objectPosition: "50% 22%",
     imageScale: 1,
+    bio: "Sonia es socióloga y magister en Gerencia Social con especializaciones en marketing, investigación de mercados y gestión de proyectos. Cuenta con una amplia experiencia liderando proyectos en instituciones educativas y organizaciones de reconocido prestigio, aportando al desarrollo de iniciativas con impacto social y educativo. Ha dedicado parte de su vida al servicio de la comunidad, participado como voluntaria, llevando actividades artísticas y recreativas a niños, jóvenes y adultos en situación de vulnerabilidad, convencida de que el arte también transforma vidas.",
   },
   {
     id: 5,
@@ -98,6 +101,7 @@ export const councilMembers = [
     alt: "Nicole Milene Cordero Téllez - Regidora #5",
     objectPosition: "50% 24%",
     imageScale: 1,
+    bio: "Nicole estudió Economía y Negocios Internacionales, y cuenta con experiencia en licitaciones y comercio exterior. Actualmente se desempeña en la gestión de procesos de contrataciones públicas y privadas, aplicando su experiencia para contribuir al desarrollo de proyectos con eficiencia, responsabilidad y transparencia. Como vecina del Sector 2, conoce de cerca la realidad del distrito y las necesidades de sus vecinos. Cree en una gestión cercana, transparente y comprometida. Nicole, busca contribuir a la construcción de un distrito más seguro, con parques y áreas verdes recuperados y bien mantenidos, pistas y veredas en mejores condiciones y más espacios para fomentar el deporte y la integración de las familias. Aspira a un distrito ordenado, moderno y atractivo, del que los vecinos se sientan orgullosos y que vuelva a ser un referente para quienes lo visitan.",
   },
   {
     id: 7,
@@ -108,6 +112,7 @@ export const councilMembers = [
     alt: "Sara Rita Rodriguez Cordova - Regidora #7",
     objectPosition: "50% 40%",
     imageScale: 0.94,
+    bio: "Sara cuenta con más de seis años de experiencia en Gestión Humana, actualmente se desempeña como Coordinadora de Incorporación y Onboarding en una empresa multinacional del sector de maquinaria pesada. A lo largo de su trayectoria, ha trabajado en distintas áreas de gestión de personas, desarrollando habilidades de liderazgo, organización, trabajo en equipo y gestión de talento. Esta experiencia le permite comprender cómo construir equipos sólidos, motivados y enfocados en resultados. Como regidora, su compromiso es aportar esa visión a la gestión municipal: Fortalecer la eficiencia y transparencia en los procesos internos de la municipalidad, impulsar una cultura de servicio cercano al vecino, donde cada decisión esté orientada a responder a sus necesidades reales y prioritarias. Buscará fomentar la participación y el bienestar comunitario, aplicando principios de gestión humana para que Pueblo Libre sea un distrito ordenado, moderno y humano. Esta convencida de que una gestión municipal exitosa no depende solo de normas y procedimientos, sino de personas comprometidas y motivadas que trabajen con responsabilidad y vocación de servicio.",
   },
   {
     id: 8,
@@ -118,6 +123,7 @@ export const councilMembers = [
     alt: "Leonardo Alcedo - Regidor #8",
     objectPosition: "50% 38%",
     imageScale: 0.95,
+    bio: "Leonardo, es estudiante de Comunicación y Periodismo, además de creador de contenido y fotógrafo independiente. Su motivación para postularse como regidor nace de la convicción de que la política local necesita renovación, preparación y una visión moderna de la comunicación y la gestión. Como vecino del Sector 1, he estado cerca de las realidades de nuestro distrito, informando y registrando lo que ocurre en nuestras calles. Su compromiso es claro: Impulsar oportunidades laborales y de emprendimiento para los jóvenes de Pueblo Libre, potenciar la transparencia y la participación ciudadana mediante contenido digital de valor y registros fotográficos que acerquen la gestión municipal a los vecinos. Aspira a que Pueblo Libre sea un distrito ordenado, atractivo y lleno de oportunidades para todos.",
   },
   {
     id: 9,
@@ -128,6 +134,7 @@ export const councilMembers = [
     alt: "Sandra Alexandra Legua Blotte - Regidora #9",
     objectPosition: "50% 44%",
     imageScale: 0.93,
+    bio: "Sandra es Geógrafa egresada de la Universidad Nacional Mayor de San Marcos, con especialidad en planificación urbana, catastro y ordenamiento territorial, lo cual nos ayudará para retomar la armonía en la convivencia del distrito. Participó en el voluntariado de Conservación de Flora y Fauna Silvestre y complementó sus estudios con una especialización en supervisión en medio ambiente y monitoreo ambiental. Además de cursos en sistemas de logística en el estado. Sandra desea que Pueblo Libre sea un distrito ordenado en lo urbano y seguro en lo social, que se gestione culturalmente, que sea reconocido y atractivo y se desarrolle de manera sostenible.",
   },
   {
     id: 11,
@@ -138,6 +145,7 @@ export const councilMembers = [
     alt: "Paola Milene Tellez Rosas - Regidora #11",
     objectPosition: "50% 20%",
     imageScale: 1,
+    bio: "Paola es una vecina que vive y respira la realidad de Pueblo Libre. Contadora Pública con 20 años de experiencia y Conciliadora Familiar, entiende que el diálogo es el motor de una comunidad fuerte. Su vocación de servicio no nació con esta candidatura: como dirigente vecinal de la Zona 2, ya demostró su capacidad de gestión trabajando con la Municipalidad para instalar cámaras de seguridad, renovar la iluminación y recuperar áreas verdes. Su compromiso siempre se ha basado en el trabajo constante por su barrio. Hoy postula como Regidora para construir un distrito seguro, ordenado y moderno. Su gestión se enfocará en una fiscalización firme, la recuperación urgente de pistas y veredas, el respeto a la zonificación y la creación de oportunidades para jóvenes y emprendedores. Además, trabajará para revitalizar nuestros parques, huacas y espacios públicos, incluyendo zonas adecuadas para mascotas. Paola representa una política distinta: es la autoridad honesta y cercana que los vecinos merecen, dispuesta a escuchar, actuar y cumplir.",
   },
 ];
 

@@ -1,12 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import MotionReveal from "~/components/MotionReveal";
+import TeamMemberProfile from "~/components/TeamMemberProfile";
 import { councilMembers } from "~/data/site";
 
 /** Auto-advance interval in ms / Intervalo de avance automático en ms */
 const AUTOPLAY_MS = 2500;
+
+/** Close delay to prevent flicker / Retraso de cierre para evitar parpadeos */
+const CLOSE_DELAY_MS = 220;
+
+/** Mobile breakpoint aligned with site styles / Breakpoint móvil alineado con estilos del sitio */
+const MOBILE_QUERY = "(max-width: 767px)";
 
 /**
  * Team Gallery Component with Carousel / Componente de Galería de Equipo con Carrusel
@@ -15,12 +28,83 @@ const AUTOPLAY_MS = 2500;
  * - Scroll horizontal en el contenedor (no scrollIntoView en la página)
  * - Auto-advance "ruleta" with pause on hover or manual interaction
  * - Avance automático tipo ruleta con pausa al interactuar
+ * - Hover/focus profile popover for each council member card
+ * - Perfil emergente al pasar el cursor o recibir foco por teclado
  */
 export default function TeamGallery() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [activeProfileIndex, setActiveProfileIndex] = useState<number | null>(
+    null,
+  );
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileProfileDismissed, setMobileProfileDismissed] = useState(false);
   const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const clearCloseTimer = useCallback(() => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  }, []);
+
+  const openProfile = useCallback(
+    (index: number) => {
+      clearCloseTimer();
+      setActiveProfileIndex(index);
+    },
+    [clearCloseTimer],
+  );
+
+  const scheduleClose = useCallback(() => {
+    if (isMobile) return;
+
+    clearCloseTimer();
+    closeTimerRef.current = setTimeout(() => {
+      setActiveProfileIndex(null);
+    }, CLOSE_DELAY_MS);
+  }, [clearCloseTimer, isMobile]);
+
+  const closeProfile = useCallback(() => {
+    clearCloseTimer();
+    if (isMobile) {
+      setMobileProfileDismissed(true);
+      return;
+    }
+    setActiveProfileIndex(null);
+  }, [clearCloseTimer, isMobile]);
+
+  useEffect(() => {
+    const media = window.matchMedia(MOBILE_QUERY);
+    const syncMobile = () => setIsMobile(media.matches);
+    syncMobile();
+    media.addEventListener("change", syncMobile);
+    return () => media.removeEventListener("change", syncMobile);
+  }, []);
+
+  useEffect(() => {
+    setMobileProfileDismissed(false);
+  }, [currentSlide]);
+
+  useEffect(() => {
+    if (!isMobile || mobileProfileDismissed) return;
+    setActiveProfileIndex(currentSlide);
+  }, [currentSlide, isMobile, mobileProfileDismissed]);
+
+  useEffect(() => {
+    if (activeProfileIndex === null) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeProfile();
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [activeProfileIndex, closeProfile]);
 
   /**
    * Scroll the carousel container to a specific slide index.
@@ -90,7 +174,7 @@ export default function TeamGallery() {
    * Pauses while hovered or after manual navigation.
    */
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || activeProfileIndex !== null) return;
 
     autoplayRef.current = setInterval(() => {
       setCurrentSlide((prev) => {
@@ -117,13 +201,20 @@ export default function TeamGallery() {
     return () => {
       if (autoplayRef.current) clearInterval(autoplayRef.current);
     };
-  }, [isPaused]);
+  }, [isPaused, activeProfileIndex]);
 
   const handleManualNav = (action: () => void) => {
     setIsPaused(true);
     action();
     window.setTimeout(() => setIsPaused(false), AUTOPLAY_MS * 2);
   };
+
+  const activeMember =
+    activeProfileIndex !== null ? councilMembers[activeProfileIndex] : null;
+  const activeAnchor =
+    activeProfileIndex !== null
+      ? (cardRefs.current[activeProfileIndex] ?? null)
+      : null;
 
   return (
     <section className="section gallery-section" id="equipo">
@@ -169,7 +260,31 @@ export default function TeamGallery() {
                 aria-roledescription="slide"
                 aria-label={`${index + 1} de ${councilMembers.length}`}
               >
-                <div className="team-card">
+                <div
+                  ref={(element) => {
+                    cardRefs.current[index] = element;
+                  }}
+                  className="team-card"
+                  tabIndex={0}
+                  aria-describedby={
+                    activeProfileIndex === index
+                      ? `team-profile-${member.id}`
+                      : undefined
+                  }
+                  onMouseEnter={() => openProfile(index)}
+                  onMouseLeave={scheduleClose}
+                  onFocus={() => openProfile(index)}
+                  onBlur={(event) => {
+                    const nextTarget = event.relatedTarget as Node | null;
+                    if (
+                      nextTarget &&
+                      event.currentTarget.contains(nextTarget)
+                    ) {
+                      return;
+                    }
+                    scheduleClose();
+                  }}
+                >
                   <div className="team-card-image">
                     <div
                       className="team-card-photo-frame"
@@ -260,6 +375,16 @@ export default function TeamGallery() {
           </div>
         </div>
       </div>
+
+      {activeMember ? (
+        <TeamMemberProfile
+          member={activeMember}
+          anchorEl={activeAnchor}
+          isMobile={isMobile}
+          onPointerEnter={clearCloseTimer}
+          onPointerLeave={scheduleClose}
+        />
+      ) : null}
     </section>
   );
 }
