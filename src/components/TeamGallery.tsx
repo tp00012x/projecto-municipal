@@ -7,6 +7,8 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type MouseEvent as ReactMouseEvent,
 } from "react";
 import MotionReveal from "~/components/MotionReveal";
 import TeamMemberProfile from "~/components/TeamMemberProfile";
@@ -18,8 +20,8 @@ const AUTOPLAY_MS = 2500;
 /** Close delay to prevent flicker / Retraso de cierre para evitar parpadeos */
 const CLOSE_DELAY_MS = 220;
 
-/** Mobile breakpoint aligned with site styles / Breakpoint móvil alineado con estilos del sitio */
-const MOBILE_QUERY = "(max-width: 767px)";
+/** Touch-primary devices / Dispositivos con interacción táctil primaria */
+const TOUCH_QUERY = "(hover: none) and (pointer: coarse)";
 
 /**
  * Team Gallery Component with Carousel / Componente de Galería de Equipo con Carrusel
@@ -28,8 +30,8 @@ const MOBILE_QUERY = "(max-width: 767px)";
  * - Scroll horizontal en el contenedor (no scrollIntoView en la página)
  * - Auto-advance "ruleta" with pause on hover or manual interaction
  * - Avance automático tipo ruleta con pausa al interactuar
- * - Hover/focus profile popover for each council member card
- * - Perfil emergente al pasar el cursor o recibir foco por teclado
+ * - Hover/focus profile popover on pointer devices; photo tap on touch
+ * - Perfil emergente con hover/foco en puntero fino; toque en foto en táctil
  */
 export default function TeamGallery() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -41,8 +43,7 @@ export default function TeamGallery() {
   const [activeProfileIndex, setActiveProfileIndex] = useState<number | null>(
     null,
   );
-  const [isMobile, setIsMobile] = useState(false);
-  const [mobileProfileDismissed, setMobileProfileDismissed] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const clearCloseTimer = useCallback(() => {
@@ -61,39 +62,26 @@ export default function TeamGallery() {
   );
 
   const scheduleClose = useCallback(() => {
-    if (isMobile) return;
+    if (isTouchDevice) return;
 
     clearCloseTimer();
     closeTimerRef.current = setTimeout(() => {
       setActiveProfileIndex(null);
     }, CLOSE_DELAY_MS);
-  }, [clearCloseTimer, isMobile]);
+  }, [clearCloseTimer, isTouchDevice]);
 
   const closeProfile = useCallback(() => {
     clearCloseTimer();
-    if (isMobile) {
-      setMobileProfileDismissed(true);
-      return;
-    }
     setActiveProfileIndex(null);
-  }, [clearCloseTimer, isMobile]);
+  }, [clearCloseTimer]);
 
   useEffect(() => {
-    const media = window.matchMedia(MOBILE_QUERY);
-    const syncMobile = () => setIsMobile(media.matches);
-    syncMobile();
-    media.addEventListener("change", syncMobile);
-    return () => media.removeEventListener("change", syncMobile);
+    const media = window.matchMedia(TOUCH_QUERY);
+    const syncTouchDevice = () => setIsTouchDevice(media.matches);
+    syncTouchDevice();
+    media.addEventListener("change", syncTouchDevice);
+    return () => media.removeEventListener("change", syncTouchDevice);
   }, []);
-
-  useEffect(() => {
-    setMobileProfileDismissed(false);
-  }, [currentSlide]);
-
-  useEffect(() => {
-    if (!isMobile || mobileProfileDismissed) return;
-    setActiveProfileIndex(currentSlide);
-  }, [currentSlide, isMobile, mobileProfileDismissed]);
 
   useEffect(() => {
     if (activeProfileIndex === null) return;
@@ -265,35 +253,62 @@ export default function TeamGallery() {
                     cardRefs.current[index] = element;
                   }}
                   className="team-card"
-                  tabIndex={0}
+                  tabIndex={isTouchDevice ? undefined : 0}
                   aria-describedby={
-                    activeProfileIndex === index
+                    !isTouchDevice && activeProfileIndex === index
                       ? `team-profile-${member.id}`
                       : undefined
                   }
-                  onMouseEnter={() => openProfile(index)}
-                  onMouseLeave={scheduleClose}
-                  onFocus={() => openProfile(index)}
-                  onBlur={(event) => {
-                    const nextTarget = event.relatedTarget as Node | null;
-                    if (
-                      nextTarget &&
-                      event.currentTarget.contains(nextTarget)
-                    ) {
-                      return;
-                    }
-                    scheduleClose();
-                  }}
+                  onMouseEnter={
+                    isTouchDevice ? undefined : () => openProfile(index)
+                  }
+                  onMouseLeave={isTouchDevice ? undefined : scheduleClose}
+                  onFocus={
+                    isTouchDevice ? undefined : () => openProfile(index)
+                  }
+                  onBlur={
+                    isTouchDevice
+                      ? undefined
+                      : (event) => {
+                          const nextTarget = event.relatedTarget as Node | null;
+                          if (
+                            nextTarget &&
+                            event.currentTarget.contains(nextTarget)
+                          ) {
+                            return;
+                          }
+                          scheduleClose();
+                        }
+                  }
                 >
                   <div className="team-card-image">
                     <div
-                      className="team-card-photo-frame"
+                      className="team-card-photo-frame team-card-photo-trigger"
                       style={
                         {
                           "--photo-position": member.objectPosition,
                           "--photo-scale": member.imageScale,
                         } as CSSProperties
                       }
+                      {...(isTouchDevice
+                        ? {
+                            role: "button",
+                            tabIndex: 0,
+                            "aria-label": `Ver perfil de ${member.name}`,
+                            onClick: (event: ReactMouseEvent) => {
+                              event.stopPropagation();
+                              openProfile(index);
+                            },
+                            onKeyDown: (
+                              event: ReactKeyboardEvent<HTMLDivElement>,
+                            ) => {
+                              if (event.key === "Enter" || event.key === " ") {
+                                event.preventDefault();
+                                openProfile(index);
+                              }
+                            },
+                          }
+                        : {})}
                     >
                       <Image
                         key={member.src}
@@ -380,7 +395,8 @@ export default function TeamGallery() {
         <TeamMemberProfile
           member={activeMember}
           anchorEl={activeAnchor}
-          isMobile={isMobile}
+          isTouchDevice={isTouchDevice}
+          onClose={closeProfile}
           onPointerEnter={clearCloseTimer}
           onPointerLeave={scheduleClose}
         />

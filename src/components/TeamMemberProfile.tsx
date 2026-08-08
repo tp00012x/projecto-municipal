@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { CSSProperties } from "react";
+import { CloseIcon } from "~/components/Icons";
 import { councilMembers } from "~/data/site";
 
 type CouncilMember = (typeof councilMembers)[number];
@@ -16,7 +17,8 @@ type ProfilePosition = {
 type TeamMemberProfileProps = {
   member: CouncilMember;
   anchorEl: HTMLElement | null;
-  isMobile: boolean;
+  isTouchDevice: boolean;
+  onClose: () => void;
   onPointerEnter: () => void;
   onPointerLeave: () => void;
 };
@@ -60,11 +62,13 @@ function computePosition(
 export default function TeamMemberProfile({
   member,
   anchorEl,
-  isMobile,
+  isTouchDevice,
+  onClose,
   onPointerEnter,
   onPointerLeave,
 }: TeamMemberProfileProps) {
   const popupRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const [position, setPosition] = useState<ProfilePosition | null>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -72,21 +76,32 @@ export default function TeamMemberProfile({
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (!isTouchDevice) return;
+
+    closeButtonRef.current?.focus();
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isTouchDevice, member.id]);
+
   const updatePosition = useCallback(() => {
     const popup = popupRef.current;
-    if (!popup || !anchorEl) return;
+    if (!popup || !anchorEl || isTouchDevice) return;
 
     const anchorRect = anchorEl.getBoundingClientRect();
     const popupRect = popup.getBoundingClientRect();
     setPosition(computePosition(anchorRect, popupRect));
-  }, [anchorEl]);
+  }, [anchorEl, isTouchDevice]);
 
   useLayoutEffect(() => {
     updatePosition();
-  }, [updatePosition, member.id, isMobile]);
+  }, [updatePosition, member.id, isTouchDevice]);
 
   useEffect(() => {
-    if (!anchorEl) return;
+    if (!anchorEl || isTouchDevice) return;
 
     const handleReposition = () => updatePosition();
 
@@ -97,18 +112,12 @@ export default function TeamMemberProfile({
       window.removeEventListener("resize", handleReposition);
       window.removeEventListener("scroll", handleReposition, true);
     };
-  }, [anchorEl, updatePosition]);
+  }, [anchorEl, isTouchDevice, updatePosition]);
 
   if (!mounted) return null;
 
-  const popupStyle: CSSProperties = isMobile
-    ? {
-        position: "fixed",
-        left: VIEWPORT_MARGIN,
-        right: VIEWPORT_MARGIN,
-        bottom: VIEWPORT_MARGIN,
-        top: "auto",
-      }
+  const popupStyle: CSSProperties | undefined = isTouchDevice
+    ? undefined
     : position
       ? {
           position: "fixed",
@@ -122,26 +131,59 @@ export default function TeamMemberProfile({
           visibility: "hidden" as const,
         };
 
-  return createPortal(
+  const popup = (
     <div
       ref={popupRef}
-      className={`team-profile-popup${isMobile ? " team-profile-popup-mobile" : ""}${position?.placement === "above" ? " team-profile-popup-above" : ""}`}
+      className={`team-profile-popup${isTouchDevice ? " team-profile-popup-mobile" : ""}${position?.placement === "above" ? " team-profile-popup-above" : ""}`}
       style={popupStyle}
-      onMouseEnter={onPointerEnter}
-      onMouseLeave={onPointerLeave}
-      role="tooltip"
+      onMouseEnter={isTouchDevice ? undefined : onPointerEnter}
+      onMouseLeave={isTouchDevice ? undefined : onPointerLeave}
+      role={isTouchDevice ? "dialog" : "tooltip"}
+      aria-modal={isTouchDevice ? true : undefined}
+      aria-labelledby={`team-profile-name-${member.id}`}
       id={`team-profile-${member.id}`}
+      onClick={isTouchDevice ? (event) => event.stopPropagation() : undefined}
     >
+      {isTouchDevice ? (
+        <button
+          ref={closeButtonRef}
+          aria-label="Cerrar perfil"
+          className="team-profile-close"
+          onClick={onClose}
+          type="button"
+        >
+          <CloseIcon />
+        </button>
+      ) : null}
+
       <div className="team-profile-accent" aria-hidden="true" />
 
       <div className="team-profile-content">
         <p className="team-profile-role">
           {member.position} #{member.number}
         </p>
-        <h4 className="team-profile-name">{member.name}</h4>
+        <h4 className="team-profile-name" id={`team-profile-name-${member.id}`}>
+          {member.name}
+        </h4>
         <p className="team-profile-bio">{member.bio}</p>
       </div>
-    </div>,
-    document.body,
+    </div>
   );
+
+  if (isTouchDevice) {
+    return createPortal(
+      <div className="team-profile-overlay" role="presentation">
+        <button
+          aria-label="Cerrar perfil"
+          className="team-profile-backdrop"
+          onClick={onClose}
+          type="button"
+        />
+        {popup}
+      </div>,
+      document.body,
+    );
+  }
+
+  return createPortal(popup, document.body);
 }

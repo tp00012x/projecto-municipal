@@ -2412,10 +2412,12 @@ video {
     border-color 280ms ease;
 }
 
-.team-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--purple-line);
-  box-shadow: var(--shadow);
+@media (hover: hover) and (pointer: fine) {
+  .team-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--purple-line);
+    box-shadow: var(--shadow);
+  }
 }
 
 .team-card-image {
@@ -2439,8 +2441,42 @@ video {
   transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.team-card:hover .team-card-photo {
-  transform: scale(calc(var(--photo-scale, 1) * 1.03));
+@media (hover: hover) and (pointer: fine) {
+  .team-card:hover .team-card-photo {
+    transform: scale(calc(var(--photo-scale, 1) * 1.03));
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .team-card-photo-trigger {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .team-card-photo-trigger::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 0 rgba(91, 45, 144, 0);
+    transition:
+      box-shadow 220ms ease,
+      background-color 220ms ease;
+    pointer-events: none;
+  }
+
+  .team-card-photo-trigger:active::after {
+    background-color: rgba(91, 45, 144, 0.08);
+    box-shadow: inset 0 0 0 2px rgba(91, 45, 144, 0.28);
+  }
+
+  .team-card-photo-trigger:focus-visible::after {
+    box-shadow: inset 0 0 0 2px rgba(91, 45, 144, 0.45);
+  }
+
+  .team-card-photo-trigger:active .team-card-photo {
+    transform: scale(calc(var(--photo-scale, 1) * 0.98));
+  }
 }
 
 .team-card-info {
@@ -2480,8 +2516,8 @@ video {
 
 /**
  * Team member profile popover / Perfil emergente del regidor
- * Appears on hover, focus, or when centered on mobile
- * Aparece al pasar el cursor, recibir foco o centrarse en móvil
+ * Appears on hover or focus on pointer devices; photo tap on touch
+ * Aparece con hover o foco en puntero fino; toque en foto en táctil
  */
 .team-profile-popup {
   z-index: 120;
@@ -2500,9 +2536,72 @@ video {
   animation: team-profile-enter 180ms ease-out;
 }
 
+.team-profile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 119;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 12px;
+}
+
+.team-profile-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border: 0;
+  background: rgba(21, 21, 21, 0.52);
+  animation: team-profile-backdrop-enter 200ms ease both;
+  cursor: pointer;
+}
+
 .team-profile-popup-mobile {
+  position: relative;
+  z-index: 1;
   width: auto;
   max-height: min(52vh, 420px);
+  margin: 0;
+  align-self: stretch;
+}
+
+.team-profile-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--purple-700);
+  box-shadow: 0 2px 8px rgba(21, 21, 21, 0.08);
+  cursor: pointer;
+}
+
+.team-profile-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .team-profile-close:hover {
+    border-color: var(--purple-line);
+    background: var(--surface-purple);
+  }
+}
+
+@keyframes team-profile-backdrop-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes team-profile-enter {
@@ -2547,6 +2646,11 @@ video {
   min-height: 0;
   padding: 22px 26px 24px;
   text-align: left;
+}
+
+.team-profile-popup-mobile .team-profile-content {
+  padding-top: 28px;
+  padding-right: 52px;
 }
 
 .team-profile-role {
