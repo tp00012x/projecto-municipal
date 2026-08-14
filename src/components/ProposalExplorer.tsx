@@ -246,7 +246,7 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
               <div>
                 <p className="eyebrow">Galería de propuestas</p>
                 <h2>
-                  23 propuestas.
+                  24 propuestas.
                   <span> Una lectura simple.</span>
                 </h2>
               </div>

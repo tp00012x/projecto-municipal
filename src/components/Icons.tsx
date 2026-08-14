@@ -65,6 +65,10 @@ export function CloseIcon(props: IconProps) {
   return <X aria-hidden="true" {...props} />;
 }
 
+export function EyeIcon(props: IconProps) {
+  return <Eye aria-hidden="true" {...props} />;
+}
+
 export function SparkIcon(props: IconProps) {
   return <Sparkles aria-hidden="true" {...props} />;
 }

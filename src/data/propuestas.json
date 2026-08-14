@@ -2,7 +2,7 @@
   {
     "id": "propuesta-01",
     "numero": 1,
-    "titulo": "Centro de Cuidado Diurno \"Manos que cuidan",
+    "titulo": "Centro de Cuidado Diurno Manos que cuidan",
     "categoria": "Cuidado",
     "dimension": "Social",
     "diagnostico": "En Pueblo Libre, los adultos mayores representan aproximadamente el 14,0 % de la población total. El distrito destaca por ser uno de los cuatro con mayor concentración de personas de la tercera edad en Lima Metropolitana. Muchos adultos mayores pasan largas horas solos en casa mientras sus familiares trabajan, lo que genera riesgo de aislamiento, depresión y problemas de salud. La oferta de servicios de cuidado diurno es limitada; si bien existen programas recreativos, pero no un espacio integral que combine cuidado, alimentación, actividades y supervisión médica básica. Familias del distrito expresan la necesidad de contar con un lugar seguro y confiable donde puedan dejar a sus padres durante la jornada laboral.",
@@ -290,7 +290,7 @@
   {
     "id": "propuesta-15",
     "numero": 15,
-    "titulo": "Programa de Renovación Urbana Integral \"Nuevo 07 de Junio",
+    "titulo": "Programa de Renovación Urbana Integral Nuevo 07 de Junio",
     "categoria": "Desarrollo urbano",
     "dimension": "Ambiental",
     "diagnostico": "El asentamiento humano \"07 de Junio\" representa un foco crítico histórico identificado con marcadas brechas en el ordenamiento del suelo, saneamiento físico -legal e infraestructura urbana deficiente.",
@@ -423,7 +423,7 @@
   {
     "id": "propuesta-21",
     "numero": 21,
-    "titulo": "Gobierno Abierto y Control Ciudadano \"Cada Sol de los Vecinos Será Vigilado por los Vecinos",
+    "titulo": "Control Ciudadano Cada Sol de los Vecinos Será Vigilado por los Vecinos",
     "categoria": "Transparencia",
     "dimension": "Institucional",
     "diagnostico": "Los diagnósticos participativos y las demandas vecinales evidencian una creciente preocupación por la transparencia en el uso de los recursos públicos, especialmente en los procesos de compras, contratación de servicios, ejecución de obras y manejo presupuestal. Esta situación genera desconfianza ciudadana y lim ita la participación activa de los vecinos en la gestión municipal.",
@@ -492,5 +492,25 @@
       "Lograr 50 alianzas con negocios locales para el primer año."
     ],
     "viabilidad": "S/. 120,000 para la creación del carnet físico y virtual y campañas de difusión."
+  },
+  {
+    "id": "propuesta-24",
+    "numero": 24,
+    "titulo": "Programa de Renovación Urbana Integral Mi Perú",
+    "categoria": "Desarrollo urbano",
+    "dimension": "Ambiental",
+    "diagnostico": "El asentamiento humano \"07 de Junio\" representa un foco crítico histórico identificado con marcadas brechas en el ordenamiento del suelo, saneamiento físico -legal e infraestructura urbana deficiente.",
+    "objetivo": "Elevar las condiciones de habitabilidad, seguridad y formalización territorial del distrito, en estricta línea con el OEI.01 (Condiciones de habitabilidad) del PEI.",
+    "acciones": [
+      "Realizar el levantamiento catastral digital 3D de alta precisión mediante drones de la municipalidad, habilitando un portal de consulta web transparente (Gobierno Abierto) para que los vecinos jóvenes sigan el estado del saneamiento de sus predios paso a paso."
+    ],
+    "metas": [
+      "Elaborar e implementar el Catastro Digital 3D del 100% del sector 07 de Junio.",
+      "Realizar el saneamiento físico-legal de 1,000 predios urbanos.",
+      "Gestionar la incorporación de 500 familias a programas de vivienda promovidos por el Ministerio de Vivienda.",
+      "Implementar un portal digital de seguimiento ciudadano con acceso público al estado de cada expediente.",
+      "Incrementar en 50% el valor urbano y habitacional de los predios beneficiados al culminar los procesos de formalización."
+    ],
+    "viabilidad": "Asignación municipal de S/ 1,000,000 destinados a estudios técnicos de ingeniería y delimitación legal. La ejecución de las obras estructurales de vivienda y pistas se canalizará mediante un Convenio con el Ministerio de Vivienda, Construcción y Saneamiento (MVCS) a través del programa integral Techo Propio y fondos Mivivienda."
   }
 ]

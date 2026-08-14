@@ -30,11 +30,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase,
     title: {
-      default: "Plan Municipal Pueblo Libre 2027–2030 | 23 propuestas",
+      default: "Plan Municipal Pueblo Libre 2027–2030 | 24 propuestas",
       template: "%s | Pueblo Libre 2027–2030",
     },
     description:
-      "Explora de forma clara y accesible las 23 propuestas atribuidas al Plan de Gobierno Municipal 2027–2030 asociado a la candidatura de Micky Ruiz.",
+      "Explora de forma clara y accesible las 24 propuestas atribuidas al Plan de Gobierno Municipal 2027–2030 asociado a la candidatura de Micky Ruiz.",
     keywords: [
       "Pueblo Libre",
       "Plan de Gobierno",
@@ -60,7 +60,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: "Plan Municipal Pueblo Libre 2027–2030",
       description:
-        "Una plataforma informativa para revisar, comparar y comentar 23 propuestas municipales.",
+        "Una plataforma informativa para revisar, comparar y comentar 24 propuestas municipales.",
       type: "website",
       locale: "es_PE",
       siteName: "Pueblo Libre 2027–2030",
@@ -69,14 +69,14 @@ export async function generateMetadata(): Promise<Metadata> {
           url: "/og.png",
           width: 1738,
           height: 909,
-          alt: "Pueblo Libre 2027–2030: 23 propuestas explicadas con claridad",
+          alt: "Pueblo Libre 2027–2030: 24 propuestas explicadas con claridad",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
       title: "Plan Municipal Pueblo Libre 2027–2030",
-      description: "Revisa, compara y comenta 23 propuestas municipales.",
+      description: "Revisa, compara y comenta 24 propuestas municipales.",
       images: ["/og.png"],
     },
     alternates: {
@@ -94,7 +94,7 @@ export default function RootLayout({
     name: "Pueblo Libre 2027–2030",
     inLanguage: "es-PE",
     description:
-      "Plataforma informativa sobre 23 propuestas del Plan de Gobierno Municipal 2027–2030.",
+      "Plataforma informativa sobre 24 propuestas del Plan de Gobierno Municipal 2027–2030.",
     about: {
       "@type": "GovernmentService",
       name: "Propuestas municipales para Pueblo Libre 2027–2030",

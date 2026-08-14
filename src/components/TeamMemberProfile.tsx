@@ -17,13 +17,11 @@ type ProfilePosition = {
 type TeamMemberProfileProps = {
   member: CouncilMember;
   anchorEl: HTMLElement | null;
-  isTouchDevice: boolean;
   onClose: () => void;
-  onPointerEnter: () => void;
-  onPointerLeave: () => void;
 };
 
 const VIEWPORT_MARGIN = 12;
+const MOBILE_LAYOUT_QUERY = "(max-width: 767px)";
 
 function computePosition(
   anchorRect: DOMRect,
@@ -62,46 +60,50 @@ function computePosition(
 export default function TeamMemberProfile({
   member,
   anchorEl,
-  isTouchDevice,
   onClose,
-  onPointerEnter,
-  onPointerLeave,
 }: TeamMemberProfileProps) {
   const popupRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const [position, setPosition] = useState<ProfilePosition | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [isMobileLayout, setIsMobileLayout] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (!isTouchDevice) return;
+    const media = window.matchMedia(MOBILE_LAYOUT_QUERY);
+    const syncLayout = () => setIsMobileLayout(media.matches);
+    syncLayout();
+    media.addEventListener("change", syncLayout);
+    return () => media.removeEventListener("change", syncLayout);
+  }, []);
 
+  useEffect(() => {
     closeButtonRef.current?.focus();
     document.body.style.overflow = "hidden";
 
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isTouchDevice, member.id]);
+  }, [member.id]);
 
   const updatePosition = useCallback(() => {
     const popup = popupRef.current;
-    if (!popup || !anchorEl || isTouchDevice) return;
+    if (!popup || !anchorEl || isMobileLayout) return;
 
     const anchorRect = anchorEl.getBoundingClientRect();
     const popupRect = popup.getBoundingClientRect();
     setPosition(computePosition(anchorRect, popupRect));
-  }, [anchorEl, isTouchDevice]);
+  }, [anchorEl, isMobileLayout]);
 
   useLayoutEffect(() => {
     updatePosition();
-  }, [updatePosition, member.id, isTouchDevice]);
+  }, [updatePosition, member.id, isMobileLayout]);
 
   useEffect(() => {
-    if (!anchorEl || isTouchDevice) return;
+    if (!anchorEl || isMobileLayout) return;
 
     const handleReposition = () => updatePosition();
 
@@ -112,11 +114,11 @@ export default function TeamMemberProfile({
       window.removeEventListener("resize", handleReposition);
       window.removeEventListener("scroll", handleReposition, true);
     };
-  }, [anchorEl, isTouchDevice, updatePosition]);
+  }, [anchorEl, isMobileLayout, updatePosition]);
 
   if (!mounted) return null;
 
-  const popupStyle: CSSProperties | undefined = isTouchDevice
+  const popupStyle: CSSProperties | undefined = isMobileLayout
     ? undefined
     : position
       ? {
@@ -131,20 +133,24 @@ export default function TeamMemberProfile({
           visibility: "hidden" as const,
         };
 
-  const popup = (
-    <div
-      ref={popupRef}
-      className={`team-profile-popup${isTouchDevice ? " team-profile-popup-mobile" : ""}${position?.placement === "above" ? " team-profile-popup-above" : ""}`}
-      style={popupStyle}
-      onMouseEnter={isTouchDevice ? undefined : onPointerEnter}
-      onMouseLeave={isTouchDevice ? undefined : onPointerLeave}
-      role={isTouchDevice ? "dialog" : "tooltip"}
-      aria-modal={isTouchDevice ? true : undefined}
-      aria-labelledby={`team-profile-name-${member.id}`}
-      id={`team-profile-${member.id}`}
-      onClick={isTouchDevice ? (event) => event.stopPropagation() : undefined}
-    >
-      {isTouchDevice ? (
+  return createPortal(
+    <div className="team-profile-overlay" role="presentation">
+      <button
+        aria-label="Cerrar perfil"
+        className="team-profile-backdrop"
+        onClick={onClose}
+        type="button"
+      />
+      <div
+        ref={popupRef}
+        className={`team-profile-popup${position?.placement === "above" ? " team-profile-popup-above" : ""}`}
+        style={popupStyle}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={`team-profile-name-${member.id}`}
+        id={`team-profile-${member.id}`}
+        onClick={(event) => event.stopPropagation()}
+      >
         <button
           ref={closeButtonRef}
           aria-label="Cerrar perfil"
@@ -154,36 +160,20 @@ export default function TeamMemberProfile({
         >
           <CloseIcon />
         </button>
-      ) : null}
 
-      <div className="team-profile-accent" aria-hidden="true" />
+        <div className="team-profile-accent" aria-hidden="true" />
 
-      <div className="team-profile-content">
-        <p className="team-profile-role">
-          {member.position} #{member.number}
-        </p>
-        <h4 className="team-profile-name" id={`team-profile-name-${member.id}`}>
-          {member.name}
-        </h4>
-        <p className="team-profile-bio">{member.bio}</p>
+        <div className="team-profile-content">
+          <p className="team-profile-role">
+            {member.position} #{member.number}
+          </p>
+          <h4 className="team-profile-name" id={`team-profile-name-${member.id}`}>
+            {member.name}
+          </h4>
+          <p className="team-profile-bio">{member.bio}</p>
+        </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
-
-  if (isTouchDevice) {
-    return createPortal(
-      <div className="team-profile-overlay" role="presentation">
-        <button
-          aria-label="Cerrar perfil"
-          className="team-profile-backdrop"
-          onClick={onClose}
-          type="button"
-        />
-        {popup}
-      </div>,
-      document.body,
-    );
-  }
-
-  return createPortal(popup, document.body);
 }

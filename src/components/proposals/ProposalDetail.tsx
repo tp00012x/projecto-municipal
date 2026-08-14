@@ -43,7 +43,7 @@ export default function ProposalDetail({
       <div className="proposal-detail-toolbar">
         <button className="detail-back-link" onClick={onBack} type="button">
           <ArrowLeftIcon />
-          Volver a las 23 propuestas
+          Volver a las 24 propuestas
         </button>
         <span>
           {index + 1} / {total}

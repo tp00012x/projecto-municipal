@@ -16,7 +16,7 @@ export default function Footer() {
         <div>
           <strong>Explorar</strong>
           <a href="#vision">Visión de desarrollo</a>
-          <a href="#propuestas">23 propuestas</a>
+          <a href="#propuestas">24 propuestas</a>
           <a href="#equipo">Nuestro equipo</a>
         </div>
         <div>

@@ -2434,6 +2434,88 @@ video {
   inset: 0;
 }
 
+.team-card-photo-trigger {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.team-card-photo-trigger::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(21, 21, 21, 0);
+  transition: background-color 220ms ease;
+  pointer-events: none;
+}
+
+.team-card-photo-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(21, 21, 21, 0.58);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity 220ms ease;
+}
+
+.team-card-photo-hint-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.team-card-photo-trigger:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: -3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .team-card-photo-trigger:hover::before,
+  .team-card-photo-trigger:focus-visible::before {
+    background: rgba(21, 21, 21, 0.16);
+  }
+
+  .team-card-photo-trigger:hover .team-card-photo-hint,
+  .team-card-photo-trigger:focus-visible .team-card-photo-hint {
+    opacity: 1;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .team-card-photo-hint {
+    bottom: 10px;
+    padding: 5px 10px;
+    font-size: 11px;
+    background: rgba(21, 21, 21, 0.5);
+    opacity: 1;
+  }
+
+  .team-card-photo-trigger:active::before {
+    background: rgba(21, 21, 21, 0.22);
+  }
+}
+
 .team-card-photo {
   object-fit: cover;
   object-position: var(--photo-position, center center);
@@ -2444,38 +2526,6 @@ video {
 @media (hover: hover) and (pointer: fine) {
   .team-card:hover .team-card-photo {
     transform: scale(calc(var(--photo-scale, 1) * 1.03));
-  }
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .team-card-photo-trigger {
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .team-card-photo-trigger::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    box-shadow: inset 0 0 0 0 rgba(91, 45, 144, 0);
-    transition:
-      box-shadow 220ms ease,
-      background-color 220ms ease;
-    pointer-events: none;
-  }
-
-  .team-card-photo-trigger:active::after {
-    background-color: rgba(91, 45, 144, 0.08);
-    box-shadow: inset 0 0 0 2px rgba(91, 45, 144, 0.28);
-  }
-
-  .team-card-photo-trigger:focus-visible::after {
-    box-shadow: inset 0 0 0 2px rgba(91, 45, 144, 0.45);
-  }
-
-  .team-card-photo-trigger:active .team-card-photo {
-    transform: scale(calc(var(--photo-scale, 1) * 0.98));
   }
 }
 
@@ -2516,11 +2566,11 @@ video {
 
 /**
  * Team member profile popover / Perfil emergente del regidor
- * Appears on hover or focus on pointer devices; photo tap on touch
- * Aparece con hover o foco en puntero fino; toque en foto en táctil
+ * Opens only when the councillor photo is clicked or tapped
+ * Se abre solo al hacer clic o tocar la fotografía del regidor
  */
 .team-profile-popup {
-  z-index: 120;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   width: min(520px, calc(100vw - 24px));
@@ -2540,10 +2590,6 @@ video {
   position: fixed;
   inset: 0;
   z-index: 119;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 12px;
 }
 
 .team-profile-backdrop {
@@ -2554,15 +2600,6 @@ video {
   background: rgba(21, 21, 21, 0.52);
   animation: team-profile-backdrop-enter 200ms ease both;
   cursor: pointer;
-}
-
-.team-profile-popup-mobile {
-  position: relative;
-  z-index: 1;
-  width: auto;
-  max-height: min(52vh, 420px);
-  margin: 0;
-  align-self: stretch;
 }
 
 .team-profile-close {
@@ -2644,13 +2681,8 @@ video {
   flex-direction: column;
   gap: 10px;
   min-height: 0;
-  padding: 22px 26px 24px;
+  padding: 28px 52px 24px 26px;
   text-align: left;
-}
-
-.team-profile-popup-mobile .team-profile-content {
-  padding-top: 28px;
-  padding-right: 52px;
 }
 
 .team-profile-role {
@@ -2690,9 +2722,21 @@ video {
   background: rgba(91, 45, 144, 0.35);
 }
 
-.team-card:focus-visible {
-  outline: 3px solid var(--yellow);
-  outline-offset: 3px;
+@media (max-width: 767px) {
+  .team-profile-overlay {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .team-profile-popup {
+    position: relative;
+    width: auto;
+    max-height: min(52vh, 420px);
+    margin: 0;
+    align-self: stretch;
+  }
 }
 
 /**

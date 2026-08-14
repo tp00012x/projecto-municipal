@@ -98,7 +98,7 @@ export default function ParticipationStats({
               <span>Propuestas comentadas</span>
             </div>
             <div>
-              <strong>23</strong>
+              <strong>24</strong>
               <span>Fichas disponibles</span>
             </div>
           </div>

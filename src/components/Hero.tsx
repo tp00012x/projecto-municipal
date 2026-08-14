@@ -130,7 +130,7 @@ export default function Hero() {
           </p>
           <div className="hero-actions">
             <a className="button button-yellow" href="#propuestas">
-              Explorar las 23 propuestas
+              Explorar las 24 propuestas
               <ArrowRightIcon />
             </a>
             <a className="button button-glass" href="#contexto">
