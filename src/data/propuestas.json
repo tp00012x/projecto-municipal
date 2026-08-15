@@ -14,7 +14,10 @@
       "Albergar y atender de manera óptima a un grupo inicial de 30 adultos mayores residentes en Pueblo Libre durante el primer año de funcionamiento.",
       "Alcanzar un 90 % de nivel de satisfacción en las encuestas semestrales aplicadas a los hijos/familiares respecto a la seguridad y bienestar de sus padres."
     ],
-    "viabilidad": "S/ 1,800,000. Para implementación del espacio, pago de trabajadores, adquisición de implementos, y alimentación diaria durante el periodo de 4 años."
+    "viabilidad": "S/ 1,800,000. Para implementación del espacio, pago de trabajadores, adquisición de implementos, y alimentación diaria durante el periodo de 4 años.",
+    "image": "/images/propuestas/propuesta-01.webp",
+    "imageAlt": "Adultos mayores tejiendo y conversando con cuidadora en un centro diurno luminoso con vista a la plaza de Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-02",
@@ -33,7 +36,10 @@
       "Instalar 30 rampas y señalización táctil en puntos críticos del distrito para el primer año",
       "Incorporar a 30 personas con discapacidad en programas de empleo y capacitación."
     ],
-    "viabilidad": "S/ 700,000 para el primer año. Este presupuesto puede optimizarse con apoyo del CONADIS, convenios con universidades y empresas privadas, además de integrar proyectos al presupuesto participativo."
+    "viabilidad": "S/ 700,000 para el primer año. Este presupuesto puede optimizarse con apoyo del CONADIS, convenios con universidades y empresas privadas, además de integrar proyectos al presupuesto participativo.",
+    "image": "/images/propuestas/propuesta-02.webp",
+    "imageAlt": "Mujer en silla de ruedas y acompañante utilizando rampa de accesibilidad con suelo táctil en una plaza histórica de Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-03",
@@ -52,7 +58,10 @@
       "Realizar 120 campañas de difusión sobre temas de interés.",
       "Ejecutar 5,000 esterilizaciones subvencionadas."
     ],
-    "viabilidad": "S/ 5,000,000. Viable como proyecto de inversión pública estructurado mediante el mecanismo de Obras por Impuestos (OxI) o a través de un Convenio de Cooperación con Universidades locales que cuenten con la facultad de Medicina Veterinaria (ej. Universidad Científica del Sur o UNMSM) para el suministro de internos y especialistas."
+    "viabilidad": "S/ 5,000,000. Viable como proyecto de inversión pública estructurado mediante el mecanismo de Obras por Impuestos (OxI) o a través de un Convenio de Cooperación con Universidades locales que cuenten con la facultad de Medicina Veterinaria (ej. Universidad Científica del Sur o UNMSM) para el suministro de internos y especialistas.",
+    "image": "/images/propuestas/propuesta-03.webp",
+    "imageAlt": "Veterinario atendiendo a un perro en la clínica móvil municipal en un parque de Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-04",
@@ -70,7 +79,10 @@
       "Certificar 200 establecimientos Pet Friendly.",
       "Reducir en 40% los casos reportados de abandono animal."
     ],
-    "viabilidad": "Financiado con el presupuesto ordinario corriente de la Subgerencia de Fiscalización y Control Sanitario. Se gestionará un Convenio con el Colegio de Médicos Veterinarios del Perú para certificar técnicamente los locales del distrito y capacitar a inspectores municipales."
+    "viabilidad": "Financiado con el presupuesto ordinario corriente de la Subgerencia de Fiscalización y Control Sanitario. Se gestionará un Convenio con el Colegio de Médicos Veterinarios del Perú para certificar técnicamente los locales del distrito y capacitar a inspectores municipales.",
+    "image": "/images/propuestas/propuesta-04.webp",
+    "imageAlt": "Vecinos paseando mascotas en una plaza limpia de Pueblo Libre con estaciones de desechos y bebederos",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-05",
@@ -87,7 +99,10 @@
       "Implementar la botica con al menos 100 medicamentos esenciales disponibles.",
       "Atender a 1,000 vecinos en el primer año."
     ],
-    "viabilidad": "S/. 720,000 para el primer año, este monto puede reducirse al establecer convenios con laboratorios nacionales, compras conjuntas con otras municipalidades o apoyo del MINSA para medicamentos esenciales."
+    "viabilidad": "S/. 720,000 para el primer año, este monto puede reducirse al establecer convenios con laboratorios nacionales, compras conjuntas con otras municipalidades o apoyo del MINSA para medicamentos esenciales.",
+    "image": "/images/propuestas/propuesta-05.webp",
+    "imageAlt": "Farmacéutica entregando medicamentos a una mujer mayor y madre con bebé en botica municipal",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-06",
@@ -108,7 +123,10 @@
       "Incrementar al 85% la satisfacción vecinal respecto al servicio de seguridad ciudadana.",
       "Reducir en 25% los delitos contra el patrimonio en el distrito."
     ],
-    "viabilidad": "S/ 500,000 para el desarrollo del ecosistema tecnológico. Absorbibles mediante los recursos corrientes asignados a la Gerencia de Coordinación de la Seguridad Ciudadana. Se firmará un Convenio Interinstitucional con el Ministerio del Interior (MININTER) para la interconexión directa de datos con la Central 105 de la Policía Nacional del Perú (PNP)."
+    "viabilidad": "S/ 500,000 para el desarrollo del ecosistema tecnológico. Absorbibles mediante los recursos corrientes asignados a la Gerencia de Coordinación de la Seguridad Ciudadana. Se firmará un Convenio Interinstitucional con el Ministerio del Interior (MININTER) para la interconexión directa de datos con la Central 105 de la Policía Nacional del Perú (PNP).",
+    "image": "/images/propuestas/propuesta-06.webp",
+    "imageAlt": "Operadora en centro de monitoreo vigilando cámaras de videovigilancia de calles y plazas de Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-07",
@@ -126,7 +144,10 @@
       "Capacitar a 1000 vecinos.",
       "Reducir en 25% la incidencia delictiva en zonas priorizadas."
     ],
-    "viabilidad": "S/ 500,000 durante la gestión del presupuesto participativo."
+    "viabilidad": "S/ 500,000 durante la gestión del presupuesto participativo.",
+    "image": "/images/propuestas/propuesta-07.webp",
+    "imageAlt": "Vecinos y personal de seguridad revisando un mapa junto a representante en un parque de Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-08",
@@ -146,7 +167,10 @@
       "Lograr una satisfacción superior al 85% de los usuarios.",
       "Reducir en 20% los factores de riesgo asociados a salud mental en jóvenes beneficiarios."
     ],
-    "viabilidad": "Viable utilizando gasto corriente operativo asignado a programas de salud comunal y desarrollo humano. Requiere la firma de un Convenio con el Ministerio de Salud (MINSA) para la adscripción técnica al modelo de los Centros de Salud Mental Comunitaria (CSMC)."
+    "viabilidad": "Viable utilizando gasto corriente operativo asignado a programas de salud comunal y desarrollo humano. Requiere la firma de un Convenio con el Ministerio de Salud (MINSA) para la adscripción técnica al modelo de los Centros de Salud Mental Comunitaria (CSMC).",
+    "image": "/images/propuestas/propuesta-08.webp",
+    "imageAlt": "Jóvenes compartiendo ideas en un centro de estudios moderno y luminoso en Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-09",
@@ -166,7 +190,10 @@
       "Incrementar en 50% la participación de jóvenes en programas deportivos.",
       "Organizar 100 eventos deportivos distritales y metropolitanos."
     ],
-    "viabilidad": "S/ 2,000,000. Al sobrepasar el presupuesto ordinario anual, se estructurará bajo el sistema Invierte.pe como un Proyecto de Inversión Pública (PIP), gestionando el cofinanciamiento mediante un Convenio de Transferencia de Recursos con el Instituto Peruano del Deporte (IPD) y el Ministerio de Educación (MINEDU)."
+    "viabilidad": "S/ 2,000,000. Al sobrepasar el presupuesto ordinario anual, se estructurará bajo el sistema Invierte.pe como un Proyecto de Inversión Pública (PIP), gestionando el cofinanciamiento mediante un Convenio de Transferencia de Recursos con el Instituto Peruano del Deporte (IPD) y el Ministerio de Educación (MINEDU).",
+    "image": "/images/propuestas/propuesta-09.webp",
+    "imageAlt": "Jóvenes jugando fútbol en cancha municipal renovada con césped sintético y tribunas techadas",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-10",
@@ -201,7 +228,10 @@
       "Beneficiar a 2,000 MYPES con programas de digitalización y comercio electrónico.",
       "Registras a 1000 emprendimiento y negocios locales del distrito en el directorio digital de emprendedores."
     ],
-    "viabilidad": "S/ 8,500,000 durante la gestión 2027-2030. La propuesta será financiada mediante inversión municipal, convenios con el Ministerio de la Producción (PRODUCE), ProInnóvate, Ministerio de Trabajo y Promoción del Empleo (MTPE), universidades, gremios empresariales y alianzas público-privadas."
+    "viabilidad": "S/ 8,500,000 durante la gestión 2027-2030. La propuesta será financiada mediante inversión municipal, convenios con el Ministerio de la Producción (PRODUCE), ProInnóvate, Ministerio de Trabajo y Promoción del Empleo (MTPE), universidades, gremios empresariales y alianzas público-privadas.",
+    "image": "/images/propuestas/propuesta-10.webp",
+    "imageAlt": "Emprendedores y jóvenes colaborando en un espacio de innovación con estanterías y luz natural",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-11",
@@ -225,7 +255,10 @@
       "Alcanzar una tasa de satisfacción superior al 85% entre usuarios y empresas participantes.",
       "Integrar la plataforma con los servicios nacionales del Ministerio de Trabajo y Promoción del Empleo para ampliar las oportunidades de colocación laboral."
     ],
-    "viabilidad": "Financiado con el presupuesto regular operativo de la Gerencia de Desarrollo Humano. Se celebrará un Convenio Interinstitucional con el Ministerio de Trabajo y Promoción del Empleo (MTPE) para conectar la plataforma distrital con el programa nacional Jóvenes Productivos."
+    "viabilidad": "Financiado con el presupuesto regular operativo de la Gerencia de Desarrollo Humano. Se celebrará un Convenio Interinstitucional con el Ministerio de Trabajo y Promoción del Empleo (MTPE) para conectar la plataforma distrital con el programa nacional Jóvenes Productivos.",
+    "image": "/images/propuestas/propuesta-11.webp",
+    "imageAlt": "Jóvenes en formación tecnológica conversando en un centro de empleo y capacitación digital",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-12",
@@ -246,7 +279,10 @@
       "Incorporar 150 negocios locales a los circuitos turísticos y gastronómicos.",
       "Posicionar a Pueblo Libre entre los 5 principales destinos culturales de Lima Metropolitana."
     ],
-    "viabilidad": "S/ 15,000,000 de inversión progresiva programada. Se viabilizará mediante un Convenio de Cooperación con el Ministerio de Cultura (MINCUL) y PROMPERÚ para incorporar a Pueblo Libre de forma prioritaria en las plataformas nacionales de promoción turística y ejes bicentenarios."
+    "viabilidad": "S/ 15,000,000 de inversión progresiva programada. Se viabilizará mediante un Convenio de Cooperación con el Ministerio de Cultura (MINCUL) y PROMPERÚ para incorporar a Pueblo Libre de forma prioritaria en las plataformas nacionales de promoción turística y ejes bicentenarios.",
+    "image": "/images/propuestas/propuesta-12.webp",
+    "imageAlt": "Familias y turistas disfrutando de una feria gastronómica en la plaza mayor de Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-13",
@@ -263,7 +299,10 @@
       "Aumentar en 40% el flujo de visitantes.",
       "Incrementar en 30% las ventas de los comerciantes."
     ],
-    "viabilidad": "S/ 15,000,000 de inversión progresiva programada. Se viabilizará mediante un Convenio de Cooperación con el Ministerio de Cultura (MINCUL) y PROMPERÚ para incorporar a Pueblo Libre de forma prioritaria en las plataformas nacionales de promoción turística y ejes bicentenarios."
+    "viabilidad": "S/ 15,000,000 de inversión progresiva programada. Se viabilizará mediante un Convenio de Cooperación con el Ministerio de Cultura (MINCUL) y PROMPERÚ para incorporar a Pueblo Libre de forma prioritaria en las plataformas nacionales de promoción turística y ejes bicentenarios.",
+    "image": "/images/propuestas/propuesta-13.webp",
+    "imageAlt": "Mercado de artesanías al aire libre con cerámica, textiles y cestería en un espacio público renovado",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-14",
@@ -285,7 +324,10 @@
       "Reducir en 25% los accidentes de tránsito en las zonas beneficiadas por el proyecto.",
       "Integrar el distrito a la red metropolitana de ciclovías mediante convenios con la Municipalidad Metropolitana de Lima y la ATU."
     ],
-    "viabilidad": "S/ 1,500,000. Financiamiento programado de forma multianual mediante fondos de desarrollo urbano y recursos determinados (FONCOMUN). Requiere un Convenio Obligatorio de Cooperación de Gestión Vial con la Autoridad de Transporte Urbano para Lima y Callao (ATU) y la Municipalidad Metropolitana de Lima (MML)."
+    "viabilidad": "S/ 1,500,000. Financiamiento programado de forma multianual mediante fondos de desarrollo urbano y recursos determinados (FONCOMUN). Requiere un Convenio Obligatorio de Cooperación de Gestión Vial con la Autoridad de Transporte Urbano para Lima y Callao (ATU) y la Municipalidad Metropolitana de Lima (MML).",
+    "image": "/images/propuestas/propuesta-14.webp",
+    "imageAlt": "Calle en Pueblo Libre con bus de transporte público, ciclovía verde y cruce peatonal seguro",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-15",
@@ -305,7 +347,10 @@
       "Implementar un portal digital de seguimiento ciudadano con acceso público al estado de cada expediente.",
       "Incrementar en 50% el valor urbano y habitacional de los predios beneficiados al culminar los procesos de formalización."
     ],
-    "viabilidad": "Asignación municipal de S/ 1,000,000 destinados a estudios técnicos de ingeniería y delimitación legal. La ejecución de las obras estructurales de vivienda y pistas se canalizará mediante un Convenio con el Ministerio de Vivienda, Construcción y Saneamiento (MVCS) a través del programa integral Techo Propio y fondos Mivivienda."
+    "viabilidad": "Asignación municipal de S/ 1,000,000 destinados a estudios técnicos de ingeniería y delimitación legal. La ejecución de las obras estructurales de vivienda y pistas se canalizará mediante un Convenio con el Ministerio de Vivienda, Construcción y Saneamiento (MVCS) a través del programa integral Techo Propio y fondos Mivivienda.",
+    "image": "/images/propuestas/propuesta-15.webp",
+    "imageAlt": "Familia caminando por calle remodelada con bancas moradas donde conversan adultos mayores en Pueblo Libre",
+    "imagePosition": "center bottom"
   },
   {
     "id": "propuesta-16",
@@ -330,7 +375,10 @@
       "Implementar 20 parques inteligentes.",
       "Alcanzar 50,000 usuarios anuales de WiFi público gratuito."
     ],
-    "viabilidad": "S/ 7,500,000 durante la gestión 2027-2030. Financiado mediante recursos municipales, arbitrios de parques y jardines, cooperación técnica ambiental y alianzas con empresas privadas bajo mecanismos de responsabilidad social."
+    "viabilidad": "S/ 7,500,000 durante la gestión 2027-2030. Financiado mediante recursos municipales, arbitrios de parques y jardines, cooperación técnica ambiental y alianzas con empresas privadas bajo mecanismos de responsabilidad social.",
+    "image": "/images/propuestas/propuesta-16.webp",
+    "imageAlt": "Vecinos trabajando en huerto urbano comunitario con compostera y pérgola con paneles solares",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-17",
@@ -349,7 +397,10 @@
       "Reparar 15 km de veredas en zonas críticas en el primer año.",
       "Rehabilitar 5 km de pistas principales con estándares de calidad para el primer año"
     ],
-    "viabilidad": "S/ 6,000,000 durante la gestión 2027-2030. Financiado mediante recursos municipales, arbitrios de parques y jardines, cooperación técnica ambiental y alianzas con empresas privadas bajo mecanismos de responsabilidad social."
+    "viabilidad": "S/ 6,000,000 durante la gestión 2027-2030. Financiado mediante recursos municipales, arbitrios de parques y jardines, cooperación técnica ambiental y alianzas con empresas privadas bajo mecanismos de responsabilidad social.",
+    "image": "/images/propuestas/propuesta-17.webp",
+    "imageAlt": "Obras de repavimentación y mejora de veredas con señalización podotáctil en calle arbolada de Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-18",
@@ -370,7 +421,10 @@
       "Identificar y notificar al menos 100 vehículos abandonados.",
       "Retirar 100 vehículos y liberando el espacio público."
     ],
-    "viabilidad": "S/ 300,000 durante el primer año que incluye campaña de censo, notificaciones, campaña de sensibilización y retiros."
+    "viabilidad": "S/ 300,000 durante el primer año que incluye campaña de censo, notificaciones, campaña de sensibilización y retiros.",
+    "image": "/images/propuestas/propuesta-18.webp",
+    "imageAlt": "Vecinos reciclando y separando residuos en contenedores en un parque limpio de Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-19",
@@ -390,7 +444,10 @@
       "Habilitar 4 parques adicionales con áreas caninas .",
       "Lograr que el 70% de dueños de mascotas usen las zonas exclusiva"
     ],
-    "viabilidad": "S/ 600, 000 para todo el proyecto de habilitación."
+    "viabilidad": "S/ 600, 000 para todo el proyecto de habilitación.",
+    "image": "/images/propuestas/propuesta-19.webp",
+    "imageAlt": "Dueños de mascotas utilizando áreas caninas y estaciones de limpieza en parques de Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-20",
@@ -418,7 +475,10 @@
       "Reducir en 40% los puntos críticos de acumulación de residuos.",
       "Ambiente (MINAM) para la validación de los indicadores climáticos locales."
     ],
-    "viabilidad": "S/ 8,000,000 durante la gestión 2027-2030. Financiado mediante recursos municipales, fondos ambientales y convenios con el Ministerio del Ambiente."
+    "viabilidad": "S/ 8,000,000 durante la gestión 2027-2030. Financiado mediante recursos municipales, fondos ambientales y convenios con el Ministerio del Ambiente.",
+    "image": "/images/propuestas/propuesta-20.webp",
+    "imageAlt": "Vecinos y trabajador municipal reciclando y haciendo compost en un parque de Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-21",
@@ -444,7 +504,10 @@
       "Alcanzar una satisfacción ciudadana superior al 85% en transparencia y acceso a la información.",
       "Convertir a Pueblo Libre en el primer distrito de Lima Metropolitana con un sistema integral de vigilancia ciudadana digital y gobierno abierto."
     ],
-    "viabilidad": "S/ 2,500,000 durante la gestión 2027-2030. La propuesta será financiada mediante la optimización de recursos de la Gerencia de Tecnologías de la Información y Modernización Municipal, complementada con convenios de cooperación técnica con la Contraloría General de la República, la Secretaría de Integridad Pública de la PCM y universidades del distrito."
+    "viabilidad": "S/ 2,500,000 durante la gestión 2027-2030. La propuesta será financiada mediante la optimización de recursos de la Gerencia de Tecnologías de la Información y Modernización Municipal, complementada con convenios de cooperación técnica con la Contraloría General de la República, la Secretaría de Integridad Pública de la PCM y universidades del distrito.",
+    "image": "/images/propuestas/propuesta-21.webp",
+    "imageAlt": "Vecinos participando en audiencia pública de control y transparencia municipal en Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-22",
@@ -466,7 +529,10 @@
       "Obtener una satisfacción ciudadana superior al 85% respecto a los servicios digitales municipales.",
       "Integrar el 100% de los servicios municipales prioritarios a las plataformas nacionales de Gobierno Digital (Gob.pe y Págalo.pe)."
     ],
-    "viabilidad": "Viable reorientando los saldos operativos corrientes de la Gerencia de Administración y la Gerencia de Tecnología de la Información. Se concretará mediante un Convenio de Cooperación Tecnológica con la Secretaría de Gobierno y Transformación Digital de la PCM, integrando los servicios municipales al ecosistema único Gob.pe y a la pasarela nacional de pagos Págalo.pe."
+    "viabilidad": "Viable reorientando los saldos operativos corrientes de la Gerencia de Administración y la Gerencia de Tecnología de la Información. Se concretará mediante un Convenio de Cooperación Tecnológica con la Secretaría de Gobierno y Transformación Digital de la PCM, integrando los servicios municipales al ecosistema único Gob.pe y a la pasarela nacional de pagos Págalo.pe.",
+    "image": "/images/propuestas/propuesta-22.webp",
+    "imageAlt": "Ciudadano realizando trámites municipales desde dispositivo móvil en oficina digital de Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-23",
@@ -491,7 +557,10 @@
       "Reducir en 20% el uso de papel en notificaciones.",
       "Lograr 50 alianzas con negocios locales para el primer año."
     ],
-    "viabilidad": "S/. 120,000 para la creación del carnet físico y virtual y campañas de difusión."
+    "viabilidad": "S/. 120,000 para la creación del carnet físico y virtual y campañas de difusión.",
+    "image": "/images/propuestas/propuesta-23.webp",
+    "imageAlt": "Vecino beneficiario del programa de buen pagador recibiendo descuentos en comercio local de Pueblo Libre",
+    "imagePosition": "center"
   },
   {
     "id": "propuesta-24",
@@ -511,6 +580,9 @@
       "Implementar un portal digital de seguimiento ciudadano con acceso público al estado de cada expediente.",
       "Incrementar en 50% el valor urbano y habitacional de los predios beneficiados al culminar los procesos de formalización."
     ],
-    "viabilidad": "Asignación municipal de S/ 1,000,000 destinados a estudios técnicos de ingeniería y delimitación legal. La ejecución de las obras estructurales de vivienda y pistas se canalizará mediante un Convenio con el Ministerio de Vivienda, Construcción y Saneamiento (MVCS) a través del programa integral Techo Propio y fondos Mivivienda."
+    "viabilidad": "Asignación municipal de S/ 1,000,000 destinados a estudios técnicos de ingeniería y delimitación legal. La ejecución de las obras estructurales de vivienda y pistas se canalizará mediante un Convenio con el Ministerio de Vivienda, Construcción y Saneamiento (MVCS) a través del programa integral Techo Propio y fondos Mivivienda.",
+    "image": "/images/propuestas/propuesta-24.webp",
+    "imageAlt": "Familia caminando por calle residencial renovada con áreas verdes y mobiliario urbano en Pueblo Libre",
+    "imagePosition": "center bottom"
   }
 ]

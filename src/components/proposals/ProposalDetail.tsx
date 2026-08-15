@@ -1,11 +1,11 @@
 "use client";
 
 import { type FormEvent, useState } from "react";
+import Image from "next/image";
 
 import { ArrowLeftIcon, ArrowRightIcon, CheckIcon } from "~/components/Icons";
 import { dimensionCopy } from "~/lib/proposal-utils";
 import type { Proposal } from "~/types/proposal";
-import CategoryVisual from "./CategoryVisual";
 import ProposalCommentForm from "./ProposalCommentForm";
 
 type DetailSection = "diagnostico" | "acciones" | "metas" | "viabilidad";
@@ -51,7 +51,20 @@ export default function ProposalDetail({
       </div>
 
       <div className="proposal-detail-hero">
-        <CategoryVisual categoria={proposal.categoria} size="panel" />
+        <div className="proposal-detail-image">
+          <Image
+            alt={proposal.imageAlt}
+            className="proposal-detail-photo"
+            fill
+            loading="lazy"
+            sizes="(max-width: 767px) 100vw, 900px"
+            src={proposal.image}
+            style={{
+              objectFit: "cover",
+              objectPosition: proposal.imagePosition,
+            }}
+          />
+        </div>
         <div>
           <div className="proposal-tags">
             <span>{proposal.dimension}</span>

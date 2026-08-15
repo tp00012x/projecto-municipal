@@ -1,176 +1,135 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import type { CSSProperties } from "react";
+
 import { CloseIcon } from "~/components/Icons";
-import { councilMembers } from "~/data/site";
+import type { councilMembers } from "~/data/site";
 
 type CouncilMember = (typeof councilMembers)[number];
 
-type ProfilePosition = {
-  top: number;
-  left: number;
-  placement: "above" | "below";
-};
-
 type TeamMemberProfileProps = {
   member: CouncilMember;
-  anchorEl: HTMLElement | null;
   onClose: () => void;
 };
 
-const VIEWPORT_MARGIN = 12;
-const MOBILE_LAYOUT_QUERY = "(max-width: 767px)";
-
-function computePosition(
-  anchorRect: DOMRect,
-  popupRect: DOMRect,
-): ProfilePosition {
-  const viewportWidth = window.innerWidth;
-  const viewportHeight = window.innerHeight;
-
-  const spaceBelow = viewportHeight - anchorRect.bottom - VIEWPORT_MARGIN;
-  const spaceAbove = anchorRect.top - VIEWPORT_MARGIN;
-  const preferBelow = spaceBelow >= popupRect.height || spaceBelow >= spaceAbove;
-
-  let top = preferBelow
-    ? anchorRect.bottom + VIEWPORT_MARGIN
-    : anchorRect.top - popupRect.height - VIEWPORT_MARGIN;
-
-  top = Math.max(
-    VIEWPORT_MARGIN,
-    Math.min(top, viewportHeight - popupRect.height - VIEWPORT_MARGIN),
-  );
-
-  let left =
-    anchorRect.left + anchorRect.width / 2 - popupRect.width / 2;
-  left = Math.max(
-    VIEWPORT_MARGIN,
-    Math.min(left, viewportWidth - popupRect.width - VIEWPORT_MARGIN),
-  );
-
-  return {
-    top,
-    left,
-    placement: preferBelow ? "below" : "above",
-  };
-}
-
 export default function TeamMemberProfile({
   member,
-  anchorEl,
   onClose,
 }: TeamMemberProfileProps) {
-  const popupRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const [position, setPosition] = useState<ProfilePosition | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
-  const [isMobileLayout, setIsMobileLayout] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    const media = window.matchMedia(MOBILE_LAYOUT_QUERY);
-    const syncLayout = () => setIsMobileLayout(media.matches);
-    syncLayout();
-    media.addEventListener("change", syncLayout);
-    return () => media.removeEventListener("change", syncLayout);
-  }, []);
-
-  useEffect(() => {
     closeButtonRef.current?.focus();
     document.body.style.overflow = "hidden";
 
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") onClose();
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+
     return () => {
+      document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [member.id]);
-
-  const updatePosition = useCallback(() => {
-    const popup = popupRef.current;
-    if (!popup || !anchorEl || isMobileLayout) return;
-
-    const anchorRect = anchorEl.getBoundingClientRect();
-    const popupRect = popup.getBoundingClientRect();
-    setPosition(computePosition(anchorRect, popupRect));
-  }, [anchorEl, isMobileLayout]);
-
-  useLayoutEffect(() => {
-    updatePosition();
-  }, [updatePosition, member.id, isMobileLayout]);
+  }, [member.id, onClose]);
 
   useEffect(() => {
-    if (!anchorEl || isMobileLayout) return;
+    const dialog = dialogRef.current;
+    if (!dialog) return;
 
-    const handleReposition = () => updatePosition();
+    const focusable = dialog.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
 
-    window.addEventListener("resize", handleReposition);
-    window.addEventListener("scroll", handleReposition, true);
+    function handleTab(event: KeyboardEvent) {
+      if (event.key !== "Tab" || focusable.length === 0) return;
 
-    return () => {
-      window.removeEventListener("resize", handleReposition);
-      window.removeEventListener("scroll", handleReposition, true);
-    };
-  }, [anchorEl, isMobileLayout, updatePosition]);
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+        return;
+      }
+
+      if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    }
+
+    dialog.addEventListener("keydown", handleTab);
+    return () => dialog.removeEventListener("keydown", handleTab);
+  }, [member.id]);
 
   if (!mounted) return null;
 
-  const popupStyle: CSSProperties | undefined = isMobileLayout
-    ? undefined
-    : position
-      ? {
-          position: "fixed",
-          top: position.top,
-          left: position.left,
-        }
-      : {
-          position: "fixed",
-          top: -9999,
-          left: -9999,
-          visibility: "hidden" as const,
-        };
-
   return createPortal(
-    <div className="team-profile-overlay" role="presentation">
+    <div className="profile-modal-overlay" role="presentation">
       <button
         aria-label="Cerrar perfil"
-        className="team-profile-backdrop"
+        className="profile-modal-backdrop"
         onClick={onClose}
         type="button"
       />
+
       <div
-        ref={popupRef}
-        className={`team-profile-popup${position?.placement === "above" ? " team-profile-popup-above" : ""}`}
-        style={popupStyle}
-        role="dialog"
+        ref={dialogRef}
+        aria-labelledby={`profile-modal-name-${member.id}`}
         aria-modal="true"
-        aria-labelledby={`team-profile-name-${member.id}`}
-        id={`team-profile-${member.id}`}
+        className="profile-modal"
+        id={`profile-modal-${member.id}`}
         onClick={(event) => event.stopPropagation()}
+        role="dialog"
+        style={
+          {
+            "--profile-position": member.objectPosition,
+          } as CSSProperties
+        }
       >
         <button
           ref={closeButtonRef}
           aria-label="Cerrar perfil"
-          className="team-profile-close"
+          className="profile-modal__close"
           onClick={onClose}
           type="button"
         >
           <CloseIcon />
         </button>
 
-        <div className="team-profile-accent" aria-hidden="true" />
+        <div className="profile-modal__photo">
+          <Image
+            alt={member.alt}
+            className="profile-modal__photo-image"
+            fill
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 378px"
+            src={member.src}
+            style={{
+              objectFit: "cover",
+              objectPosition: member.objectPosition,
+            }}
+          />
+        </div>
 
-        <div className="team-profile-content">
-          <p className="team-profile-role">
+        <div className="profile-modal__content">
+          <p className="profile-modal__role">
             {member.position} #{member.number}
           </p>
-          <h4 className="team-profile-name" id={`team-profile-name-${member.id}`}>
+          <h4 className="profile-modal__name" id={`profile-modal-name-${member.id}`}>
             {member.name}
           </h4>
-          <p className="team-profile-bio">{member.bio}</p>
+          <p className="profile-modal__bio">{member.bio}</p>
         </div>
       </div>
     </div>,

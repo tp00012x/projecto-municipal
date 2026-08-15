@@ -10,6 +10,9 @@ export type Proposal = {
   titulo: string;
   categoria: string;
   dimension: ProposalDimension;
+  image: string;
+  imageAlt: string;
+  imagePosition: string;
   diagnostico: string;
   objetivo: string;
   acciones: string[];

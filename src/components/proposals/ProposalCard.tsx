@@ -1,6 +1,7 @@
+import Image from "next/image";
+
 import { getProposalSummary } from "~/lib/proposal-utils";
 import type { Proposal } from "~/types/proposal";
-import CategoryVisual from "./CategoryVisual";
 
 type ProposalCardProps = {
   proposal: Proposal;
@@ -27,8 +28,19 @@ export default function ProposalCard({
         onClick={() => onOpen(proposal.id)}
         type="button"
       >
-        <div className="proposal-card-media">
-          <CategoryVisual categoria={proposal.categoria} />
+        <div className="proposal-card-media proposal-image-container">
+          <Image
+            alt={proposal.imageAlt}
+            className="proposal-card-image"
+            fill
+            loading="lazy"
+            sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 25vw"
+            src={proposal.image}
+            style={{
+              objectFit: "cover",
+              objectPosition: proposal.imagePosition,
+            }}
+          />
           <span className="proposal-card-number">
             {String(proposal.numero).padStart(2, "0")}
           </span>

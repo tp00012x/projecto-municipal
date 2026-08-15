@@ -9,9 +9,10 @@ import {
   type CSSProperties,
 } from "react";
 import MotionReveal from "~/components/MotionReveal";
-import { EyeIcon } from "~/components/Icons";
 import TeamMemberProfile from "~/components/TeamMemberProfile";
 import { councilMembers } from "~/data/site";
+
+type CouncilMember = (typeof councilMembers)[number];
 
 /** Auto-advance interval in ms / Intervalo de avance automático en ms */
 const AUTOPLAY_MS = 2500;
@@ -21,37 +22,33 @@ const AUTOPLAY_MS = 2500;
  *
  * - Horizontal scroll on the container (not scrollIntoView on the page)
  * - Auto-advance "ruleta" with pause on hover or manual interaction
- * - Profile opens only when the councillor photo is clicked or tapped
+ * - Profile opens immediately when the councillor photo is clicked or tapped
  */
 export default function TeamGallery() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const photoRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const photoRefs = useRef<Record<number, HTMLButtonElement | null>>({});
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [activeProfileIndex, setActiveProfileIndex] = useState<number | null>(
+  const [selectedMember, setSelectedMember] = useState<CouncilMember | null>(
     null,
   );
 
-  const openProfile = useCallback((index: number) => {
-    setActiveProfileIndex(index);
+  const openProfile = useCallback((member: CouncilMember) => {
+    setSelectedMember(member);
   }, []);
 
   const closeProfile = useCallback(() => {
-    setActiveProfileIndex(null);
+    setSelectedMember((current) => {
+      if (current?.id != null) {
+        const memberId = current.id;
+        requestAnimationFrame(() => {
+          photoRefs.current[memberId]?.focus();
+        });
+      }
+      return null;
+    });
   }, []);
-
-  useEffect(() => {
-    if (activeProfileIndex === null) return;
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") closeProfile();
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [activeProfileIndex, closeProfile]);
 
   /**
    * Scroll the carousel container to a specific slide index.
@@ -121,9 +118,9 @@ export default function TeamGallery() {
    * Pauses while hovered or after manual navigation.
    */
   useEffect(() => {
-    if (isPaused || activeProfileIndex !== null) return;
+    if (isPaused || selectedMember !== null) return;
 
-    autoplayRef.current = setInterval(() => {
+    const autoplayRef = setInterval(() => {
       setCurrentSlide((prev) => {
         const nextIndex = (prev + 1) % councilMembers.length;
         const container = scrollContainerRef.current;
@@ -145,23 +142,14 @@ export default function TeamGallery() {
       });
     }, AUTOPLAY_MS);
 
-    return () => {
-      if (autoplayRef.current) clearInterval(autoplayRef.current);
-    };
-  }, [isPaused, activeProfileIndex]);
+    return () => clearInterval(autoplayRef);
+  }, [isPaused, selectedMember]);
 
   const handleManualNav = (action: () => void) => {
     setIsPaused(true);
     action();
     window.setTimeout(() => setIsPaused(false), AUTOPLAY_MS * 2);
   };
-
-  const activeMember =
-    activeProfileIndex !== null ? councilMembers[activeProfileIndex] : null;
-  const activeAnchor =
-    activeProfileIndex !== null
-      ? (photoRefs.current[activeProfileIndex] ?? null)
-      : null;
 
   return (
     <section className="section gallery-section" id="equipo">
@@ -211,11 +199,11 @@ export default function TeamGallery() {
                   <div className="team-card-image">
                     <button
                       ref={(element) => {
-                        photoRefs.current[index] = element;
+                        photoRefs.current[member.id] = element;
                       }}
                       aria-label={`Ver perfil de ${member.name}`}
                       className="team-card-photo-frame team-card-photo-trigger"
-                      onClick={() => openProfile(index)}
+                      onClick={() => openProfile(member)}
                       style={
                         {
                           "--photo-position": member.objectPosition,
@@ -234,10 +222,6 @@ export default function TeamGallery() {
                         src={member.src}
                         className="team-card-photo"
                       />
-                      <span className="team-card-photo-hint" aria-hidden="true">
-                        <EyeIcon className="team-card-photo-hint-icon" />
-                        Ver perfil
-                      </span>
                     </button>
                   </div>
                   <div className="team-card-info">
@@ -310,12 +294,8 @@ export default function TeamGallery() {
         </div>
       </div>
 
-      {activeMember ? (
-        <TeamMemberProfile
-          member={activeMember}
-          anchorEl={activeAnchor}
-          onClose={closeProfile}
-        />
+      {selectedMember ? (
+        <TeamMemberProfile member={selectedMember} onClose={closeProfile} />
       ) : null}
     </section>
   );
