@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 import { ArrowRightIcon, CloseIcon } from "~/components/Icons";
 import {
@@ -10,7 +11,6 @@ import {
   getProposalSummary,
 } from "~/lib/proposal-utils";
 import type { Proposal } from "~/types/proposal";
-import CategoryVisual from "./CategoryVisual";
 
 type ProposalQuickViewProps = {
   proposal: Proposal;
@@ -90,8 +90,19 @@ export default function ProposalQuickView({
           <h3 id={`quick-view-title-${proposal.id}`}>{proposal.titulo}</h3>
           <p className="quick-view-dimension">{dimensionCopy[proposal.dimension]}</p>
 
-          <div className="quick-view-visual">
-            <CategoryVisual categoria={proposal.categoria} size="panel" />
+          <div className="quick-view-visual proposal-preview-image">
+            <Image
+              alt={proposal.imageAlt}
+              className="proposal-preview-photo"
+              fill
+              loading="lazy"
+              sizes="(max-width: 767px) 100vw, 620px"
+              src={proposal.image}
+              style={{
+                objectFit: "cover",
+                objectPosition: proposal.imagePosition,
+              }}
+            />
           </div>
 
           <dl className="quick-view-meta">
@@ -112,14 +123,6 @@ export default function ProposalQuickView({
           <div className="quick-view-summary">
             <span>Resumen</span>
             <p>{summary}</p>
-            <button
-              className="quick-view-more-link"
-              onClick={() => onOpenFull(proposal.id)}
-              type="button"
-            >
-              Ver más detalles de la propuesta
-              <ArrowRightIcon />
-            </button>
           </div>
         </div>
 
