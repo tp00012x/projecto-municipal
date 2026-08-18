@@ -3,6 +3,7 @@ import "~/styles/globals.css";
 import { Caveat } from "next/font/google";
 import { type Metadata, type Viewport } from "next";
 import { headers } from "next/headers";
+import { Analytics } from "@vercel/analytics/next";
 
 import { TRPCReactProvider } from "~/trpc/react";
 
@@ -129,6 +130,7 @@ export default function RootLayout({
     <html lang="es">
       <body className={sloganScript.variable}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
+        <Analytics />
         <script
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
           type="application/ld+json"
