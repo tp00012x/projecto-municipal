@@ -16,8 +16,20 @@ export function normalizeSearch(value: string) {
     .toLocaleLowerCase("es");
 }
 
+export function getProposalTextBlocks(value: string | string[]) {
+  const blocks = (Array.isArray(value) ? value : [value])
+    .map((block) => block.trim())
+    .filter(Boolean);
+
+  return blocks.length ? blocks : [""];
+}
+
+export function joinProposalText(value: string | string[]) {
+  return getProposalTextBlocks(value).join(" ");
+}
+
 export function getProposalSummary(proposal: Proposal, maxLength = 140) {
-  const source = proposal.objetivo.trim();
+  const source = joinProposalText(proposal.objetivo);
   if (source.length <= maxLength) return source;
 
   const truncated = source.slice(0, maxLength);
@@ -27,11 +39,11 @@ export function getProposalSummary(proposal: Proposal, maxLength = 140) {
 }
 
 export function getPrimaryBenefit(proposal: Proposal) {
-  return proposal.metas[0] ?? proposal.objetivo;
+  return proposal.metas[0] ?? joinProposalText(proposal.objetivo);
 }
 
 export function getBeneficiaryScope(proposal: Proposal) {
-  const objective = proposal.objetivo.toLocaleLowerCase("es");
+  const objective = joinProposalText(proposal.objetivo).toLocaleLowerCase("es");
   const patterns = [
     /adultos mayores/,
     /personas con discapacidad/,
@@ -70,10 +82,11 @@ export function filterProposals(
         proposal.titulo,
         proposal.categoria,
         proposal.dimension,
-        proposal.diagnostico,
-        proposal.objetivo,
+        ...getProposalTextBlocks(proposal.diagnostico),
+        ...getProposalTextBlocks(proposal.objetivo),
         ...proposal.metas,
         ...proposal.acciones,
+        ...getProposalTextBlocks(proposal.presupuesto),
       ].join(" "),
     );
 
@@ -116,4 +129,3 @@ export function getCategoryCounts(proposals: Proposal[]) {
     return acc;
   }, {});
 }
-

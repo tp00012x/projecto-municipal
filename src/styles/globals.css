@@ -1795,8 +1795,8 @@ video {
 .numbered-list p {
   margin: 0;
   color: var(--ink-soft);
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.7;
 }
 
 .check-list li {
@@ -1816,8 +1816,8 @@ video {
 
 .check-list span {
   color: var(--ink-soft);
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.7;
 }
 
 .viability-card {
@@ -1847,7 +1847,9 @@ video {
 .viability-card p {
   position: relative;
   z-index: 1;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.7;
 }
 
 .viability-card small {
@@ -3684,27 +3686,29 @@ video {
   text-transform: uppercase;
 }
 
-.proposal-card-body h3 {
+.proposal-card-body h3,
+.proposal-card__title {
   display: -webkit-box;
   overflow: hidden;
   margin: 0;
   flex-shrink: 0;
-  font-size: 18px;
+  font-size: clamp(1.125rem, 1.4vw, 1.375rem);
   letter-spacing: -0.03em;
-  line-height: 1.2;
+  line-height: 1.3;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
 
-.proposal-card-body p {
+.proposal-card-body p,
+.proposal-card__description {
   display: -webkit-box;
   overflow: hidden;
   margin: 0;
   min-height: 0;
   flex: 1 1 auto;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.5;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.55;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
@@ -4140,17 +4144,74 @@ video {
   text-transform: uppercase;
 }
 
-.proposal-detail-hero h3 {
+.proposal-detail-hero h3,
+.proposal-detail__title {
   margin: 10px 0 0;
-  font-size: clamp(34px, 7vw, 56px);
-  letter-spacing: -0.05em;
-  line-height: 0.98;
+  font-size: clamp(2rem, 4vw, 4rem);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
 }
 
-.proposal-detail-hero > div > p {
+.proposal-detail-hero > div > p,
+.proposal-detail__dimension {
   margin: 12px 0 0;
-  color: var(--muted);
-  font-size: 14px;
+  color: var(--purple-700);
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.55;
+}
+
+.proposal-detail-content {
+  display: grid;
+  gap: clamp(28px, 4vw, 40px);
+  max-width: 80ch;
+  margin-top: 36px;
+}
+
+.proposal-detail-section {
+  display: grid;
+  gap: 16px;
+}
+
+.proposal-detail__section-title {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1rem, 1.3vw, 1.125rem);
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.proposal-detail__text {
+  display: grid;
+  gap: 1.1em;
+}
+
+.proposal-detail__text p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.7;
+}
+
+.proposal-detail__text-light p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.proposal-detail__list.numbered-list p,
+.proposal-detail__list.check-list span {
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.7;
+}
+
+.proposal-detail__list.check-list span {
+  color: var(--ink-soft);
+}
+
+.proposal-detail-section .viability-card {
+  margin-top: 4px;
+}
+
+.proposal-detail-section .viability-card .proposal-detail__text {
+  gap: 0.95em;
 }
 
 .proposal-detail-comments {

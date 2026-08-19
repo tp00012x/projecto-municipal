@@ -2,44 +2,56 @@
   {
     "id": "propuesta-01",
     "numero": 1,
-    "titulo": "Centro de Cuidado Diurno Manos que cuidan",
+    "titulo": "Centro de Cuidado Diurno \"Manos que cuidan\"",
     "categoria": "Cuidado",
     "dimension": "Social",
-    "diagnostico": "En Pueblo Libre, los adultos mayores representan aproximadamente el 14,0 % de la población total. El distrito destaca por ser uno de los cuatro con mayor concentración de personas de la tercera edad en Lima Metropolitana. Muchos adultos mayores pasan largas horas solos en casa mientras sus familiares trabajan, lo que genera riesgo de aislamiento, depresión y problemas de salud. La oferta de servicios de cuidado diurno es limitada; si bien existen programas recreativos, pero no un espacio integral que combine cuidado, alimentación, actividades y supervisión médica básica. Familias del distrito expresan la necesidad de contar con un lugar seguro y confiable donde puedan dejar a sus padres durante la jornada laboral.",
-    "objetivo": "Implementar un Centro de Cuidado Diurno en Pueblo Libre que brinde servicios integrales de cuidado, estimulación cognitiva y recreación en el horario de 8:00 a.m. a 6:00 p.m. , promoviendo su bienestar físico, emocional y social, y apoyando a las familias en la conciliación laboral y familiar.",
+    "image": "/images/propuestas/propuesta-01.webp",
+    "imageAlt": "Adultos mayores tejiendo y conversando con cuidadora en un centro diurno luminoso con vista a la plaza de Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "En Pueblo Libre, los adultos mayores representan aproximadamente el 14,0 % de la población total. El distrito destaca por ser uno de los cuatro con mayor concentración de personas de la tercera edad en Lima Metropolitana. Muchos adultos mayores pasan largas horas solos en casa mientras sus familiares trabajan, lo que genera riesgo de aislamiento, depresión y problemas de salud. La oferta de servicios de cuidado diurno es limitada; si bien existen programas recreativos, pero no un espacio integral que combine cuidado, alimentación, actividades y supervisión médica básica. Familias del distrito expresan la necesidad de contar con un lugar seguro y confiable donde puedan dejar a sus padres durante la jornada laboral."
+    ],
+    "objetivo": [
+      "Implementar un Centro de Cuidado Diurno en Pueblo Libre que brinde servicios integrales de cuidado, estimulación cognitiva y recreación en el horario de 8:00 a.m. a 6:00 p.m. , promoviendo su bienestar físico, emocional y social, y apoyando a las familias en la conciliación laboral y familiar."
+    ],
     "acciones": [
       "Implementar el Centro de Cuidado Diurno en la Casa del Adulto Mayor . Instalar pisos antideslizantes, rampas, pasamanos de apoyo, baños geriátricos adaptados y un área de tópico médico. Reclutar un equipo multidisciplinario que incluya un enfermero/tópico, cuidadores geriátricos certificados y talleristas externos (fisioterapeutas o psicólogos)."
+    ],
+    "presupuesto": [
+      "S/ 1,800,000. Para implementación del espacio, pago de trabajadores, adquisición de implementos, y alimentación diaria durante el periodo de 4 años."
     ],
     "metas": [
       "Albergar y atender de manera óptima a un grupo inicial de 30 adultos mayores residentes en Pueblo Libre durante el primer año de funcionamiento.",
       "Alcanzar un 90 % de nivel de satisfacción en las encuestas semestrales aplicadas a los hijos/familiares respecto a la seguridad y bienestar de sus padres."
-    ],
-    "viabilidad": "S/ 1,800,000. Para implementación del espacio, pago de trabajadores, adquisición de implementos, y alimentación diaria durante el periodo de 4 años.",
-    "image": "/images/propuestas/propuesta-01.webp",
-    "imageAlt": "Adultos mayores tejiendo y conversando con cuidadora en un centro diurno luminoso con vista a la plaza de Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-02",
     "numero": 2,
-    "titulo": "Pueblo Libre Inclusivo",
+    "titulo": "\"Pueblo Libre Inclusivo\"",
     "categoria": "Inclusión",
     "dimension": "Social",
-    "diagnostico": "En Pueblo Libre, según el Informe Anual de Rendición en Materia de Discapacidad 2025 de la Municipalidad, se estima que alrededor del 9% de la población del distrito presenta algún tipo de discapacidad: visual, motora y auditiva entre otras; lo que equivale a unas 9,000 personas aproximadamente.",
-    "objetivo": "Garantizar la inclusión plena de las personas con discapacidad en Pueblo Libre, asegurando accesibilidad urbana, participación ciudadana y acceso a programas de salud, empleo y cultura, con enfoque de derechos y dignidad.",
+    "image": "/images/propuestas/propuesta-02.webp",
+    "imageAlt": "Mujer en silla de ruedas y acompañante utilizando rampa de accesibilidad con suelo táctil en una plaza histórica de Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "En Pueblo Libre, según el Informe Anual de Rendición en Materia de Discapacidad 2025 de la Municipalidad, se estima que alrededor del 9% de la población del distrito presenta algún tipo de discapacidad: visual, motora y auditiva entre otras; lo que equivale a unas 9,000 personas aproximadamente."
+    ],
+    "objetivo": [
+      "Garantizar la inclusión plena de las personas con discapacidad en Pueblo Libre, asegurando accesibilidad urbana, participación ciudadana y acceso a programas de salud, empleo y cultura, con enfoque de derechos y dignidad."
+    ],
     "acciones": [
       "Se contempla las mejores e implementación en temas de accesibilidad urbana: rampas con medidas reglamentarias , señalización táctil, transporte inclusivo. Empleo y capacitación: convenios con empresas locales para inclusión laboral. Salud y bienestar: campañas de prevención y acceso a servicios básicos. Participación ciudadana: creación de un Consejo Distrital de Inclusión con representantes de asociaciones de personas con discapacidad."
+    ],
+    "presupuesto": [
+      "S/ 700,000 para el primer año. Este presupuesto puede optimizarse con apoyo del CONADIS, convenios con universidades y empresas privadas, además de integrar proyectos al presupuesto participativo."
     ],
     "metas": [
       "Implementar un Consejo Distrital de Inclusión con representantes de asociaciones de personas con discapacidad.",
       "Ejecutar al menos 8 campañas de sensibilización en colegios y espacios públicos.",
       "Instalar 30 rampas y señalización táctil en puntos críticos del distrito para el primer año",
       "Incorporar a 30 personas con discapacidad en programas de empleo y capacitación."
-    ],
-    "viabilidad": "S/ 700,000 para el primer año. Este presupuesto puede optimizarse con apoyo del CONADIS, convenios con universidades y empresas privadas, además de integrar proyectos al presupuesto participativo.",
-    "image": "/images/propuestas/propuesta-02.webp",
-    "imageAlt": "Mujer en silla de ruedas y acompañante utilizando rampa de accesibilidad con suelo táctil en una plaza histórica de Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-03",
@@ -47,21 +59,27 @@
     "titulo": "Veterinaria Municipal Móvil",
     "categoria": "Bienestar animal",
     "dimension": "Social",
-    "diagnostico": "Muchas familias no cuentan con recursos para acceder a servicios veterinarios especializados y existe una alta demanda de atención para animales rescatados. El POI 2026 limita sus metas físicas en salud animal a inspecciones sanitarias básicas, detectándose la ausencia de infraestructura pública de mediana y alta complejidad para atenciones médicas veterinarias accesibles.",
-    "objetivo": "Implementar una Veterinaria Municipal Móvil que recorra los parques y zonas del distrito, brindando servicios básicos de salud animal (vacunación, desparasitación, chequeos preventivos) y promoviendo la tenencia responsable de mascotas.",
+    "image": "/images/propuestas/propuesta-03.webp",
+    "imageAlt": "Veterinario atendiendo a un perro en la clínica móvil municipal en un parque de Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "Muchas familias no cuentan con recursos para acceder a servicios veterinarios especializados y existe una alta demanda de atención para animales rescatados. El POI 2026 limita sus metas físicas en salud animal a inspecciones sanitarias básicas, detectándose la ausencia de infraestructura pública de mediana y alta complejidad para atenciones médicas veterinarias accesibles."
+    ],
+    "objetivo": [
+      "Implementar una Veterinaria Municipal Móvil que recorra los parques y zonas del distrito, brindando servicios básicos de salud animal (vacunación, desparasitación, chequeos preventivos) y promoviendo la tenencia responsable de mascotas."
+    ],
     "acciones": [
       "Contar con una Unidad móvil equipada: con espacio para atención básica, refrigeración de vacunas y material de difusión. A ello se sumará el apoyo a las organizaciones de adopción responsable del distrito, creando espacios para sus campañas y desarrollando una web para la adopción responsable de mascotas."
+    ],
+    "presupuesto": [
+      "S/ 5,000,000. Viable como proyecto de inversión pública estructurado mediante el mecanismo de Obras por Impuestos (OxI) o a través de un Convenio de Cooperación con Universidades locales que cuenten con la facultad de Medicina Veterinaria (ej. Universidad Científica del Sur o UNMSM) para el suministro de internos y especialistas."
     ],
     "metas": [
       "Realizar más de 20,000 atenciones veterinarias,",
       "Promover la adopción responsable de 300 mascotas.",
       "Realizar 120 campañas de difusión sobre temas de interés.",
       "Ejecutar 5,000 esterilizaciones subvencionadas."
-    ],
-    "viabilidad": "S/ 5,000,000. Viable como proyecto de inversión pública estructurado mediante el mecanismo de Obras por Impuestos (OxI) o a través de un Convenio de Cooperación con Universidades locales que cuenten con la facultad de Medicina Veterinaria (ej. Universidad Científica del Sur o UNMSM) para el suministro de internos y especialistas.",
-    "image": "/images/propuestas/propuesta-03.webp",
-    "imageAlt": "Veterinario atendiendo a un perro en la clínica móvil municipal en un parque de Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-04",
@@ -69,20 +87,26 @@
     "titulo": "Pueblo Libre Pet Friendly",
     "categoria": "Bienestar animal",
     "dimension": "Social",
-    "diagnostico": "Se identifica una alta densidad de animales de compañía en hogares del distrito que carecen de un registro sanitario integrado y mecanismos transparentes de fiscalización que aseguren la salud pública comunitaria.",
-    "objetivo": "Fortalecer el control sanitario y la bioseguridad en establecimientos públicos y comerciales, vinculándose al OEI.03 (Mejorar las condiciones de salud en el distrito) y a la acción AEI.03.02 del PEI/POI.",
+    "image": "/images/propuestas/propuesta-04.webp",
+    "imageAlt": "Vecinos paseando mascotas en una plaza limpia de Pueblo Libre con estaciones de desechos y bebederos",
+    "imagePosition": "center",
+    "diagnostico": [
+      "Se identifica una alta densidad de animales de compañía en hogares del distrito que carecen de un registro sanitario integrado y mecanismos transparentes de fiscalización que aseguren la salud pública comunitaria."
+    ],
+    "objetivo": [
+      "Fortalecer el control sanitario y la bioseguridad en establecimientos públicos y comerciales, vinculándose al OEI.03 (Mejorar las condiciones de salud en el distrito) y a la acción AEI.03.02 del PEI/POI."
+    ],
     "acciones": [
       "Desarrollar la WebApp municipal \"Pet Friendly PL\" para emitir el DNI Mascota Digital mediante códigos QR, enlazado a un portal de datos abiertos sobre comercios aptos para mascotas y veterinarias fiscalizadas."
+    ],
+    "presupuesto": [
+      "Financiado con el presupuesto ordinario corriente de la Subgerencia de Fiscalización y Control Sanitario. Se gestionará un Convenio con el Colegio de Médicos Veterinarios del Perú para certificar técnicamente los locales del distrito y capacitar a inspectores municipales."
     ],
     "metas": [
       "Registrar 15,000 mascotas mediante el DNI Mascota Digital.",
       "Certificar 200 establecimientos Pet Friendly.",
       "Reducir en 40% los casos reportados de abandono animal."
-    ],
-    "viabilidad": "Financiado con el presupuesto ordinario corriente de la Subgerencia de Fiscalización y Control Sanitario. Se gestionará un Convenio con el Colegio de Médicos Veterinarios del Perú para certificar técnicamente los locales del distrito y capacitar a inspectores municipales.",
-    "image": "/images/propuestas/propuesta-04.webp",
-    "imageAlt": "Vecinos paseando mascotas en una plaza limpia de Pueblo Libre con estaciones de desechos y bebederos",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-05",
@@ -90,19 +114,25 @@
     "titulo": "Botica Municipal",
     "categoria": "Salud",
     "dimension": "Social",
-    "diagnostico": "En Pueblo Libre, muchas familias enfrentan altos costos de medicamentos en farmacias privadas. Los adultos mayores, personas con discapacidad y familias vulnerables son los más afectados por la falta de acceso oportuno. Actualmente no existe un servicio municipal que garantice medicinas esenciales a bajo costo ni que acompañe con orientación.",
-    "objetivo": "Crear una Botica Municipal que ofrezca medicamentos genéricos y esenciales a precios accesibles, con atención profesional y programas de orientación en salud, priorizando a poblaciones vulnerables del distrito.",
+    "image": "/images/propuestas/propuesta-05.webp",
+    "imageAlt": "Farmacéutica entregando medicamentos a una mujer mayor y madre con bebé en botica municipal",
+    "imagePosition": "center",
+    "diagnostico": [
+      "En Pueblo Libre, muchas familias enfrentan altos costos de medicamentos en farmacias privadas. Los adultos mayores, personas con discapacidad y familias vulnerables son los más afectados por la falta de acceso oportuno. Actualmente no existe un servicio municipal que garantice medicinas esenciales a bajo costo ni que acompañe con orientación."
+    ],
+    "objetivo": [
+      "Crear una Botica Municipal que ofrezca medicamentos genéricos y esenciales a precios accesibles, con atención profesional y programas de orientación en salud, priorizando a poblaciones vulnerables del distrito."
+    ],
     "acciones": [
       "Habilitación del local municipal: acondicionar un espacio con estándares de seguridad y almacenamiento de medicamentos. Convenios de abastecimiento: acuerdos con laboratorios y distribuidoras para adquirir medicamentos genéricos a precios preferenciales. Equipo profesional: farmacéutico responsable, técnicos de farmacia y personal de atención al público."
+    ],
+    "presupuesto": [
+      "S/. 720,000 para el primer año, este monto puede reducirse al establecer convenios con laboratorios nacionales, compras conjuntas con otras municipalidades o apoyo del MINSA para medicamentos esenciales."
     ],
     "metas": [
       "Implementar la botica con al menos 100 medicamentos esenciales disponibles.",
       "Atender a 1,000 vecinos en el primer año."
-    ],
-    "viabilidad": "S/. 720,000 para el primer año, este monto puede reducirse al establecer convenios con laboratorios nacionales, compras conjuntas con otras municipalidades o apoyo del MINSA para medicamentos esenciales.",
-    "image": "/images/propuestas/propuesta-05.webp",
-    "imageAlt": "Farmacéutica entregando medicamentos a una mujer mayor y madre con bebé en botica municipal",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-06",
@@ -110,10 +140,20 @@
     "titulo": "Plataforma de Seguridad Inteligente - Pueblo Libre Seguro",
     "categoria": "Seguridad",
     "dimension": "Social",
-    "diagnostico": "A pesar de que el POI 2026 destina un financiamiento robusto al patrullaje integrado por sector (superando los S/ 930,000 mensuales programados), las evaluaciones del PDLC siguen mostrando altos índices de percepción de inseguridad y una baja predictibilidad en los tiempos de respuesta del serenazgo.",
-    "objetivo": "Reducir la incidencia delictiva y mejorar la eficiencia del servicio preventivo de seguridad, articulado al OEI.02 (Reducir la inseguridad ciudadana en el distrito) y la acción AEI.02.01 (Patrullaje municipal integrado) del PEI.",
+    "image": "/images/propuestas/propuesta-06.webp",
+    "imageAlt": "Operadora en centro de monitoreo vigilando cámaras de videovigilancia de calles y plazas de Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "A pesar de que el POI 2026 destina un financiamiento robusto al patrullaje integrado por sector (superando los S/ 930,000 mensuales programados), las evaluaciones del PDLC siguen mostrando altos índices de percepción de inseguridad y una baja predictibilidad en los tiempos de respuesta del serenazgo."
+    ],
+    "objetivo": [
+      "Reducir la incidencia delictiva y mejorar la eficiencia del servicio preventivo de seguridad, articulado al OEI.02 (Reducir la inseguridad ciudadana en el distrito) y la acción AEI.02.01 (Patrullaje municipal integrado) del PEI."
+    ],
     "acciones": [
       "Diseñar e implementar un aplicativo móvil inteligente con geolocalización y visualización en tiempo real del recorrido de patrullaje de las unidades de serenazgo, y se monitoree a través del módulo de Gobierno Abierto donde los vecinos evalúen digitalmente la velocidad de respuesta de los efectivos y puedan medir la calidad de la atención del sereno a través del dispositivo digital."
+    ],
+    "presupuesto": [
+      "S/ 500,000 para el desarrollo del ecosistema tecnológico. Absorbibles mediante los recursos corrientes asignados a la Gerencia de Coordinación de la Seguridad Ciudadana. Se firmará un Convenio Interinstitucional con el Ministerio del Interior (MININTER) para la interconexión directa de datos con la Central 105 de la Policía Nacional del Perú (PNP)."
     ],
     "metas": [
       "Alcanzar 30,000 usuarios registrados en la aplicación.",
@@ -122,11 +162,7 @@
       "Atender el 95% de incidencias reportadas mediante el botón de pánico.",
       "Incrementar al 85% la satisfacción vecinal respecto al servicio de seguridad ciudadana.",
       "Reducir en 25% los delitos contra el patrimonio en el distrito."
-    ],
-    "viabilidad": "S/ 500,000 para el desarrollo del ecosistema tecnológico. Absorbibles mediante los recursos corrientes asignados a la Gerencia de Coordinación de la Seguridad Ciudadana. Se firmará un Convenio Interinstitucional con el Ministerio del Interior (MININTER) para la interconexión directa de datos con la Central 105 de la Policía Nacional del Perú (PNP).",
-    "image": "/images/propuestas/propuesta-06.webp",
-    "imageAlt": "Operadora en centro de monitoreo vigilando cámaras de videovigilancia de calles y plazas de Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-07",
@@ -134,20 +170,26 @@
     "titulo": "Comando Junta Vecinal para la Prevención Ciudadana",
     "categoria": "Seguridad",
     "dimension": "Social",
-    "diagnostico": "La capacidad de vigilancia preventiva requiere una mayor participación organizada de los vecinos.",
-    "objetivo": "Fortalecer la prevención del delito mediante organizaciones vecinales capacitadas y articuladas con serenazgo y Policía Nacional.",
+    "image": "/images/propuestas/propuesta-07.webp",
+    "imageAlt": "Vecinos y personal de seguridad revisando un mapa junto a representante en un parque de Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "La capacidad de vigilancia preventiva requiere una mayor participación organizada de los vecinos."
+    ],
+    "objetivo": [
+      "Fortalecer la prevención del delito mediante organizaciones vecinales capacitadas y articuladas con serenazgo y Policía Nacional."
+    ],
     "acciones": [
       "Creación del programa Comando Junta Vecinal. Capacitación certificada en primeros auxilios, gestión de riesgos y prevención del delito. equipamiento con chalecos, radios, alarmas comunitarias e integrado al aplicativo \"Pueblo Libre Seguro\". Patrullaje preventivo y vigilancia comunitaria coordinada."
+    ],
+    "presupuesto": [
+      "S/ 500,000 durante la gestión del presupuesto participativo."
     ],
     "metas": [
       "Implementar 20 juntas vecinales organizadas.",
       "Capacitar a 1000 vecinos.",
       "Reducir en 25% la incidencia delictiva en zonas priorizadas."
-    ],
-    "viabilidad": "S/ 500,000 durante la gestión del presupuesto participativo.",
-    "image": "/images/propuestas/propuesta-07.webp",
-    "imageAlt": "Vecinos y personal de seguridad revisando un mapa junto a representante en un parque de Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-08",
@@ -155,10 +197,20 @@
     "titulo": "Defensoría de las Juventudes y Salud Mental Digital",
     "categoria": "Juventud",
     "dimension": "Social",
-    "diagnostico": "La población en el rango de 18 a 35 años representa un eje demográfico prioritario en crecimiento (16.92% de incremento general distrital), el cual afronta altas tasas de estrés, ansiedad laboral y universitaria, sin canales públicos digitales de atención inmediata en salud mental.",
-    "objetivo": "Brindar servicios integrales de apoyo social, psicológico y de salud orientados a jóvenes en situación de vulnerabilidad emocional, bajo las competencias de la Gerencia de Desarrollo Humano, Familia y DEMUNA y el OEI.01 del PEI.",
+    "image": "/images/propuestas/propuesta-08.webp",
+    "imageAlt": "Jóvenes compartiendo ideas en un centro de estudios moderno y luminoso en Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "La población en el rango de 18 a 35 años representa un eje demográfico prioritario en crecimiento (16.92% de incremento general distrital), el cual afronta altas tasas de estrés, ansiedad laboral y universitaria, sin canales públicos digitales de atención inmediata en salud mental."
+    ],
+    "objetivo": [
+      "Brindar servicios integrales de apoyo social, psicológico y de salud orientados a jóvenes en situación de vulnerabilidad emocional, bajo las competencias de la Gerencia de Desarrollo Humano, Familia y DEMUNA y el OEI.01 del PEI."
+    ],
     "acciones": [
       "Crear la Defensoría de las Juventudes operada mediante una plataforma virtual de tele consultas psicológicas nocturnas gratuitas, chats interactivos anónimos asistidos por especialistas y reportes estadísticos abiertos sobre salud emocional comunitaria."
+    ],
+    "presupuesto": [
+      "Viable utilizando gasto corriente operativo asignado a programas de salud comunal y desarrollo humano. Requiere la firma de un Convenio con el Ministerio de Salud (MINSA) para la adscripción técnica al modelo de los Centros de Salud Mental Comunitaria (CSMC)."
     ],
     "metas": [
       "Atender a 10,000 jóvenes del distrito.",
@@ -166,11 +218,7 @@
       "Incorporar a 100% de universidades e institutos ubicados en Pueblo Libre.",
       "Lograr una satisfacción superior al 85% de los usuarios.",
       "Reducir en 20% los factores de riesgo asociados a salud mental en jóvenes beneficiarios."
-    ],
-    "viabilidad": "Viable utilizando gasto corriente operativo asignado a programas de salud comunal y desarrollo humano. Requiere la firma de un Convenio con el Ministerio de Salud (MINSA) para la adscripción técnica al modelo de los Centros de Salud Mental Comunitaria (CSMC).",
-    "image": "/images/propuestas/propuesta-08.webp",
-    "imageAlt": "Jóvenes compartiendo ideas en un centro de estudios moderno y luminoso en Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-09",
@@ -178,10 +226,20 @@
     "titulo": "Remodelación de Complejos Deportivos y Creación del Coliseo Deportivo Multifuncional Mamá Ocllo",
     "categoria": "Deporte",
     "dimension": "Social",
-    "diagnostico": "Brecha de infraestructura recreativa de alta competencia y abandono físico de espacios deportivos históricos que limita el desarrollo físico-cultural de la juventud del distrito.",
-    "objetivo": "Fomentar el acceso a actividades recreativas y deportivas saludables mediante el mejoramiento de la infraestructura urbana del distrito (vinculado a las competencias de obras públicas del PEI).",
+    "image": "/images/propuestas/propuesta-09.webp",
+    "imageAlt": "Jóvenes jugando fútbol en cancha municipal renovada con césped sintético y tribunas techadas",
+    "imagePosition": "center",
+    "diagnostico": [
+      "Brecha de infraestructura recreativa de alta competencia y abandono físico de espacios deportivos históricos que limita el desarrollo físico-cultural de la juventud del distrito."
+    ],
+    "objetivo": [
+      "Fomentar el acceso a actividades recreativas y deportivas saludables mediante el mejoramiento de la infraestructura urbana del distrito (vinculado a las competencias de obras públicas del PEI)."
+    ],
     "acciones": [
       "Ejecutar el megaproyecto del Coliseo Multifuncional Mamá Ocllo e implementar la reserva digital de las canchas deportivas (reservas transparentes vía app municipal para erradicar cobros informales)"
+    ],
+    "presupuesto": [
+      "S/ 2,000,000. Al sobrepasar el presupuesto ordinario anual, se estructurará bajo el sistema Invierte.pe como un Proyecto de Inversión Pública (PIP), gestionando el cofinanciamiento mediante un Convenio de Transferencia de Recursos con el Instituto Peruano del Deporte (IPD) y el Ministerio de Educación (MINEDU)."
     ],
     "metas": [
       "Construir 01 Coliseo Deportivo Multifuncional Mamá Ocllo.",
@@ -189,20 +247,23 @@
       "Beneficiar a 100,000 usuarios durante la gestión.",
       "Incrementar en 50% la participación de jóvenes en programas deportivos.",
       "Organizar 100 eventos deportivos distritales y metropolitanos."
-    ],
-    "viabilidad": "S/ 2,000,000. Al sobrepasar el presupuesto ordinario anual, se estructurará bajo el sistema Invierte.pe como un Proyecto de Inversión Pública (PIP), gestionando el cofinanciamiento mediante un Convenio de Transferencia de Recursos con el Instituto Peruano del Deporte (IPD) y el Ministerio de Educación (MINEDU).",
-    "image": "/images/propuestas/propuesta-09.webp",
-    "imageAlt": "Jóvenes jugando fútbol en cancha municipal renovada con césped sintético y tribunas techadas",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-10",
     "numero": 10,
-    "titulo": "Centro de Innovación, Emprendimiento y Desarrollo Empresarial de Pueblo Libre",
+    "titulo": "Hub Distrital - Centro de Innovación, Emprendimiento y Desarrollo Empresarial de Pueblo Libre",
     "categoria": "Innovación",
     "dimension": "Económica",
-    "diagnostico": "La evaluación del Plan de Desarrollo Local Concertado evidencia que gran parte de los emprendimientos, comercios y negocios del distrito aún operan bajo modelos tradicionales, con limitadas capacidades de transformación digital, acceso a tecnologías emergentes, financiamiento, innovación y generación de empleo. Asimismo, existe una creciente demanda de los jóvenes por espacios de capacitación tecnológica, empleabilidad y desarrollo de nuevos negocios.",
-    "objetivo": "Impulsar la competitividad económica, la innovación, la transformación digital y la generación de empleo de calidad mediante la consolidación de un ecosistema de emprendimiento, tecnología y desarrollo empresarial que convierta a Pueblo Libre en el distrito líder en innovación de Lima Metropolitana.",
+    "image": "/images/propuestas/propuesta-10.webp",
+    "imageAlt": "Emprendedores y jóvenes colaborando en un espacio de innovación con estanterías y luz natural",
+    "imagePosition": "center",
+    "diagnostico": [
+      "La evaluación del Plan de Desarrollo Local Concertado evidencia que gran parte de los emprendimientos, comercios y negocios del distrito aún operan bajo modelos tradicionales, con limitadas capacidades de transformación digital, acceso a tecnologías emergentes, financiamiento, innovación y generación de empleo. Asimismo, existe una creciente demanda de los jóvenes por espacios de capacitación tecnológica, empleabilidad y desarrollo de nuevos negocios."
+    ],
+    "objetivo": [
+      "Impulsar la competitividad económica, la innovación, la transformación digital y la generación de empleo de calidad mediante la consolidación de un ecosistema de emprendimiento, tecnología y desarrollo empresarial que convierta a Pueblo Libre en el distrito líder en innovación de Lima Metropolitana."
+    ],
     "acciones": [
       "Recuperar y poner en valor la infraestructura pública (BIBLIOTECA MUNICIPAL) para implementar el Hub Distrital de Innovación, Emprendimiento, Tecnología y Empleabilidad de Pueblo Libre, que contará con:",
       "Centro Municipal de Innovación y Emprendimiento Digital.",
@@ -217,6 +278,9 @@
       "Hackathones, ferias tecnológicas y concursos de innovación para resolver problemas del distrito.",
       "Directorio digital de emprendimiento y negocios locales del distrito."
     ],
+    "presupuesto": [
+      "S/ 8,500,000 durante la gestión 2027-2030. La propuesta será financiada mediante inversión municipal, convenios con el Ministerio de la Producción (PRODUCE), ProInnóvate, Ministerio de Trabajo y Promoción del Empleo (MTPE), universidades, gremios empresariales y alianzas público-privadas."
+    ],
     "metas": [
       "Implementar 01 Centro Distrital de Innovación y Empleabilidad.",
       "Capacitar a 15,000 emprendedores, jóvenes y empresarios.",
@@ -227,11 +291,7 @@
       "Capacitar a 8,000 jóvenes en inteligencia artificial, tecnología y transformación digital.",
       "Beneficiar a 2,000 MYPES con programas de digitalización y comercio electrónico.",
       "Registras a 1000 emprendimiento y negocios locales del distrito en el directorio digital de emprendedores."
-    ],
-    "viabilidad": "S/ 8,500,000 durante la gestión 2027-2030. La propuesta será financiada mediante inversión municipal, convenios con el Ministerio de la Producción (PRODUCE), ProInnóvate, Ministerio de Trabajo y Promoción del Empleo (MTPE), universidades, gremios empresariales y alianzas público-privadas.",
-    "image": "/images/propuestas/propuesta-10.webp",
-    "imageAlt": "Emprendedores y jóvenes colaborando en un espacio de innovación con estanterías y luz natural",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-11",
@@ -239,10 +299,20 @@
     "titulo": "Impulso al Empleo Joven y Bolsa de Trabajo Tecnológica",
     "categoria": "Empleo",
     "dimension": "Económica",
-    "diagnostico": "Existe una alta concentración de población joven calificada o en formación técnica-universitaria que demanda canales modernos, eficientes y meritocráticos de vinculación con el mercado laboral corporativo y tecnológico.",
-    "objetivo": "Fomentar la empleabilidad local y la inserción laboral juvenil formal, en concordancia con las políticas institucionales de desarrollo humano e inclusión socioeconómica del PEI.",
+    "image": "/images/propuestas/propuesta-11.webp",
+    "imageAlt": "Jóvenes en formación tecnológica conversando en un centro de empleo y capacitación digital",
+    "imagePosition": "center",
+    "diagnostico": [
+      "Existe una alta concentración de población joven calificada o en formación técnica-universitaria que demanda canales modernos, eficientes y meritocráticos de vinculación con el mercado laboral corporativo y tecnológico."
+    ],
+    "objetivo": [
+      "Fomentar la empleabilidad local y la inserción laboral juvenil formal, en concordancia con las políticas institucionales de desarrollo humano e inclusión socioeconómica del PEI."
+    ],
     "acciones": [
       "Diseñar una plataforma algorítmica de emparejamiento de perfiles laborales (Matchmaking) de Gobierno Abierto, donde las empresas locales y nacionales publiquen vacantes y los procesos de selección sean transparentes, orientados a vacantes de economía digital, programación, diseño y trabajo remoto."
+    ],
+    "presupuesto": [
+      "Financiado con el presupuesto regular operativo de la Gerencia de Desarrollo Humano. Se celebrará un Convenio Interinstitucional con el Ministerio de Trabajo y Promoción del Empleo (MTPE) para conectar la plataforma distrital con el programa nacional Jóvenes Productivos."
     ],
     "metas": [
       "Implementar 01 Plataforma Distrital de Empleo y Talento Digital con acceso libre para todos los vecinos.",
@@ -254,11 +324,7 @@
       "Realizar 100 ferias laborales, ruedas de negocio y eventos de networking durante la gestión.",
       "Alcanzar una tasa de satisfacción superior al 85% entre usuarios y empresas participantes.",
       "Integrar la plataforma con los servicios nacionales del Ministerio de Trabajo y Promoción del Empleo para ampliar las oportunidades de colocación laboral."
-    ],
-    "viabilidad": "Financiado con el presupuesto regular operativo de la Gerencia de Desarrollo Humano. Se celebrará un Convenio Interinstitucional con el Ministerio de Trabajo y Promoción del Empleo (MTPE) para conectar la plataforma distrital con el programa nacional Jóvenes Productivos.",
-    "image": "/images/propuestas/propuesta-11.webp",
-    "imageAlt": "Jóvenes en formación tecnológica conversando en un centro de empleo y capacitación digital",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-12",
@@ -266,10 +332,20 @@
     "titulo": "Pueblo Libre Distrito Libertador de la Cultura, Gastronomía e Historia",
     "categoria": "Cultura y turismo",
     "dimension": "Económica",
-    "diagnostico": "El informe del PDLC señala que la promoción turística y la articulación cultural -comercial del distrito han operado con metodologías estáticas, desaprovechando el potencial de la identidad histórica local para generar dinamismo económico.",
-    "objetivo": "Dinamizar la actividad cultural, turística e histórica local, alineado con las funciones de la Gerencia de Cultura, Turismo y Educación fijadas en el PEI.",
+    "image": "/images/propuestas/propuesta-12.webp",
+    "imageAlt": "Familias y turistas disfrutando de una feria gastronómica en la plaza mayor de Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "El informe del PDLC señala que la promoción turística y la articulación cultural -comercial del distrito han operado con metodologías estáticas, desaprovechando el potencial de la identidad histórica local para generar dinamismo económico."
+    ],
+    "objetivo": [
+      "Dinamizar la actividad cultural, turística e histórica local, alineado con las funciones de la Gerencia de Cultura, Turismo y Educación fijadas en el PEI."
+    ],
     "acciones": [
       "Crear circuitos culturales, gastronómicos e históricos interactivos implementando tótems inteligentes con códigos QR y Realidad Aumentada (RA) desarrollados en conjunto con estudiantes universitarios del distrito."
+    ],
+    "presupuesto": [
+      "S/ 15,000,000 de inversión progresiva programada. Se viabilizará mediante un Convenio de Cooperación con el Ministerio de Cultura (MINCUL) y PROMPERÚ para incorporar a Pueblo Libre de forma prioritaria en las plataformas nacionales de promoción turística y ejes bicentenarios."
     ],
     "metas": [
       "Incrementar en 50% el flujo turístico distrital.",
@@ -278,11 +354,7 @@
       "Realizar 200 actividades culturales y gastronómicas.",
       "Incorporar 150 negocios locales a los circuitos turísticos y gastronómicos.",
       "Posicionar a Pueblo Libre entre los 5 principales destinos culturales de Lima Metropolitana."
-    ],
-    "viabilidad": "S/ 15,000,000 de inversión progresiva programada. Se viabilizará mediante un Convenio de Cooperación con el Ministerio de Cultura (MINCUL) y PROMPERÚ para incorporar a Pueblo Libre de forma prioritaria en las plataformas nacionales de promoción turística y ejes bicentenarios.",
-    "image": "/images/propuestas/propuesta-12.webp",
-    "imageAlt": "Familias y turistas disfrutando de una feria gastronómica en la plaza mayor de Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-13",
@@ -290,19 +362,25 @@
     "titulo": "Reorganización de los Mercados Indios de la Av. La Marina",
     "categoria": "Desarrollo económico",
     "dimension": "Económica",
-    "diagnostico": "El informe del PDLC señala que la promoción turística y la articulación cultural -comercial del distrito han operado con metodologías estáticas, desaprovechando el potencial de la identidad histórica local para generar dinamismo económico.",
-    "objetivo": "Reordenar y modernizar la zona de venta de artesanía y textiles en la Av. La Marina, promoviendo un espacio seguro, atractivo y organizado que potencie la identidad cultural, mejore las condiciones de trabajo de los comerciantes y ofrezca una experiencia turística y vecinal de calidad.",
+    "image": "/images/propuestas/propuesta-13.webp",
+    "imageAlt": "Mercado de artesanías al aire libre con cerámica, textiles y cestería en un espacio público renovado",
+    "imagePosition": "center",
+    "diagnostico": [
+      "El informe del PDLC señala que la promoción turística y la articulación cultural -comercial del distrito han operado con metodologías estáticas, desaprovechando el potencial de la identidad histórica local para generar dinamismo económico."
+    ],
+    "objetivo": [
+      "Reordenar y modernizar la zona de venta de artesanía y textiles en la Av. La Marina, promoviendo un espacio seguro, atractivo y organizado que potencie la identidad cultural, mejore las condiciones de trabajo de los comerciantes y ofrezca una experiencia turística y vecinal de calidad."
+    ],
     "acciones": [
       "Realizar un diagnóstico participativo con comerciantes y vecinos sobre necesidades de infraestructura y organización e implementar un plan piloto de ordenamiento en un sector del mercado (señalización, limpieza, seguridad). Crear una mesa de trabajo permanente con asociaciones de artesanos y comerciantes. Desarrollar un programa de capacitación en marketing y atención al cliente para comerciantes. Convertir la zona en un corredor turístico-cultural, articulado con museos y atractivos del distrito."
+    ],
+    "presupuesto": [
+      "S/ 15,000,000 de inversión progresiva programada. Se viabilizará mediante un Convenio de Cooperación con el Ministerio de Cultura (MINCUL) y PROMPERÚ para incorporar a Pueblo Libre de forma prioritaria en las plataformas nacionales de promoción turística y ejes bicentenarios."
     ],
     "metas": [
       "Aumentar en 40% el flujo de visitantes.",
       "Incrementar en 30% las ventas de los comerciantes."
-    ],
-    "viabilidad": "S/ 15,000,000 de inversión progresiva programada. Se viabilizará mediante un Convenio de Cooperación con el Ministerio de Cultura (MINCUL) y PROMPERÚ para incorporar a Pueblo Libre de forma prioritaria en las plataformas nacionales de promoción turística y ejes bicentenarios.",
-    "image": "/images/propuestas/propuesta-13.webp",
-    "imageAlt": "Mercado de artesanías al aire libre con cerámica, textiles y cestería en un espacio público renovado",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-14",
@@ -310,10 +388,20 @@
     "titulo": "Plan de Conectividad Integral y Movilidad Sostenible",
     "categoria": "Movilidad",
     "dimension": "Ambiental",
-    "diagnostico": "Los planes operativos vigentes (POI 2026) se concentran prioritariamente en el mantenimiento rutinario y parchado asfáltico de calzadas, veredas y sardineles, careciendo de un enfoque sistémico de micro-movilidad e integración vial multimodal que use tecnologías de monitoreo de flujos.",
-    "objetivo": "Mejorar las condiciones de transitabilidad urbana vial y peatonal bajo criterios sostenibles, alineado al OEI.05 (Promover la gestión ambiental) del PEI y las funciones de la Gerencia de Desarrollo Urbano y del Ambiente.",
+    "image": "/images/propuestas/propuesta-14.webp",
+    "imageAlt": "Calle en Pueblo Libre con bus de transporte público, ciclovía verde y cruce peatonal seguro",
+    "imagePosition": "center",
+    "diagnostico": [
+      "Los planes operativos vigentes (POI 2026) se concentran prioritariamente en el mantenimiento rutinario y parchado asfáltico de calzadas, veredas y sardineles, careciendo de un enfoque sistémico de micro-movilidad e integración vial multimodal que use tecnologías de monitoreo de flujos."
+    ],
+    "objetivo": [
+      "Mejorar las condiciones de transitabilidad urbana vial y peatonal bajo criterios sostenibles, alineado al OEI.05 (Promover la gestión ambiental) del PEI y las funciones de la Gerencia de Desarrollo Urbano y del Ambiente."
+    ],
     "acciones": [
       "Ampliar y rediseñar una red de 15 km de ciclovías del distrito interconectadas y segregadas, monitoreadas con sensores de flujo abiertos al público e iluminación LED alimentada por energía solar."
+    ],
+    "presupuesto": [
+      "S/ 1,500,000. Financiamiento programado de forma multianual mediante fondos de desarrollo urbano y recursos determinados (FONCOMUN). Requiere un Convenio Obligatorio de Cooperación de Gestión Vial con la Autoridad de Transporte Urbano para Lima y Callao (ATU) y la Municipalidad Metropolitana de Lima (MML)."
     ],
     "metas": [
       "Implementar y modernizar 15 km de ciclovías seguras, interconectadas y segregadas en el distrito.",
@@ -323,22 +411,28 @@
       "Reducir en 20% los tiempos de desplazamiento en los principales ejes viales intervenidos.",
       "Reducir en 25% los accidentes de tránsito en las zonas beneficiadas por el proyecto.",
       "Integrar el distrito a la red metropolitana de ciclovías mediante convenios con la Municipalidad Metropolitana de Lima y la ATU."
-    ],
-    "viabilidad": "S/ 1,500,000. Financiamiento programado de forma multianual mediante fondos de desarrollo urbano y recursos determinados (FONCOMUN). Requiere un Convenio Obligatorio de Cooperación de Gestión Vial con la Autoridad de Transporte Urbano para Lima y Callao (ATU) y la Municipalidad Metropolitana de Lima (MML).",
-    "image": "/images/propuestas/propuesta-14.webp",
-    "imageAlt": "Calle en Pueblo Libre con bus de transporte público, ciclovía verde y cruce peatonal seguro",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-15",
     "numero": 15,
-    "titulo": "Programa de Renovación Urbana Integral Nuevo 07 de Junio",
+    "titulo": "Programa de Renovación Urbana Integral \"Nuevo 07 de Junio\"",
     "categoria": "Desarrollo urbano",
     "dimension": "Ambiental",
-    "diagnostico": "El asentamiento humano \"07 de Junio\" representa un foco crítico histórico identificado con marcadas brechas en el ordenamiento del suelo, saneamiento físico -legal e infraestructura urbana deficiente.",
-    "objetivo": "Elevar las condiciones de habitabilidad, seguridad y formalización territorial del distrito, en estricta línea con el OEI.01 (Condiciones de habitabilidad) del PEI.",
+    "image": "/images/propuestas/propuesta-15.webp",
+    "imageAlt": "Familia caminando por calle remodelada con bancas moradas donde conversan adultos mayores en Pueblo Libre",
+    "imagePosition": "center bottom",
+    "diagnostico": [
+      "El asentamiento humano \"07 de Junio\" representa un foco crítico histórico identificado con marcadas brechas en el ordenamiento del suelo, saneamiento físico -legal e infraestructura urbana deficiente."
+    ],
+    "objetivo": [
+      "Elevar las condiciones de habitabilidad, seguridad y formalización territorial del distrito, en estricta línea con el OEI.01 (Condiciones de habitabilidad) del PEI."
+    ],
     "acciones": [
       "Realizar el levantamiento catastral digital 3D de alta precisión mediante drones de la municipalidad, habilitando un portal de consulta web transparente (Gobierno Abierto) para que los vecinos jóvenes sigan el estado del saneamiento de sus predios paso a paso."
+    ],
+    "presupuesto": [
+      "Asignación municipal de S/ 1,000,000 destinados a estudios técnicos de ingeniería y delimitación legal. La ejecución de las obras estructurales de vivienda y pistas se canalizará mediante un Convenio con el Ministerio de Vivienda, Construcción y Saneamiento (MVCS) a través del programa integral Techo Propio y fondos Mivivienda."
     ],
     "metas": [
       "Elaborar e implementar el Catastro Digital 3D del 100% del sector 07 de Junio.",
@@ -346,11 +440,7 @@
       "Gestionar la incorporación de 500 familias a programas de vivienda promovidos por el Ministerio de Vivienda.",
       "Implementar un portal digital de seguimiento ciudadano con acceso público al estado de cada expediente.",
       "Incrementar en 50% el valor urbano y habitacional de los predios beneficiados al culminar los procesos de formalización."
-    ],
-    "viabilidad": "Asignación municipal de S/ 1,000,000 destinados a estudios técnicos de ingeniería y delimitación legal. La ejecución de las obras estructurales de vivienda y pistas se canalizará mediante un Convenio con el Ministerio de Vivienda, Construcción y Saneamiento (MVCS) a través del programa integral Techo Propio y fondos Mivivienda.",
-    "image": "/images/propuestas/propuesta-15.webp",
-    "imageAlt": "Familia caminando por calle remodelada con bancas moradas donde conversan adultos mayores en Pueblo Libre",
-    "imagePosition": "center bottom"
+    ]
   },
   {
     "id": "propuesta-16",
@@ -358,8 +448,15 @@
     "titulo": "Parques Tecnológicos y Ecológicos Autogestionados",
     "categoria": "Sostenibilidad",
     "dimension": "Ambiental",
-    "diagnostico": "La evaluación del PDLC evidencia una brecha en áreas verdes por habitante y un modelo tradicional de mantenimiento de parques que no aprovecha las tecnologías inteligentes para mejorar los servicios ambientales, la conectividad digital y la participación ciudadana. Así mismo los parques lucen descuidados y sin mantenimiento periódico para la infraestructura de juegos infantiles y mini gimnasios.",
-    "objetivo": "Modernizar los espacios públicos mediante infraestructura tecnológica sostenible que contribuya a la calidad ambiental, la conectividad y el bienestar de los vecinos. Darles un mantenimiento permanente a los parques, así como a las áreas de juegos infantiles y mini gimnasios.",
+    "image": "/images/propuestas/propuesta-16.webp",
+    "imageAlt": "Vecinos trabajando en huerto urbano comunitario con compostera y pérgola con paneles solares",
+    "imagePosition": "center",
+    "diagnostico": [
+      "La evaluación del PDLC evidencia una brecha en áreas verdes por habitante y un modelo tradicional de mantenimiento de parques que no aprovecha las tecnologías inteligentes para mejorar los servicios ambientales, la conectividad digital y la participación ciudadana. Así mismo los parques lucen descuidados y sin mantenimiento periódico para la infraestructura de juegos infantiles y mini gimnasios."
+    ],
+    "objetivo": [
+      "Modernizar los espacios públicos mediante infraestructura tecnológica sostenible que contribuya a la calidad ambiental, la conectividad y el bienestar de los vecinos. Darles un mantenimiento permanente a los parques, así como a las áreas de juegos infantiles y mini gimnasios."
+    ],
     "acciones": [
       "Implementar el programa \"Parques Inteligentes de Pueblo Libre\", mediante:",
       "Reforestación urbana y recuperación de parques ecológicos.",
@@ -371,14 +468,13 @@
       "Aplicativo móvil para reportar incidencias en parques y áreas verdes.",
       "Mantenimiento permanente a los parques, así como a las áreas de juegos infantiles y mini gimnasios."
     ],
+    "presupuesto": [
+      "S/ 7,500,000 durante la gestión 2027-2030. Financiado mediante recursos municipales, arbitrios de parques y jardines, cooperación técnica ambiental y alianzas con empresas privadas bajo mecanismos de responsabilidad social."
+    ],
     "metas": [
       "Implementar 20 parques inteligentes.",
       "Alcanzar 50,000 usuarios anuales de WiFi público gratuito."
-    ],
-    "viabilidad": "S/ 7,500,000 durante la gestión 2027-2030. Financiado mediante recursos municipales, arbitrios de parques y jardines, cooperación técnica ambiental y alianzas con empresas privadas bajo mecanismos de responsabilidad social.",
-    "image": "/images/propuestas/propuesta-16.webp",
-    "imageAlt": "Vecinos trabajando en huerto urbano comunitario con compostera y pérgola con paneles solares",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-17",
@@ -386,21 +482,27 @@
     "titulo": "Plan Integral de Mejoramiento de Pistas y Veredas",
     "categoria": "Desarrollo urbano",
     "dimension": "Ambiental",
-    "diagnostico": "Las veredas en Pueblo Libre están rotas y deterioradas, dificultando el tránsito de peatones, especialmente adultos mayores, niños y personas con discapacidad. Las pistas se arreglan, pero duren poco tiempo y se requieran constantes reparaciones. Todo esto afecta la imagen urbana del distrito y la seguridad vial, además de incrementar costos por mantenimientos repetitivos.",
-    "objetivo": "Implementar un Plan Integral de Mejoramiento de Pistas y Veredas en Pueblo Libre, con estándares de calidad y accesibilidad, garantizando obras duraderas, seguras y sostenibles que mejoren la movilidad urbana y la calidad de vida de los vecinos.",
+    "image": "/images/propuestas/propuesta-17.webp",
+    "imageAlt": "Obras de repavimentación y mejora de veredas con señalización podotáctil en calle arbolada de Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "Las veredas en Pueblo Libre están rotas y deterioradas, dificultando el tránsito de peatones, especialmente adultos mayores, niños y personas con discapacidad. Las pistas se arreglan, pero duren poco tiempo y se requieran constantes reparaciones. Todo esto afecta la imagen urbana del distrito y la seguridad vial, además de incrementar costos por mantenimientos repetitivos."
+    ],
+    "objetivo": [
+      "Implementar un Plan Integral de Mejoramiento de Pistas y Veredas en Pueblo Libre, con estándares de calidad y accesibilidad, garantizando obras duraderas, seguras y sostenibles que mejoren la movilidad urbana y la calidad de vida de los vecinos."
+    ],
     "acciones": [
       "Diagnóstico técnico inicial: mapa distrital de veredas y pistas en mal estado, priorizando zonas escolares, parques y avenidas principales.",
       "Exigir a contratistas uso de materiales certificados y supervisión técnica municipal.",
       "Mantenimiento preventivo: brigadas municipales para reparaciones menores inmediatas, evitando deterioro mayor."
     ],
+    "presupuesto": [
+      "S/ 6,000,000 durante la gestión 2027-2030. Financiado mediante recursos municipales, arbitrios de parques y jardines, cooperación técnica ambiental y alianzas con empresas privadas bajo mecanismos de responsabilidad social."
+    ],
     "metas": [
       "Reparar 15 km de veredas en zonas críticas en el primer año.",
       "Rehabilitar 5 km de pistas principales con estándares de calidad para el primer año"
-    ],
-    "viabilidad": "S/ 6,000,000 durante la gestión 2027-2030. Financiado mediante recursos municipales, arbitrios de parques y jardines, cooperación técnica ambiental y alianzas con empresas privadas bajo mecanismos de responsabilidad social.",
-    "image": "/images/propuestas/propuesta-17.webp",
-    "imageAlt": "Obras de repavimentación y mejora de veredas con señalización podotáctil en calle arbolada de Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-18",
@@ -408,8 +510,15 @@
     "titulo": "Pueblo Libre Circular y Basura Cero",
     "categoria": "Espacio público",
     "dimension": "Ambiental",
-    "diagnostico": "En Pueblo Libre existen numerosos vehículos abandonados en la vía pública, ocupando veredas y calles. Esto genera problemas de seguridad, salubridad y movilidad, además de dar una imagen de desorden urbano.",
-    "objetivo": "Recuperar el espacio público de Pueblo Libre mediante la implementación de un programa municipal de retiro de vehículos abandonados, garantizando calles seguras, limpias y libres para el tránsito peatonal y vehicular.",
+    "image": "/images/propuestas/propuesta-18.webp",
+    "imageAlt": "Vecinos reciclando y separando residuos en contenedores en un parque limpio de Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "En Pueblo Libre existen numerosos vehículos abandonados en la vía pública, ocupando veredas y calles. Esto genera problemas de seguridad, salubridad y movilidad, además de dar una imagen de desorden urbano."
+    ],
+    "objetivo": [
+      "Recuperar el espacio público de Pueblo Libre mediante la implementación de un programa municipal de retiro de vehículos abandonados, garantizando calles seguras, limpias y libres para el tránsito peatonal y vehicular."
+    ],
     "acciones": [
       "Censo distrital de vehículos abandonados: brigadas municipales recorren calles y registran autos en mal estado o sin uso prolongado.",
       "Notificación oficial: se coloca un aviso visible en el vehículo y se notifica al propietario con un plazo de 15 días para retirarlo.",
@@ -417,14 +526,13 @@
       "Campaña de sensibilización: “La calle no es cochera” en redes, medios y murales, para concientizar sobre el uso responsable del espacio público.",
       "Convenios: con la Policía Nacional y el SAT para sanciones y coordinación legal."
     ],
+    "presupuesto": [
+      "S/ 300,000 durante el primer año que incluye campaña de censo, notificaciones, campaña de sensibilización y retiros."
+    ],
     "metas": [
       "Identificar y notificar al menos 100 vehículos abandonados.",
       "Retirar 100 vehículos y liberando el espacio público."
-    ],
-    "viabilidad": "S/ 300,000 durante el primer año que incluye campaña de censo, notificaciones, campaña de sensibilización y retiros.",
-    "image": "/images/propuestas/propuesta-18.webp",
-    "imageAlt": "Vecinos reciclando y separando residuos en contenedores en un parque limpio de Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-19",
@@ -432,22 +540,28 @@
     "titulo": "Áreas caninas en más parques de Pueblo Libre",
     "categoria": "Bienestar animal",
     "dimension": "Ambiental",
-    "diagnostico": "Pueblo Libre tiene una alta población de perros domésticos. Actualmente solo el Parque 03 de Octubre cuenta con un área exclusiva de caniles. Los padres de familia y los dueños de perros compiten por el uso de espacio en los parques con los juegos infantiles , ya que n o existe un sistema distrital que regule y ordene el uso de parques para mascotas.",
-    "objetivo": "Implementar un Plan de Áreas Caninas en Parques de Pueblo Libre, habilitando espacios exclusivos para perros en al menos 4 parques adicionales, promoviendo convivencia ordenada, higiene y seguridad para niños y mascotas.",
+    "image": "/images/propuestas/propuesta-19.webp",
+    "imageAlt": "Dueños de mascotas utilizando áreas caninas y estaciones de limpieza en parques de Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "Pueblo Libre tiene una alta población de perros domésticos. Actualmente solo el Parque 03 de Octubre cuenta con un área exclusiva de caniles. Los padres de familia y los dueños de perros compiten por el uso de espacio en los parques con los juegos infantiles , ya que n o existe un sistema distrital que regule y ordene el uso de parques para mascotas."
+    ],
+    "objetivo": [
+      "Implementar un Plan de Áreas Caninas en Parques de Pueblo Libre, habilitando espacios exclusivos para perros en al menos 4 parques adicionales, promoviendo convivencia ordenada, higiene y seguridad para niños y mascotas."
+    ],
     "acciones": [
       "Selección de parques: priorizar parques grandes y de alta concurrencia (ej. Parque Candamo, Parque San Martín, Parque El Carmen, Parque Bolívar).",
       "Diseño de áreas caninas: zonas cerradas con rejas, bebederos, tachos especiales para desechos, señalización clara.",
       "Campaña de sensibilización: promoviendo el uso responsable y la limpieza por parte de dueños de mascotas.",
       "Mantenimiento permanente: brigadas de limpieza y supervisión vecinal."
     ],
+    "presupuesto": [
+      "S/ 600, 000 para todo el proyecto de habilitación."
+    ],
     "metas": [
       "Habilitar 4 parques adicionales con áreas caninas .",
       "Lograr que el 70% de dueños de mascotas usen las zonas exclusiva"
-    ],
-    "viabilidad": "S/ 600, 000 para todo el proyecto de habilitación.",
-    "image": "/images/propuestas/propuesta-19.webp",
-    "imageAlt": "Dueños de mascotas utilizando áreas caninas y estaciones de limpieza en parques de Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-20",
@@ -455,8 +569,15 @@
     "titulo": "Pueblo Libre Circular y Basura Cero",
     "categoria": "Sostenibilidad",
     "dimension": "Ambiental",
-    "diagnostico": "El crecimiento urbano incrementa la generación de residuos sólidos, mientras que los actuales sistemas de segregación y reciclaje presentan limitaciones para alcanzar estándares modernos de sostenibilidad ambiental.",
-    "objetivo": "Modernizar la gestión integral de residuos sólidos mediante tecnología, economía circular y participación ciudadana.",
+    "image": "/images/propuestas/propuesta-20.webp",
+    "imageAlt": "Vecinos y trabajador municipal reciclando y haciendo compost en un parque de Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "El crecimiento urbano incrementa la generación de residuos sólidos, mientras que los actuales sistemas de segregación y reciclaje presentan limitaciones para alcanzar estándares modernos de sostenibilidad ambiental."
+    ],
+    "objetivo": [
+      "Modernizar la gestión integral de residuos sólidos mediante tecnología, economía circular y participación ciudadana."
+    ],
     "acciones": [
       "Implementar el programa \"Basura Cero Digital\", mediante:",
       "Contenedores inteligentes con sensores de llenado.",
@@ -467,6 +588,9 @@
       "Programa de compostaje comunitario.",
       "Plataforma abierta de indicadores ambientales y reciclaje."
     ],
+    "presupuesto": [
+      "S/ 8,000,000 durante la gestión 2027-2030. Financiado mediante recursos municipales, fondos ambientales y convenios con el Ministerio del Ambiente."
+    ],
     "metas": [
       "Incrementar el reciclaje distrital en 50%.",
       "Reducir en 30% los residuos enviados a rellenos sanitarios.",
@@ -474,20 +598,23 @@
       "Incorporar 20,000 hogares al programa de segregación en fuente.",
       "Reducir en 40% los puntos críticos de acumulación de residuos.",
       "Ambiente (MINAM) para la validación de los indicadores climáticos locales."
-    ],
-    "viabilidad": "S/ 8,000,000 durante la gestión 2027-2030. Financiado mediante recursos municipales, fondos ambientales y convenios con el Ministerio del Ambiente.",
-    "image": "/images/propuestas/propuesta-20.webp",
-    "imageAlt": "Vecinos y trabajador municipal reciclando y haciendo compost en un parque de Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-21",
     "numero": 21,
-    "titulo": "Control Ciudadano Cada Sol de los Vecinos Será Vigilado por los Vecinos",
+    "titulo": "Gobierno Abierto y Control Ciudadano \"Cada Sol de los Vecinos Será Vigilado por los Vecinos\"",
     "categoria": "Transparencia",
     "dimension": "Institucional",
-    "diagnostico": "Los diagnósticos participativos y las demandas vecinales evidencian una creciente preocupación por la transparencia en el uso de los recursos públicos, especialmente en los procesos de compras, contratación de servicios, ejecución de obras y manejo presupuestal. Esta situación genera desconfianza ciudadana y lim ita la participación activa de los vecinos en la gestión municipal.",
-    "objetivo": "Fortalecer la transparencia, la integridad institucional y la rendición de cuentas mediante mecanismos permanentes de vigilancia ciudadana, gobierno abierto y acceso oportuno a la información pública, alineado al OEI.06: Fortalecer la Gestión Institucional.",
+    "image": "/images/propuestas/propuesta-21.webp",
+    "imageAlt": "Vecinos participando en audiencia pública de control y transparencia municipal en Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "Los diagnósticos participativos y las demandas vecinales evidencian una creciente preocupación por la transparencia en el uso de los recursos públicos, especialmente en los procesos de compras, contratación de servicios, ejecución de obras y manejo presupuestal. Esta situación genera desconfianza ciudadana y lim ita la participación activa de los vecinos en la gestión municipal."
+    ],
+    "objetivo": [
+      "Fortalecer la transparencia, la integridad institucional y la rendición de cuentas mediante mecanismos permanentes de vigilancia ciudadana, gobierno abierto y acceso oportuno a la información pública, alineado al OEI.06: Fortalecer la Gestión Institucional."
+    ],
     "acciones": [
       "Implementar el programa \"Gobierno Abierto Pueblo Libre\" , que comprenderá:",
       "Elección mediante voto electrónico vecinal de un Representante Ciudadano de Transparencia , quien participará como observador en los procesos de vigilancia y rendición de cuentas.",
@@ -496,6 +623,9 @@
       "Audiencias públicas trimestrales obligatorias con transmisión digital.",
       "Implementación progresiva del Modelo de Integridad Pública en coordinación con la Contraloría General de la República y la Presidencia del Consejo de Ministros."
     ],
+    "presupuesto": [
+      "S/ 2,500,000 durante la gestión 2027-2030. La propuesta será financiada mediante la optimización de recursos de la Gerencia de Tecnologías de la Información y Modernización Municipal, complementada con convenios de cooperación técnica con la Contraloría General de la República, la Secretaría de Integridad Pública de la PCM y universidades del distrito."
+    ],
     "metas": [
       "Publicar el 100% de las contrataciones, órdenes de compra y ejecución presupuestal en tiempo real.",
       "Implementar 01 Portal Integral de Gobierno Abierto y Datos Abiertos.",
@@ -503,11 +633,7 @@
       "Atender y resolver el 95% de las denuncias ciudadanas registradas.",
       "Alcanzar una satisfacción ciudadana superior al 85% en transparencia y acceso a la información.",
       "Convertir a Pueblo Libre en el primer distrito de Lima Metropolitana con un sistema integral de vigilancia ciudadana digital y gobierno abierto."
-    ],
-    "viabilidad": "S/ 2,500,000 durante la gestión 2027-2030. La propuesta será financiada mediante la optimización de recursos de la Gerencia de Tecnologías de la Información y Modernización Municipal, complementada con convenios de cooperación técnica con la Contraloría General de la República, la Secretaría de Integridad Pública de la PCM y universidades del distrito.",
-    "image": "/images/propuestas/propuesta-21.webp",
-    "imageAlt": "Vecinos participando en audiencia pública de control y transparencia municipal en Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-22",
@@ -515,10 +641,20 @@
     "titulo": "Municipalidad Digital 100% en la Nube y Simplificación de Trámites",
     "categoria": "Gobierno digital",
     "dimension": "Institucional",
-    "diagnostico": "Los procesos administrativos y los trámites ciudadanos dentro del municipio se gestionan predominantemente bajo sistemas burocráticos tradicionales o flujos de papel, desincentivando la formalización empresarial y el cumplimiento de obligaciones fiscales.",
-    "objetivo": "Modernizar la gestión institucional y simplificar los procesos administrativos para elevar la eficiencia interna y la satisfacción del usuario, en cumplimiento de la Ley de Gobierno Digital nacional.",
+    "image": "/images/propuestas/propuesta-22.webp",
+    "imageAlt": "Ciudadano realizando trámites municipales desde dispositivo móvil en oficina digital de Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "Los procesos administrativos y los trámites ciudadanos dentro del municipio se gestionan predominantemente bajo sistemas burocráticos tradicionales o flujos de papel, desincentivando la formalización empresarial y el cumplimiento de obligaciones fiscales."
+    ],
+    "objetivo": [
+      "Modernizar la gestión institucional y simplificar los procesos administrativos para elevar la eficiencia interna y la satisfacción del usuario, en cumplimiento de la Ley de Gobierno Digital nacional."
+    ],
     "acciones": [
       "Digitalizar al 100% el Texto Único de Procedimientos Administrativos (TUPA). Todo trámite (como la obtención automática de licencias de funcionamiento para emprendedores jóvenes o pagos de arbitrios) se realizará desde smartphones utilizando autenticación e identidad biométrica."
+    ],
+    "presupuesto": [
+      "Viable reorientando los saldos operativos corrientes de la Gerencia de Administración y la Gerencia de Tecnología de la Información. Se concretará mediante un Convenio de Cooperación Tecnológica con la Secretaría de Gobierno y Transformación Digital de la PCM, integrando los servicios municipales al ecosistema único Gob.pe y a la pasarela nacional de pagos Págalo.pe."
     ],
     "metas": [
       "Digitalizar el 100% de los procedimientos administrativos contenidos en el TUPA municipal.",
@@ -528,11 +664,7 @@
       "Alcanzar 50,000 usuarios registrados en la Plataforma Digital Municipal.",
       "Obtener una satisfacción ciudadana superior al 85% respecto a los servicios digitales municipales.",
       "Integrar el 100% de los servicios municipales prioritarios a las plataformas nacionales de Gobierno Digital (Gob.pe y Págalo.pe)."
-    ],
-    "viabilidad": "Viable reorientando los saldos operativos corrientes de la Gerencia de Administración y la Gerencia de Tecnología de la Información. Se concretará mediante un Convenio de Cooperación Tecnológica con la Secretaría de Gobierno y Transformación Digital de la PCM, integrando los servicios municipales al ecosistema único Gob.pe y a la pasarela nacional de pagos Págalo.pe.",
-    "image": "/images/propuestas/propuesta-22.webp",
-    "imageAlt": "Ciudadano realizando trámites municipales desde dispositivo móvil en oficina digital de Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-23",
@@ -540,8 +672,15 @@
     "titulo": "Programa Vecino Buen Pagador VBP",
     "categoria": "Servicios municipales",
     "dimension": "Institucional",
-    "diagnostico": "Actualmente, el sistema de cobranza municipal en Pueblo Libre se basa en notificaciones en papel y procesos coactivos inmediatos, lo que genera malestar y altos costos administrativos. El incentivo por pago anticipado resulta poco atractivo y no existen beneficios adicionales.",
-    "objetivo": "Implementar el programa “Vecino Buen Pagador” (VBP) que incentive el pago puntual de tributos municipales mediante beneficios exclusivos, descuentos en negocios locales y servicios preferenciales como atenciones de electricista, gasfiteros, cerrajeros, entre otros. fortaleciendo la recaudación y la relación de confianza con los vecinos.",
+    "image": "/images/propuestas/propuesta-23.webp",
+    "imageAlt": "Vecino beneficiario del programa de buen pagador recibiendo descuentos en comercio local de Pueblo Libre",
+    "imagePosition": "center",
+    "diagnostico": [
+      "Actualmente, el sistema de cobranza municipal en Pueblo Libre se basa en notificaciones en papel y procesos coactivos inmediatos, lo que genera malestar y altos costos administrativos. El incentivo por pago anticipado resulta poco atractivo y no existen beneficios adicionales."
+    ],
+    "objetivo": [
+      "Implementar el programa “Vecino Buen Pagador” (VBP) que incentive el pago puntual de tributos municipales mediante beneficios exclusivos, descuentos en negocios locales y servicios preferenciales como atenciones de electricista, gasfiteros, cerrajeros, entre otros. fortaleciendo la recaudación y la relación de confianza con los vecinos."
+    ],
     "acciones": [
       "Carnet VPP: credencial digital y física que identifica al vecino cumplido que paga por adelantado sus tributos.",
       "Beneficios directos: Descuentos en negocios locales aliados (restaurantes, farmacias, etc.).",
@@ -551,16 +690,15 @@
       "Campaña de difusión: “Ser buen pagador tiene premio”, con testimonios de vecinos beneficiados.",
       "Convenios con empresas locales: ampliar la red de beneficios y fortalecer la economía distrital."
     ],
+    "presupuesto": [
+      "S/. 120,000 para la creación del carnet físico y virtual y campañas de difusión."
+    ],
     "metas": [
       "Emitir 2,000 carnets VPP.",
       "Incrementar en 30% la recaudación tributaria anual.",
       "Reducir en 20% el uso de papel en notificaciones.",
       "Lograr 50 alianzas con negocios locales para el primer año."
-    ],
-    "viabilidad": "S/. 120,000 para la creación del carnet físico y virtual y campañas de difusión.",
-    "image": "/images/propuestas/propuesta-23.webp",
-    "imageAlt": "Vecino beneficiario del programa de buen pagador recibiendo descuentos en comercio local de Pueblo Libre",
-    "imagePosition": "center"
+    ]
   },
   {
     "id": "propuesta-24",
@@ -568,10 +706,20 @@
     "titulo": "Programa de Renovación Urbana Integral Mi Perú",
     "categoria": "Desarrollo urbano",
     "dimension": "Ambiental",
-    "diagnostico": "El asentamiento humano \"07 de Junio\" representa un foco crítico histórico identificado con marcadas brechas en el ordenamiento del suelo, saneamiento físico -legal e infraestructura urbana deficiente.",
-    "objetivo": "Elevar las condiciones de habitabilidad, seguridad y formalización territorial del distrito, en estricta línea con el OEI.01 (Condiciones de habitabilidad) del PEI.",
+    "image": "/images/propuestas/propuesta-24.webp",
+    "imageAlt": "Familia caminando por calle residencial renovada con áreas verdes y mobiliario urbano en Pueblo Libre",
+    "imagePosition": "center bottom",
+    "diagnostico": [
+      "El asentamiento humano \"07 de Junio\" representa un foco crítico histórico identificado con marcadas brechas en el ordenamiento del suelo, saneamiento físico -legal e infraestructura urbana deficiente."
+    ],
+    "objetivo": [
+      "Elevar las condiciones de habitabilidad, seguridad y formalización territorial del distrito, en estricta línea con el OEI.01 (Condiciones de habitabilidad) del PEI."
+    ],
     "acciones": [
       "Realizar el levantamiento catastral digital 3D de alta precisión mediante drones de la municipalidad, habilitando un portal de consulta web transparente (Gobierno Abierto) para que los vecinos jóvenes sigan el estado del saneamiento de sus predios paso a paso."
+    ],
+    "presupuesto": [
+      "Asignación municipal de S/ 1,000,000 destinados a estudios técnicos de ingeniería y delimitación legal. La ejecución de las obras estructurales de vivienda y pistas se canalizará mediante un Convenio con el Ministerio de Vivienda, Construcción y Saneamiento (MVCS) a través del programa integral Techo Propio y fondos Mivivienda."
     ],
     "metas": [
       "Elaborar e implementar el Catastro Digital 3D del 100% del sector 07 de Junio.",
@@ -579,10 +727,6 @@
       "Gestionar la incorporación de 500 familias a programas de vivienda promovidos por el Ministerio de Vivienda.",
       "Implementar un portal digital de seguimiento ciudadano con acceso público al estado de cada expediente.",
       "Incrementar en 50% el valor urbano y habitacional de los predios beneficiados al culminar los procesos de formalización."
-    ],
-    "viabilidad": "Asignación municipal de S/ 1,000,000 destinados a estudios técnicos de ingeniería y delimitación legal. La ejecución de las obras estructurales de vivienda y pistas se canalizará mediante un Convenio con el Ministerio de Vivienda, Construcción y Saneamiento (MVCS) a través del programa integral Techo Propio y fondos Mivivienda.",
-    "image": "/images/propuestas/propuesta-24.webp",
-    "imageAlt": "Familia caminando por calle residencial renovada con áreas verdes y mobiliario urbano en Pueblo Libre",
-    "imagePosition": "center bottom"
+    ]
   }
 ]
