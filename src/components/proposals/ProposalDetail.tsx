@@ -1,21 +1,13 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
+import { type FormEvent } from "react";
 import Image from "next/image";
 
 import { ArrowLeftIcon, ArrowRightIcon, CheckIcon } from "~/components/Icons";
 import { dimensionCopy } from "~/lib/proposal-utils";
 import type { Proposal } from "~/types/proposal";
 import ProposalCommentForm from "./ProposalCommentForm";
-
-type DetailSection = "diagnostico" | "acciones" | "metas" | "viabilidad";
-
-const sections: Array<{ id: DetailSection; label: string }> = [
-  { id: "diagnostico", label: "Diagnóstico y objetivo" },
-  { id: "acciones", label: "Acciones" },
-  { id: "metas", label: "Metas" },
-  { id: "viabilidad", label: "Viabilidad" },
-];
+import ProposalTextBlocks from "./ProposalTextBlocks";
 
 type ProposalDetailProps = {
   proposal: Proposal;
@@ -36,8 +28,6 @@ export default function ProposalDetail({
   onNavigate,
   onSubmitComment,
 }: ProposalDetailProps) {
-  const [activeSection, setActiveSection] = useState<DetailSection>("diagnostico");
-
   return (
     <article className="proposal-detail-full">
       <div className="proposal-detail-toolbar">
@@ -65,7 +55,7 @@ export default function ProposalDetail({
             }}
           />
         </div>
-        <div>
+        <div className="proposal-detail-intro">
           <div className="proposal-tags">
             <span>{proposal.dimension}</span>
             <span>{proposal.categoria}</span>
@@ -73,8 +63,8 @@ export default function ProposalDetail({
           <span className="proposal-detail-number">
             Propuesta {String(proposal.numero).padStart(2, "0")}
           </span>
-          <h3>{proposal.titulo}</h3>
-          <p>{dimensionCopy[proposal.dimension]}</p>
+          <h3 className="proposal-detail__title">{proposal.titulo}</h3>
+          <p className="proposal-detail__dimension">{dimensionCopy[proposal.dimension]}</p>
           {commentCount > 0 ? (
             <small className="proposal-detail-comments">
               {commentCount} {commentCount === 1 ? "aporte ciudadano" : "aportes ciudadanos"}
@@ -83,47 +73,26 @@ export default function ProposalDetail({
         </div>
       </div>
 
-      <div className="detail-tabs" role="tablist" aria-label="Contenido de la propuesta">
-        {sections.map((section) => (
-          <button
-            aria-controls={`detail-panel-${section.id}`}
-            aria-selected={activeSection === section.id}
-            id={`detail-tab-${section.id}`}
-            key={section.id}
-            onClick={() => setActiveSection(section.id)}
-            role="tab"
-            type="button"
-          >
-            {section.label}
-          </button>
-        ))}
-      </div>
+      <div className="proposal-detail-content">
+        <section aria-labelledby={`detail-diagnostico-${proposal.id}`} className="proposal-detail-section">
+          <h4 className="proposal-detail__section-title" id={`detail-diagnostico-${proposal.id}`}>
+            Diagnóstico
+          </h4>
+          <ProposalTextBlocks blocks={proposal.diagnostico} />
+        </section>
 
-      <div
-        aria-labelledby={`detail-tab-${activeSection}`}
-        className="detail-panel"
-        id={`detail-panel-${activeSection}`}
-        role="tabpanel"
-      >
-        {activeSection === "diagnostico" ? (
-          <div className="detail-blocks">
-            <div className="detail-block">
-              <span>Diagnóstico</span>
-              <p>{proposal.diagnostico}</p>
-            </div>
-            <div className="detail-block">
-              <span>Objetivo</span>
-              <p>{proposal.objetivo}</p>
-            </div>
-            <div className="detail-block detail-block-highlight">
-              <span>Propuesta</span>
-              <p>{proposal.acciones[0] ?? proposal.objetivo}</p>
-            </div>
-          </div>
-        ) : null}
+        <section aria-labelledby={`detail-objetivo-${proposal.id}`} className="proposal-detail-section">
+          <h4 className="proposal-detail__section-title" id={`detail-objetivo-${proposal.id}`}>
+            Objetivo
+          </h4>
+          <ProposalTextBlocks blocks={proposal.objetivo} />
+        </section>
 
-        {activeSection === "acciones" ? (
-          <ol className="numbered-list">
+        <section aria-labelledby={`detail-acciones-${proposal.id}`} className="proposal-detail-section">
+          <h4 className="proposal-detail__section-title" id={`detail-acciones-${proposal.id}`}>
+            {proposal.acciones.length === 1 ? "Acción" : "Acciones"}
+          </h4>
+          <ol className="proposal-detail__list numbered-list">
             {proposal.acciones.map((item, actionIndex) => (
               <li key={`${proposal.id}-action-${actionIndex}`}>
                 <span>{String(actionIndex + 1).padStart(2, "0")}</span>
@@ -131,10 +100,26 @@ export default function ProposalDetail({
               </li>
             ))}
           </ol>
-        ) : null}
+        </section>
 
-        {activeSection === "metas" ? (
-          <ul className="check-list">
+        <section aria-labelledby={`detail-presupuesto-${proposal.id}`} className="proposal-detail-section">
+          <h4 className="proposal-detail__section-title" id={`detail-presupuesto-${proposal.id}`}>
+            Presupuesto y viabilidad
+          </h4>
+          <div className="viability-card">
+            <ProposalTextBlocks blocks={proposal.presupuesto} className="proposal-detail__text proposal-detail__text-light" />
+            <small>
+              Información atribuida al Plan de Gobierno Municipal 2027–2030. No
+              constituye una evaluación independiente.
+            </small>
+          </div>
+        </section>
+
+        <section aria-labelledby={`detail-metas-${proposal.id}`} className="proposal-detail-section">
+          <h4 className="proposal-detail__section-title" id={`detail-metas-${proposal.id}`}>
+            Metas 2027-2030
+          </h4>
+          <ul className="proposal-detail__list check-list">
             {proposal.metas.map((item, metaIndex) => (
               <li key={`${proposal.id}-goal-${metaIndex}`}>
                 <CheckIcon />
@@ -142,18 +127,7 @@ export default function ProposalDetail({
               </li>
             ))}
           </ul>
-        ) : null}
-
-        {activeSection === "viabilidad" ? (
-          <div className="viability-card">
-            <span>Viabilidad y presupuesto declarados</span>
-            <p>{proposal.viabilidad}</p>
-            <small>
-              Información atribuida al Plan de Gobierno Municipal 2027–2030. No
-              constituye una evaluación independiente.
-            </small>
-          </div>
-        ) : null}
+        </section>
       </div>
 
       <div className="proposal-navigation">

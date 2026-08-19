@@ -13,12 +13,11 @@ export type Proposal = {
   image: string;
   imageAlt: string;
   imagePosition: string;
-  diagnostico: string;
-  objetivo: string;
+  diagnostico: string[];
+  objetivo: string[];
   acciones: string[];
+  presupuesto: string[];
   metas: string[];
-  viabilidad: string;
 };
 
 export type CommentCounts = Record<number, number>;
-

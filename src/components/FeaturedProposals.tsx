@@ -1,5 +1,6 @@
 import { ArrowRightIcon, SparkIcon } from "~/components/Icons";
 import MotionReveal from "~/components/MotionReveal";
+import { joinProposalText } from "~/lib/proposal-utils";
 import type { Proposal } from "~/types/proposal";
 
 const featuredNumbers = [6, 10, 11, 14, 16, 21, 22];
@@ -45,7 +46,7 @@ export default function FeaturedProposals({
                 <strong>{String(proposal.numero).padStart(2, "0")}</strong>
               </div>
               <h3>{proposal.titulo}</h3>
-              <p>{proposal.objetivo}</p>
+              <p>{joinProposalText(proposal.objetivo)}</p>
               <a href="#propuestas">
                 Abrir en el explorador <ArrowRightIcon />
               </a>

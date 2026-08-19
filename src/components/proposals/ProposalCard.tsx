@@ -47,8 +47,8 @@ export default function ProposalCard({
         </div>
         <div className="proposal-card-body">
           <span className="proposal-card-category">{proposal.categoria}</span>
-          <h3>{proposal.titulo}</h3>
-          <p>{summary}</p>
+          <h3 className="proposal-card__title">{proposal.titulo}</h3>
+          <p className="proposal-card__description">{summary}</p>
         </div>
       </button>
 

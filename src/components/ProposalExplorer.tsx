@@ -131,6 +131,11 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
     persistCounts(merged);
   }, [countsQuery.data]);
 
+  const proposalsByNumber = useMemo(
+    () => [...proposals].sort((a, b) => a.numero - b.numero),
+    [proposals],
+  );
+
   const filtered = useMemo(
     () => filterProposals(proposals, query, category),
     [category, proposals, query],
@@ -147,7 +152,7 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
     proposals.find((item) => item.id === detailId) ??
     null;
   const detailIndex = detailProposal
-    ? sorted.findIndex((item) => item.id === detailProposal.id)
+    ? proposalsByNumber.findIndex((item) => item.id === detailProposal.id)
     : -1;
 
   const hasCommentData =
@@ -183,10 +188,14 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
   }
 
   function navigateDetail(direction: -1 | 1) {
-    if (!sorted.length || !detailProposal) return;
-    const currentIndex = sorted.findIndex((item) => item.id === detailProposal.id);
-    const nextIndex = (currentIndex + direction + sorted.length) % sorted.length;
-    const nextProposal = sorted[nextIndex];
+    if (!proposalsByNumber.length || !detailProposal) return;
+    const currentIndex = proposalsByNumber.findIndex(
+      (item) => item.id === detailProposal.id,
+    );
+    const nextIndex =
+      (currentIndex + direction + proposalsByNumber.length) %
+      proposalsByNumber.length;
+    const nextProposal = proposalsByNumber[nextIndex];
     if (!nextProposal) return;
     setDetailId(nextProposal.id);
     document.getElementById("propuestas")?.scrollIntoView({ behavior: "smooth" });
@@ -308,7 +317,7 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
             onNavigate={navigateDetail}
             onSubmitComment={submitComment}
             proposal={detailProposal}
-            total={sorted.length || 1}
+            total={proposalsByNumber.length || 1}
           />
         ) : null}
 
