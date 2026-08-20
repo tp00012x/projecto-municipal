@@ -2886,13 +2886,6 @@ video {
   margin-top: 0;
 }
 
-.closing-whatsapp-hint {
-  margin: 14px 0 0 !important;
-  color: rgba(255, 255, 255, 0.45) !important;
-  font-size: 13px !important;
-  letter-spacing: 0.04em;
-}
-
 .button-whatsapp {
   display: inline-flex;
   align-items: center;

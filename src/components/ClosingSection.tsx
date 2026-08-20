@@ -1,5 +1,5 @@
 import CampaignBanner from "~/components/CampaignBanner";
-import { getWhatsAppUrl, siteConfig } from "~/data/site";
+import { getWhatsAppUrl } from "~/data/site";
 import MotionReveal from "./MotionReveal";
 import { ArrowRightIcon, WhatsAppIcon } from "./Icons";
 
@@ -32,7 +32,6 @@ export default function ClosingSection() {
             Escribir por WhatsApp
           </a>
         </div>
-        <p className="closing-whatsapp-hint">{siteConfig.phoneDisplay}</p>
       </MotionReveal>
     </section>
   );
