@@ -145,7 +145,11 @@ export default async function ProposalPage({ params }: PageProps) {
                 Plan Municipal 2027–2030 · {siteConfig.candidate}
               </p>
 
-              <ProposalShareBar path={path} title={title} />
+              <ProposalShareBar
+                absoluteUrl={`${siteUrl}${path}`}
+                path={path}
+                title={title}
+              />
             </header>
 
             <div className="proposal-page-media">

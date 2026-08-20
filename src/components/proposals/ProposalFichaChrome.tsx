@@ -15,22 +15,24 @@ type ProposalFichaChromeProps = {
 export function ProposalShareBar({
   title,
   path,
+  absoluteUrl,
 }: {
   title: string;
   path: string;
+  absoluteUrl: string;
 }) {
   const [copied, setCopied] = useState(false);
-  const [pageUrl, setPageUrl] = useState(() => {
-    if (typeof window === "undefined") return path;
-    return window.location.href;
-  });
+  const [pageUrl, setPageUrl] = useState(absoluteUrl);
 
   useEffect(() => {
-    setPageUrl(window.location.href);
-  }, [path]);
+    setPageUrl(window.location.href || absoluteUrl);
+  }, [absoluteUrl, path]);
 
   function resolveUrl() {
-    return typeof window !== "undefined" ? window.location.href : pageUrl;
+    if (typeof window !== "undefined" && window.location.href) {
+      return window.location.href;
+    }
+    return pageUrl.startsWith("http") ? pageUrl : absoluteUrl;
   }
 
   useEffect(() => {
@@ -71,6 +73,8 @@ export function ProposalShareBar({
     }
   }
 
+  const shareHref = resolveUrl();
+
   return (
     <div
       aria-label="Compartir propuesta"
@@ -86,6 +90,7 @@ export function ProposalShareBar({
         Compartir
       </button>
       <button
+        aria-live="polite"
         className="proposal-share-btn"
         onClick={() => void handleCopy()}
         type="button"
@@ -96,7 +101,7 @@ export function ProposalShareBar({
       <a
         className="proposal-share-btn proposal-share-whatsapp"
         href={getWhatsAppUrl(
-          `Mira esta propuesta de Micky Ruiz: ${title} — ${pageUrl.startsWith("http") ? pageUrl : `https://mickyruiz.com${path}`}`,
+          `Mira esta propuesta de Micky Ruiz: ${title} — ${shareHref}`,
         )}
         rel="noopener noreferrer"
         target="_blank"
