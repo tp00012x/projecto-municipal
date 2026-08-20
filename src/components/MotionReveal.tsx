@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 export default function MotionReveal({
@@ -12,6 +12,12 @@ export default function MotionReveal({
   className?: string;
   delay?: number;
 }) {
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) {
+    return <div className={`motion-reveal ${className}`}>{children}</div>;
+  }
+
   return (
     <motion.div
       className={`motion-reveal ${className}`}

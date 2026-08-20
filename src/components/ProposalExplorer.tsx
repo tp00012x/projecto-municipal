@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 import EmptyState from "~/components/proposals/EmptyState";
 import ErrorState from "~/components/proposals/ErrorState";
@@ -57,7 +58,7 @@ function mergeCounts(base: CommentCounts, incoming: CommentCounts): CommentCount
   const next: CommentCounts = { ...base };
   Object.entries(incoming).forEach(([key, value]) => {
     const numberValue = Number(key);
-    next[numberValue] = (next[numberValue] ?? 0) + value;
+    next[numberValue] = Math.max(next[numberValue] ?? 0, value);
   });
   return next;
 }
@@ -275,7 +276,7 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
           />
         </div>
 
-        {!mounted || countsQuery.isLoading ? (
+        {!mounted ? (
           <LoadingState />
         ) : sorted.length ? (
           <ProposalGallery
@@ -288,12 +289,15 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
           <EmptyState onReset={resetFilters} />
         )}
 
-        {quickViewProposal ? (
-          <ProposalQuickView
-            onClose={closeQuickView}
-            proposal={quickViewProposal}
-          />
-        ) : null}
+        <AnimatePresence>
+          {quickViewProposal ? (
+            <ProposalQuickView
+              key={quickViewProposal.id}
+              onClose={closeQuickView}
+              proposal={quickViewProposal}
+            />
+          ) : null}
+        </AnimatePresence>
       </div>
     </section>
   );

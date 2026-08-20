@@ -36,7 +36,7 @@ function mergeCounts(base: CommentCounts, incoming: CommentCounts): CommentCount
   const next: CommentCounts = { ...base };
   Object.entries(incoming).forEach(([key, value]) => {
     const numberValue = Number(key);
-    next[numberValue] = (next[numberValue] ?? 0) + value;
+    next[numberValue] = Math.max(next[numberValue] ?? 0, value);
   });
   return next;
 }

@@ -20,11 +20,18 @@ export function ProposalShareBar({
   path: string;
 }) {
   const [copied, setCopied] = useState(false);
-  const [pageUrl, setPageUrl] = useState(path);
+  const [pageUrl, setPageUrl] = useState(() => {
+    if (typeof window === "undefined") return path;
+    return window.location.href;
+  });
 
   useEffect(() => {
     setPageUrl(window.location.href);
   }, [path]);
+
+  function resolveUrl() {
+    return typeof window !== "undefined" ? window.location.href : pageUrl;
+  }
 
   useEffect(() => {
     if (!copied) return;
@@ -33,12 +40,13 @@ export function ProposalShareBar({
   }, [copied]);
 
   async function handleShare() {
+    const url = resolveUrl();
     try {
       if (typeof navigator.share === "function") {
         await navigator.share({
           title,
           text: `${title} — propuesta de Micky Ruiz para Pueblo Libre`,
-          url: pageUrl,
+          url,
         });
         return;
       }
@@ -47,7 +55,7 @@ export function ProposalShareBar({
     }
 
     try {
-      await navigator.clipboard.writeText(pageUrl);
+      await navigator.clipboard.writeText(url);
       setCopied(true);
     } catch {
       setCopied(false);
@@ -56,7 +64,7 @@ export function ProposalShareBar({
 
   async function handleCopy() {
     try {
-      await navigator.clipboard.writeText(pageUrl);
+      await navigator.clipboard.writeText(resolveUrl());
       setCopied(true);
     } catch {
       setCopied(false);
@@ -88,7 +96,7 @@ export function ProposalShareBar({
       <a
         className="proposal-share-btn proposal-share-whatsapp"
         href={getWhatsAppUrl(
-          `Mira esta propuesta de Micky Ruiz: ${title} — ${pageUrl}`,
+          `Mira esta propuesta de Micky Ruiz: ${title} — ${pageUrl.startsWith("http") ? pageUrl : `https://mickyruiz.com${path}`}`,
         )}
         rel="noopener noreferrer"
         target="_blank"
