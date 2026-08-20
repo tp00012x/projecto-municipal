@@ -20,7 +20,7 @@ import {
   getProposalPath,
   getProposalSlug,
 } from "~/lib/propuestas";
-import { dimensionCopy, getProposalSummary } from "~/lib/proposal-utils";
+import { getProposalSummary } from "~/lib/proposal-utils";
 import { getSiteUrl } from "~/lib/site-url";
 
 type PageProps = {
@@ -82,6 +82,7 @@ export default async function ProposalPage({ params }: PageProps) {
   const siteUrl = getSiteUrl();
   const path = getProposalPath(proposal);
   const title = getDisplayTitle(proposal.titulo);
+  const numberLabel = String(proposal.numero).padStart(2, "0");
   const transitionName = `proposal-image-${proposal.id}`;
 
   const jsonLd = {
@@ -123,27 +124,28 @@ export default async function ProposalPage({ params }: PageProps) {
             <span aria-hidden="true">/</span>
             <Link href="/#propuestas">Propuestas</Link>
             <span aria-hidden="true">/</span>
-            <span>
-              {String(proposal.numero).padStart(2, "0")}. {title}
+            <span className="proposal-page-nav-current">
+              {numberLabel}. {title}
             </span>
           </nav>
 
-          <ProposalShareBar path={path} title={title} />
-
           <article className="proposal-page-article">
             <header className="proposal-page-header">
-              <p className="eyebrow">
-                Propuesta {String(proposal.numero).padStart(2, "0")} de {total}
-                <span>•</span>
-                {proposal.categoria}
-                <span>•</span>
-                {dimensionCopy[proposal.dimension]}
-              </p>
+              <div className="proposal-page-meta">
+                <span className="proposal-page-number">{numberLabel}</span>
+                <p className="proposal-page-kicker">
+                  Propuesta {numberLabel} de {total}
+                  <span aria-hidden="true">·</span>
+                  {proposal.categoria}
+                </p>
+              </div>
+
               <h1>{title}</h1>
               <p className="proposal-page-lead">
-                Parte del Plan Municipal 2027–2030 de {siteConfig.candidate},{" "}
-                {siteConfig.role}.
+                Plan Municipal 2027–2030 · {siteConfig.candidate}
               </p>
+
+              <ProposalShareBar path={path} title={title} />
             </header>
 
             <div className="proposal-page-media">
