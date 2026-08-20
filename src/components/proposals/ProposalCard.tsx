@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { ArrowRightIcon } from "~/components/Icons";
-import { dimensionCopy } from "~/lib/proposal-utils";
 import type { Proposal } from "~/types/proposal";
 
 type ProposalCardProps = {
@@ -48,9 +47,6 @@ export default function ProposalCard({
         <div className="proposal-card-body">
           <span className="proposal-card-category">{proposal.categoria}</span>
           <h3 className="proposal-card__title">{proposal.titulo}</h3>
-          <p className="proposal-card__meta">
-            {dimensionCopy[proposal.dimension]}
-          </p>
         </div>
 
         <span className="proposal-card-cta" aria-hidden="true">
