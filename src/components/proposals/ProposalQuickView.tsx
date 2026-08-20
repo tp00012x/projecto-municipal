@@ -2,8 +2,10 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { ArrowRightIcon, CloseIcon } from "~/components/Icons";
+import { getProposalPath } from "~/lib/propuestas";
 import {
   dimensionCopy,
   getBeneficiaryScope,
@@ -15,17 +17,16 @@ import type { Proposal } from "~/types/proposal";
 type ProposalQuickViewProps = {
   proposal: Proposal;
   onClose: () => void;
-  onOpenFull: (id: string) => void;
   onComment: (id: string) => void;
 };
 
 export default function ProposalQuickView({
   proposal,
   onClose,
-  onOpenFull,
   onComment,
 }: ProposalQuickViewProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const fullPath = getProposalPath(proposal);
 
   useEffect(() => {
     closeButtonRef.current?.focus();
@@ -127,14 +128,10 @@ export default function ProposalQuickView({
         </div>
 
         <footer className="quick-view-actions">
-          <button
-            className="button button-purple"
-            onClick={() => onOpenFull(proposal.id)}
-            type="button"
-          >
+          <Link className="button button-purple" href={fullPath} onClick={onClose}>
             Ver propuesta completa
             <ArrowRightIcon />
-          </button>
+          </Link>
           <button
             className="button button-outline"
             onClick={() => onComment(proposal.id)}

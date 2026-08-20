@@ -325,7 +325,6 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
           <ProposalQuickView
             onClose={closeQuickView}
             onComment={openCommentFromQuickView}
-            onOpenFull={openDetail}
             proposal={quickViewProposal}
           />
         ) : null}
