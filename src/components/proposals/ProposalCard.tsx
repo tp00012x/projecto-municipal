@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 
-import { getProposalSummary } from "~/lib/proposal-utils";
-import { getProposalPath } from "~/lib/propuestas";
+import { ArrowRightIcon } from "~/components/Icons";
+import { dimensionCopy } from "~/lib/proposal-utils";
 import type { Proposal } from "~/types/proposal";
 
 type ProposalCardProps = {
@@ -18,9 +17,6 @@ export default function ProposalCard({
   commentCount,
   onOpen,
 }: ProposalCardProps) {
-  const summary = getProposalSummary(proposal, 120);
-  const href = getProposalPath(proposal);
-
   return (
     <article
       className={`proposal-card ${isSelected ? "is-selected" : ""}`.trim()}
@@ -48,25 +44,20 @@ export default function ProposalCard({
             {String(proposal.numero).padStart(2, "0")}
           </span>
         </div>
+
         <div className="proposal-card-body">
           <span className="proposal-card-category">{proposal.categoria}</span>
           <h3 className="proposal-card__title">{proposal.titulo}</h3>
-          <p className="proposal-card__description">{summary}</p>
+          <p className="proposal-card__meta">
+            {dimensionCopy[proposal.dimension]}
+          </p>
         </div>
-      </button>
 
-      <div className="proposal-card-footer">
-        <button
-          className="button button-outline proposal-card-action"
-          onClick={() => onOpen(proposal.id)}
-          type="button"
-        >
+        <span className="proposal-card-cta" aria-hidden="true">
           Ver propuesta
-        </button>
-        <Link className="proposal-card-permalink" href={href}>
-          Ficha completa
-        </Link>
-      </div>
+          <ArrowRightIcon />
+        </span>
+      </button>
 
       {commentCount > 0 ? (
         <span className="proposal-card-comments">
