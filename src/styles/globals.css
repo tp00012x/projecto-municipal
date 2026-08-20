@@ -780,8 +780,7 @@ video {
   pointer-events: none;
 }
 
-.sound-button,
-.scroll-cue {
+.sound-button {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
@@ -801,14 +800,9 @@ video {
   cursor: pointer;
 }
 
-.sound-button svg,
-.scroll-cue svg {
+.sound-button svg {
   width: 18px;
   height: 18px;
-}
-
-.scroll-cue {
-  display: none;
 }
 
 /**
@@ -3224,10 +3218,6 @@ video {
 
   .hero-description {
     margin-top: 34px;
-  }
-
-  .scroll-cue {
-    display: inline-flex;
   }
 
   :root {

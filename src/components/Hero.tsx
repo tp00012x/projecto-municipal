@@ -8,7 +8,6 @@ import { heroMedia, siteConfig } from "~/data/site";
 import { startHeroPlayback, type HeroPlaybackState } from "~/lib/hero-playback";
 import {
   ArrowRightIcon,
-  ChevronDownIcon,
   VolumeIcon,
   VolumeOffIcon,
 } from "./Icons";
@@ -154,14 +153,7 @@ export default function Hero() {
             {muted ? <VolumeOffIcon /> : <VolumeIcon />}
             {muted ? "Activar sonido" : "Desactivar sonido"}
           </button>
-        ) : (
-          <span />
-        )}
-
-        <a className="scroll-cue" href="#contexto">
-          Desliza para explorar
-          <ChevronDownIcon />
-        </a>
+        ) : null}
       </div>
     </section>
   );
