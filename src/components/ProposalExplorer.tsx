@@ -1,11 +1,10 @@
 "use client";
 
-import { type FormEvent, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import EmptyState from "~/components/proposals/EmptyState";
 import ErrorState from "~/components/proposals/ErrorState";
 import LoadingState from "~/components/proposals/LoadingState";
-import ProposalDetail from "~/components/proposals/ProposalDetail";
 import ProposalFilters from "~/components/proposals/ProposalFilters";
 import ProposalGallery from "~/components/proposals/ProposalGallery";
 import ProposalQuickView from "~/components/proposals/ProposalQuickView";
@@ -61,27 +60,23 @@ function mergeCounts(base: CommentCounts, incoming: CommentCounts): CommentCount
   return next;
 }
 
-function readFormString(formData: FormData, key: string) {
-  const value = formData.get(key);
-  return typeof value === "string" ? value : "";
-}
-
-type ViewMode = "gallery" | "detail";
-
+/**
+ * Gallery + quick preview only.
+ * Full read + comments live on /propuestas/[slug].
+ */
 export default function ProposalExplorer({ proposals }: { proposals: Proposal[] }) {
   const [mounted, setMounted] = useState(false);
-  const [viewMode, setViewMode] = useState<ViewMode>("gallery");
   const [quickViewId, setQuickViewId] = useState<string | null>(null);
-  const [detailId, setDetailId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("Todas");
   const [sortBy, setSortBy] = useState<SortOption>("numero");
   const [counts, setCounts] = useState<CommentCounts>(() => readStoredCounts());
 
   const categories = useMemo(
-    () => Array.from(new Set(proposals.map((item) => item.categoria))).sort((a, b) =>
-      a.localeCompare(b, "es"),
-    ),
+    () =>
+      Array.from(new Set(proposals.map((item) => item.categoria))).sort((a, b) =>
+        a.localeCompare(b, "es"),
+      ),
     [proposals],
   );
   const categoryCounts = useMemo(() => getCategoryCounts(proposals), [proposals]);
@@ -89,7 +84,6 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
   const countsQuery = api.comments.getCounts.useQuery(undefined, {
     retry: false,
   });
-  const createComment = api.comments.create.useMutation();
 
   useEffect(() => {
     setMounted(true);
@@ -106,9 +100,6 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
       if (!proposal) return;
 
       setQuickViewId(proposal.id);
-      setViewMode("gallery");
-      setDetailId(null);
-
       window.requestAnimationFrame(() => {
         document.getElementById("propuestas")?.scrollIntoView({ behavior: "smooth" });
       });
@@ -131,11 +122,6 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
     persistCounts(merged);
   }, [countsQuery.data]);
 
-  const proposalsByNumber = useMemo(
-    () => [...proposals].sort((a, b) => a.numero - b.numero),
-    [proposals],
-  );
-
   const filtered = useMemo(
     () => filterProposals(proposals, query, category),
     [category, proposals, query],
@@ -147,90 +133,22 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
   );
 
   const quickViewProposal = sorted.find((item) => item.id === quickViewId) ?? null;
-  const detailProposal =
-    sorted.find((item) => item.id === detailId) ??
-    proposals.find((item) => item.id === detailId) ??
-    null;
-  const detailIndex = detailProposal
-    ? proposalsByNumber.findIndex((item) => item.id === detailProposal.id)
-    : -1;
 
   const hasCommentData =
     Object.values(counts).some((value) => value > 0) || Boolean(countsQuery.data);
 
   function openQuickView(id: string) {
     setQuickViewId(id);
-    setViewMode("gallery");
   }
 
   function closeQuickView() {
     setQuickViewId(null);
   }
 
-  function openDetail(id: string) {
-    setDetailId(id);
-    setQuickViewId(null);
-    setViewMode("detail");
-    document.getElementById("propuestas")?.scrollIntoView({ behavior: "smooth" });
-  }
-
-  function backToGallery() {
-    setViewMode("gallery");
-    setDetailId(null);
-    setQuickViewId(null);
-  }
-
-  function openCommentFromQuickView(id: string) {
-    openDetail(id);
-    window.setTimeout(() => {
-      document.getElementById("participa")?.scrollIntoView({ behavior: "smooth" });
-    }, 120);
-  }
-
-  function navigateDetail(direction: -1 | 1) {
-    if (!proposalsByNumber.length || !detailProposal) return;
-    const currentIndex = proposalsByNumber.findIndex(
-      (item) => item.id === detailProposal.id,
-    );
-    const nextIndex =
-      (currentIndex + direction + proposalsByNumber.length) %
-      proposalsByNumber.length;
-    const nextProposal = proposalsByNumber[nextIndex];
-    if (!nextProposal) return;
-    setDetailId(nextProposal.id);
-    document.getElementById("propuestas")?.scrollIntoView({ behavior: "smooth" });
-  }
-
   function resetFilters() {
     setQuery("");
     setCategory("Todas");
     setSortBy("numero");
-  }
-
-  async function submitComment(event: FormEvent<HTMLFormElement>) {
-    const proposal = detailProposal ?? quickViewProposal;
-    if (!proposal) {
-      throw new Error("No hay una propuesta seleccionada.");
-    }
-
-    const formData = new FormData(event.currentTarget);
-    const payload = await createComment.mutateAsync({
-      proposalNumber: proposal.numero,
-      name: readFormString(formData, "name"),
-      email: readFormString(formData, "email"),
-      comment: readFormString(formData, "comment"),
-      acceptedTerms: formData.get("acceptedTerms") === "on",
-    });
-
-    const nextCounts = {
-      ...counts,
-      [proposal.numero]: payload.count,
-    };
-    setCounts(nextCounts);
-    persistCounts(nextCounts);
-    void countsQuery.refetch();
-
-    return { message: payload.message };
   }
 
   if (!proposals.length) {
@@ -249,82 +167,67 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
   return (
     <section className="section proposal-section" id="propuestas">
       <div className="shell">
-        {viewMode === "gallery" ? (
-          <>
-            <div className="proposal-heading gallery-heading-block">
-              <div>
-                <p className="eyebrow">Galería de propuestas</p>
-                <h2>
-                  24 propuestas.
-                  <span> Una lectura simple.</span>
-                </h2>
-              </div>
-              <p>
-                Explora, conoce y revisa las propuestas para construir un Pueblo
-                Libre para todos.
-              </p>
-            </div>
+        <div className="proposal-heading gallery-heading-block">
+          <div>
+            <p className="eyebrow">Galería de propuestas</p>
+            <h2>
+              24 propuestas.
+              <span> Una lectura simple.</span>
+            </h2>
+          </div>
+          <p>
+            Explora, conoce y revisa las propuestas para construir un Pueblo Libre
+            para todos.
+          </p>
+        </div>
 
-            {countsQuery.isError ? (
-              <ErrorState onRetry={() => void countsQuery.refetch()} />
-            ) : null}
-
-            <div className="gallery-controls">
-              <ProposalSearch
-                onChange={setQuery}
-                onClear={() => setQuery("")}
-                value={query}
-              />
-              <ProposalFilters
-                activeCategory={category}
-                categories={categories}
-                counts={categoryCounts}
-                onChange={setCategory}
-                totalCount={proposals.length}
-              />
-            </div>
-
-            <div className="gallery-toolbar">
-              <p aria-live="polite" className="gallery-count">
-                Mostrando {sorted.length}{" "}
-                {sorted.length === 1 ? "propuesta" : "propuestas"}
-              </p>
-              <ProposalSort
-                onChange={setSortBy}
-                showCommentSort={hasCommentData}
-                value={sortBy}
-              />
-            </div>
-
-            {!mounted || countsQuery.isLoading ? (
-              <LoadingState />
-            ) : sorted.length ? (
-              <ProposalGallery
-                commentCounts={counts}
-                onOpen={openQuickView}
-                proposals={sorted}
-                selectedId={quickViewId}
-              />
-            ) : (
-              <EmptyState onReset={resetFilters} />
-            )}
-          </>
-        ) : detailProposal ? (
-          <ProposalDetail
-            commentCount={counts[detailProposal.numero] ?? 0}
-            index={Math.max(0, detailIndex)}
-            onBack={backToGallery}
-            onNavigate={navigateDetail}
-            onSubmitComment={submitComment}
-            proposal={detailProposal}
-            total={proposalsByNumber.length || 1}
-          />
+        {countsQuery.isError ? (
+          <ErrorState onRetry={() => void countsQuery.refetch()} />
         ) : null}
+
+        <div className="gallery-controls">
+          <ProposalSearch
+            onChange={setQuery}
+            onClear={() => setQuery("")}
+            value={query}
+          />
+          <ProposalFilters
+            activeCategory={category}
+            categories={categories}
+            counts={categoryCounts}
+            onChange={setCategory}
+            totalCount={proposals.length}
+          />
+        </div>
+
+        <div className="gallery-toolbar">
+          <p aria-live="polite" className="gallery-count">
+            Mostrando {sorted.length}{" "}
+            {sorted.length === 1 ? "propuesta" : "propuestas"}
+          </p>
+          <ProposalSort
+            onChange={setSortBy}
+            showCommentSort={hasCommentData}
+            value={sortBy}
+          />
+        </div>
+
+        {!mounted || countsQuery.isLoading ? (
+          <LoadingState />
+        ) : sorted.length ? (
+          <ProposalGallery
+            commentCounts={counts}
+            onOpen={openQuickView}
+            proposals={sorted}
+            selectedId={quickViewId}
+          />
+        ) : (
+          <EmptyState onReset={resetFilters} />
+        )}
 
         {quickViewProposal ? (
           <ProposalQuickView
             onClose={closeQuickView}
-            onComment={openCommentFromQuickView}
             proposal={quickViewProposal}
           />
         ) : null}

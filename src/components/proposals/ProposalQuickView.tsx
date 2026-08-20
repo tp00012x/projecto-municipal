@@ -17,16 +17,15 @@ import type { Proposal } from "~/types/proposal";
 type ProposalQuickViewProps = {
   proposal: Proposal;
   onClose: () => void;
-  onComment: (id: string) => void;
 };
 
 export default function ProposalQuickView({
   proposal,
   onClose,
-  onComment,
 }: ProposalQuickViewProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const fullPath = getProposalPath(proposal);
+  const commentPath = `${fullPath}#participa`;
 
   useEffect(() => {
     closeButtonRef.current?.focus();
@@ -132,13 +131,13 @@ export default function ProposalQuickView({
             Ver propuesta completa
             <ArrowRightIcon />
           </Link>
-          <button
+          <Link
             className="button button-outline"
-            onClick={() => onComment(proposal.id)}
-            type="button"
+            href={commentPath}
+            onClick={onClose}
           >
             Comentar esta propuesta
-          </button>
+          </Link>
         </footer>
       </div>
     </div>

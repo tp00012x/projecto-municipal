@@ -4572,6 +4572,14 @@ video {
   border-top: 1px solid var(--line);
 }
 
+.proposal-page-participation {
+  margin-top: 0.5rem;
+}
+
+.proposal-page-pager {
+  justify-content: space-between;
+}
+
 .proposal-page-actions {
   display: flex;
   flex-wrap: wrap;
