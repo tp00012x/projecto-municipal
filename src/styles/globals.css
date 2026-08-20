@@ -64,6 +64,25 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+h1,
+h2,
+h3,
+.hero h1,
+.identity-copy h2,
+.section-heading h2,
+.proposal-heading h2,
+.featured-heading h2,
+.gallery-heading:not(.gallery-heading-team) h2,
+.stats-copy h2,
+.proposal-card__title,
+.quick-view-content h3,
+.proposal-page-header h1,
+.closing-content h2 {
+  font-family:
+    var(--font-display), var(--font-body), "Avenir Next", Helvetica, Arial,
+    sans-serif;
+}
+
 button,
 input,
 select,
@@ -803,6 +822,36 @@ video {
 .sound-button svg {
   width: 18px;
   height: 18px;
+}
+
+.sound-button-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.sound-button.is-live {
+  color: var(--yellow);
+}
+
+.sound-pulse {
+  position: absolute;
+  inset: -6px;
+  border: 1.5px solid rgba(255, 212, 0, 0.7);
+  border-radius: 999px;
+  animation: sound-pulse 1.6s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes sound-pulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
 }
 
 /**
@@ -3454,6 +3503,18 @@ video {
   font-size: 12px;
   font-weight: 750;
   white-space: nowrap;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+@media (hover: hover) {
+  .gallery-filters button:hover {
+    border-color: var(--purple-line);
+    transform: translateY(-1px);
+  }
 }
 
 .gallery-filters button span {
@@ -3465,6 +3526,7 @@ video {
   font-size: 10px;
   font-weight: 850;
   text-align: center;
+  transition: background 180ms ease, color 180ms ease;
 }
 
 .gallery-filters button.is-active {
@@ -4537,6 +4599,107 @@ video {
 @media (max-width: 720px) {
   .proposal-page-actions .button-outline {
     width: 100%;
+  }
+}
+
+.proposal-page-kbd-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  width: 100%;
+  height: 3px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--yellow), var(--purple-600));
+  pointer-events: none;
+  will-change: transform;
+}
+
+.proposal-share-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+}
+
+.proposal-page-shell .proposal-share-bar {
+  margin-bottom: 0.25rem;
+}
+
+.proposal-share-btn {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--purple-800);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.proposal-share-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+@media (hover: hover) {
+  .proposal-share-btn:hover {
+    border-color: var(--purple-line);
+    background: var(--surface-purple);
+    transform: translateY(-1px);
+  }
+}
+
+.proposal-share-whatsapp {
+  border-color: rgba(37, 211, 102, 0.35);
+  color: #0b6b3a;
+}
+
+.gallery-count-number {
+  display: inline-block;
+  animation: count-pop 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes count-pop {
+  from {
+    opacity: 0.35;
+    transform: translateY(4px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@supports (view-transition-name: none) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.32s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sound-pulse,
+  .gallery-count-number {
+    animation: none !important;
+  }
+
+  .reading-progress {
+    transition: none;
   }
 }
 

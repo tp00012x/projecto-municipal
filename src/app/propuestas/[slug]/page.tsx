@@ -2,11 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 
 import Footer from "~/components/Footer";
 import Header from "~/components/Header";
+import ProposalFichaChrome, {
+  ProposalShareBar,
+} from "~/components/proposals/ProposalFichaChrome";
 import ProposalParticipation from "~/components/proposals/ProposalParticipation";
 import { getWhatsAppUrl, siteConfig, siteSeo } from "~/data/site";
+import { getDisplayTitle } from "~/lib/display-title";
 import {
   getAdjacentProposals,
   getAllProposals,
@@ -38,14 +43,14 @@ export async function generateMetadata({
 
   const description = getProposalSummary(proposal, 160);
   const path = getProposalPath(proposal);
-  const title = `${proposal.titulo} | Propuesta ${proposal.numero}`;
+  const title = `${getDisplayTitle(proposal.titulo)} | Propuesta ${proposal.numero}`;
 
   return {
     title,
     description,
     alternates: { canonical: path },
     openGraph: {
-      title: `${proposal.titulo} — ${siteConfig.candidate}`,
+      title: `${getDisplayTitle(proposal.titulo)} — ${siteConfig.candidate}`,
       description,
       url: path,
       type: "article",
@@ -60,7 +65,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${proposal.titulo} — ${siteConfig.candidate}`,
+      title: `${getDisplayTitle(proposal.titulo)} — ${siteConfig.candidate}`,
       description,
       images: [proposal.image],
     },
@@ -75,11 +80,13 @@ export default async function ProposalPage({ params }: PageProps) {
   const { prev, next, total } = getAdjacentProposals(proposal);
   const siteUrl = getSiteUrl();
   const path = getProposalPath(proposal);
+  const title = getDisplayTitle(proposal.titulo);
+  const transitionName = `proposal-image-${proposal.id}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: proposal.titulo,
+    headline: title,
     description: getProposalSummary(proposal, 200),
     inLanguage: "es-PE",
     author: {
@@ -104,6 +111,11 @@ export default async function ProposalPage({ params }: PageProps) {
           type="application/ld+json"
         />
 
+        <ProposalFichaChrome
+          nextPath={next ? getProposalPath(next) : null}
+          prevPath={prev ? getProposalPath(prev) : null}
+        />
+
         <div className="shell proposal-page-shell">
           <nav className="proposal-page-nav" aria-label="Migas de pan">
             <Link href="/">Inicio</Link>
@@ -111,9 +123,11 @@ export default async function ProposalPage({ params }: PageProps) {
             <Link href="/#propuestas">Propuestas</Link>
             <span aria-hidden="true">/</span>
             <span>
-              {String(proposal.numero).padStart(2, "0")}. {proposal.titulo}
+              {String(proposal.numero).padStart(2, "0")}. {title}
             </span>
           </nav>
+
+          <ProposalShareBar path={path} title={title} />
 
           <article className="proposal-page-article">
             <header className="proposal-page-header">
@@ -124,7 +138,7 @@ export default async function ProposalPage({ params }: PageProps) {
                 <span>•</span>
                 {dimensionCopy[proposal.dimension]}
               </p>
-              <h1>{proposal.titulo}</h1>
+              <h1>{title}</h1>
               <p className="proposal-page-lead">
                 Parte del Plan Municipal 2027–2030 de {siteConfig.candidate},{" "}
                 {siteConfig.role}.
@@ -138,10 +152,13 @@ export default async function ProposalPage({ params }: PageProps) {
                 height={720}
                 priority
                 src={proposal.image}
-                style={{
-                  objectFit: "cover",
-                  objectPosition: proposal.imagePosition,
-                }}
+                style={
+                  {
+                    objectFit: "cover",
+                    objectPosition: proposal.imagePosition,
+                    viewTransitionName: transitionName,
+                  } as CSSProperties
+                }
                 width={1200}
               />
             </div>
@@ -188,6 +205,9 @@ export default async function ProposalPage({ params }: PageProps) {
             <ProposalParticipation proposal={proposal} />
 
             <footer className="proposal-page-footer">
+              <p className="proposal-page-kbd-hint">
+                Tip: usa ← → para pasar entre propuestas
+              </p>
               <div className="proposal-page-actions proposal-page-pager">
                 {prev ? (
                   <Link
@@ -215,7 +235,7 @@ export default async function ProposalPage({ params }: PageProps) {
                 <a
                   className="button button-whatsapp"
                   href={getWhatsAppUrl(
-                    `Hola Micky, vi la propuesta "${proposal.titulo}" en la web y quiero saber más.`,
+                    `Hola Micky, vi la propuesta "${title}" en la web y quiero saber más.`,
                   )}
                   rel="noopener noreferrer"
                   target="_blank"

@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { ArrowRightIcon } from "~/components/Icons";
+import { getDisplayTitle } from "~/lib/display-title";
 import type { Proposal } from "~/types/proposal";
 
 type ProposalCardProps = {
@@ -9,17 +10,6 @@ type ProposalCardProps = {
   commentCount: number;
   onOpen: (id: string) => void;
 };
-
-function getDisplayTitle(title: string) {
-  const trimmed = title.trim();
-  if (
-    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
-    (trimmed.startsWith("“") && trimmed.endsWith("”"))
-  ) {
-    return trimmed.slice(1, -1);
-  }
-  return trimmed;
-}
 
 export default function ProposalCard({
   proposal,

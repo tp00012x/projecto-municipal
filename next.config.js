@@ -7,6 +7,9 @@ import "./src/env.js";
 /** @type {import("next").NextConfig} */
 const config = {
   serverExternalPackages: ["postgres"],
+  experimental: {
+    viewTransition: true,
+  },
   turbopack: {
     root: import.meta.dirname,
   },

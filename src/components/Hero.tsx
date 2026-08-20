@@ -142,16 +142,17 @@ export default function Hero() {
 
       <div className="hero-utility shell">
         {playback !== "unavailable" ? (
-          <button className="sound-button" onClick={toggleMute} type="button">
-            {/* 
-              Audio toggle button / Botón de toggle de audio
-              When muted: show muted icon (VolumeOffIcon) and "Activate sound" text
-              When unmuted: show unmuted icon (VolumeIcon) and "Deactivate sound" text
-              Cuando está muted: mostrar ícono sin sonido (VolumeOffIcon) y texto "Activar sonido"
-              Cuando no está muted: mostrar ícono con sonido (VolumeIcon) y texto "Desactivar sonido"
-            */}
-            {muted ? <VolumeOffIcon /> : <VolumeIcon />}
-            {muted ? "Activar sonido" : "Desactivar sonido"}
+          <button
+            aria-pressed={!muted}
+            className={`sound-button${muted ? "" : " is-live"}`}
+            onClick={toggleMute}
+            type="button"
+          >
+            <span className="sound-button-icon" aria-hidden="true">
+              {muted ? <VolumeOffIcon /> : <VolumeIcon />}
+              {!muted ? <span className="sound-pulse" /> : null}
+            </span>
+            {muted ? "Activar sonido" : "Sonido activado"}
           </button>
         ) : null}
       </div>

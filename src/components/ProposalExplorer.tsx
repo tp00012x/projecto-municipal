@@ -20,6 +20,7 @@ import {
 import { api } from "~/trpc/react";
 
 const storageKey = "pueblolibre-comments-v1";
+const sortOptions: SortOption[] = ["numero", "titulo", "categoria", "comentadas"];
 
 function readStoredCounts(): CommentCounts {
   if (typeof window === "undefined") return {};
@@ -60,6 +61,10 @@ function mergeCounts(base: CommentCounts, incoming: CommentCounts): CommentCount
   return next;
 }
 
+function isSortOption(value: string | null): value is SortOption {
+  return Boolean(value && sortOptions.includes(value as SortOption));
+}
+
 /**
  * Gallery + quick preview only.
  * Full read + comments live on /propuestas/[slug].
@@ -71,6 +76,7 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
   const [category, setCategory] = useState("Todas");
   const [sortBy, setSortBy] = useState<SortOption>("numero");
   const [counts, setCounts] = useState<CommentCounts>(() => readStoredCounts());
+  const [filtersReady, setFiltersReady] = useState(false);
 
   const categories = useMemo(
     () =>
@@ -87,7 +93,43 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+
+    const params = new URLSearchParams(window.location.search);
+    const nextQuery = params.get("q")?.trim() ?? "";
+    const nextCategory = params.get("categoria")?.trim() || "Todas";
+    const nextSort = params.get("orden");
+
+    if (nextQuery) setQuery(nextQuery);
+    if (
+      nextCategory === "Todas" ||
+      categories.includes(nextCategory)
+    ) {
+      setCategory(nextCategory);
+    }
+    if (isSortOption(nextSort)) setSortBy(nextSort);
+
+    setFiltersReady(true);
+  }, [categories]);
+
+  useEffect(() => {
+    if (!mounted || !filtersReady) return;
+
+    const url = new URL(window.location.href);
+    if (query.trim()) url.searchParams.set("q", query.trim());
+    else url.searchParams.delete("q");
+
+    if (category !== "Todas") url.searchParams.set("categoria", category);
+    else url.searchParams.delete("categoria");
+
+    if (sortBy !== "numero") url.searchParams.set("orden", sortBy);
+    else url.searchParams.delete("orden");
+
+    const next = `${url.pathname}${url.search}${url.hash}`;
+    const current = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+    if (next !== current) {
+      window.history.replaceState(null, "", next);
+    }
+  }, [category, filtersReady, mounted, query, sortBy]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -132,7 +174,10 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
     [counts, filtered, sortBy],
   );
 
-  const quickViewProposal = sorted.find((item) => item.id === quickViewId) ?? null;
+  const quickViewProposal =
+    proposals.find((item) => item.id === quickViewId) ??
+    sorted.find((item) => item.id === quickViewId) ??
+    null;
 
   const hasCommentData =
     Object.values(counts).some((value) => value > 0) || Boolean(countsQuery.data);
@@ -202,7 +247,10 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
 
         <div className="gallery-toolbar">
           <p aria-live="polite" className="gallery-count">
-            Mostrando {sorted.length}{" "}
+            Mostrando{" "}
+            <span className="gallery-count-number" key={sorted.length}>
+              {sorted.length}
+            </span>{" "}
             {sorted.length === 1 ? "propuesta" : "propuestas"}
           </p>
           <ProposalSort

@@ -1,15 +1,18 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 import { ArrowRightIcon, CloseIcon } from "~/components/Icons";
+import { getDisplayTitle } from "~/lib/display-title";
 import { getProposalPath } from "~/lib/propuestas";
 import {
   getBeneficiaryScope,
   getProposalSummary,
 } from "~/lib/proposal-utils";
+import { runViewTransition } from "~/lib/view-transition";
 import type { Proposal } from "~/types/proposal";
 
 type ProposalQuickViewProps = {
@@ -17,27 +20,19 @@ type ProposalQuickViewProps = {
   onClose: () => void;
 };
 
-function getDisplayTitle(title: string) {
-  const trimmed = title.trim();
-  if (
-    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
-    (trimmed.startsWith("“") && trimmed.endsWith("”"))
-  ) {
-    return trimmed.slice(1, -1);
-  }
-  return trimmed;
-}
-
 export default function ProposalQuickView({
   proposal,
   onClose,
 }: ProposalQuickViewProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const router = useRouter();
+  const reduceMotion = useReducedMotion();
   const fullPath = getProposalPath(proposal);
   const commentPath = `${fullPath}#participa`;
   const title = getDisplayTitle(proposal.titulo);
   const summary = getProposalSummary(proposal, 280);
   const audience = getBeneficiaryScope(proposal);
+  const transitionName = `proposal-image-${proposal.id}`;
 
   useEffect(() => {
     closeButtonRef.current?.focus();
@@ -55,79 +50,103 @@ export default function ProposalQuickView({
     };
   }, [onClose]);
 
+  function goTo(href: string) {
+    runViewTransition(() => {
+      router.push(href);
+    });
+  }
+
   return (
-    <div className="quick-view-overlay" role="presentation">
-      <button
-        aria-label="Cerrar ventana"
-        className="quick-view-backdrop"
-        onClick={onClose}
-        type="button"
-      />
+    <AnimatePresence>
+      <div className="quick-view-overlay" role="presentation">
+        <motion.button
+          animate={{ opacity: 1 }}
+          aria-label="Cerrar ventana"
+          className="quick-view-backdrop"
+          exit={{ opacity: 0 }}
+          initial={{ opacity: 0 }}
+          onClick={onClose}
+          transition={{ duration: reduceMotion ? 0 : 0.22 }}
+          type="button"
+        />
 
-      <div
-        aria-labelledby={`quick-view-title-${proposal.id}`}
-        aria-modal="true"
-        className="quick-view-modal"
-        onClick={(event) => event.stopPropagation()}
-        role="dialog"
-      >
-        <div className="quick-view-hero">
-          <Image
-            alt={proposal.imageAlt}
-            className="quick-view-hero-image"
-            fill
-            priority
-            sizes="(max-width: 767px) 100vw, 560px"
-            src={proposal.image}
-            style={{
-              objectFit: "cover",
-              objectPosition: proposal.imagePosition,
-            }}
-          />
-          <span aria-hidden="true" className="quick-view-hero-scrim" />
-          <span className="quick-view-number">
-            {String(proposal.numero).padStart(2, "0")}
-          </span>
-          <button
-            aria-label="Cerrar"
-            className="quick-view-close"
-            onClick={onClose}
-            ref={closeButtonRef}
-            type="button"
-          >
-            <CloseIcon />
-          </button>
-        </div>
+        <motion.div
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          aria-labelledby={`quick-view-title-${proposal.id}`}
+          aria-modal="true"
+          className="quick-view-modal"
+          exit={{ opacity: 0, y: 16, scale: 0.98 }}
+          initial={
+            reduceMotion ? false : { opacity: 0, y: 28, scale: 0.97 }
+          }
+          onClick={(event) => event.stopPropagation()}
+          role="dialog"
+          transition={{
+            duration: reduceMotion ? 0 : 0.34,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          <div className="quick-view-hero">
+            <Image
+              alt={proposal.imageAlt}
+              className="quick-view-hero-image"
+              fill
+              priority
+              sizes="(max-width: 767px) 100vw, 560px"
+              src={proposal.image}
+              style={
+                {
+                  objectFit: "cover",
+                  objectPosition: proposal.imagePosition,
+                  viewTransitionName: transitionName,
+                } as CSSProperties
+              }
+            />
+            <span aria-hidden="true" className="quick-view-hero-scrim" />
+            <span className="quick-view-number">
+              {String(proposal.numero).padStart(2, "0")}
+            </span>
+            <button
+              aria-label="Cerrar"
+              className="quick-view-close"
+              onClick={onClose}
+              ref={closeButtonRef}
+              type="button"
+            >
+              <CloseIcon />
+            </button>
+          </div>
 
-        <div className="quick-view-content">
-          <p className="quick-view-category">{proposal.categoria}</p>
-          <h3 id={`quick-view-title-${proposal.id}`}>{title}</h3>
-          <p className="quick-view-summary">{summary}</p>
-          {audience ? (
-            <p className="quick-view-audience">
-              <span>Para</span> {audience}
-            </p>
-          ) : null}
-        </div>
+          <div className="quick-view-content">
+            <p className="quick-view-category">{proposal.categoria}</p>
+            <h3 id={`quick-view-title-${proposal.id}`}>{title}</h3>
+            <p className="quick-view-summary">{summary}</p>
+            {audience ? (
+              <p className="quick-view-audience">
+                <span>Para</span> {audience}
+              </p>
+            ) : null}
+          </div>
 
-        <footer className="quick-view-actions">
-          <Link
-            className="button button-purple"
-            href={fullPath}
-            onClick={onClose}
-          >
-            Ver propuesta completa
-            <ArrowRightIcon />
-          </Link>
-          <Link
-            className="button button-outline"
-            href={commentPath}
-            onClick={onClose}
-          >
-            Comentar esta propuesta
-          </Link>
-        </footer>
+          <footer className="quick-view-actions">
+            <button
+              className="button button-purple"
+              onClick={() => goTo(fullPath)}
+              type="button"
+            >
+              Ver propuesta completa
+              <ArrowRightIcon />
+            </button>
+            <button
+              className="button button-outline"
+              onClick={() => goTo(commentPath)}
+              type="button"
+            >
+              Comentar esta propuesta
+            </button>
+          </footer>
+        </motion.div>
       </div>
-    </div>
+    </AnimatePresence>
   );
 }

@@ -15,10 +15,12 @@ import {
   Landmark,
   Leaf,
   Lightbulb,
+  Link2,
   MessageCircle,
   Menu,
   PawPrint,
   Search,
+  Share2,
   Shield,
   Smartphone,
   Sparkles,
@@ -75,6 +77,14 @@ export function SparkIcon(props: IconProps) {
 
 export function CheckIcon(props: IconProps) {
   return <Check aria-hidden="true" {...props} />;
+}
+
+export function ShareIcon(props: IconProps) {
+  return <Share2 aria-hidden="true" {...props} />;
+}
+
+export function LinkIcon(props: IconProps) {
+  return <Link2 aria-hidden="true" {...props} />;
 }
 
 export function MessageIcon(props: IconProps) {

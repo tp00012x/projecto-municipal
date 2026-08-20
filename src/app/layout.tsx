@@ -1,7 +1,7 @@
 import "~/styles/globals.css";
 
 import { Analytics } from "@vercel/analytics/next";
-import { Caveat, Inter } from "next/font/google";
+import { Caveat, Plus_Jakarta_Sans, Syne } from "next/font/google";
 import { type Metadata, type Viewport } from "next";
 
 import WhatsAppFloat from "~/components/WhatsAppFloat";
@@ -10,9 +10,16 @@ import { buildSeoGraph } from "~/lib/seo-schema";
 import { getSiteUrl } from "~/lib/site-url";
 import { TRPCReactProvider } from "~/trpc/react";
 
-const bodyFont = Inter({
+const bodyFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-body",
+  display: "swap",
+});
+
+const displayFont = Syne({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -110,7 +117,10 @@ export default function RootLayout({
   const structuredData = buildSeoGraph();
 
   return (
-    <html lang="es" className={`${bodyFont.variable} ${sloganScript.variable}`}>
+    <html
+      lang="es"
+      className={`${bodyFont.variable} ${displayFont.variable} ${sloganScript.variable}`}
+    >
       <body className={bodyFont.className}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
         <WhatsAppFloat />
