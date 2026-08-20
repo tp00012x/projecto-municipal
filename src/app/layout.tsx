@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Caveat, Inter } from "next/font/google";
 import { type Metadata, type Viewport } from "next";
 
+import WhatsAppFloat from "~/components/WhatsAppFloat";
 import { siteConfig, siteSeo } from "~/data/site";
 import { buildSeoGraph } from "~/lib/seo-schema";
 import { getSiteUrl } from "~/lib/site-url";
@@ -112,6 +113,7 @@ export default function RootLayout({
     <html lang="es" className={`${bodyFont.variable} ${sloganScript.variable}`}>
       <body className={bodyFont.className}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
+        <WhatsAppFloat />
         <Analytics />
         <script
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

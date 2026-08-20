@@ -4632,9 +4632,10 @@ video {
   letter-spacing: 0.01em;
 }
 
-@media (max-width: 640px) {
-  .whatsapp-float-label {
-    /* Keep label — WA is the main contact path on phone */
-    display: inline;
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float,
+  .whatsapp-float:hover {
+    transition: none;
+    transform: none;
   }
 }

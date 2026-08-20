@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-import { siteConfig, siteSeo } from "~/data/site";
+import { getWhatsAppUrl, siteConfig, siteSeo } from "~/data/site";
 import {
   getAdjacentProposals,
   getAllProposals,
@@ -208,9 +208,16 @@ export default async function ProposalPage({ params }: PageProps) {
               <Link className="button button-yellow" href="/#propuestas">
                 Ver las {siteConfig.proposalCount} propuestas
               </Link>
-              <Link className="button button-glass" href="/#participa">
-                Dejar un aporte
-              </Link>
+              <a
+                className="button button-whatsapp"
+                href={getWhatsAppUrl(
+                  `Hola Micky, vi la propuesta "${proposal.titulo}" en la web y quiero saber más.`,
+                )}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Escribir por WhatsApp
+              </a>
             </div>
           </footer>
         </article>
