@@ -669,12 +669,12 @@ video {
 }
 
 .hero h1 {
-  max-width: 11ch;
+  max-width: 12ch;
   margin: 0;
-  font-size: clamp(42px, 7.5vw, 76px);
-  font-weight: 880;
-  letter-spacing: -0.07em;
-  line-height: 0.94;
+  font-size: clamp(40px, 7vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
   text-wrap: balance;
 }
 
@@ -914,10 +914,10 @@ video {
 .candidate-intro-name {
   margin: 0;
   color: var(--purple-950);
-  font-size: clamp(42px, 8vw, 64px);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
+  font-size: clamp(40px, 7.5vw, 60px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
 }
 
 /**
@@ -1075,10 +1075,10 @@ video {
 .gallery-heading:not(.gallery-heading-team) h2,
 .stats-copy h2 {
   margin: 0;
-  font-size: clamp(40px, 10vw, 78px);
-  font-weight: 860;
-  letter-spacing: -0.06em;
-  line-height: 0.95;
+  font-size: clamp(36px, 8vw, 68px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
 }
 
 .identity-copy h2 span,
@@ -1193,10 +1193,10 @@ video {
   max-width: none;
   margin: 0;
   color: var(--ink);
-  font-size: clamp(30px, 4.6vw, 50px);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1.12;
+  font-size: clamp(28px, 4.2vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   text-wrap: balance;
 }
 
@@ -1387,10 +1387,13 @@ video {
 
 .vision-card-title {
   margin: 0;
-  font-size: clamp(15px, 1.5vw, 17px);
-  font-weight: 900;
+  overflow-wrap: anywhere;
+  font-size: clamp(14px, 1.35vw, 16px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
   line-height: 1.2;
   text-transform: capitalize;
+  hyphens: auto;
 }
 
 .vision-card-summary {

@@ -1,7 +1,7 @@
 import "~/styles/globals.css";
 
 import { Analytics } from "@vercel/analytics/next";
-import { Caveat, Plus_Jakarta_Sans, Syne } from "next/font/google";
+import { Caveat, Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import { type Metadata, type Viewport } from "next";
 
 import WhatsAppFloat from "~/components/WhatsAppFloat";
@@ -16,7 +16,7 @@ const bodyFont = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const displayFont = Syne({
+const displayFont = Outfit({
   subsets: ["latin"],
   weight: ["600", "700", "800"],
   variable: "--font-display",
