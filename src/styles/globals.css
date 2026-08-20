@@ -442,14 +442,18 @@ video {
 }
 
 .header-social-link-whatsapp {
+  /* Match PNG icon footprint (img is 30×30 inside the 34×34 hit target) */
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
   background: #25d366;
   color: #fff;
-  border-radius: 11px;
+  border-radius: 10px;
 }
 
 .header-social-link-whatsapp svg {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
 }
 
 .header-social-link-whatsapp:hover {
@@ -3184,6 +3188,17 @@ video {
   .header-social-link img {
     width: 32px;
     height: 32px;
+  }
+
+  .header-social-link-whatsapp {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .header-social-link-whatsapp svg {
+    width: 18px;
+    height: 18px;
   }
 
   .menu-button,
