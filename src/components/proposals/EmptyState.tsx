@@ -8,10 +8,10 @@ type EmptyStateProps = {
 };
 
 export default function EmptyState({
-  title = "No encontramos propuestas relacionadas con tu búsqueda",
-  description = "Prueba con otra palabra clave o restablece los filtros para ver todas las propuestas.",
+  title = "Nada por acá con esos filtros",
+  description = "Prueba con otra palabra o limpia los filtros para ver las 24 propuestas otra vez.",
   onReset,
-  resetLabel = "Limpiar filtros",
+  resetLabel = "Ver todas las propuestas",
 }: EmptyStateProps) {
   return (
     <div className="gallery-empty-state" role="status">

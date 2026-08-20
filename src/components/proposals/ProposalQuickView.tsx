@@ -56,6 +56,10 @@ export default function ProposalQuickView({
     });
   }
 
+  useEffect(() => {
+    router.prefetch(fullPath);
+  }, [fullPath, router]);
+
   return (
     <AnimatePresence>
       <div className="quick-view-overlay" role="presentation">

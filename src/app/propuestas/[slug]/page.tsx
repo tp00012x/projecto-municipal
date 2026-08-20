@@ -6,6 +6,7 @@ import type { CSSProperties } from "react";
 
 import Footer from "~/components/Footer";
 import Header from "~/components/Header";
+import TransitionLink from "~/components/TransitionLink";
 import ProposalFichaChrome, {
   ProposalShareBar,
 } from "~/components/proposals/ProposalFichaChrome";
@@ -210,22 +211,22 @@ export default async function ProposalPage({ params }: PageProps) {
               </p>
               <div className="proposal-page-actions proposal-page-pager">
                 {prev ? (
-                  <Link
+                  <TransitionLink
                     className="button button-outline"
                     href={getProposalPath(prev)}
                   >
                     ← Anterior
-                  </Link>
+                  </TransitionLink>
                 ) : (
                   <span />
                 )}
                 {next ? (
-                  <Link
+                  <TransitionLink
                     className="button button-outline"
                     href={getProposalPath(next)}
                   >
                     Siguiente →
-                  </Link>
+                  </TransitionLink>
                 ) : null}
               </div>
               <div className="proposal-page-actions">

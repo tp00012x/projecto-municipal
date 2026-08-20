@@ -38,6 +38,18 @@ Anthony (o Cursor) toma el Issue → hace el cambio → te manda un **Pull Reque
 5. Anthony hace Merge → queda en la web oficial
 ```
 
+## Dominio oficial
+
+Sitio canónico: **https://mickyruiz.com**
+
+Anthony configura en Vercel:
+1. Domains → `mickyruiz.com` (+ www si hace falta)
+2. Env Production → `NEXT_PUBLIC_SITE_URL=https://mickyruiz.com`
+3. Redeploy
+4. Search Console → sitemap `https://mickyruiz.com/sitemap.xml`
+
+Detalle técnico: `docs/SEO.md`.
+
 ### Cómo revisar un Preview
 
 1. Entra al Pull Request en GitHub.

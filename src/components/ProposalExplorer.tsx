@@ -10,6 +10,7 @@ import ProposalGallery from "~/components/proposals/ProposalGallery";
 import ProposalQuickView from "~/components/proposals/ProposalQuickView";
 import ProposalSearch from "~/components/proposals/ProposalSearch";
 import ProposalSort from "~/components/proposals/ProposalSort";
+import MotionReveal from "~/components/MotionReveal";
 import type { CommentCounts, Proposal } from "~/types/proposal";
 import {
   filterProposals,
@@ -109,6 +110,20 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
     if (isSortOption(nextSort)) setSortBy(nextSort);
 
     setFiltersReady(true);
+
+    const hasShareState =
+      Boolean(nextQuery) ||
+      (nextCategory && nextCategory !== "Todas") ||
+      isSortOption(nextSort);
+
+    if (hasShareState && !window.location.hash) {
+      window.requestAnimationFrame(() => {
+        document.getElementById("propuestas")?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+    }
   }, [categories]);
 
   useEffect(() => {
@@ -212,7 +227,7 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
   return (
     <section className="section proposal-section" id="propuestas">
       <div className="shell">
-        <div className="proposal-heading gallery-heading-block">
+        <MotionReveal className="proposal-heading gallery-heading-block">
           <div>
             <p className="eyebrow">Galería de propuestas</p>
             <h2>
@@ -224,7 +239,7 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
             Elige una propuesta, mira el resumen y entra a la ficha completa
             cuando quieras profundizar.
           </p>
-        </div>
+        </MotionReveal>
 
         {countsQuery.isError ? (
           <ErrorState onRetry={() => void countsQuery.refetch()} />

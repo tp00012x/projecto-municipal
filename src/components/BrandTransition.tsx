@@ -1,4 +1,5 @@
 import BrandMark from "~/components/BrandMark";
+import MotionReveal from "~/components/MotionReveal";
 
 /**
  * Visual separator between major content blocks.
@@ -6,16 +7,16 @@ import BrandMark from "~/components/BrandMark";
  */
 export default function BrandTransition() {
   return (
-    <section
-      aria-label="Identidad de campaña"
-      className="brand-transition"
-    >
-      <div className="shell brand-transition-inner">
+    <section aria-label="Identidad de campaña" className="brand-transition">
+      <MotionReveal className="shell brand-transition-inner">
         <div className="brand-transition-identity">
           <a className="brand brand-transition-brand" href="#inicio">
             <BrandMark showSlogan={false} />
           </a>
-          <p className="brand-transition-slogan" aria-label="Pueblo Libre para todos!">
+          <p
+            aria-label="Pueblo Libre para todos!"
+            className="brand-transition-slogan"
+          >
             <span className="brand-slogan-serif">Pueblo Libre</span>{" "}
             <span className="brand-slogan-script">para todos!</span>
           </p>
@@ -24,7 +25,7 @@ export default function BrandTransition() {
           Nuestro compromiso es claro: construir un distrito más seguro, con
           oportunidades para todos y espacios que nos unan.
         </p>
-      </div>
+      </MotionReveal>
     </section>
   );
 }

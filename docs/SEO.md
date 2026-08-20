@@ -2,35 +2,37 @@
 
 Sin estos pasos de ops, el código SEO no indexa bien.
 
-## 1. URL canónica en Vercel (obligatorio)
+## 1. Dominio canónico (obligatorio)
 
-Project → Settings → Environment Variables → Production:
+### Vercel → Domain
+Project → Settings → Domains → agregá:
+- `mickyruiz.com`
+- `www.mickyruiz.com` (redirect a apex, o al revés — elegí uno)
+
+### Vercel → Environment Variables → Production
 
 ```text
-NEXT_PUBLIC_SITE_URL=https://TU-DOMINIO-FINAL
+NEXT_PUBLIC_SITE_URL=https://mickyruiz.com
 ```
 
-Ejemplos:
+Sin slash final. **Redeploy** después de guardar.
 
-- Custom: `https://pueblolibre2030.pe`
-- Mientras tanto: `https://projecto-municipal.vercel.app` (el dominio real del proyecto)
-
-Sin slash final. Redeploy después de guardar.
+Mientras el dominio no esté Valid, podés usar el `.vercel.app` temporal, pero el canónico final debe ser `https://mickyruiz.com`.
 
 ## 2. Google Search Console
 
 1. Entrá a https://search.google.com/search-console
-2. Agregá la propiedad del dominio (o URL prefix = `NEXT_PUBLIC_SITE_URL`)
-3. Verificá (DNS o meta tag / HTML file)
-4. Sitemaps → enviá: `https://TU-DOMINIO/sitemap.xml`
+2. Agregá la propiedad del dominio `mickyruiz.com` (DNS) o URL prefix `https://mickyruiz.com`
+3. Verificá
+4. Sitemaps → enviá: `https://mickyruiz.com/sitemap.xml`
 5. Pedí indexación de la home y de 2–3 fichas `/propuestas/...`
 
 ## 3. Probar shares (WhatsApp / Facebook)
 
 Después del deploy:
 
-- https://www.opengraph.xyz/ → pegá la URL canónica
-- Mandate un WhatsApp a vos mismo con el link (debería verse título + imagen 1200×630)
+- https://www.opengraph.xyz/ → pegá `https://mickyruiz.com`
+- Mandá un WhatsApp a vos mismo con el link (título + imagen 1200×630)
 
 ## 4. Bing (opcional, 5 min)
 
@@ -46,6 +48,8 @@ https://www.bing.com/webmasters → importar desde Google si ya verificaste GSC.
 | Fichas crawlables | `/propuestas/[slug]` + sitemap (1+24) |
 | OG liviano | `/og.jpg` 1200×630 |
 | H1 con Micky + Pueblo Libre | `Hero.tsx` |
+| Filtros shareables | `?categoria=&q=&orden=` en galería |
+| Share nativo en fichas | `ProposalFichaChrome` |
 
 ## 6. No inventar
 
