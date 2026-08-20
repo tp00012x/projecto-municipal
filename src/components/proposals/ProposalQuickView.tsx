@@ -101,15 +101,18 @@ export default function ProposalQuickView({
   }
 
   return (
-    <div className="quick-view-overlay" role="presentation">
-      <motion.button
-        animate={{ opacity: 1 }}
+    <motion.div
+      animate={{ opacity: 1 }}
+      className="quick-view-overlay"
+      exit={reduceMotion ? undefined : { opacity: 0 }}
+      initial={reduceMotion ? false : { opacity: 0 }}
+      role="presentation"
+      transition={{ duration: reduceMotion ? 0 : 0.2 }}
+    >
+      <button
         aria-label="Cerrar ventana"
         className="quick-view-backdrop"
-        exit={{ opacity: 0 }}
-        initial={reduceMotion ? false : { opacity: 0 }}
         onClick={onClose}
-        transition={{ duration: reduceMotion ? 0 : 0.22 }}
         type="button"
       />
 
@@ -192,6 +195,6 @@ export default function ProposalQuickView({
           </button>
         </footer>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
