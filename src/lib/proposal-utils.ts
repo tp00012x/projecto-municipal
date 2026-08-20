@@ -42,7 +42,7 @@ export function getPrimaryBenefit(proposal: Proposal) {
   return proposal.metas[0] ?? joinProposalText(proposal.objetivo);
 }
 
-export function getBeneficiaryScope(proposal: Proposal) {
+export function getBeneficiaryScope(proposal: Proposal): string | null {
   const objective = joinProposalText(proposal.objetivo).toLocaleLowerCase("es");
   const patterns = [
     /adultos mayores/,
@@ -63,7 +63,7 @@ export function getBeneficiaryScope(proposal: Proposal) {
     }
   }
 
-  return dimensionCopy[proposal.dimension];
+  return null;
 }
 
 export function filterProposals(
