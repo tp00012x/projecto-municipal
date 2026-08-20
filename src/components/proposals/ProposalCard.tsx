@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { getProposalSummary } from "~/lib/proposal-utils";
+import { getProposalPath } from "~/lib/propuestas";
 import type { Proposal } from "~/types/proposal";
 
 type ProposalCardProps = {
@@ -17,6 +19,7 @@ export default function ProposalCard({
   onOpen,
 }: ProposalCardProps) {
   const summary = getProposalSummary(proposal, 120);
+  const href = getProposalPath(proposal);
 
   return (
     <article
@@ -60,6 +63,9 @@ export default function ProposalCard({
         >
           Ver propuesta
         </button>
+        <Link className="proposal-card-permalink" href={href}>
+          Ficha completa
+        </Link>
       </div>
 
       {commentCount > 0 ? (

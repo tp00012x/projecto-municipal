@@ -3,11 +3,35 @@ export const siteConfig = {
   candidate: "Micky Ruiz",
   role: "Candidato a la Alcaldía de Pueblo Libre",
   affiliation: "Partido Morado",
+  district: "Pueblo Libre",
+  region: "Lima, Perú",
   slogan: "Pueblo Libre para todos!",
   description:
     "Plataforma informativa para explorar las propuestas del Plan de Gobierno Municipal 2027–2030 y registrar aportes ciudadanos.",
   email: "contacto@pueblolibre2030.pe",
-};
+  proposalCount: 24,
+} as const;
+
+/** Single source for meta / OG / Twitter — candidato-first for local SERP */
+export const siteSeo = {
+  title: "Micky Ruiz | Candidato a la Alcaldía de Pueblo Libre 2027–2030",
+  titleTemplate: "%s | Micky Ruiz · Pueblo Libre",
+  description:
+    "Conoce a Micky Ruiz, candidato a la Alcaldía de Pueblo Libre (Lima): 24 propuestas del Plan Municipal 2027–2030, claras y abiertas a aportes ciudadanos.",
+  keywords: [
+    "Micky Ruiz",
+    "candidato alcalde Pueblo Libre",
+    "Alcaldía de Pueblo Libre",
+    "Pueblo Libre 2027",
+    "propuestas municipales Pueblo Libre",
+    "Plan de Gobierno Municipal",
+    "Partido Morado",
+    "Lima Perú",
+  ],
+  ogAlt:
+    "Micky Ruiz, candidato a la Alcaldía de Pueblo Libre — plan municipal 2027–2030",
+  siteName: "Micky Ruiz · Pueblo Libre 2027–2030",
+} as const;
 
 /** Campaign brand assets sourced from original artwork / Recursos de marca originales */
 export const brandAssets = {

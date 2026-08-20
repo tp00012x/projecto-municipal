@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 import CampaignBanner from "~/components/CampaignBanner";
-import { heroMedia } from "~/data/site";
+import { heroMedia, siteConfig } from "~/data/site";
 import { startHeroPlayback, type HeroPlaybackState } from "~/lib/hero-playback";
 import {
   ArrowRightIcon,
@@ -104,7 +104,7 @@ export default function Hero() {
           muted={muted}
           playsInline
           poster={image.src}
-          preload="auto"
+          preload="metadata"
           ref={videoRef}
         >
           <source src={video.src} type={video.type} />
@@ -118,23 +118,24 @@ export default function Hero() {
         <div className="hero-copy">
           <CampaignBanner className="hero-brand-banner" priority />
           <p className="eyebrow light">
-            Plataforma informativa <span>•</span> Plan 2027–2030
+            {siteConfig.role} <span>•</span> {siteConfig.affiliation}
           </p>
           <h1 id="hero-title">
-            Un plan de ciudad,
-            <span> explicado con claridad.</span>
+            {siteConfig.candidate}
+            <span> — un plan de ciudad para {siteConfig.district}</span>
           </h1>
           <p className="hero-description">
-            Conoce el diagnóstico, los objetivos, las acciones, las metas y la
-            viabilidad declarada de cada propuesta municipal.
+            {siteConfig.proposalCount} propuestas del Plan Municipal 2027–2030:
+            diagnóstico, objetivos, acciones, metas y viabilidad, explicados con
+            claridad para los vecinos de Pueblo Libre.
           </p>
           <div className="hero-actions">
             <a className="button button-yellow" href="#propuestas">
-              Explorar las 24 propuestas
+              Explorar las {siteConfig.proposalCount} propuestas
               <ArrowRightIcon />
             </a>
-            <a className="button button-glass" href="#contexto">
-              Sobre esta plataforma
+            <a className="button button-glass" href="#presentacion">
+              Conocer a {siteConfig.candidate}
             </a>
           </div>
         </div>

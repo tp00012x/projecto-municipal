@@ -48,6 +48,7 @@ DATABASE_URL="your-neon-url" pnpm db:push
 ## For Miki (no coding)
 
 - Guide: **[docs/PARA-MIKI.md](./docs/PARA-MIKI.md)**
+- SEO ops (Search Console / dominio): **[docs/SEO.md](./docs/SEO.md)**
 - Request changes via Issues: https://github.com/tp00012x/projecto-municipal/issues/new/choose
 - Anthony setup (branch protection / permissions): **[.github/branch-protection.md](./.github/branch-protection.md)**
 

@@ -25,7 +25,6 @@ export default function CandidateIntro() {
               <Image
                 alt="Micky Ruiz - Candidato a la Alcaldía de Pueblo Libre"
                 fill
-                priority
                 sizes="(max-width: 899px) 100vw, 45vw"
                 src="/team/micky-presentacion.png"
                 style={{ objectFit: 'cover', objectPosition: 'center' }}

@@ -56,7 +56,8 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family:
-    Inter, "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
+    var(--font-body), "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -4387,5 +4388,135 @@ video {
 
   .proposal-card-image {
     transform: none !important;
+  }
+}
+
+/* Crawlable proposal detail pages / Fichas SEO de propuestas */
+.proposal-page {
+  min-height: 100vh;
+  padding: 110px 0 72px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 212, 0, 0.12), transparent 40%),
+    linear-gradient(180deg, var(--surface-purple), var(--paper) 42%);
+}
+
+.proposal-page-shell {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.proposal-page-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.proposal-page-nav a {
+  color: var(--purple-800);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.proposal-page-nav a:hover {
+  text-decoration: underline;
+}
+
+.proposal-page-article {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--purple-line);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow-soft);
+}
+
+.proposal-page-header h1 {
+  margin: 0.35rem 0 0.75rem;
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+  line-height: 1.12;
+  color: var(--purple-950);
+}
+
+.proposal-page-lead {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.proposal-page-media {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  aspect-ratio: 16 / 9;
+  background: var(--surface-purple);
+}
+
+.proposal-page-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.proposal-page-block h2 {
+  margin: 0 0 0.65rem;
+  color: var(--purple-900);
+  font-size: 1.2rem;
+}
+
+.proposal-page-block p,
+.proposal-page-block li {
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+.proposal-page-block ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.proposal-page-footer {
+  display: grid;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.proposal-page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.proposal-page-actions .button {
+  max-width: 100%;
+}
+
+.proposal-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.proposal-card-permalink {
+  color: var(--purple-800);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.proposal-card-permalink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .proposal-page-actions .button-outline {
+    width: 100%;
   }
 }
