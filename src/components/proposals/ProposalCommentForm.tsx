@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 
 import { ArrowRightIcon, MessageIcon } from "~/components/Icons";
 import type { Proposal } from "~/types/proposal";
@@ -26,6 +26,10 @@ export default function ProposalCommentForm({
     message: "",
   });
   const [isOpen, setIsOpen] = useState(!collapsed);
+
+  useEffect(() => {
+    if (!collapsed) setIsOpen(true);
+  }, [collapsed]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
