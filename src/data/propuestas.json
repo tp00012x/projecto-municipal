@@ -505,11 +505,13 @@
     ]
   },
   {
+    "id": "propuesta-18",
+    "numero": 18,
     "titulo": "Retiro de Vehículos Abandonados y Recuperación del Espacio Público",
     "categoria": "Espacio público",
     "dimension": "Ambiental",
     "image": "/images/propuestas/propuesta-18.webp",
-    "imageAlt": "Vecinos reciclando y separando residuos en contenedores en un parque limpio de Pueblo Libre",
+    "imageAlt": "Calle de Pueblo Libre con espacio público liberado tras el retiro de vehículos abandonados",
     "imagePosition": "center",
     "diagnostico": [
       "En Pueblo Libre existen numerosos vehículos abandonados en la vía pública, ocupando veredas y calles. Esto genera problemas de seguridad, salubridad y movilidad, además de dar una imagen de desorden urbano."
