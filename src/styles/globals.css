@@ -38,6 +38,8 @@
   --hero-focal-y: 22%;
   --hero-copy-max: min(34rem, 42vw);
   --hero-scrim-stop: 46%;
+  /* Keep hero media below the fixed header so faces aren't cropped by the nav */
+  --header-height: 72px;
 }
 
 * {
@@ -536,7 +538,14 @@ video {
   color: var(--paper);
 }
 
-.hero-media,
+.hero-media {
+  position: absolute;
+  top: var(--header-height);
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .hero-still,
 .hero-video,
 .hero-scrim,
@@ -3119,6 +3128,10 @@ video {
 }
 
 @media (min-width: 900px) {
+  :root {
+    --header-height: 82px;
+  }
+
   .site-header {
     min-height: 82px;
   }

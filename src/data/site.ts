@@ -67,6 +67,11 @@ export const brandAssets = {
  *   2. video (optional; reveals only when playback starts)
  *   3. scrim (left copy readability)
  *   4. copy column (left safe zone)
+ *
+ * Rules:
+ * - Media plane starts below the fixed header (--header-height), not under the nav.
+ * - Never translate/pan media to dodge text or the navbar.
+ * - Tune framing with focal/object-position tokens only.
  */
 export const heroMedia = {
   image: {
@@ -75,14 +80,16 @@ export const heroMedia = {
     width: 2400,
     height: 1350,
     focalX: 50,
-    focalY: 22,
+    /** Bias toward face/top after header-safe media plane */
+    focalY: 18,
   },
   video: {
     src: "/videos/reel-micky-ruiz-web.mp4",
     type: "video/mp4" as const,
     orientation: "portrait" as const,
     objectPositionX: 50,
-    objectPositionY: 26,
+    /** Keep head in frame under cover crop */
+    objectPositionY: 18,
   },
 };
 
