@@ -10,18 +10,31 @@ type ProposalCardProps = {
   onOpen: (id: string) => void;
 };
 
+function getDisplayTitle(title: string) {
+  const trimmed = title.trim();
+  if (
+    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+    (trimmed.startsWith("“") && trimmed.endsWith("”"))
+  ) {
+    return trimmed.slice(1, -1);
+  }
+  return trimmed;
+}
+
 export default function ProposalCard({
   proposal,
   isSelected,
   commentCount,
   onOpen,
 }: ProposalCardProps) {
+  const title = getDisplayTitle(proposal.titulo);
+
   return (
     <article
       className={`proposal-card ${isSelected ? "is-selected" : ""}`.trim()}
     >
       <button
-        aria-label={`Abrir propuesta ${proposal.numero}: ${proposal.titulo}`}
+        aria-label={`Abrir propuesta ${proposal.numero}: ${title}`}
         className="proposal-card-main"
         onClick={() => onOpen(proposal.id)}
         type="button"
@@ -32,13 +45,14 @@ export default function ProposalCard({
             className="proposal-card-image"
             fill
             loading="lazy"
-            sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 25vw"
+            sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 33vw"
             src={proposal.image}
             style={{
               objectFit: "cover",
               objectPosition: proposal.imagePosition,
             }}
           />
+          <span aria-hidden="true" className="proposal-card-scrim" />
           <span className="proposal-card-number">
             {String(proposal.numero).padStart(2, "0")}
           </span>
@@ -46,7 +60,7 @@ export default function ProposalCard({
 
         <div className="proposal-card-body">
           <span className="proposal-card-category">{proposal.categoria}</span>
-          <h3 className="proposal-card__title">{proposal.titulo}</h3>
+          <h3 className="proposal-card__title">{title}</h3>
         </div>
 
         <span className="proposal-card-cta" aria-hidden="true">

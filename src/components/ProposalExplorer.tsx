@@ -172,12 +172,12 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
             <p className="eyebrow">Galería de propuestas</p>
             <h2>
               24 propuestas.
-              <span> Una lectura simple.</span>
+              <span> Claras. Accionables.</span>
             </h2>
           </div>
           <p>
-            Explora, conoce y revisa las propuestas para construir un Pueblo Libre
-            para todos.
+            Elige una propuesta, mira el resumen y entra a la ficha completa
+            cuando quieras profundizar.
           </p>
         </div>
 
