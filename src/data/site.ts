@@ -10,7 +10,17 @@ export const siteConfig = {
     "Plataforma informativa para explorar las propuestas del Plan de Gobierno Municipal 2027–2030 y registrar aportes ciudadanos.",
   email: "contacto@pueblolibre2030.pe",
   proposalCount: 24,
+  phoneDisplay: "+51 981 237 361",
+  /** Digits only with country code — used for wa.me / tel links */
+  whatsappE164: "51981237361",
 } as const;
+
+export function getWhatsAppUrl(message?: string) {
+  const text =
+    message ??
+    "Hola Micky, vengo de la web de Pueblo Libre y me gustaría saber más.";
+  return `https://wa.me/${siteConfig.whatsappE164}?text=${encodeURIComponent(text)}`;
+}
 
 /** Single source for meta / OG / Twitter — candidato-first for local SERP */
 export const siteSeo = {

@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
+import { getWhatsAppUrl, siteConfig } from "~/data/site";
 import BrandMark from "./BrandMark";
-import { CloseIcon, MenuIcon } from "./Icons";
+import { CloseIcon, MenuIcon, WhatsAppIcon } from "./Icons";
 
 const links = [
   { href: "#presentacion", label: "Sobre Micky" },
@@ -54,9 +56,19 @@ export default function Header() {
       <div className="header-social">
         <div className="header-social-copy">
           <strong>Conecta con Micky</strong>
-          <em>Síguelo en sus redes</em>
+          <em>Escríbele o síguelo</em>
         </div>
         <div className="header-social-icons" role="list">
+          <a
+            aria-label={`WhatsApp de ${siteConfig.candidate}: ${siteConfig.phoneDisplay}`}
+            className="header-social-link header-social-link-whatsapp"
+            href={getWhatsAppUrl()}
+            rel="noopener noreferrer"
+            role="listitem"
+            target="_blank"
+          >
+            <WhatsAppIcon />
+          </a>
           {socialLinks.map((social) => (
             <a
               aria-label={social.label}
@@ -89,17 +101,22 @@ export default function Header() {
         id="mobile-navigation"
       >
         {links.map((link, index) => (
-          <a
-            href={link.href}
-            key={link.href}
-            onClick={() => setOpen(false)}
-          >
+          <a href={link.href} key={link.href} onClick={() => setOpen(false)}>
             <span>0{index + 1}</span>
             {link.label}
           </a>
         ))}
+        <a
+          className="mobile-nav-whatsapp"
+          href={getWhatsAppUrl()}
+          onClick={() => setOpen(false)}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <WhatsAppIcon />
+          Escribir por WhatsApp
+        </a>
       </div>
     </header>
   );
 }
-

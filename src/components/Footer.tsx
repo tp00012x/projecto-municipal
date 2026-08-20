@@ -1,4 +1,5 @@
 import BrandMark from "~/components/BrandMark";
+import { getWhatsAppUrl, siteConfig } from "~/data/site";
 
 export default function Footer() {
   return (
@@ -20,10 +21,13 @@ export default function Footer() {
           <a href="#equipo">Nuestro equipo</a>
         </div>
         <div>
-          <strong>Información</strong>
+          <strong>Contacto</strong>
+          <a href={getWhatsAppUrl()} rel="noopener noreferrer" target="_blank">
+            WhatsApp {siteConfig.phoneDisplay}
+          </a>
+          <a href={`mailto:${siteConfig.email}`}>Correo de contacto</a>
           <a href="#privacidad">Política de privacidad</a>
           <a href="#aviso-legal">Aviso legal</a>
-          <a href="mailto:contacto@pueblolibre2030.pe">Correo de contacto</a>
         </div>
         <div>
           <strong>Transparencia</strong>
@@ -41,7 +45,7 @@ export default function Footer() {
         <p id="privacidad">
           <strong>Privacidad:</strong> el correo es opcional. Los aportes se
           almacenan para moderación y análisis agregado; evita incluir datos
-          sensibles.
+          sensibles. Los mensajes por WhatsApp se gestionan fuera de este sitio.
         </p>
         <p id="aviso-legal">
           <strong>Aviso legal:</strong> nombres, afiliación, eslogan y
@@ -52,4 +56,3 @@ export default function Footer() {
     </footer>
   );
 }
-

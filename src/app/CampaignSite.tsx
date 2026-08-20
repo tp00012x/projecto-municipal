@@ -8,6 +8,7 @@ import IdentitySection from "~/components/IdentitySection";
 import ProposalExplorer from "~/components/ProposalExplorer";
 import TeamGallery from "~/components/TeamGallery";
 import VisionSection from "~/components/VisionSection";
+import WhatsAppFloat from "~/components/WhatsAppFloat";
 import type { Proposal } from "~/types/proposal";
 
 export default function CampaignSite({ proposals }: { proposals: Proposal[] }) {
@@ -20,16 +21,15 @@ export default function CampaignSite({ proposals }: { proposals: Proposal[] }) {
       <main id="contenido">
         <Hero />
         <CandidateIntro />
-        {/* Orden mejorado: visión → equipo → propuestas → participa / Improved order */}
         <VisionSection proposals={proposals} />
         <TeamGallery />
         <BrandTransition />
         <ProposalExplorer proposals={proposals} />
-        {/* Contexto institucional encima de la declaración / Institutional context above declaration */}
         <IdentitySection />
         <ClosingSection />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </>
   );
 }

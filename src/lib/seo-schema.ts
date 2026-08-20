@@ -58,6 +58,13 @@ export function buildSeoGraph() {
         },
         url: siteUrl,
         description: siteConfig.description,
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer support",
+          telephone: `+${siteConfig.whatsappE164}`,
+          availableLanguage: ["Spanish"],
+          areaServed: "PE",
+        },
       },
       {
         "@type": "Organization",
