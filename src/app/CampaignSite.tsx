@@ -1,4 +1,5 @@
 import BrandTransition from "~/components/BrandTransition";
+import CommunityRaceModal from "~/components/CommunityRaceModal";
 import CandidateIntro from "~/components/CandidateIntro";
 import ClosingSection from "~/components/ClosingSection";
 import Footer from "~/components/Footer";
@@ -28,6 +29,7 @@ export default function CampaignSite({ proposals }: { proposals: Proposal[] }) {
         <ClosingSection />
       </main>
       <Footer />
+      <CommunityRaceModal />
     </>
   );
 }

@@ -44,6 +44,25 @@ export const siteSeo = {
 } as const;
 
 /** Campaign brand assets sourced from original artwork / Recursos de marca originales */
+/** Community race popup — flyer + registration form / Carrera comunitaria */
+export const communityRaceEvent = {
+  registrationUrl: "https://forms.gle/Ud19t6c5mPzTsZgcA",
+  flyer: {
+    src: "/images/events/carrera-comunitaria.jpg",
+    width: 819,
+    height: 1024,
+    alt: "Carrera comunitaria: Corre por un Pueblo Libre para todos. Este domingo 30 de agosto, 9:00 a. m.",
+  },
+  ctaLabel: "Inscríbete presionando aquí",
+  /** Native-image pixels for the yellow register button only */
+  registrationHotspot: {
+    x: 240,
+    y: 912,
+    width: 338,
+    height: 40,
+  },
+} as const;
+
 export const brandAssets = {
   banner: {
     src: "/brand/campaign-banner.jpg",
