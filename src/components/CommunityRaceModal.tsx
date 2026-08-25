@@ -126,7 +126,6 @@ export default function CommunityRaceModal() {
           className="race-modal__flyer"
           style={
             {
-              aspectRatio: `${flyer.width} / ${flyer.height}`,
               "--race-cta-top": `${(registrationHotspot.y / flyer.height) * 100}%`,
               "--race-cta-left": `${(registrationHotspot.x / flyer.width) * 100}%`,
               "--race-cta-width": `${(registrationHotspot.width / flyer.width) * 100}%`,
@@ -137,10 +136,11 @@ export default function CommunityRaceModal() {
           <Image
             alt={flyer.alt}
             className="race-modal__flyer-image"
-            fill
+            height={flyer.height}
             priority
-            sizes="(max-width: 699px) 96vw, 640px"
             src={flyer.src}
+            unoptimized={flyer.unoptimized}
+            width={flyer.width}
           />
           <a
             aria-label={ctaLabel}

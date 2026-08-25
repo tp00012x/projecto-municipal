@@ -52,6 +52,8 @@ export const communityRaceEvent = {
     width: 819,
     height: 1024,
     alt: "Carrera comunitaria: Corre por un Pueblo Libre para todos. Este domingo 30 de agosto, 9:00 a. m.",
+    /** Serve native pixels — poster text stays sharp, no AVIF/WebP resize */
+    unoptimized: true,
   },
   ctaLabel: "Inscríbete presionando aquí",
   /** Native-image pixels for the yellow register button only */
