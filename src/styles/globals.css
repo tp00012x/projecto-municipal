@@ -2800,8 +2800,8 @@ video {
 }
 
 /**
- * Community race promo modal
- * Modal emergente — carrera comunitaria
+ * Campaign promo modal — auto-advancing flyers
+ * Modal emergente — carrusel de avisos de campaña
  */
 .race-modal-overlay {
   position: fixed;
@@ -2867,13 +2867,27 @@ video {
   outline-offset: 2px;
 }
 
+.race-modal__carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
 .race-modal__flyer {
   position: relative;
   width: 100%;
   margin: 0;
   overflow: hidden;
   line-height: 0;
-  border-radius: 20px;
+}
+
+.race-modal__flyer[data-active="false"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .race-modal__flyer-image {
@@ -2902,6 +2916,36 @@ video {
   outline-offset: 2px;
 }
 
+.race-modal__dots {
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+
+.race-modal__dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: rgba(35, 16, 93, 0.45);
+  cursor: pointer;
+}
+
+.race-modal__dot--active {
+  width: 22px;
+  background: var(--yellow);
+  border-color: var(--yellow);
+}
+
+.race-modal__dot:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
+}
+
 body.race-modal-open .whatsapp-float {
   visibility: hidden;
   opacity: 0;
@@ -2923,6 +2967,16 @@ body.race-modal-open .whatsapp-float {
   .race-modal,
   .race-modal-backdrop {
     animation: none;
+  }
+
+  .race-modal__flyer {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .race-modal__flyer {
+    transition: opacity 320ms ease;
   }
 }
 

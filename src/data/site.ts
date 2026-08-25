@@ -43,28 +43,52 @@ export const siteSeo = {
   siteName: "Micky Ruiz · Pueblo Libre 2027–2030",
 } as const;
 
-/** Campaign brand assets sourced from original artwork / Recursos de marca originales */
-/** Community race popup — flyer + registration form / Carrera comunitaria */
-export const communityRaceEvent = {
-  registrationUrl: "https://forms.gle/Ud19t6c5mPzTsZgcA",
-  flyer: {
-    src: "/images/events/carrera-comunitaria.jpg",
-    width: 819,
-    height: 1024,
-    alt: "Carrera comunitaria: Corre por un Pueblo Libre para todos. Este domingo 30 de agosto, 9:00 a. m.",
-    /** Serve native pixels — poster text stays sharp, no AVIF/WebP resize */
-    unoptimized: true,
-  },
-  ctaLabel: "Inscríbete presionando aquí",
-  /** Native-image pixels for the yellow register button only */
-  registrationHotspot: {
-    x: 240,
-    y: 912,
-    width: 338,
-    height: 40,
-  },
+/**
+ * Campaign popup — auto-advancing flyers with one hotspot CTA each.
+ * Modal emergente: carrusel de avisos (carrera + encuesta).
+ */
+export const campaignPromoModal = {
+  intervalMs: 3000,
+  slides: [
+    {
+      id: "carrera-comunitaria",
+      src: "/images/events/carrera-comunitaria.jpg",
+      width: 819,
+      height: 1024,
+      alt: "Carrera comunitaria: Corre por un Pueblo Libre para todos. Este domingo 30 de agosto, 9:00 a. m.",
+      /** Serve native pixels — poster text stays sharp, no AVIF/WebP resize */
+      unoptimized: true,
+      href: "https://forms.gle/Ud19t6c5mPzTsZgcA",
+      ctaLabel: "Inscríbete presionando aquí",
+      /** Native-image pixels for the yellow register button only */
+      hotspot: {
+        x: 240,
+        y: 912,
+        width: 338,
+        height: 40,
+      },
+    },
+    {
+      id: "encuesta-agosto",
+      src: "/images/events/publicidad-2.jpg",
+      width: 1024,
+      height: 1024,
+      alt: "Encuesta virtual de Pueblo Libre: vota por Micky Ruiz. Cierre el 27 de agosto de 2026.",
+      unoptimized: true,
+      href: "https://encuestas.com.pe/pueblolibre-agosto-2026/",
+      ctaLabel: "Vota por Micky Ruiz aquí",
+      /** Native-image pixels for the yellow vote button only */
+      hotspot: {
+        x: 142,
+        y: 723,
+        width: 264,
+        height: 74,
+      },
+    },
+  ],
 } as const;
 
+/** Campaign brand assets sourced from original artwork / Recursos de marca originales */
 export const brandAssets = {
   banner: {
     src: "/brand/campaign-banner.jpg",
@@ -325,8 +349,7 @@ export const visionPriorityCards: Record<
     theme: "light",
     linkTone: "purple",
     iconTone: "light",
-    summary:
-      "Trámites simples, rápidos y 100% en línea, al alcance de todos.",
+    summary: "Trámites simples, rápidos y 100% en línea, al alcance de todos.",
     src: "/gallery/vision/gobierno-digital-22.png",
     alt: "Servicios municipales digitales y trámites en línea para Pueblo Libre",
     objectPosition: "50% 30%",
