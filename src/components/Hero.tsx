@@ -129,10 +129,10 @@ export default function Hero() {
             claridad para los vecinos de Pueblo Libre.
           </p>
           <div className="hero-actions">
-            <a className="button button-yellow" href="#propuestas">
-              Explorar las {siteConfig.proposalCount} propuestas
+            <button className="button button-yellow" type="button">
+              Tu voz cuenta en Pueblo Libre
               <ArrowRightIcon />
-            </a>
+            </button>
             <a className="button button-glass" href="#presentacion">
               Conocer a {siteConfig.candidate}
             </a>
