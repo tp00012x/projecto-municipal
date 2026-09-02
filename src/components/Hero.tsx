@@ -120,8 +120,8 @@ export default function Hero() {
             {siteConfig.role} <span>•</span> {siteConfig.affiliation}
           </p>
           <h1 id="hero-title">
-            {siteConfig.candidate}
-            <span> — un plan de ciudad para {siteConfig.district}</span>
+            Micky Ruiz
+            <span> — Un Pueblo Libre para Todos</span>
           </h1>
           <p className="hero-description">
             {siteConfig.proposalCount} propuestas del Plan Municipal 2027–2030:
