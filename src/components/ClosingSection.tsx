@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import CampaignBanner from "~/components/CampaignBanner";
 import { getWhatsAppUrl } from "~/data/site";
 import MotionReveal from "./MotionReveal";
@@ -17,9 +19,9 @@ export default function ClosingSection() {
         </blockquote>
         <p>Conoce las propuestas para el desarrollo de Pueblo Libre 2027–2030.</p>
         <div className="closing-actions">
-          <a className="button button-yellow" href="#propuestas">
+          <Link className="button button-yellow" href="/propuestas">
             Volver a las propuestas <ArrowRightIcon />
-          </a>
+          </Link>
           <a
             className="button button-whatsapp"
             href={getWhatsAppUrl(

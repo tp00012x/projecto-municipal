@@ -71,7 +71,16 @@ function isSortOption(value: string | null): value is SortOption {
  * Gallery + quick preview only.
  * Full read + comments live on /propuestas/[slug].
  */
-export default function ProposalExplorer({ proposals }: { proposals: Proposal[] }) {
+type ProposalExplorerProps = {
+  proposals: Proposal[];
+  /** Full gallery page at /propuestas — h1, no home-section anchor behavior */
+  standalone?: boolean;
+};
+
+export default function ProposalExplorer({
+  proposals,
+  standalone = false,
+}: ProposalExplorerProps) {
   const [mounted, setMounted] = useState(false);
   const [quickViewId, setQuickViewId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
@@ -117,7 +126,7 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
       (nextCategory && nextCategory !== "Todas") ||
       isSortOption(nextSort);
 
-    if (hasShareState && !window.location.hash) {
+    if (!standalone && hasShareState && !window.location.hash) {
       window.requestAnimationFrame(() => {
         document.getElementById("propuestas")?.scrollIntoView({
           behavior: "smooth",
@@ -125,7 +134,7 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
         });
       });
     }
-  }, [categories]);
+  }, [categories, standalone]);
 
   useEffect(() => {
     if (!mounted || !filtersReady) return;
@@ -158,15 +167,17 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
       if (!proposal) return;
 
       setQuickViewId(proposal.id);
-      window.requestAnimationFrame(() => {
-        document.getElementById("propuestas")?.scrollIntoView({ behavior: "smooth" });
-      });
+      if (!standalone) {
+        window.requestAnimationFrame(() => {
+          document.getElementById("propuestas")?.scrollIntoView({ behavior: "smooth" });
+        });
+      }
     }
 
     openFromHash();
     window.addEventListener("hashchange", openFromHash);
     return () => window.removeEventListener("hashchange", openFromHash);
-  }, [mounted, proposals]);
+  }, [mounted, proposals, standalone]);
 
   useEffect(() => {
     if (!countsQuery.data) return;
@@ -212,9 +223,12 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
     setSortBy("numero");
   }
 
+  const sectionId = standalone ? undefined : "propuestas";
+  const HeadingTag = standalone ? "h1" : "h2";
+
   if (!proposals.length) {
     return (
-      <section className="section proposal-section" id="propuestas">
+      <section className="section proposal-section" id={sectionId}>
         <div className="shell">
           <EmptyState
             description="No hay propuestas disponibles en este momento."
@@ -226,15 +240,15 @@ export default function ProposalExplorer({ proposals }: { proposals: Proposal[] 
   }
 
   return (
-    <section className="section proposal-section" id="propuestas">
+    <section className="section proposal-section" id={sectionId}>
       <div className="shell">
         <MotionReveal className="proposal-heading gallery-heading-block">
           <div>
             <p className="eyebrow">Galería de propuestas</p>
-            <h2>
+            <HeadingTag>
               24 propuestas.
               <span> Claras. Accionables.</span>
-            </h2>
+            </HeadingTag>
           </div>
           <p>
             Elige una propuesta, mira el resumen y entra a la ficha completa

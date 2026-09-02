@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { ArrowRightIcon, SparkIcon } from "~/components/Icons";
 import MotionReveal from "~/components/MotionReveal";
 import { joinProposalText } from "~/lib/proposal-utils";
@@ -47,9 +49,9 @@ export default function FeaturedProposals({
               </div>
               <h3>{proposal.titulo}</h3>
               <p>{joinProposalText(proposal.objetivo)}</p>
-              <a href="#propuestas">
+              <Link href="/propuestas">
                 Abrir en el explorador <ArrowRightIcon />
-              </a>
+              </Link>
             </MotionReveal>
           ))}
         </div>

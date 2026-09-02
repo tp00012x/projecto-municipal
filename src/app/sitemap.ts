@@ -14,6 +14,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 1,
   };
 
+  const gallery: MetadataRoute.Sitemap[number] = {
+    url: `${siteUrl}/propuestas`,
+    lastModified,
+    changeFrequency: "weekly",
+    priority: 0.9,
+  };
+
   const proposalEntries: MetadataRoute.Sitemap = getAllProposals().map(
     (proposal) => ({
       url: `${siteUrl}${getProposalPath(proposal)}`,
@@ -23,5 +30,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  return [home, ...proposalEntries];
+  return [home, gallery, ...proposalEntries];
 }
