@@ -71,6 +71,7 @@ h3,
 .identity-copy h2,
 .section-heading h2,
 .proposal-heading h2,
+.proposal-heading h1,
 .featured-heading h2,
 .gallery-heading:not(.gallery-heading-team) h2,
 .stats-copy h2,
@@ -545,6 +546,10 @@ video {
   color: var(--yellow);
   font-size: 10px;
   letter-spacing: 0.14em;
+}
+
+.mobile-nav a.is-active {
+  color: var(--yellow);
 }
 
 .hero {
@@ -1071,6 +1076,7 @@ video {
 .identity-copy h2,
 .section-heading h2,
 .proposal-heading h2,
+.proposal-heading h1,
 .featured-heading h2,
 .gallery-heading:not(.gallery-heading-team) h2,
 .stats-copy h2 {
@@ -1084,6 +1090,7 @@ video {
 .identity-copy h2 span,
 .section-heading h2 span,
 .proposal-heading h2 span,
+.proposal-heading h1 span,
 .featured-heading h2 span,
 .gallery-heading:not(.gallery-heading-team) h2 span {
   display: block;
@@ -3209,6 +3216,15 @@ video {
 
   .desktop-nav a:hover::after {
     transform: scaleX(1);
+  }
+
+  .desktop-nav a.is-active {
+    color: var(--paper);
+  }
+
+  .desktop-nav a.is-active::after {
+    transform: scaleX(1);
+    opacity: 0.72;
   }
 
   .header-social {

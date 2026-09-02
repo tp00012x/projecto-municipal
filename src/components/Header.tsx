@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { getWhatsAppUrl, siteConfig } from "~/data/site";
@@ -7,10 +9,10 @@ import BrandMark from "./BrandMark";
 import { CloseIcon, MenuIcon, WhatsAppIcon } from "./Icons";
 
 const links = [
-  { href: "#presentacion", label: "Sobre Micky" },
-  { href: "#equipo", label: "Nuestro equipo" },
-  { href: "#propuestas", label: "Propuestas" },
-];
+  { href: "/#presentacion", label: "Sobre Micky" },
+  { href: "/#equipo", label: "Nuestro equipo" },
+  { href: "/propuestas", label: "Propuestas", matchPath: "/propuestas" },
+] as const;
 
 const socialLinks = [
   {
@@ -30,8 +32,13 @@ const socialLinks = [
   },
 ];
 
+function isPropuestasActive(pathname: string) {
+  return pathname === "/propuestas" || pathname.startsWith("/propuestas/");
+}
+
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const close = () => setOpen(false);
@@ -41,16 +48,28 @@ export default function Header() {
 
   return (
     <header className="site-header">
-      <a className="brand" href="#inicio" aria-label="Ir al inicio — Micky Ruiz">
+      <Link className="brand" href="/" aria-label="Ir al inicio — Micky Ruiz">
         <BrandMark />
-      </a>
+      </Link>
 
       <nav className="desktop-nav" aria-label="Navegación principal">
-        {links.map((link) => (
-          <a href={link.href} key={link.href}>
-            {link.label}
-          </a>
-        ))}
+        {links.map((link) => {
+          const isActive =
+            "matchPath" in link && link.matchPath
+              ? isPropuestasActive(pathname)
+              : false;
+
+          return (
+            <Link
+              aria-current={isActive ? "page" : undefined}
+              className={isActive ? "is-active" : undefined}
+              href={link.href}
+              key={link.href}
+            >
+              {link.label}
+            </Link>
+          );
+        })}
       </nav>
 
       <div className="header-social">
@@ -100,12 +119,25 @@ export default function Header() {
         className={`mobile-nav ${open ? "is-open" : ""}`}
         id="mobile-navigation"
       >
-        {links.map((link, index) => (
-          <a href={link.href} key={link.href} onClick={() => setOpen(false)}>
-            <span>0{index + 1}</span>
-            {link.label}
-          </a>
-        ))}
+        {links.map((link, index) => {
+          const isActive =
+            "matchPath" in link && link.matchPath
+              ? isPropuestasActive(pathname)
+              : false;
+
+          return (
+            <Link
+              aria-current={isActive ? "page" : undefined}
+              className={isActive ? "is-active" : undefined}
+              href={link.href}
+              key={link.href}
+              onClick={() => setOpen(false)}
+            >
+              <span>0{index + 1}</span>
+              {link.label}
+            </Link>
+          );
+        })}
         <a
           className="mobile-nav-whatsapp"
           href={getWhatsAppUrl()}

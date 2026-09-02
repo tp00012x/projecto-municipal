@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+
 import MotionReveal from "~/components/MotionReveal";
 
 /**
@@ -80,9 +82,9 @@ export default function CandidateIntro() {
 
             {/* Call to action button / Botón de llamado a la acción */}
             <div className="candidate-intro-actions">
-              <a className="button button-purple" href="#propuestas">
+              <Link className="button button-purple" href="/propuestas">
                 Conoce nuestras propuestas
-              </a>
+              </Link>
             </div>
           </MotionReveal>
         </div>

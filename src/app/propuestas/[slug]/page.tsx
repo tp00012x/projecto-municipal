@@ -122,7 +122,7 @@ export default async function ProposalPage({ params }: PageProps) {
           <nav className="proposal-page-nav" aria-label="Migas de pan">
             <Link href="/">Inicio</Link>
             <span aria-hidden="true">/</span>
-            <Link href="/#propuestas">Propuestas</Link>
+            <Link href="/propuestas">Propuestas</Link>
             <span aria-hidden="true">/</span>
             <span className="proposal-page-nav-current">
               {numberLabel}. {title}
@@ -236,7 +236,7 @@ export default async function ProposalPage({ params }: PageProps) {
                 ) : null}
               </div>
               <div className="proposal-page-actions">
-                <Link className="button button-yellow" href="/#propuestas">
+                <Link className="button button-yellow" href="/propuestas">
                   Ver las {siteConfig.proposalCount} propuestas
                 </Link>
                 <a

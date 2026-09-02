@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import BrandMark from "~/components/BrandMark";
 import { getWhatsAppUrl, siteConfig } from "~/data/site";
 
@@ -6,9 +8,9 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="shell footer-grid">
         <div>
-          <a className="brand footer-brand" href="#inicio">
+          <Link className="brand footer-brand" href="/">
             <BrandMark variant="footer" />
-          </a>
+          </Link>
           <p>
             Las propuestas presentadas provienen del Plan de Gobierno Municipal
             2027–2030.
@@ -17,7 +19,7 @@ export default function Footer() {
         <div>
           <strong>Explorar</strong>
           <a href="#vision">Visión de desarrollo</a>
-          <a href="#propuestas">24 propuestas</a>
+          <Link href="/propuestas">24 propuestas</Link>
           <a href="#equipo">Nuestro equipo</a>
         </div>
         <div>
