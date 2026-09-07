@@ -41,6 +41,8 @@ export const siteSeo = {
   ogAlt:
     "Micky Ruiz, candidato a la Alcaldía de Pueblo Libre — plan municipal 2027–2030",
   siteName: "Micky Ruiz · Pueblo Libre 2027–2030",
+  /** Google Search Console HTML-tag verification (URL-prefix property) */
+  googleSiteVerification: "HvDKQXLVlMEXMUeoE-ts9h6XUqTice0wPrQXz8jtUGM",
 } as const;
 
 /** Campaign brand assets sourced from original artwork / Recursos de marca originales */

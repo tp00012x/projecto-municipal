@@ -22,10 +22,21 @@ Mientras el dominio no esté Valid, podés usar el `.vercel.app` temporal, pero 
 ## 2. Google Search Console
 
 1. Entrá a https://search.google.com/search-console
-2. Agregá la propiedad del dominio `mickyruiz.com` (DNS) o URL prefix `https://mickyruiz.com`
-3. Verificá
+2. Preferí **URL prefix** = `https://mickyruiz.com` (permite meta tag)
+3. Verificá:
+   - **HTML tag** (recomendado si no hay acceso DNS): el sitio ya publica
+     `google-site-verification` vía `siteSeo.googleSiteVerification` en el layout
+   - **DNS TXT** (propiedad de dominio): en Vercel → Domains → `mickyruiz.com` → DNS Records →
+
+```text
+Type: TXT
+Name: @
+Value: google-site-verification=HvDKQXLVlMEXMUeoE-ts9h6XUqTice0wPrQXz8jtUGM
+```
+
+   No borres A/CNAME existentes. Puede tardar minutos o hasta 24h.
 4. Sitemaps → enviá: `https://mickyruiz.com/sitemap.xml`
-5. Pedí indexación de la home y de 2–3 fichas `/propuestas/...`
+5. Pedí indexación de la home, `/propuestas` y 2–3 fichas `/propuestas/...`
 
 ## 3. Probar shares (WhatsApp / Facebook)
 
