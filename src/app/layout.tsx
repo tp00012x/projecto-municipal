@@ -108,6 +108,9 @@ export function generateMetadata(): Metadata {
     alternates: {
       canonical: "/",
     },
+    verification: {
+      google: siteSeo.googleSiteVerification,
+    },
   };
 }
 
