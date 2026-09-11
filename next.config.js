@@ -3,6 +3,7 @@
  * for Docker builds.
  */
 import "./src/env.js";
+import { proposalSlugRedirects } from "./src/lib/proposal-redirects.js";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -15,6 +16,9 @@ const config = {
   },
   turbopack: {
     root: import.meta.dirname,
+  },
+  async redirects() {
+    return proposalSlugRedirects;
   },
 };
 

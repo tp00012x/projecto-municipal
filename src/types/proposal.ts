@@ -8,6 +8,8 @@ export type Proposal = {
   id: string;
   numero: number;
   titulo: string;
+  /** Full public slug, including the number prefix. Overrides auto-generation. */
+  slug?: string;
   categoria: string;
   dimension: ProposalDimension;
   image: string;
