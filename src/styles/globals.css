@@ -3874,8 +3874,7 @@ video {
 
 .proposal-card-body h3,
 .proposal-card__title {
-  display: -webkit-box;
-  overflow: hidden;
+  display: block;
   margin: 0;
   min-height: calc(1.28em * 3);
   color: var(--purple-950);
@@ -3883,8 +3882,8 @@ video {
   font-weight: 800;
   letter-spacing: -0.028em;
   line-height: 1.28;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 
 .proposal-card-cta {
@@ -4533,10 +4532,8 @@ video {
 }
 
 .proposal-page-nav-current {
-  overflow: hidden;
-  max-width: min(42ch, 100%);
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .proposal-page-article {

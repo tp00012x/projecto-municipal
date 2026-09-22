@@ -1,8 +1,8 @@
 import proposalsData from "../data/propuestas.json" with { type: "json" };
 
 /**
- * Former public slugs for renamed proposals. Destinations come from the explicit
- * `slug` in propuestas.json so redirects cannot drift or loop.
+ * Former public slugs for renamed proposals. Destinations always come from
+ * the explicit `slug` in propuestas.json so redirects cannot drift or loop.
  *
  * @type {Record<string, string[]>}
  */
@@ -23,9 +23,11 @@ const RETIRED_PROPOSAL_SLUGS = [
 ];
 
 /**
+ * Permanent (308) redirects from retired proposal URLs to the current slug.
+ *
  * @type {Array<{ source: string, destination: string, permanent: true }>}
  */
-const renamedProposalRedirects = Object.entries(LEGACY_SLUGS_BY_ID).flatMap(
+export const proposalSlugRedirects = Object.entries(LEGACY_SLUGS_BY_ID).flatMap(
   ([id, legacySlugs]) => {
     const proposal = proposalsData.find((item) => item.id === id);
     const currentSlug = proposal?.slug;
@@ -54,8 +56,4 @@ const retiredProposalRedirects = RETIRED_PROPOSAL_SLUGS.map((slug) => ({
   permanent: true,
 }));
 
-/** Permanent (308) redirects for renamed and retired proposal URLs. */
-export const proposalSlugRedirects = [
-  ...renamedProposalRedirects,
-  ...retiredProposalRedirects,
-];
+proposalSlugRedirects.push(...retiredProposalRedirects);
