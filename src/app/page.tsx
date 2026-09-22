@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 
 import CampaignSite from "~/app/CampaignSite";
 import proposals from "~/data/propuestas.json";
-import { siteSeo } from "~/data/site";
+import { siteConfig, siteSeo } from "~/data/site";
 import { getSiteUrl } from "~/lib/site-url";
 import type { Proposal } from "~/types/proposal";
 
 const homeTitle = "Micky Ruiz | Candidato a la Alcaldía de Pueblo Libre";
-const homeDescription =
-  "Conoce a Micky Ruiz, candidato a alcalde de Pueblo Libre. Descubre sus 24 propuestas, equipo y plan para transformar el distrito.";
+const homeDescription = `Conoce a Micky Ruiz, candidato a alcalde de Pueblo Libre. Descubre sus ${siteConfig.proposalCount} propuestas, equipo y plan para transformar el distrito.`;
 
 export const metadata: Metadata = {
   title: {

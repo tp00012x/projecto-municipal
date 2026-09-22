@@ -16,6 +16,16 @@ const config = {
   turbopack: {
     root: import.meta.dirname,
   },
+  async redirects() {
+    return [
+      {
+        source:
+          "/propuestas/24-programa-de-renovacion-urbana-integral-mi-peru",
+        destination: "/propuestas",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default config;

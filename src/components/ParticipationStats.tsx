@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 import MotionReveal from "~/components/MotionReveal";
+import { siteConfig } from "~/data/site";
 import type { CommentCounts, Proposal } from "~/types/proposal";
 import { api } from "~/trpc/react";
 
@@ -98,7 +99,7 @@ export default function ParticipationStats({
               <span>Propuestas comentadas</span>
             </div>
             <div>
-              <strong>24</strong>
+              <strong>{siteConfig.proposalCount}</strong>
               <span>Fichas disponibles</span>
             </div>
           </div>

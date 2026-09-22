@@ -12,6 +12,7 @@ import ProposalQuickView from "~/components/proposals/ProposalQuickView";
 import ProposalSearch from "~/components/proposals/ProposalSearch";
 import ProposalSort from "~/components/proposals/ProposalSort";
 import MotionReveal from "~/components/MotionReveal";
+import { siteConfig } from "~/data/site";
 import type { CommentCounts, Proposal } from "~/types/proposal";
 import {
   filterProposals,
@@ -246,7 +247,7 @@ export default function ProposalExplorer({
           <div>
             <p className="eyebrow">Galería de propuestas</p>
             <HeadingTag>
-              24 propuestas.
+              {siteConfig.proposalCount} propuestas.
               <span> Claras. Accionables.</span>
             </HeadingTag>
           </div>

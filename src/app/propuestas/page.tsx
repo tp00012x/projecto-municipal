@@ -3,30 +3,31 @@ import type { Metadata } from "next";
 import Footer from "~/components/Footer";
 import Header from "~/components/Header";
 import ProposalExplorer from "~/components/ProposalExplorer";
+import { siteConfig } from "~/data/site";
 import { getAllProposals } from "~/lib/propuestas";
+
+const proposalsPageTitle = `${siteConfig.proposalCount} propuestas para Pueblo Libre | Micky Ruiz`;
+const proposalsPageDescription = `Conoce las ${siteConfig.proposalCount} propuestas de Micky Ruiz para construir un Pueblo Libre para todos.`;
 
 export const metadata: Metadata = {
   title: {
-    absolute: "24 propuestas para Pueblo Libre | Micky Ruiz",
+    absolute: proposalsPageTitle,
   },
-  description:
-    "Conoce las 24 propuestas de Micky Ruiz para construir un Pueblo Libre para todos.",
+  description: proposalsPageDescription,
   alternates: {
     canonical: "/propuestas",
   },
   openGraph: {
-    title: "24 propuestas para Pueblo Libre | Micky Ruiz",
-    description:
-      "Conoce las 24 propuestas de Micky Ruiz para construir un Pueblo Libre para todos.",
+    title: proposalsPageTitle,
+    description: proposalsPageDescription,
     url: "/propuestas",
     type: "website",
     locale: "es_PE",
   },
   twitter: {
     card: "summary_large_image",
-    title: "24 propuestas para Pueblo Libre | Micky Ruiz",
-    description:
-      "Conoce las 24 propuestas de Micky Ruiz para construir un Pueblo Libre para todos.",
+    title: proposalsPageTitle,
+    description: proposalsPageDescription,
   },
 };
 
