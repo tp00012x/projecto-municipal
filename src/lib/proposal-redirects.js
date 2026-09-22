@@ -17,15 +17,18 @@ const LEGACY_SLUGS_BY_ID = {
   ],
 };
 
-/** Retired proposals — no detail page; send visitors to the gallery. */
+/** Retired proposals — no detail page; 301 to the gallery for SEO. */
 const RETIRED_PROPOSAL_SLUGS = [
   "24-programa-de-renovacion-urbana-integral-mi-peru",
 ];
 
 /**
- * Permanent (308) redirects from retired proposal URLs to the current slug.
+ * Next.js redirects for legacy proposal slugs (308) and retired proposals (301).
  *
- * @type {Array<{ source: string, destination: string, permanent: true }>}
+ * @type {Array<
+ *   | { source: string, destination: string, permanent: true }
+ *   | { source: string, destination: string, statusCode: 301 }
+ * >}
  */
 export const proposalSlugRedirects = Object.entries(LEGACY_SLUGS_BY_ID).flatMap(
   ([id, legacySlugs]) => {
@@ -50,10 +53,13 @@ export const proposalSlugRedirects = Object.entries(LEGACY_SLUGS_BY_ID).flatMap(
   },
 );
 
+/** @type {301} */
+const RETIRED_REDIRECT_STATUS = 301;
+
 const retiredProposalRedirects = RETIRED_PROPOSAL_SLUGS.map((slug) => ({
   source: `/propuestas/${slug}`,
   destination: "/propuestas",
-  permanent: true,
+  statusCode: RETIRED_REDIRECT_STATUS,
 }));
 
 proposalSlugRedirects.push(...retiredProposalRedirects);

@@ -1,3 +1,8 @@
+import proposalsData from "./propuestas.json";
+
+/** Total proposals — always matches propuestas.json length. */
+export const proposalCount = proposalsData.length;
+
 export const siteConfig = {
   name: "Micky Ruiz",
   candidate: "Micky Ruiz",
@@ -9,7 +14,7 @@ export const siteConfig = {
   description:
     "Plataforma informativa para explorar las propuestas del Plan de Gobierno Municipal 2027–2030 y registrar aportes ciudadanos.",
   email: "contacto@pueblolibre2030.pe",
-  proposalCount: 23,
+  proposalCount,
   phoneDisplay: "+51 981 237 361",
   /** Digits only with country code — used for wa.me / tel links */
   whatsappE164: "51981237361",
@@ -26,8 +31,7 @@ export function getWhatsAppUrl(message?: string) {
 export const siteSeo = {
   title: "Micky Ruiz | Candidato a la Alcaldía de Pueblo Libre 2027–2030",
   titleTemplate: "%s | Micky Ruiz · Pueblo Libre",
-  description:
-    "Conoce a Micky Ruiz, candidato a la Alcaldía de Pueblo Libre (Lima): 23 propuestas del Plan Municipal 2027–2030, claras y abiertas a aportes ciudadanos.",
+  description: `Conoce a Micky Ruiz, candidato a la Alcaldía de Pueblo Libre (Lima): ${proposalCount} propuestas del Plan Municipal 2027–2030, claras y abiertas a aportes ciudadanos.`,
   keywords: [
     "Micky Ruiz",
     "candidato alcalde Pueblo Libre",
