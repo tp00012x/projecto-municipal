@@ -56,7 +56,7 @@ https://www.bing.com/webmasters → importar desde Google si ya verificaste GSC.
 | Title / description candidato-first | `src/data/site.ts` → `siteSeo` |
 | Canonical estable | `getSiteUrl()` en layout |
 | JSON-LD Person + ItemList + FAQ | `src/lib/seo-schema.ts` |
-| Fichas crawlables | `/propuestas/[slug]` + sitemap (1+24) |
+| Fichas crawlables | `/propuestas/[slug]` + sitemap (1+23) |
 | OG liviano | `/og.jpg` 1200×630 |
 | H1 con Micky + Pueblo Libre | `Hero.tsx` |
 | Filtros shareables | `?categoria=&q=&orden=` en galería |

@@ -9,7 +9,7 @@ export const siteConfig = {
   description:
     "Plataforma informativa para explorar las propuestas del Plan de Gobierno Municipal 2027–2030 y registrar aportes ciudadanos.",
   email: "contacto@pueblolibre2030.pe",
-  proposalCount: 24,
+  proposalCount: 23,
   phoneDisplay: "+51 981 237 361",
   /** Digits only with country code — used for wa.me / tel links */
   whatsappE164: "51981237361",
@@ -27,7 +27,7 @@ export const siteSeo = {
   title: "Micky Ruiz | Candidato a la Alcaldía de Pueblo Libre 2027–2030",
   titleTemplate: "%s | Micky Ruiz · Pueblo Libre",
   description:
-    "Conoce a Micky Ruiz, candidato a la Alcaldía de Pueblo Libre (Lima): 24 propuestas del Plan Municipal 2027–2030, claras y abiertas a aportes ciudadanos.",
+    "Conoce a Micky Ruiz, candidato a la Alcaldía de Pueblo Libre (Lima): 23 propuestas del Plan Municipal 2027–2030, claras y abiertas a aportes ciudadanos.",
   keywords: [
     "Micky Ruiz",
     "candidato alcalde Pueblo Libre",

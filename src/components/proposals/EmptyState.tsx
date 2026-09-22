@@ -1,4 +1,5 @@
 import { SearchIcon } from "~/components/Icons";
+import { siteConfig } from "~/data/site";
 
 type EmptyStateProps = {
   title?: string;
@@ -9,7 +10,7 @@ type EmptyStateProps = {
 
 export default function EmptyState({
   title = "Nada por acá con esos filtros",
-  description = "Prueba con otra palabra o limpia los filtros para ver las 24 propuestas otra vez.",
+  description = `Prueba con otra palabra o limpia los filtros para ver las ${siteConfig.proposalCount} propuestas otra vez.`,
   onReset,
   resetLabel = "Ver todas las propuestas",
 }: EmptyStateProps) {

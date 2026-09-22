@@ -2,6 +2,7 @@ import { TRPCError } from "@trpc/server";
 import { and, count, eq, ne } from "drizzle-orm";
 import { z } from "zod";
 
+import { siteConfig } from "~/data/site";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { comments } from "~/server/db/schema";
 
@@ -47,7 +48,11 @@ export const commentsRouter = createTRPCRouter({
   create: publicProcedure
     .input(
       z.object({
-        proposalNumber: z.number().int().min(1).max(24),
+        proposalNumber: z
+          .number()
+          .int()
+          .min(1)
+          .max(siteConfig.proposalCount),
         name: z.string().trim().min(2).max(50),
         email: z.string().trim().optional().default(""),
         comment: z.string().trim().min(20).max(800),

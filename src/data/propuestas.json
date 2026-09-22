@@ -701,34 +701,5 @@
       "Reducir en 20% el uso de papel en notificaciones.",
       "Lograr 50 alianzas con negocios locales para el primer año."
     ]
-  },
-  {
-    "id": "propuesta-24",
-    "numero": 24,
-    "titulo": "Programa de Renovación Urbana Integral Mi Perú",
-    "categoria": "Desarrollo urbano",
-    "dimension": "Ambiental",
-    "image": "/images/propuestas/propuesta-24.webp",
-    "imageAlt": "Familia caminando por calle residencial renovada con áreas verdes y mobiliario urbano en Pueblo Libre",
-    "imagePosition": "center bottom",
-    "diagnostico": [
-      "El asentamiento humano \"07 de Junio\" representa un foco crítico histórico identificado con marcadas brechas en el ordenamiento del suelo, saneamiento físico -legal e infraestructura urbana deficiente."
-    ],
-    "objetivo": [
-      "Elevar las condiciones de habitabilidad, seguridad y formalización territorial del distrito, en estricta línea con el OEI.01 (Condiciones de habitabilidad) del PEI."
-    ],
-    "acciones": [
-      "Realizar el levantamiento catastral digital 3D de alta precisión mediante drones de la municipalidad, habilitando un portal de consulta web transparente (Gobierno Abierto) para que los vecinos jóvenes sigan el estado del saneamiento de sus predios paso a paso."
-    ],
-    "presupuesto": [
-      "Asignación municipal de S/ 1,000,000 destinados a estudios técnicos de ingeniería y delimitación legal. La ejecución de las obras estructurales de vivienda y pistas se canalizará mediante un Convenio con el Ministerio de Vivienda, Construcción y Saneamiento (MVCS) a través del programa integral Techo Propio y fondos Mivivienda."
-    ],
-    "metas": [
-      "Elaborar e implementar el Catastro Digital 3D del 100% del sector 07 de Junio.",
-      "Realizar el saneamiento físico-legal de 1,000 predios urbanos.",
-      "Gestionar la incorporación de 500 familias a programas de vivienda promovidos por el Ministerio de Vivienda.",
-      "Implementar un portal digital de seguimiento ciudadano con acceso público al estado de cada expediente.",
-      "Incrementar en 50% el valor urbano y habitacional de los predios beneficiados al culminar los procesos de formalización."
-    ]
   }
 ]

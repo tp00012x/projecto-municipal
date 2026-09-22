@@ -19,7 +19,7 @@ export default function Footer() {
         <div>
           <strong>Explorar</strong>
           <a href="#vision">Visión de desarrollo</a>
-          <Link href="/propuestas">24 propuestas</Link>
+          <Link href="/propuestas">{siteConfig.proposalCount} propuestas</Link>
           <a href="#equipo">Nuestro equipo</a>
         </div>
         <div>

@@ -17,6 +17,11 @@ const LEGACY_SLUGS_BY_ID = {
   ],
 };
 
+/** Retired proposals — no detail page; send visitors to the gallery. */
+const RETIRED_PROPOSAL_SLUGS = [
+  "24-programa-de-renovacion-urbana-integral-mi-peru",
+];
+
 /**
  * Permanent (308) redirects from retired proposal URLs to the current slug.
  *
@@ -44,3 +49,11 @@ export const proposalSlugRedirects = Object.entries(LEGACY_SLUGS_BY_ID).flatMap(
     });
   },
 );
+
+const retiredProposalRedirects = RETIRED_PROPOSAL_SLUGS.map((slug) => ({
+  source: `/propuestas/${slug}`,
+  destination: "/propuestas",
+  permanent: true,
+}));
+
+proposalSlugRedirects.push(...retiredProposalRedirects);
