@@ -19,9 +19,11 @@ export function slugifyProposalTitle(titulo: string) {
 
 /** Stable pretty slug: 01-centro-de-cuidado-diurno-manos-que-cuidan */
 export function getProposalSlug(proposal: Proposal) {
+  if (proposal.slug) {
+    return proposal.slug;
+  }
   const num = String(proposal.numero).padStart(2, "0");
-  const slug = slugifyProposalTitle(proposal.titulo);
-  return `${num}-${slug}`;
+  return `${num}-${slugifyProposalTitle(proposal.titulo)}`;
 }
 
 export function getProposalPath(proposal: Proposal) {

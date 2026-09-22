@@ -223,7 +223,8 @@
   {
     "id": "propuesta-09",
     "numero": 9,
-    "titulo": "Remodelación de Complejos Deportivos y Creación del Coliseo Deportivo Multifuncional Mamá Ocllo",
+    "titulo": "Construcción y Saneamiento del Polideportivo Mamá Ocllo y Remodelación de Complejos Deportivos",
+    "slug": "09-construccion-y-saneamiento-del-polideportivo-mama-ocllo-y-remodelacion-de-complejos-deportivos",
     "categoria": "Deporte",
     "dimension": "Social",
     "image": "/images/propuestas/propuesta-09.webp",
@@ -252,7 +253,8 @@
   {
     "id": "propuesta-10",
     "numero": 10,
-    "titulo": "Hub Distrital - Centro de Innovación, Emprendimiento y Desarrollo Empresarial de Pueblo Libre",
+    "titulo": "Centro de innovación, Emprendimiento y Desarrollo Empresarial",
+    "slug": "10-centro-de-innovacion-emprendimiento-y-desarrollo-empresarial",
     "categoria": "Innovación",
     "dimension": "Económica",
     "image": "/images/propuestas/propuesta-10.webp",

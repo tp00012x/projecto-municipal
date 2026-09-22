@@ -3,6 +3,7 @@
  * for Docker builds.
  */
 import "./src/env.js";
+import { proposalSlugRedirects } from "./src/lib/proposal-redirects.js";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -17,14 +18,7 @@ const config = {
     root: import.meta.dirname,
   },
   async redirects() {
-    return [
-      {
-        source:
-          "/propuestas/24-programa-de-renovacion-urbana-integral-mi-peru",
-        destination: "/propuestas",
-        permanent: true,
-      },
-    ];
+    return proposalSlugRedirects;
   },
 };
 
