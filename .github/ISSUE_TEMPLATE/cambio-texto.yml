@@ -38,7 +38,7 @@ body:
     id: propuesta
     attributes:
       label: Número de propuesta (si aplica)
-      description: Solo si es una de las 23 propuestas.
+      description: Solo si es una de las 24 propuestas.
       placeholder: "3"
   - type: textarea
     id: notas

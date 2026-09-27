@@ -29,7 +29,7 @@ export function joinProposalText(value: string | string[]) {
 }
 
 export function getProposalSummary(proposal: Proposal, maxLength = 140) {
-  const source = joinProposalText(proposal.objetivo);
+  const source = proposal.resumen?.trim() || joinProposalText(proposal.objetivo);
   if (source.length <= maxLength) return source;
 
   const truncated = source.slice(0, maxLength);

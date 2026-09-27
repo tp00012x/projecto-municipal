@@ -701,5 +701,48 @@
       "Reducir en 20% el uso de papel en notificaciones.",
       "Lograr 50 alianzas con negocios locales para el primer año."
     ]
+  },
+  {
+    "id": "propuesta-24",
+    "numero": 24,
+    "slug": "24-saneamiento-legal-e-independizacion-de-predios-mi-peru",
+    "titulo": "Programa de Saneamiento Legal e Independización de Predios de Mi Perú",
+    "categoria": "Desarrollo urbano",
+    "dimension": "Ambiental",
+    "image": "/images/propuestas/propuesta-24.webp",
+    "imageAlt": "Asesoría legal vecinal para el saneamiento de predios en el Asentamiento Humano Mi Perú",
+    "imagePosition": "center",
+    "resumen": "Asesoría legal y acompañamiento especializado para apoyar a las familias del Asentamiento Humano Mi Perú en el saneamiento e independización de sus predios.",
+    "seoTitle": "Saneamiento Legal de Predios en Mi Perú | Propuesta 24",
+    "seoDescription": "Conoce la propuesta para brindar asesoría legal y acompañamiento a las familias de Mi Perú en el saneamiento e independización de sus predios.",
+    "diagnostico": [
+      "En el Asentamiento Humano Mi Perú, aproximadamente 80 familias se encuentran a la espera de culminar el saneamiento legal y la independización de sus predios. Esta situación genera incertidumbre sobre la condición jurídica de sus propiedades y dificulta que cada familia pueda contar con la documentación individual correspondiente.",
+      "Mi Perú se encuentra en una zona limítrofe de Pueblo Libre que también debe recibir atención municipal e integrarse plenamente al desarrollo del distrito."
+    ],
+    "objetivo": [
+      "Brindar orientación y acompañamiento jurídico especializado a las aproximadamente 80 familias del Asentamiento Humano Mi Perú, apoyándolas en el proceso de saneamiento legal e independización de sus predios.",
+      "La propuesta también busca integrar a Mi Perú y a las zonas más alejadas de Pueblo Libre dentro de los programas municipales, culturales y vecinales del distrito."
+    ],
+    "acciones": [
+      "Realizar un diagnóstico de la situación documental y legal de los predios involucrados.",
+      "Brindar asesoría legal especializada mediante un equipo o servicio jurídico contratado por la municipalidad.",
+      "Revisar individualmente la documentación disponible de cada familia participante.",
+      "Definir una ruta de orientación y acompañamiento para cada caso.",
+      "Apoyar a los propietarios durante el proceso de saneamiento e independización de sus predios, dentro de las competencias municipales y del marco legal aplicable.",
+      "Realizar jornadas informativas para que las familias conozcan los requisitos, etapas y avances de sus expedientes.",
+      "Implementar un mecanismo de seguimiento de los casos atendidos.",
+      "Incorporar al Asentamiento Humano Mi Perú en las actividades y programas municipales orientados a fortalecer la identidad cultural y la marca Pueblo Libre."
+    ],
+    "presupuesto": [
+      "Presupuesto referencial: Por determinar mediante la evaluación técnica, legal y la cotización del servicio especializado.",
+      "La propuesta es viable mediante la contratación o disponibilidad de asesoría jurídica especializada, la organización de expedientes y el acompañamiento municipal a las familias, siempre dentro de las competencias legales de la municipalidad y de la disponibilidad presupuestal correspondiente."
+    ],
+    "metas": [
+      "Brindar atención y orientación legal a las aproximadamente 80 familias identificadas en el Asentamiento Humano Mi Perú.",
+      "Revisar y organizar la situación documental de las familias que participen en el programa.",
+      "Establecer una ruta de acompañamiento individual para cada caso atendido.",
+      "Dar seguimiento a los procesos hasta la etapa que corresponda según su situación legal.",
+      "Integrar a Mi Perú en las actividades municipales, vecinales y culturales del distrito."
+    ]
   }
 ]

@@ -42,9 +42,13 @@ export async function generateMetadata({
     return { title: "Propuesta no encontrada" };
   }
 
-  const description = getProposalSummary(proposal, 160);
   const path = getProposalPath(proposal);
-  const title = `${getDisplayTitle(proposal.titulo)} | Propuesta ${proposal.numero}`;
+  const description =
+    proposal.seoDescription?.trim() ||
+    getProposalSummary(proposal, 160);
+  const title =
+    proposal.seoTitle?.trim() ||
+    `${getDisplayTitle(proposal.titulo)} | Propuesta ${proposal.numero}`;
 
   return {
     title,
