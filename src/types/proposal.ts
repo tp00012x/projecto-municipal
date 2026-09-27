@@ -10,6 +10,10 @@ export type Proposal = {
   titulo: string;
   /** Full public slug, including the number prefix. Overrides auto-generation. */
   slug?: string;
+  /** Short copy for cards and previews; falls back to objetivo excerpt. */
+  resumen?: string;
+  seoTitle?: string;
+  seoDescription?: string;
   categoria: string;
   dimension: ProposalDimension;
   image: string;

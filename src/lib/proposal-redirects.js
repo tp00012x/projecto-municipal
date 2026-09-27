@@ -17,13 +17,13 @@ const LEGACY_SLUGS_BY_ID = {
   ],
 };
 
-/** Retired proposals — no detail page; 301 to the gallery for SEO. */
-const RETIRED_PROPOSAL_SLUGS = [
-  "24-programa-de-renovacion-urbana-integral-mi-peru",
-];
+/** Former Propuesta 24 URL (renovación urbana) → canonical saneamiento legal (301). */
+const LEGACY_301_SLUGS_BY_ID = {
+  "propuesta-24": ["24-programa-de-renovacion-urbana-integral-mi-peru"],
+};
 
 /**
- * Next.js redirects for legacy proposal slugs (308) and retired proposals (301).
+ * Next.js redirects for legacy proposal slugs (308 permanent).
  *
  * @type {Array<
  *   | { source: string, destination: string, permanent: true }
@@ -54,12 +54,29 @@ export const proposalSlugRedirects = Object.entries(LEGACY_SLUGS_BY_ID).flatMap(
 );
 
 /** @type {301} */
-const RETIRED_REDIRECT_STATUS = 301;
+const LEGACY_301_STATUS = 301;
 
-const retiredProposalRedirects = RETIRED_PROPOSAL_SLUGS.map((slug) => ({
-  source: `/propuestas/${slug}`,
-  destination: "/propuestas",
-  statusCode: RETIRED_REDIRECT_STATUS,
-}));
+const legacy301Redirects = Object.entries(LEGACY_301_SLUGS_BY_ID).flatMap(
+  ([id, legacySlugs]) => {
+    const proposal = proposalsData.find((item) => item.id === id);
+    const currentSlug = proposal?.slug;
+    if (!currentSlug) {
+      throw new Error(`Missing explicit slug for ${id}`);
+    }
 
-proposalSlugRedirects.push(...retiredProposalRedirects);
+    const destination = `/propuestas/${currentSlug}`;
+
+    return legacySlugs.flatMap((slug) => {
+      if (slug === currentSlug) return [];
+      return [
+        {
+          source: `/propuestas/${slug}`,
+          destination,
+          statusCode: LEGACY_301_STATUS,
+        },
+      ];
+    });
+  },
+);
+
+proposalSlugRedirects.push(...legacy301Redirects);
