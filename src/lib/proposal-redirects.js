@@ -23,7 +23,7 @@ const LEGACY_301_SLUGS_BY_ID = {
 };
 
 /**
- * Next.js redirects for legacy proposal slugs (308 permanent).
+ * Next.js redirects for legacy proposal slugs (308) and slug changes (301).
  *
  * @type {Array<
  *   | { source: string, destination: string, permanent: true }
